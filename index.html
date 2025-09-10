@@ -3,96 +3,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Marketing Store</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Anime | Online Marketing Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #333;
+    }
+
+    header {
+      background: #8805a8;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 40px 20px;
+      text-align: center;
+      background: #f0f0f0;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .tabs button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      background: #8805a8;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .tabs button:hover {
+      background: #a43bcc;
+    }
+
+    .tabs button.active {
+      background: #ff6600;
+    }
+
+    .products {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      display: none;
+    }
+
+    .products.active {
+      display: block;
+    }
+
+    .products h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.6em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #8805a8;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .btn:hover {
+      background: #a43bcc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      background: #8805a8;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
-    <div class="logo">🛒 Online Marketing Store</div>
+    <h1>Anime Collection</h1>
     <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="anime.html">Anime</a>
-      <a href="electronics.html">Electronics</a>
-      <a href="fashion.html">Fashion</a>
-      <a href="fitness.html">Fitness</a>
-      <a href="kitchenware.html">Kitchenware</a>
-      <a href="gaming.html">Gaming</a>
-      <a href="books.html">Books</a>
-      <a href="beauty.html">Beauty</a>
-      <a href="homedecor.html">Home Décor</a>
-      <a href="toys.html">Toys & Kids</a>
-      <a href="about.html">About</a>
+      <a href="index.html">Home</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <h1>Welcome 🚀</h1>
-    <p>Your one-stop Online Marketing Store — Explore 10 amazing categories!</p>
-    <a href="anime.html" class="btn">Start Shopping</a>
+    <h2>Explore Anime Categories</h2>
+    <p>Manga, Figures, Accessories, and more!</p>
   </section>
 
-  <!-- Categories Grid -->
-  <section class="categories">
-    <h2>Shop by Category</h2>
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tablink active" onclick="openTab('manga')">Manga</button>
+    <button class="tablink" onclick="openTab('figures')">Action Figures</button>
+    <button class="tablink" onclick="openTab('keychains')">Keychains</button>
+    <button class="tablink" onclick="openTab('accessories')">Accessories</button>
+    <button class="tablink" onclick="openTab('wallpapers')">Wallpapers</button>
+    <button class="tablink" onclick="openTab('headbands')">Headbands</button>
+    <button class="tablink" onclick="openTab('cards')">Cards</button>
+  </div>
+
+  <!-- Manga -->
+  <section id="manga" class="products active">
+    <h2>Manga</h2>
     <div class="grid">
-      <div class="card">
-        <h3>Anime 🎌</h3>
-        <p>Figures, posters, manga & more!</p>
-        <a href="anime.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Electronics 🔌</h3>
-        <p>Smartphones, headphones, gadgets.</p>
-        <a href="electronics.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Fashion 👗</h3>
-        <p>Latest trends & styles.</p>
-        <a href="fashion.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Fitness 💪</h3>
-        <p>Gear up for strength & health.</p>
-        <a href="fitness.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Kitchenware 🍳</h3>
-        <p>Cookware, blenders, essentials.</p>
-        <a href="kitchenware.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Gaming 🎮</h3>
-        <p>Consoles, accessories, chairs.</p>
-        <a href="gaming.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Books 📚</h3>
-        <p>Bestsellers, novels, manga.</p>
-        <a href="books.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Beauty 💄</h3>
-        <p>Skincare, makeup & self-care.</p>
-        <a href="beauty.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Home Décor 🛋️</h3>
-        <p>Wall art, rugs, modern interiors.</p>
-        <a href="homedecor.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Toys & Kids 🧸</h3>
-        <p>Fun toys, learning & play.</p>
-        <a href="toys.html" class="btn">Explore</a>
-      </div>
+      <div class="card"><img src="https://i.ibb.co/4pMkF8g/shirt.jpg"><h3>Naruto Manga</h3><a href="#" class="btn">Shop Now</a></div>
+      <!-- 9 more manga products here -->
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Action Figures -->
+  <section id="figures" class="products">
+    <h2>Action Figures</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/pfD0nCt/jeans.jpg"><h3>Goku Figure</h3><a href="#" class="btn">Shop Now</a></div>
+      <!-- 9 more figures -->
+    </div>
+  </section>
+
+  <!-- Keychains -->
+  <section id="keychains" class="products">
+    <h2>Keychains</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/YBQPrxv/jacket.jpg"><h3>Anime Keychain</h3><a href="#" class="btn">Shop Now</a></div>
+      <!-- 9 more keychains -->
+    </div>
+  </section>
+
+  <!-- Accessories -->
+  <section id="accessories" class="products">
+    <h2>Accessories</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/BLtzYJp/suit.jpg"><h3>Anime Backpack</h3><a href="#" class="btn">Shop Now</a></div>
+      <!-- 9 more accessories -->
+    </div>
+  </section>
+
+  <!-- Wallpapers -->
+  <section id="wallpapers" class="products">
+    <h2>Wallpapers</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/Gvxt4Rm/watch.jpg"><h3>Anime Poster</h3><a href="#" class="btn">Shop Now</a></div>
+      <!-- 9 more wallpapers -->
+    </div>
+  </section>
+
+  <!-- Headbands -->
+  <section id="headbands" class="products">
+    <h2>Headbands</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/3y5Dnp9/shoes.jpg"><h3>Naruto Headband</h3><a href="#" class="btn">Shop Now</a></div>
+      <!-- 9 more headbands -->
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section id="cards" class="products">
+    <h2>Anime Cards</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/8rFWhQf/sneakers.jpg"><h3>Pokémon Cards</h3><a href="#" class="btn">Shop Now</a></div>
+      <!-- 9 more cards -->
+    </div>
+  </section>
+
   <footer>
-    <p>© 2025 Online Marketing Store</p>
+    <p>© 2025 Online Marketing Store - Anime</p>
   </footer>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll(".products").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll(".tablink").forEach(el => el.classList.remove("active"));
+      document.getElementById(tabId).classList.add("active");
+      event.target.classList.add("active");
+    }
+  </script>
 </body>
 </html>
