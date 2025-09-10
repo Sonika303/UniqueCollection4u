@@ -5,136 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime | Online Marketing Store</title>
   <style>
-    /* Anime Page Styles */
     body {
-      font-family: 'Trebuchet MS', sans-serif;
-      background: url('https://i.ibb.co/SXznf6k/anime-wallpaper.jpg') center/cover fixed no-repeat;
-      color: #fff;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
       margin: 0;
       padding: 0;
     }
 
     header {
-      background: rgba(0,0,0,0.7);
+      background: #f5f5f5;
       padding: 15px 30px;
       text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      border-bottom: 1px solid #ddd;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2em;
-      color: #ffdd57;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+      font-size: 1.8em;
+      color: #222;
+    }
+
+    nav {
+      margin-top: 10px;
     }
 
     nav a {
-      color: #fff;
+      color: #333;
       margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #ff80ff;
+      color: #e60073;
     }
 
     .hero {
       text-align: center;
-      padding: 80px 20px;
-      background: rgba(0,0,0,0.6);
+      padding: 40px 20px;
+      background: #f9f9f9;
+      border-bottom: 1px solid #ddd;
     }
 
     .hero h2 {
-      font-size: 2.8em;
+      font-size: 2em;
       margin-bottom: 10px;
-      color: #ff80ff;
-      text-shadow: 2px 2px 10px rgba(255,128,255,0.7);
-    }
-
-    .hero p {
-      font-size: 1.2em;
-      color: #ffdd57;
+      color: #e60073;
     }
 
     .products {
       padding: 40px 20px;
-      background: rgba(0,0,0,0.7);
+      max-width: 1200px;
+      margin: auto;
     }
 
     .products h2 {
       text-align: center;
       margin-bottom: 30px;
-      font-size: 2em;
-      color: #ffdd57;
+      font-size: 1.8em;
+      color: #222;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
     .card {
-      background: rgba(255,255,255,0.1);
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
       padding: 15px;
-      border-radius: 12px;
       text-align: center;
-      border: 2px solid #ff80ff;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: box-shadow 0.3s;
     }
 
     .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(255,128,255,0.6);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .card img {
       width: 100%;
-      height: 180px;
+      height: 160px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 6px;
       margin-bottom: 10px;
-      border: 2px solid #ffdd57;
     }
 
     .card h3 {
       font-size: 1.1em;
       margin: 10px 0;
-      color: #ffdd57;
+      color: #333;
     }
 
     .btn {
       display: inline-block;
       margin-top: 8px;
-      padding: 10px 20px;
-      background: #ff80ff;
-      color: #000;
-      border-radius: 20px;
-      font-weight: bold;
+      padding: 8px 16px;
+      background: #e60073;
+      color: #fff;
+      border-radius: 5px;
       text-decoration: none;
+      font-size: 0.9em;
       transition: background 0.3s;
     }
 
     .btn:hover {
-      background: #ff40ff;
+      background: #b80057;
     }
 
     footer {
       text-align: center;
       padding: 15px;
       margin-top: 40px;
-      background: rgba(0,0,0,0.9);
-      color: #ffdd57;
+      background: #f5f5f5;
+      border-top: 1px solid #ddd;
+      color: #555;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Anime Section 🎌</h1>
+    <h1>Anime Section</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="electronics.html">Electronics</a>
@@ -150,12 +144,12 @@
   </header>
 
   <section class="hero">
-    <h2>Top Anime Picks 🎭</h2>
-    <p>Figures, Posters, Manga, Apparel and more!</p>
+    <h2>Anime Products</h2>
+    <p>Figures, Posters, Manga, Apparel & more!</p>
   </section>
 
   <section class="products">
-    <h2>Anime Products</h2>
+    <h2>Our Picks</h2>
     <div class="grid">
       <div class="card">
         <img src="https://i.ibb.co/8gg0n7X/anime-figure.jpg" alt="Anime Figure">
@@ -183,7 +177,7 @@
         <a href="#" class="btn">Buy Now</a>
       </div>
       <div class="card">
-        <img src="https://i.ibb.co/Z6BLZpC/anime-poster2.jpg" alt="Poster">
+        <img src="https://i.ibb.co/Z6BLZpC/anime-poster2.jpg" alt="Wall Poster">
         <h3>Wall Scroll Poster</h3>
         <a href="#" class="btn">Buy Now</a>
       </div>
@@ -198,12 +192,12 @@
         <a href="#" class="btn">Buy Now</a>
       </div>
       <div class="card">
-        <img src="https://i.ibb.co/PGqcfpg/anime-mug.jpg" alt="Mug">
+        <img src="https://i.ibb.co/PGqcfpg/anime-mug.jpg" alt="Anime Mug">
         <h3>Anime Mug</h3>
         <a href="#" class="btn">Buy Now</a>
       </div>
       <div class="card">
-        <img src="https://i.ibb.co/RNhQyLV/anime-bag.jpg" alt="Bag">
+        <img src="https://i.ibb.co/RNhQyLV/anime-bag.jpg" alt="Anime Bag">
         <h3>Anime Bag</h3>
         <a href="#" class="btn">Buy Now</a>
       </div>
@@ -215,5 +209,4 @@
   </footer>
 </body>
 </html>
-
 
