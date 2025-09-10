@@ -3,210 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime | Online Marketing Store</title>
+  <title>Anime - Online Marketing Store</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #fff;
-      color: #333;
       margin: 0;
       padding: 0;
-    }
-
-    header {
-      background: #f5f5f5;
-      padding: 15px 30px;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8em;
-      color: #222;
-    }
-
-    nav {
-      margin-top: 10px;
-    }
-
-    nav a {
       color: #333;
-      margin: 0 10px;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #444;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff;
       text-decoration: none;
+      margin: 5px 15px;
       font-weight: bold;
     }
-
     nav a:hover {
-      color: #e60073;
+      text-decoration: underline;
     }
-
-    .hero {
+    h2 {
       text-align: center;
-      padding: 40px 20px;
-      background: #f9f9f9;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .hero h2 {
-      font-size: 2em;
-      margin-bottom: 10px;
-      color: #e60073;
-    }
-
-    .products {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .products h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 1.8em;
+      margin: 30px 0 20px;
       color: #222;
     }
-
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 20px;
+      padding: 20px;
     }
-
     .card {
-      background: #fff;
       border: 1px solid #ddd;
       border-radius: 8px;
-      padding: 15px;
+      padding: 10px;
       text-align: center;
-      transition: box-shadow 0.3s;
+      background: #fafafa;
     }
-
-    .card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
     .card img {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 10px;
+      border-radius: 5px;
     }
-
     .card h3 {
-      font-size: 1.1em;
       margin: 10px 0;
-      color: #333;
+      font-size: 16px;
     }
-
     .btn {
       display: inline-block;
-      margin-top: 8px;
-      padding: 8px 16px;
-      background: #e60073;
+      padding: 8px 12px;
+      background: #007BFF;
       color: #fff;
-      border-radius: 5px;
+      border-radius: 4px;
       text-decoration: none;
-      font-size: 0.9em;
-      transition: background 0.3s;
+      font-size: 14px;
     }
-
     .btn:hover {
-      background: #b80057;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-      background: #f5f5f5;
-      border-top: 1px solid #ddd;
-      color: #555;
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Anime Section</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="electronics.html">Electronics</a>
-      <a href="fashion.html">Fashion</a>
-      <a href="fitness.html">Fitness</a>
-      <a href="kitchenware.html">Kitchenware</a>
-      <a href="gaming.html">Gaming</a>
-      <a href="books.html">Books</a>
-      <a href="beauty.html">Beauty</a>
-      <a href="homedecor.html">Home Décor</a>
-      <a href="toys.html">Toys & Kids</a>
-    </nav>
+    <h1>Anime - Online Marketing Store</h1>
   </header>
 
-  <section class="hero">
-    <h2>Anime Products</h2>
-    <p>Figures, Posters, Manga, Apparel & more!</p>
-  </section>
+  <!-- Navigation with Home -->
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="#manga">Manga</a>
+    <a href="#figures">Action Figures</a>
+    <a href="#keychains">Keychains</a>
+    <a href="#accessories">Accessories</a>
+    <a href="#wallpapers">Wallpapers</a>
+    <a href="#headbands">Headbands</a>
+    <a href="#cards">Cards</a>
+  </nav>
 
-  <section class="products">
-    <h2>Our Picks</h2>
+  <!-- Manga -->
+  <section id="manga">
+    <h2>Manga</h2>
     <div class="grid">
-      <div class="card">
-        <img src="https://i.ibb.co/8gg0n7X/anime-figure.jpg" alt="Anime Figure">
-        <h3>Anime Figure</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/4dc6M0N/anime-poster.jpg" alt="Anime Poster">
-        <h3>Anime Poster</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/0qkQ7tv/manga.jpg" alt="Manga Book">
-        <h3>Manga Volume</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/tPG7fT2/anime-shirt.jpg" alt="Anime Shirt">
-        <h3>Anime T-Shirt</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/fMTfkGN/anime-keychain.jpg" alt="Anime Keychain">
-        <h3>Keychain</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/Z6BLZpC/anime-poster2.jpg" alt="Wall Poster">
-        <h3>Wall Scroll Poster</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/XbPBKtp/cosplay.jpg" alt="Cosplay Outfit">
-        <h3>Cosplay Outfit</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/FYvFgFf/plushie.jpg" alt="Anime Plushie">
-        <h3>Anime Plushie</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/PGqcfpg/anime-mug.jpg" alt="Anime Mug">
-        <h3>Anime Mug</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/RNhQyLV/anime-bag.jpg" alt="Anime Bag">
-        <h3>Anime Bag</h3>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
+      <div class="card"><img src=""><h3>Product 1</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 2</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 3</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 4</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 5</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 6</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 7</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 8</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 9</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 10</h3><a href="#" class="btn">Shop Now</a></div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 Online Marketing Store - Anime Section</p>
-  </footer>
+  <!-- Action Figures -->
+  <section id="figures">
+    <h2>Action Figures</h2>
+    <div class="grid">
+      <div class="card"><img src=""><h3>Product 1</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 2</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 3</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 4</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 5</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 6</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 7</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 8</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 9</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 10</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
+  <!-- Keychains -->
+  <section id="keychains">
+    <h2>Keychains</h2>
+    <div class="grid">
+      <div class="card"><img src=""><h3>Product 1</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 2</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 3</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 4</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 5</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 6</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 7</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 8</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 9</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 10</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
+  <!-- Accessories -->
+  <section id="accessories">
+    <h2>Accessories</h2>
+    <div class="grid">
+      <div class="card"><img src=""><h3>Product 1</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 2</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 3</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 4</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 5</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 6</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 7</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 8</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 9</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 10</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
+  <!-- Wallpapers -->
+  <section id="wallpapers">
+    <h2>Wallpapers</h2>
+    <div class="grid">
+      <div class="card"><img src=""><h3>Product 1</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 2</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 3</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 4</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 5</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 6</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 7</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 8</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 9</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 10</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
+  <!-- Headbands -->
+  <section id="headbands">
+    <h2>Headbands</h2>
+    <div class="grid">
+      <div class="card"><img src=""><h3>Product 1</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 2</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 3</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 4</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 5</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 6</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 7</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 8</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 9</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 10</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section id="cards">
+    <h2>Cards</h2>
+    <div class="grid">
+      <div class="card"><img src=""><h3>Product 1</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 2</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 3</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 4</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 5</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 6</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 7</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 8</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 9</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src=""><h3>Product 10</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
 </body>
 </html>
-
