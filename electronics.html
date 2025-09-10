@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electronics | Online Marketing Store</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0f1a;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #111827;
+      padding: 15px 30px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid #00d4ff;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      color: #00d4ff;
+      text-shadow: 0 0 10px #00d4ff;
+    }
+
+    nav a {
+      color: #e0e0e0;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00d4ff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: url('https://i.ibb.co/vLzPf8g/tech-bg.jpg') center/cover no-repeat;
+      border-bottom: 5px solid #00d4ff;
+    }
+
+    .hero h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #00d4ff;
+      text-shadow: 0 0 15px #00d4ff;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      color: #e0e0e0;
+    }
+
+    .products {
+      padding: 40px 20px;
+    }
+
+    .products h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: #00d4ff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      border: 2px solid #00d4ff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00d4ff;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 1.1em;
+      margin: 10px 0;
+      color: #00d4ff;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 20px;
+      background: #00d4ff;
+      color: #000;
+      border-radius: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #00aacc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      background: #111827;
+      border-top: 2px solid #00d4ff;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Electronics Section 🔌</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="anime.html">Anime</a>
+      <a href="fashion.html">Fashion</a>
+      <a href="fitness.html">Fitness</a>
+      <a href="kitchenware.html">Kitchenware</a>
+      <a href="gaming.html">Gaming</a>
+      <a href="books.html">Books</a>
+      <a href="beauty.html">Beauty</a>
+      <a href="homedecor.html">Home Décor</a>
+      <a href="toys.html">Toys & Kids</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Latest Tech & Gadgets ⚡</h2>
+    <p>Smartphones, Headphones, Laptops & more!</p>
+  </section>
+
+  <section class="products">
+    <h2>Electronics Products</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.ibb.co/v1ftdGW/smartphone.jpg" alt="Smartphone">
+        <h3>Smartphone</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/QHXcY94/headphones.jpg" alt="Headphones">
+        <h3>Headphones</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/4jBdtyR/laptop.jpg" alt="Laptop">
+        <h3>Laptop</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/J5ng7nx/smartwatch.jpg" alt="Smartwatch">
+        <h3>Smartwatch</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/4YMfQcy/camera.jpg" alt="Camera">
+        <h3>Digital Camera</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/WxQdtg5/tablet.jpg" alt="Tablet">
+        <h3>Tablet</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/vZr4cRB/earbuds.jpg" alt="Earbuds">
+        <h3>Wireless Earbuds</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/v4yXJK0/speaker.jpg" alt="Bluetooth Speaker">
+        <h3>Bluetooth Speaker</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/xCX1nNd/monitor.jpg" alt="Monitor">
+        <h3>HD Monitor</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/9pKvKNM/gaming-mouse.jpg" alt="Gaming Mouse">
+        <h3>Gaming Mouse</h3>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Online Marketing Store - Electronics Section</p>
+  </footer>
+</body>
+</html>
