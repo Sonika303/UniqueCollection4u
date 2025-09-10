@@ -7,205 +7,236 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
       background: #fff;
       color: #333;
-      margin: 0;
-      padding: 0;
     }
 
     header {
-      background: #f5f5f5;
-      padding: 15px 30px;
+      background: #222;
+      padding: 20px;
       text-align: center;
-      border-bottom: 1px solid #ddd;
+      color: white;
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.8em;
-      color: #222;
-    }
-
-    nav {
-      margin-top: 10px;
     }
 
     nav a {
-      color: #333;
+      color: white;
       margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
     }
 
     nav a:hover {
-      color: #d63384;
+      text-decoration: underline;
     }
 
     .hero {
-      text-align: center;
       padding: 40px 20px;
-      background: #f9f9f9;
-      border-bottom: 1px solid #ddd;
+      text-align: center;
+      background: #f0f0f0;
     }
 
-    .hero h2 {
-      font-size: 2em;
-      margin-bottom: 10px;
-      color: #d63384;
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .tabs button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .tabs button:hover {
+      background: #444;
+    }
+
+    .tabs button.active {
+      background: #ff6600;
     }
 
     .products {
-      padding: 40px 20px;
       max-width: 1200px;
-      margin: auto;
+      margin: 20px auto;
+      padding: 20px;
+      display: none;
+    }
+
+    .products.active {
+      display: block;
     }
 
     .products h2 {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 1.8em;
-      color: #222;
+      margin-bottom: 20px;
+      font-size: 1.6em;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
 
     .card {
       background: #fff;
       border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 15px;
+      border-radius: 10px;
       text-align: center;
-      transition: box-shadow 0.3s;
+      padding: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .card img {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
       border-radius: 6px;
       margin-bottom: 10px;
     }
 
     .card h3 {
-      font-size: 1.1em;
       margin: 10px 0;
-      color: #333;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 8px;
       padding: 8px 16px;
-      background: #d63384;
-      color: #fff;
-      border-radius: 5px;
+      background: #222;
+      color: white;
       text-decoration: none;
-      font-size: 0.9em;
-      transition: background 0.3s;
+      border-radius: 6px;
     }
 
     .btn:hover {
-      background: #a82466;
+      background: #444;
     }
 
     footer {
       text-align: center;
       padding: 15px;
       margin-top: 40px;
-      background: #f5f5f5;
-      border-top: 1px solid #ddd;
-      color: #555;
+      background: #222;
+      color: white;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Fashion Section</h1>
+    <h1>Fashion</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="anime.html">Anime</a>
-      <a href="electronics.html">Electronics</a>
-      <a href="fitness.html">Fitness</a>
-      <a href="kitchenware.html">Kitchenware</a>
-      <a href="gaming.html">Gaming</a>
-      <a href="books.html">Books</a>
-      <a href="beauty.html">Beauty</a>
-      <a href="homedecor.html">Home Décor</a>
-      <a href="toys.html">Toys & Kids</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Latest Fashion Trends</h2>
-    <p>Clothing, Shoes, Accessories & more</p>
+    <h2>Explore Fashion Categories</h2>
+    <p>Choose Male/Female and then Adult/Kids</p>
   </section>
 
-  <section class="products">
-    <h2>Our Picks</h2>
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tablink active" onclick="openTab('male-adult')">Male - Adult</button>
+    <button class="tablink" onclick="openTab('male-kids')">Male - Kids</button>
+    <button class="tablink" onclick="openTab('female-adult')">Female - Adult</button>
+    <button class="tablink" onclick="openTab('female-kids')">Female - Kids</button>
+  </div>
+
+  <!-- Male Adult -->
+  <section id="male-adult" class="products active">
+    <h2>Male - Adult Fashion</h2>
     <div class="grid">
-      <div class="card">
-        <img src="https://i.ibb.co/QvHf9yW/dress.jpg" alt="Dress">
-        <h3>Stylish Dress</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/fYGvVfV/jacket.jpg" alt="Jacket">
-        <h3>Casual Jacket</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/ryr8s1Q/shoes.jpg" alt="Shoes">
-        <h3>Trendy Shoes</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/Rg5wvnm/tshirt.jpg" alt="T-shirt">
-        <h3>Graphic T-Shirt</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/xDSkMMf/handbag.jpg" alt="Handbag">
-        <h3>Designer Handbag</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/pnCJdTy/watch.jpg" alt="Watch">
-        <h3>Elegant Watch</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/gjmdm38/sunglasses.jpg" alt="Sunglasses">
-        <h3>Fashion Sunglasses</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/VBysS9D/hoodie.jpg" alt="Hoodie">
-        <h3>Comfort Hoodie</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/1r5j6kS/skirt.jpg" alt="Skirt">
-        <h3>Casual Skirt</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
-      <div class="card">
-        <img src="https://i.ibb.co/BrnZsYN/suit.jpg" alt="Suit">
-        <h3>Business Suit</h3>
-        <a href="#" class="btn">Shop Now</a>
-      </div>
+      <div class="card"><img src="https://i.ibb.co/4pMkF8g/shirt.jpg"><h3>Casual Shirt</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/pfD0nCt/jeans.jpg"><h3>Denim Jeans</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/YBQPrxv/jacket.jpg"><h3>Leather Jacket</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/Gvxt4Rm/watch.jpg"><h3>Wrist Watch</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/BLtzYJp/suit.jpg"><h3>Business Suit</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/QFsYQ70/sunglasses.jpg"><h3>Sunglasses</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/3y5Dnp9/shoes.jpg"><h3>Formal Shoes</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/94HZ1gb/belt.jpg"><h3>Leather Belt</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/2y1cG7M/tshirt.jpg"><h3>Graphic T-Shirt</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/8rFWhQf/sneakers.jpg"><h3>Sneakers</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
+  <!-- Male Kids -->
+  <section id="male-kids" class="products">
+    <h2>Male - Kids Fashion</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/8rFWhQf/sneakers.jpg"><h3>Kids Sneakers</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/2y1cG7M/tshirt.jpg"><h3>Cartoon T-Shirt</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/pfD0nCt/jeans.jpg"><h3>Kids Jeans</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/YBQPrxv/jacket.jpg"><h3>Kids Jacket</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/Gvxt4Rm/watch.jpg"><h3>Kids Digital Watch</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/BLtzYJp/suit.jpg"><h3>Kids Suit</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/94HZ1gb/belt.jpg"><h3>Kids Belt</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/3y5Dnp9/shoes.jpg"><h3>School Shoes</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/4pMkF8g/shirt.jpg"><h3>Kids Shirt</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/QFsYQ70/sunglasses.jpg"><h3>Kids Sunglasses</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
+  <!-- Female Adult -->
+  <section id="female-adult" class="products">
+    <h2>Female - Adult Fashion</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/2y1cG7M/tshirt.jpg"><h3>Trendy Top</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/pfD0nCt/jeans.jpg"><h3>Skinny Jeans</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/YBQPrxv/jacket.jpg"><h3>Leather Jacket</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/4pMkF8g/shirt.jpg"><h3>Formal Blouse</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/BLtzYJp/suit.jpg"><h3>Evening Dress</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/QFsYQ70/sunglasses.jpg"><h3>Fashion Sunglasses</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/3y5Dnp9/shoes.jpg"><h3>High Heels</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/94HZ1gb/belt.jpg"><h3>Designer Belt</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/Gvxt4Rm/watch.jpg"><h3>Luxury Watch</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/8rFWhQf/sneakers.jpg"><h3>Trendy Sneakers</h3><a href="#" class="btn">Shop Now</a></div>
+    </div>
+  </section>
+
+  <!-- Female Kids -->
+  <section id="female-kids" class="products">
+    <h2>Female - Kids Fashion</h2>
+    <div class="grid">
+      <div class="card"><img src="https://i.ibb.co/2y1cG7M/tshirt.jpg"><h3>Kids Top</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/pfD0nCt/jeans.jpg"><h3>Kids Jeans</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/YBQPrxv/jacket.jpg"><h3>Kids Jacket</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/4pMkF8g/shirt.jpg"><h3>Kids Blouse</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/BLtzYJp/suit.jpg"><h3>Kids Dress</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/QFsYQ70/sunglasses.jpg"><h3>Kids Sunglasses</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/3y5Dnp9/shoes.jpg"><h3>Kids Shoes</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/94HZ1gb/belt.jpg"><h3>Kids Belt</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/Gvxt4Rm/watch.jpg"><h3>Kids Watch</h3><a href="#" class="btn">Shop Now</a></div>
+      <div class="card"><img src="https://i.ibb.co/8rFWhQf/sneakers.jpg"><h3>Kids Sneakers</h3><a href="#" class="btn">Shop Now</a></div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Online Marketing Store - Fashion Section</p>
+    <p>© 2025 Online Marketing Store - Fashion</p>
   </footer>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll(".products").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll(".tablink").forEach(el => el.classList.remove("active"));
+      document.getElementById(tabId).classList.add("active");
+      event.target.classList.add("active");
+    }
+  </script>
 </body>
 </html>
