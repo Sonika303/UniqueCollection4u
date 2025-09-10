@@ -4,153 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Online Marketing Store</title>
-  <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: #f4f6f9; color: #333; line-height: 1.6; }
-
-    /* Header */
-    header { background: #1a73e8; color: #fff; padding: 20px 40px; position: sticky; top: 0; z-index: 1000; }
-    header h1 { font-size: 28px; }
-    nav { margin-top: 10px; }
-    nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-    nav a:hover { text-decoration: underline; }
-
-    /* Hero */
-    .hero { background: linear-gradient(120deg, #1a73e8, #4fc3f7); color: white; text-align: center; padding: 70px 20px; }
-    .hero h2 { font-size: 42px; margin-bottom: 20px; }
-    .hero p { font-size: 20px; margin-bottom: 25px; }
-    .hero a { background: #fff; color: #1a73e8; padding: 12px 25px; border-radius: 8px; font-weight: bold; text-decoration: none; }
-    .hero a:hover { background: #f1f1f1; }
-
-    /* Sections */
-    section { max-width: 1200px; margin: auto; padding: 60px 20px; }
-    section h2 { text-align: center; font-size: 30px; margin-bottom: 30px; color: #1a73e8; }
-
-    /* Product grid */
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .product { background: #fff; border-radius: 12px; padding: 15px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s; }
-    .product:hover { transform: translateY(-5px); }
-    .product img { max-width: 100%; height: 180px; object-fit: contain; border-radius: 10px; margin-bottom: 12px; }
-    .product h3 { font-size: 16px; margin-bottom: 10px; }
-    .product a { display: inline-block; background: #1a73e8; color: white; padding: 8px 15px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: bold; }
-    .product a:hover { background: #0f5dc0; }
-
-    /* About */
-    .about { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .about p { font-size: 18px; margin-bottom: 15px; }
-
-    /* Contact */
-    .contact { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .contact input, .contact textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
-    .contact button { background: #1a73e8; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
-    .contact button:hover { background: #0f5dc0; }
-
-    /* Footer */
-    footer { text-align: center; padding: 15px; background: #1a73e8; color: #fff; margin-top: 40px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <h1>Online Marketing Store</h1>
+    <h1>Online Marketing Store 🛒</h1>
     <nav>
-      <a href="#electronics">Electronics</a>
-      <a href="#fashion">Fashion</a>
-      <a href="#fitness">Fitness</a>
-      <a href="#home">Home Essentials</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="anime.html">Anime</a>
+      <a href="electronics.html">Electronics</a>
+      <a href="fashion.html">Fashion</a>
+      <a href="fitness.html">Fitness</a>
+      <a href="kitchenware.html">Kitchenware</a>
+      <a href="gaming.html">Gaming</a>
+      <a href="books.html">Books</a>
+      <a href="beauty.html">Beauty</a>
+      <a href="homedecor.html">Home Décor</a>
+      <a href="toys.html">Toys & Kids</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
-    <h2>Welcome to Online Marketing Store 🚀</h2>
-    <p>Find the best deals on electronics, fashion, fitness & home essentials!</p>
-    <a href="#electronics">Shop Now</a>
+    <h2>Welcome 🚀</h2>
+    <p>Your one-stop Online Marketing Store — Explore 10 amazing categories!</p>
   </section>
 
-  <!-- Electronics -->
-  <section id="electronics">
-    <h2>Electronics 🔌</h2>
-    <div class="products">
-      <!-- Repeat 10 products -->
-      <div class="product">
-        <img src="https://m.media-amazon.com/images/I/71g2ednj0JL._AC_SY200_.jpg" alt="Product">
-        <h3>Product 1</h3>
-        <a href="YOUR-AFFILIATE-LINK" target="_blank">Buy Now</a>
+  <section class="categories">
+    <h2>Shop by Category</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Anime 🎌</h3>
+        <p>Figures, posters, manga & more!</p>
+        <a href="anime.html" class="btn">Explore</a>
       </div>
-      <!-- copy this block 9 more times -->
-    </div>
-  </section>
-
-  <!-- Fashion -->
-  <section id="fashion">
-    <h2>Fashion 👗</h2>
-    <div class="products">
-      <div class="product">
-        <img src="https://m.media-amazon.com/images/I/71mEsG3HkAL._AC_SY200_.jpg" alt="Fashion">
-        <h3>Fashion Item 1</h3>
-        <a href="YOUR-AFFILIATE-LINK" target="_blank">Buy Now</a>
+      <div class="card">
+        <h3>Electronics 🔌</h3>
+        <p>Smartphones, headphones, gadgets.</p>
+        <a href="electronics.html" class="btn">Explore</a>
       </div>
-      <!-- add 9 more -->
-    </div>
-  </section>
-
-  <!-- Fitness -->
-  <section id="fitness">
-    <h2>Fitness 💪</h2>
-    <div class="products">
-      <div class="product">
-        <img src="https://m.media-amazon.com/images/I/81xXAy9LZ6L._AC_SY200_.jpg" alt="Fitness">
-        <h3>Fitness Item 1</h3>
-        <a href="YOUR-AFFILIATE-LINK" target="_blank">Buy Now</a>
+      <div class="card">
+        <h3>Fashion 👗</h3>
+        <p>Latest trends & styles.</p>
+        <a href="fashion.html" class="btn">Explore</a>
       </div>
-      <!-- add 9 more -->
-    </div>
-  </section>
-
-  <!-- Home Essentials -->
-  <section id="home">
-    <h2>Home Essentials 🏠</h2>
-    <div class="products">
-      <div class="product">
-        <img src="https://m.media-amazon.com/images/I/81QpkIctqPL._AC_SY200_.jpg" alt="Home Item">
-        <h3>Home Item 1</h3>
-        <a href="YOUR-AFFILIATE-LINK" target="_blank">Buy Now</a>
+      <div class="card">
+        <h3>Fitness 💪</h3>
+        <p>Gear up for strength & health.</p>
+        <a href="fitness.html" class="btn">Explore</a>
       </div>
-      <!-- add 9 more -->
+      <div class="card">
+        <h3>Kitchenware 🍳</h3>
+        <p>Cookware, blenders, essentials.</p>
+        <a href="kitchenware.html" class="btn">Explore</a>
+      </div>
+      <div class="card">
+        <h3>Gaming 🎮</h3>
+        <p>Consoles, accessories, chairs.</p>
+        <a href="gaming.html" class="btn">Explore</a>
+      </div>
+      <div class="card">
+        <h3>Books 📚</h3>
+        <p>Bestsellers, novels, manga.</p>
+        <a href="books.html" class="btn">Explore</a>
+      </div>
+      <div class="card">
+        <h3>Beauty 💄</h3>
+        <p>Skincare, makeup & self-care.</p>
+        <a href="beauty.html" class="btn">Explore</a>
+      </div>
+      <div class="card">
+        <h3>Home Décor 🛋️</h3>
+        <p>Wall art, rugs, modern interiors.</p>
+        <a href="homedecor.html" class="btn">Explore</a>
+      </div>
+      <div class="card">
+        <h3>Toys & Kids 🧸</h3>
+        <p>Fun toys, learning & play.</p>
+        <a href="toys.html" class="btn">Explore</a>
+      </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Us</h2>
-    <div class="about">
-      <p>Welcome to <strong>Online Marketing Store</strong> 🌍 – your trusted online hub for discovering trending products and amazing deals.</p>
-      <p>We bring you carefully selected electronics, fashion, fitness, and home essentials to make your shopping smart and simple. 💡</p>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact">
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <p>© 2025 Online Marketing Store | Powered by Affiliate Marketing 💼</p>
+    <p>© 2025 Online Marketing Store</p>
   </footer>
-
 </body>
 </html>
