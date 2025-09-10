@@ -7,8 +7,8 @@
   <style>
     /* Anime Page Styles */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #7b2ff7, #f107a3);
+      font-family: 'Trebuchet MS', sans-serif;
+      background: url('https://i.ibb.co/SXznf6k/anime-wallpaper.jpg') center/cover fixed no-repeat;
       color: #fff;
       margin: 0;
       padding: 0;
@@ -27,6 +27,7 @@
       margin: 0;
       font-size: 2em;
       color: #ffdd57;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
     }
 
     nav a {
@@ -34,27 +35,34 @@
       margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #ffdd57;
+      color: #ff80ff;
     }
 
     .hero {
       text-align: center;
-      padding: 60px 20px;
-      background: url('https://i.ibb.co/tYhHnQf/anime-bg.jpg') center/cover no-repeat;
-      border-bottom: 5px solid #ffdd57;
+      padding: 80px 20px;
+      background: rgba(0,0,0,0.6);
     }
 
     .hero h2 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       margin-bottom: 10px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+      color: #ff80ff;
+      text-shadow: 2px 2px 10px rgba(255,128,255,0.7);
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      color: #ffdd57;
     }
 
     .products {
       padding: 40px 20px;
+      background: rgba(0,0,0,0.7);
     }
 
     .products h2 {
@@ -75,12 +83,13 @@
       padding: 15px;
       border-radius: 12px;
       text-align: center;
+      border: 2px solid #ff80ff;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(255,128,255,0.6);
     }
 
     .card img {
@@ -89,18 +98,20 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 10px;
+      border: 2px solid #ffdd57;
     }
 
     .card h3 {
       font-size: 1.1em;
       margin: 10px 0;
+      color: #ffdd57;
     }
 
     .btn {
       display: inline-block;
       margin-top: 8px;
       padding: 10px 20px;
-      background: #ffdd57;
+      background: #ff80ff;
       color: #000;
       border-radius: 20px;
       font-weight: bold;
@@ -109,14 +120,15 @@
     }
 
     .btn:hover {
-      background: #ffc107;
+      background: #ff40ff;
     }
 
     footer {
       text-align: center;
       padding: 15px;
       margin-top: 40px;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.9);
+      color: #ffdd57;
     }
   </style>
 </head>
@@ -143,19 +155,13 @@
   </section>
 
   <section class="products">
-    <h2>50 Anime Products</h2>
+    <h2>Anime Products</h2>
     <div class="grid">
-      <!-- Product placeholders -->
-      <!-- Just replace # with your Amazon affiliate links and product images -->
-      <!-- Example product card -->
       <div class="card">
         <img src="https://i.ibb.co/8gg0n7X/anime-figure.jpg" alt="Anime Figure">
         <h3>Anime Figure</h3>
         <a href="#" class="btn">Buy Now</a>
       </div>
-
-      <!-- Duplicate for 50 products -->
-      <!-- I’ll add 10 here, you just copy/paste to reach 50 -->
       <div class="card">
         <img src="https://i.ibb.co/4dc6M0N/anime-poster.jpg" alt="Anime Poster">
         <h3>Anime Poster</h3>
@@ -209,4 +215,5 @@
   </footer>
 </body>
 </html>
+
 
