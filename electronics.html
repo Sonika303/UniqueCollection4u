@@ -4,22 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Electronics - Online Marketing Store</title>
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
       background: #fff;
+      color: #333;
     }
     header {
       background: #222;
       color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav {
-      background: #444;
-      padding: 0.7rem;
+      padding: 15px;
       text-align: center;
       position: sticky;
       top: 0;
@@ -27,46 +26,71 @@
     }
     nav a {
       color: #fff;
+      margin: 0 15px;
       text-decoration: none;
-      margin: 0 12px;
       font-weight: bold;
-      transition: color 0.3s ease;
     }
     nav a:hover {
-      color: #ff9800;
+      text-decoration: underline;
     }
-    section {
-      padding: 25px;
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: #f5f5f5;
     }
-    h2 {
-      margin-bottom: 15px;
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .hero button {
+      padding: 12px 25px;
+      background: #ff6600;
+      border: none;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .hero button:hover {
+      background: #e55b00;
+    }
+    .categories {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .category {
+      margin-bottom: 60px;
+    }
+    .category h2 {
+      margin-bottom: 20px;
+      font-size: 1.8em;
       border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
+      padding-bottom: 10px;
     }
-    .product-grid {
+    .products {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
     .product {
       border: 1px solid #ddd;
+      border-radius: 10px;
       padding: 15px;
       text-align: center;
-      background: #fafafa;
-      border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .product img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      transition: transform 0.3s;
     }
     .product:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: contain;
-      background: #eee;
-      border-radius: 6px;
-      transition: transform 0.3s ease;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
     .product:hover img {
       transform: scale(1.05);
@@ -74,208 +98,157 @@
     .product a {
       display: inline-block;
       margin-top: 10px;
-      padding: 8px 12px;
-      background: #222;
-      color: #fff;
+      padding: 8px 15px;
+      background: #0077cc;
+      color: white;
       text-decoration: none;
-      border-radius: 4px;
-      transition: background 0.3s ease, transform 0.3s ease;
+      border-radius: 5px;
+      transition: background 0.3s;
     }
     .product a:hover {
-      background: #ff9800;
-      transform: scale(1.05);
+      background: #005fa3;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 50px;
+    }
+    /* Back to top button */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    #backToTop:hover {
+      background: #005fa3;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Electronics - Online Marketing Store</h1>
+  <header class="animate__animated animate__fadeInDown">
+    <h1>Online Marketing Store</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="electronics.html">Electronics</a>
+      <a href="anime.html">Anime</a>
+      <a href="fashion.html">Fashion</a>
+      <a href="fitness.html">Fitness</a>
+    </nav>
   </header>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="#smartphones">Smartphones</a>
-    <a href="#laptops">Laptops & Tablets</a>
-    <a href="#headphones">Headphones</a>
-    <a href="#gaming">Gaming Consoles</a>
-    <a href="#smartwatches">Smartwatches</a>
-    <a href="#appliances">Home Appliances</a>
-    <a href="#cameras">Cameras</a>
-    <a href="#smarthome">Smart Home</a>
-    <a href="#components">PC Components</a>
-    <a href="#speakers">Speakers</a>
-  </nav>
+  <section class="hero animate__animated animate__zoomIn">
+    <h1>Best Electronics Deals</h1>
+    <p>Discover the latest gadgets and devices handpicked for you.</p>
+    <button class="animate__animated animate__pulse animate__infinite">Shop Now</button>
+  </section>
 
-  <!-- Smartphones -->
-  <section id="smartphones">
-    <h2>Smartphones</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
+  <section class="categories">
+    <!-- Smartphones -->
+    <div class="category" data-aos="fade-up">
+      <h2>Smartphones</h2>
+      <div class="products">
+        <div class="product">
+          <img src="" alt="Product">
+          <a href="">Buy Now</a>
+        </div>
+        <!-- repeat for 10 slots -->
+      </div>
+    </div>
+
+    <!-- Laptops -->
+    <div class="category" data-aos="fade-right">
+      <h2>Laptops</h2>
+      <div class="products">
+        <div class="product">
+          <img src="" alt="Product">
+          <a href="">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headphones -->
+    <div class="category" data-aos="fade-left">
+      <h2>Headphones</h2>
+      <div class="products">
+        <div class="product">
+          <img src="" alt="Product">
+          <a href="">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accessories -->
+    <div class="category" data-aos="zoom-in">
+      <h2>Accessories</h2>
+      <div class="products">
+        <div class="product">
+          <img src="" alt="Product">
+          <a href="">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cameras -->
+    <div class="category" data-aos="flip-up">
+      <h2>Cameras</h2>
+      <div class="products">
+        <div class="product">
+          <img src="" alt="Product">
+          <a href="">Buy Now</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Laptops & Tablets -->
-  <section id="laptops">
-    <h2>Laptops & Tablets</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
+  <footer class="animate__animated animate__fadeInUp">
+    <p>&copy; 2025 Online Marketing Store. All rights reserved.</p>
+  </footer>
 
-  <!-- Headphones -->
-  <section id="headphones">
-    <h2>Headphones & Earbuds</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
+  <!-- Back to top button -->
+  <button id="backToTop">&#8679;</button>
 
-  <!-- Gaming Consoles -->
-  <section id="gaming">
-    <h2>Gaming Consoles & Accessories</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
 
-  <!-- Smartwatches -->
-  <section id="smartwatches">
-    <h2>Smartwatches & Wearables</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
 
-  <!-- Home Appliances -->
-  <section id="appliances">
-    <h2>Home Appliances</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
-
-  <!-- Cameras -->
-  <section id="cameras">
-    <h2>Cameras & Drones</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
-
-  <!-- Smart Home -->
-  <section id="smarthome">
-    <h2>Smart Home Devices</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
-
-  <!-- PC Components -->
-  <section id="components">
-    <h2>PC Components</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
-
-  <!-- Speakers -->
-  <section id="speakers">
-    <h2>Speakers & Sound Systems</h2>
-    <div class="product-grid">
-      <div class="product"><img src="" alt="Product 1"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 2"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 3"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 4"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 5"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 6"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 7"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 8"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 9"><a href="">Buy Now</a></div>
-      <div class="product"><img src="" alt="Product 10"><a href="">Buy Now</a></div>
-    </div>
-  </section>
-
+    // Back to top button
+    const backToTop = document.getElementById("backToTop");
+    window.onscroll = () => {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    };
+    backToTop.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
 </body>
 </html>
