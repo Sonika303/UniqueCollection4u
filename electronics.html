@@ -43,6 +43,28 @@
       color: #ffeb3b;
     }
 
+    /* Category navigation bar */
+    .category-nav {
+      text-align: center;
+      background: #1565c0;
+      padding: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .category-nav a {
+      margin: 0 15px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .category-nav a:hover {
+      color: #ffeb3b;
+    }
+
     .search-bar {
       text-align: center;
       margin: 20px 0;
@@ -163,10 +185,20 @@
     </nav>
   </header>
 
+  <!-- Category navigation -->
+  <div class="category-nav">
+    <a href="#smartphones">Smartphones</a>
+    <a href="#laptops">Laptops</a>
+    <a href="#audio">Audio</a>
+    <a href="#accessories">Accessories</a>
+  </div>
+
+  <!-- Search bar -->
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search products...">
   </div>
 
+  <!-- Smartphones -->
   <section class="category" id="smartphones">
     <h2>Smartphones</h2>
     <div class="products">
@@ -183,6 +215,7 @@
     </div>
   </section>
 
+  <!-- Laptops -->
   <section class="category" id="laptops">
     <h2>Laptops</h2>
     <div class="products">
@@ -199,6 +232,7 @@
     </div>
   </section>
 
+  <!-- Audio -->
   <section class="category" id="audio">
     <h2>Audio</h2>
     <div class="products">
@@ -215,6 +249,7 @@
     </div>
   </section>
 
+  <!-- Accessories -->
   <section class="category" id="accessories">
     <h2>Accessories</h2>
     <div class="products">
