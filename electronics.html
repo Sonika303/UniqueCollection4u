@@ -18,8 +18,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 2000;
       flex-direction: column;
+      z-index: 2000;
       color: white;
     }
     .loader {
@@ -31,6 +31,7 @@
       margin-bottom: 15px;
     }
     @keyframes spin { 0%{transform:rotate(0);} 100%{transform:rotate(360deg);} }
+    #percent { font-size: 20px; font-weight: bold; margin-top: 10px; }
 
     header { background: #111; color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; display:none; }
     header h1 { margin: 0; font-size: 22px; }
@@ -69,6 +70,7 @@
 <div id="preloader">
   <div class="loader"></div>
   <p>Loading Electronics...</p>
+  <div id="percent">0%</div>
 </div>
 
 <header class="animate__animated animate__fadeInDown">
@@ -93,42 +95,84 @@
 <div class="category" id="smartphones" data-aos="fade-up">
   <h2>Smartphones</h2>
   <div class="products">
-    <!-- 10 slots -->
     <div class="product" data-aos="flip-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
-    <!-- repeat more slots -->
+    <div class="product" data-aos="zoom-in"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-out"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in-down"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
   </div>
 </div>
 
-<!-- Repeat for Laptops, Headphones, Accessories, Cameras -->
+<!-- Laptops -->
 <div class="category" id="laptops" data-aos="fade-left">
   <h2>Laptops</h2>
   <div class="products">
     <div class="product" data-aos="zoom-in"><img src="" alt="Product"><a href="">Buy Now</a></div>
-    <!-- repeat 9 more -->
+    <div class="product" data-aos="fade-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-out"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-up-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-up-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-down"><img src="" alt="Product"><a href="">Buy Now</a></div>
   </div>
 </div>
 
+<!-- Headphones -->
 <div class="category" id="headphones" data-aos="fade-right">
   <h2>Headphones</h2>
   <div class="products">
     <div class="product" data-aos="fade-up-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
-    <!-- repeat 9 more -->
+    <div class="product" data-aos="zoom-in"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in-down"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-down"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
   </div>
 </div>
 
+<!-- Accessories -->
 <div class="category" id="accessories" data-aos="zoom-in-up">
   <h2>Accessories</h2>
   <div class="products">
     <div class="product" data-aos="flip-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
-    <!-- repeat 9 more -->
+    <div class="product" data-aos="fade-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in-down"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-up-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
   </div>
 </div>
 
+<!-- Cameras -->
 <div class="category" id="cameras" data-aos="fade-up">
   <h2>Cameras</h2>
   <div class="products">
     <div class="product" data-aos="flip-right"><img src="" alt="Product"><a href="">Buy Now</a></div>
-    <!-- repeat 9 more -->
+    <div class="product" data-aos="zoom-in"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-out"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-down"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="fade-left"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="zoom-in-down"><img src="" alt="Product"><a href="">Buy Now</a></div>
+    <div class="product" data-aos="flip-up"><img src="" alt="Product"><a href="">Buy Now</a></div>
   </div>
 </div>
 
@@ -142,16 +186,22 @@
 <script>
   AOS.init({ duration: 1200, once: true });
 
-  // Preloader
-  window.onload = function() {
-    setTimeout(() => {
+  // Preloader with percentage
+  let percentElem = document.getElementById("percent");
+  let count = 0;
+  let loading = setInterval(() => {
+    if (count < 100) {
+      count++;
+      percentElem.textContent = count + "%";
+    } else {
+      clearInterval(loading);
       document.getElementById("preloader").style.display = "none";
       document.querySelector("header").style.display = "block";
       document.querySelector(".hero").style.display = "block";
       document.querySelectorAll(".category").forEach(cat => cat.style.display = "block");
       document.querySelector("footer").style.display = "block";
-    }, 1500); // 1.5 seconds delay
-  };
+    }
+  }, 20); // 2 seconds total
 
   // Back to top button
   let topBtn = document.getElementById("topBtn");
