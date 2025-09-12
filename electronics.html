@@ -3,211 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electronics - Online Marketing Store</title>
+  <title>Electronics Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9fbff; color: #333; overflow-x: hidden; }
-
-    /* Preloader */
-    #preloader {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, #0d47a1, #1976d2);
-      display: flex; align-items: center; justify-content: center; flex-direction: column;
-      z-index: 2000; color: white;
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0d47a1, #42a5f5);
+      margin: 0;
+      padding: 0;
+      color: white;
     }
-    .loader {
-      border: 6px solid #e3f2fd;
-      border-top: 6px solid #42a5f5;
-      border-radius: 50%; width: 70px; height: 70px;
-      animation: spin 0.8s linear infinite, pulse 1.5s infinite;
-      margin-bottom: 15px;
+    header {
+      background: #1565c0;
+      padding: 15px;
+      text-align: center;
     }
-    @keyframes spin { 0%{transform:rotate(0);} 100%{transform:rotate(360deg);} }
-    @keyframes pulse { 0%,100%{box-shadow:0 0 10px #42a5f5;} 50%{box-shadow:0 0 30px #90caf9;} }
-    #percent { font-size: 22px; font-weight: bold; margin-top: 10px; }
-
-    header { background: #0d47a1; color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; display:none; }
-    header h1 { margin: 0; font-size: 22px; }
-    nav { margin-top: 10px; }
-    nav a { color: white; text-decoration: none; margin-right: 12px; font-size: 15px; transition: color 0.3s, border-bottom 0.3s; }
-    nav a:hover { color: #bbdefb; border-bottom: 2px solid #90caf9; }
-
-    .hero { text-align: center; padding: 60px 20px; background: linear-gradient(to right, #1565c0, #1e88e5); color: white; overflow: hidden; display:none; }
-    .hero h2 { font-size: 36px; margin-bottom: 15px; animation: float 3s ease-in-out infinite; }
-    .hero button { position: relative; overflow: hidden; padding: 12px 25px; font-size: 16px; border: none; background: #42a5f5; color: white; border-radius: 6px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
-    .hero button:hover { transform: scale(1.1); box-shadow: 0 4px 15px rgba(66,165,245,0.6); }
-    .hero button:active::after {
-      content: ""; position: absolute; width: 300px; height: 300px; top: 50%; left: 50%; background: rgba(255,255,255,0.4);
-      border-radius: 50%; transform: translate(-50%, -50%); animation: ripple 0.6s linear;
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
     }
-    @keyframes ripple { from { width: 0; height: 0; opacity: 1; } to { width: 300px; height: 300px; opacity: 0; } }
-    @keyframes float { 0%,100%{ transform:translateY(0);} 50%{transform:translateY(-8px);} }
-
-    .category { padding: 40px 20px; text-align: center; display:none; }
-    .category h2 { margin-bottom: 20px; font-size: 28px; color:#0d47a1; }
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .product { background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.4s, box-shadow 0.4s; cursor: pointer; }
-    .product:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 10px 20px rgba(33,150,243,0.3); }
-    .product img { max-width: 100%; border-radius: 6px; margin-bottom: 10px; transition: transform 0.4s; }
-    .product:hover img { transform: scale(1.08) rotate(1deg); }
-    .product h3 { font-size: 16px; margin: 8px 0; }
-    .product a { display: inline-block; margin-top: 8px; text-decoration: none; color: white; background: #1976d2; padding: 8px 15px; border-radius: 5px; transition: background 0.3s, transform 0.3s; }
-    .product a:hover { background: #0d47a1; transform: translateY(-2px); }
-
-    footer { text-align: center; padding: 20px; background: #0d47a1; color: white; display:none; }
-
-    html { scroll-behavior: smooth; }
-    #topBtn { position: fixed; bottom: 20px; right: 20px; background: #42a5f5; color: white; border: none; padding: 12px 15px; border-radius: 50%; font-size: 18px; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s; }
-    #topBtn:hover { background: #1e88e5; transform: scale(1.2); }
+    nav {
+      margin: 15px 0;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: yellow;
+      text-shadow: 0 0 10px white;
+    }
+    #searchBar {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      width: 240px;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      background: white;
+      color: black;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .product img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 14px;
+      background: #1565c0;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: yellow;
+      color: black;
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
+  <header class="animate__animated animate__fadeInDown">
+    <h1>Electronics Store</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#smartphones">Smartphones</a>
+      <a href="#laptops">Laptops</a>
+      <a href="#headphones">Headphones</a>
+      <a href="#accessories">Accessories</a>
+      <a href="#cameras">Cameras</a>
+    </nav>
+    <input type="text" id="searchBar" placeholder="Search products...">
+  </header>
 
-<!-- Preloader -->
-<div id="preloader">
-  <div class="loader"></div>
-  <p>Loading Electronics...</p>
-  <div id="percent">0%</div>
-</div>
+  <!-- Smartphones -->
+  <section id="smartphones" class="animate__animated animate__fadeInUp">
+    <h2>Smartphones</h2>
+    <div class="products">
+      <div class="product"><img src="" alt="Product"><p>Samsung Galaxy S24 Ultra</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>OnePlus 12</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Google Pixel 9 Pro</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Xiaomi 14 Ultra</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Realme GT 6 Pro</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Oppo Find X7 Ultra</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Vivo X100 Pro</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Motorola Edge 50 Ultra</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Nothing Phone 2a Plus</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Asus ROG Phone 8</p><a href="" class="btn">Shop Now</a></div>
+    </div>
+  </section>
 
-<header class="animate__animated animate__fadeInDown">
-  <h1>Online Marketing Store</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="#smartphones">Smartphones</a>
-    <a href="#laptops">Laptops</a>
-    <a href="#headphones">Headphones</a>
-    <a href="#accessories">Accessories</a>
-    <a href="#cameras">Cameras</a>
-  </nav>
-</header>
+  <!-- Laptops -->
+  <section id="laptops" class="animate__animated animate__fadeInUp">
+    <h2>Laptops</h2>
+    <div class="products">
+      <div class="product"><img src="" alt="Product"><p>Dell XPS 15</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>HP Spectre x360</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>ASUS ZenBook Pro</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Lenovo Legion 9i</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Acer Predator Helios</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>MSI Stealth 16</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Razer Blade 18</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>LG Gram Pro</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Microsoft Surface Laptop Studio 2</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Samsung Galaxy Book4 Ultra</p><a href="" class="btn">Shop Now</a></div>
+    </div>
+  </section>
 
-<section class="hero animate__animated animate__zoomIn">
-  <h2>Explore the Latest Electronics</h2>
-  <p class="animate__animated animate__fadeIn animate__delay-1s">Shop the best gadgets, devices, and accessories.</p>
-  <button class="animate__animated animate__pulse animate__infinite">Shop Now</button>
-</section>
+  <!-- Headphones -->
+  <section id="headphones" class="animate__animated animate__fadeInUp">
+    <h2>Headphones</h2>
+    <div class="products">
+      <div class="product"><img src="" alt="Product"><p>Sony WH-1000XM5</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Bose QuietComfort Ultra</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Sennheiser Momentum 4</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>JBL Tour One M2</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Apple AirPods Max</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Anker Soundcore Space</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Skullcandy Crusher Evo</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Beats Studio Pro</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Marshall Monitor II</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Shure AONIC 50</p><a href="" class="btn">Shop Now</a></div>
+    </div>
+  </section>
 
-<!-- Smartphones -->
-<div class="category" id="smartphones" data-aos="fade-up">
-  <h2>Smartphones</h2>
-  <div class="products">
-    <div class="product" data-aos="flip-left"><img src="https://m.media-amazon.com/images/I/71P85R392uL._SX679_.jpg" alt="Smartphone"><h3>Samsung Galaxy S25 Ultra 5G AI Smartphone (Titanium Silverblue, 12GB RAM, 512GB Storage), 200MP Camera, S Pen Included, Long Battery Life</h3><a href="https://www.amazon.in/Samsung-Smartphone-Silverblue-Snapdragon-ProVisual/dp/B0DSBTKP5Q?crid=2ZHA7XAG5MICQ&dib=eyJ2IjoiMSJ9.sSyyHSBvACEhGJdQy01HVhNe7bKPM45gB56SYlfo5JYCptAB-n_4NkZhMomJf6Fr6l8-VEoM-JdplXKbf4A_jYNJPh1dPAsKdjaHMW2DQ2fD2NXE-1InAd7Pg41kv8yHc_ea4VD7GZmTa10wb5c9iec1LGq5AeJgVQIfaT7GPxin5Fd9KJG9FdoW32zYpjvW3uEExjyy-0gYqlAtc9bu9bPAtUSlJd1OrWwklpBC5H8.kYj4KH_VpE0AYapJZHGVOBgCD7a9-heyX4IVDkdyeQo&dib_tag=se&keywords=Samsung%2BGalaxy%2BS25%2BUltra&nsdOptOutParam=true&qid=1757663397&sprefix=samsung%2Bgalaxy%2Bs25%2Bultra%2Caps%2C515&sr=8-2&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=6c529ee4ca1c89284281e4baad426a96&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="zoom-in"><img src="https://m.media-amazon.com/images/I/717Q2swzhBL._SX679_.jpg" alt="Smartphone"><h3>Samsung Galaxy S24 Ultra 5G AI Smartphone with Galaxy AI (Titanium Gray, 12GB, 512GB Storage), Snapdragon 8 Gen 3, 200 MP Camera with ProVisual Engine and 5000mAh Battery</h3><a href="https://www.amazon.in/Samsung-Galaxy-Smartphone-Titanium-Storage/dp/B0CQYGF1QY?crid=MXVHCE7FHJOS&dib=eyJ2IjoiMSJ9.lgE_Nl_Lsk7Q19or97qbxr8bjzWmJH1hpb_lIwX96hKPG4vOJg6lH5mAO_aQutMmpAHixOe4uw0ZUme-7SHTLFZ95Ulm1-A5k8m6AWglqa7_y6_QRY1Rz0VsMKnaYS9wcp9lwQTsGo5Wl42TocNXNWLoM9jQqXJtESOMDaDJqCdKzqFLq8XDAwJ9SbqGhlW2zbwEvT7KKnnqUqCavDUUEW8bZmnwcBf-xWp_jU_Kdjg.8ryXWJR8zsrYNeCDX9RwSrxQHA7OGXRktaSLuoKXA5A&dib_tag=se&keywords=Samsung+Galaxy+S24+Ultra+5G&nsdOptOutParam=true&qid=1757665484&sprefix=samsung+galaxy+s24+ultra+5g%2Caps%2C277&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=7f2b6e9cf35f80e24ab4b364259c7af4&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71Ue8psbHML._SX679_.jpg" alt="Smartphone"><h3>HONOR X9c 5G Dual SIM (8GB RAM, 256GB Storage) | Ultra Durable | 108MP AI OIS Camera | 6600mAh Battery | 3840Hz Risk-Free Dimming Display | with Charger (Jade Cyan)</h3><a href="https://www.amazon.in/HONOR-Storage-Durable-6600mAh-Risk-Free/dp/B0FB9FP3G5?crid=UALXNOIKIULW&dib=eyJ2IjoiMSJ9.lZ7odjO5VJZLHVpsKQ0yU78hELUfPaBoDD39nx1Y5_kRjUqMRj9sI1O-YELCGzum9qyoHsS4ZjE1k3kbCJ5lYS9mK_A_7IPR8pSNRQoDOAHZPMUoGYlJyqlLiz3GaG8h88slMkW9vhEoQfWq5JqI16UWvP2LooiK_jO5Vf54ea2saDsduAwSnQIjpa8EPCIsnCSgj0uvsTz-Re3V_joD2xeANgCqJFlIoug9Mof9DbA.5qOhMO3cto6lIeAxN__17rsi48lJ2r-3iriXsQN2Zb4&dib_tag=se&keywords=Honor%2BX9c%2B5G&nsdOptOutParam=true&qid=1757665693&sprefix=honor%2Bx9c%2B5g%2B%2Caps%2C944&sr=8-1&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=4e91ccd39ed18aa36a76e68b2b392f40&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="flip-right"><img src="https://m.media-amazon.com/images/I/713-6CtpD6L._SX679_.jpg" alt="Smartphone"><h3>Nothing Phone (2a) Plus 8/256GB Black</h3><a href="https://www.amazon.in/Nothing-Storage-Dimensity-Processor-Display/dp/B0DC8BFB68?crid=9NMOYJ4SJQ0W&dib=eyJ2IjoiMSJ9.1obqjhLi1-S2SzhEuzYsTC-Y_8UIJVtYusrPC5kIqreM4ClAKvurNcMNAyqHW-oMnH5W4R_OCf7sKxoS_89N5DsNiFgB75nBFBnTppigFKBhqZsiDUrGSWsPazqn0eUT9I3_LurcLcnBSYuK1-mK2Wqd5M8DyyiRWsZCWMIOA7219AyVRHuzuOgvpMzMAiDLwnFA3G-rkSG_vOOu43Zvu23K_xrruTLbReCkdVQVXpQ.uAVF5I31r-5hJ14D4STFNf0gbfoqQgZzhAc6xxsQgAo&dib_tag=se&keywords=Nothing+Phone+2a+Plus&qid=1757673844&sprefix=nothing+phone+2a+plus+%2Caps%2C370&sr=8-2&linkCode=ll1&tag=onlinemar0fad-21&linkId=5e9bdd1ab80c38d6c157534b5e858cb0&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="zoom-out"><img src="https://m.media-amazon.com/images/I/81dblfYZOYL._SX679_.jpg" alt="Smartphone"><h3>Redmi 15 5G Midnight Black 8GB + 256GB | Segment's Largest 7000mAhA Battery | Segment's Largest Display 17.53cm(6.9) Up to 144Hz | Snapdragon 6s Gen 3 | 18W Reverse Charging | 50MP AI Dual Camera</h3>h3><a href="https://www.amazon.in/Redmi-Midnight-Segments-7000mAhA-Snapdragon/dp/B0FJFSHJ6Z?crid=16SSY9CDDB3LP&dib=eyJ2IjoiMSJ9.oksyA0FumDQNziwTN35dG2qLRE9zDEJYUb5pmGI-r65j3UEZr0QytGfcoUmwiy0fZsTSxv8gan4qixjhvqHFC0keHL9Acp7KHAFauXZ0lbG6thJUNXOoI2t9aCPNoLtY5_3sV3YVLueslIz96E25g1Pi7iswcrSlTmixDOlPQWHWF0OFZo-c72NisczUz4F-mobWZI8hhUduXoO2b7G2BoF6_HmIZI9kcByijSMjrkk.BxzZZ48xMSARn3eWUhsohaxbiROI368WDHlI_Xo_feA&dib_tag=se&keywords=Redmi%2BNote%2B14%2BSE%2B5G&qid=1757673938&sprefix=redmi%2Bnote%2B14%2Bse%2B5g%2Caps%2C382&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=7b6e8d9de8c28c9759c5f0437ddca096&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="fade-right"><img src="https://m.media-amazon.com/images/I/71ze-N4mUuL._SX679_.jpg" alt="Smartphone"><h3>Vivo Y400 5G</h3><a href="https://www.amazon.in/Y400-Storage-Additional-Exchange-Offers/dp/B0FHPPPW7D?crid=MDKPIOTXI2A9&dib=eyJ2IjoiMSJ9.J5VvwcJsERyUuT4ds2c3PXNFbZjsum0bAFK7-CvnsLJd3ZNC91h315MDGsz4PqG5XN6maqDZ8tAPEUUby1lPRxNeYhkybgzvkUaxhrIrEtU_jREvNe3zBuRU0bcSpmCCxO3ql-ae4aqffXJdWpcOGUclD_f73OZ5iLGzXepqBudcNs3IR6C1oYHgLuQA4nKaAGZKrtPOM7ZKVOqVeKO15tLqb1HgaOyDJnVS4N8uU94.oOidT1wpnUAd4MXf0Vn87vvtdIggIyNMdmaatYlWB_U&dib_tag=se&keywords=Vivo%2BY400%2B5G&nsdOptOutParam=true&qid=1757674165&sprefix=vivo%2By400%2B5g%2Caps%2C434&sr=8-1&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=7a321ca81767820e56a367e62af8b6b5&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="fade-left"><img src="https://m.media-amazon.com/images/I/41Q9iRQgMjL._SY300_SX300_QL70_FMwebp_.jpg" alt="Smartphone"><h3>iQOO Z10 5G</h3><a href="https://www.amazon.in/iQOO-Glacier-Snapdragon-Processor-Brightest/dp/B0F2HDFMFC?crid=3N917CF90A3B6&dib=eyJ2IjoiMSJ9.9QzEUTETSqUI42m4RfglnP1JyqLeRRZ82FieVhBaR1kc-_6-BfZbptqhPoQ3qh5ne0V0LOuYX5OfB3Cglh5DAUZ1bz_EAS0eIFrvhT9ND1qwpKinUWKShgp_DMHtP2MrBKIOS5nwg2wHscGYCnDLwJMvLsXmYCOCgtDWE3m-cAGClG9teOuF_D8iwnQINGOtSYKR4HWtRrOeuve0RLujSrfpR06k6236fHFN_g8kpsw._aIbZO2b7murZ9io3tyVoS0tAwGonUSMznymCBf9hfU&dib_tag=se&keywords=iQOO%2BZ10%2B5G&qid=1757674264&sprefix=iqoo%2Bz10%2B5g%2Caps%2C378&sr=8-2&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=04443a57179008be345e20f521c1d478&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="zoom-in-up"><img src="https://m.media-amazon.com/images/I/41uR6Pme6NL._SY300_SX300_QL70_FMwebp_.jpg" alt="Smartphone"><h3>Samsung Galaxy A55 5G</h3><a href="https://www.amazon.in/Samsung-Awesome-Iceblue-Storage-Nightography/dp/B0CWPC2W5V?crid=3FKNF1BNAXNH2&dib=eyJ2IjoiMSJ9.dm0dSsKpX53aDCmtCOGlVhM7LrzgTzt_gFchOOCfwxpTkHltWWHayGwTciZa4-t8NUJNsYOo6OWpuexvxfY0pJeAMC9l1eXwpqsnwNgRz2LgDu_g8rtIwGNLCDD9QXl6J50_sedXAW5oWTObeknMvtnkqzwDx78x7aDtVF0JodrrgxzEb7cg0CNBC5MpnF6FQ8rdLDwbkWqlQ1RvKFkcIkQuy9iUHALYtg7iuKIvwio.KOKeqYdlESdWVIwb6WxZw0amEV0IQ9FAgtCWysDV1S8&dib_tag=se&keywords=Samsung%2BGalaxy%2BA55%2B5G&nsdOptOutParam=true&qid=1757674401&sprefix=samsung%2Bgalaxy%2Ba55%2B5g%2Caps%2C515&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=6607423b5431dad21b91d9e4290244a7&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="zoom-in-down"><img src="https://m.media-amazon.com/images/I/71N4hshhfNL._SX679_.jpg" alt="Smartphone"><h3>OnePlus 13 | Smarter with OnePlus AI | Lifetime Display Warranty (16GB RAM, 512GB Storage Midnight Ocean)</h3><a hf="https://www.amazon.in/OnePlus-13-512GB-Midnight-Ocean/dp/B0DQ8MJYXF?crid=1N8LV6YEMUG3B&dib=eyJ2IjoiMSJ9.ATeYA3KrH9Wb0fbjsbUzvnLODQrgFf47D71HmRVxsvIyif3FeSDMXU7U9Y_8ybUT-Dt4wd84DOolPMGX2dU6ur4Gd4NW-NV_8TJNNCXWqAfJsQ7vl7Gi73Me6YlwB12YLCJ1UyC0o5QnBOQEFhcX8xRKW0JwsdtVsfX2Sd5e2-KlaN0cDzklT2qXV-WbPH9HUhM1WJDJacanDygAl4MMfOa3aj1PN-jwhZna3SnV7es.aGj6QDE8RBBTxAgHWr_ujrhZ5GYxH9G-SxXWQ_T7nbM&dib_tag=se&keywords=one%2Bplus%2B13&nsdOptOutParam=true&qid=1757674502&sprefix=one%2Bplus%2B1%2Caps%2C333&sr=8-1&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=4dcf4c6c7a38fab3d290bc599a14a44a&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-    <div class="product" data-aos="flip-up"><img src="https://m.media-amazon.com/images/I/516HIUddM3L._SX679_.jpg" alt="Smartphone"><h3>Google Pixel 10 5G (Obsidian, 12GB RAM, 256GB Storage)</h3><a href="https://www.amazon.in/Google-Pixel-Obsidian-256GB-Storage/dp/B0FNPNL2D8?crid=2ZGAQ90XG2O3S&dib=eyJ2IjoiMSJ9.WMRdh52Mv1Bvx9z9tSIWOYJH22hbecf4EoDnho7L-mxVjKaKJ-CCbM1EUe_zITzFC0zip1-wR752gBYPNpfeYSSaxTB6xb6mN4j29PgBzBYQUKAsj2rUDxChBhtR2Q9GhzVuEPag6cDsF418bortKjPdkOlVtm0ompB7Z0cAsVfseYqOBnSlGEN1DMj2Zo1ZEag3U0Lm2c6nG_LsTYyZzjJbeirrPtjHTo4ZryFCMDg.xKPfU-Qh73z3cWbn__jK0aoLiDYsj7x6GDtv5hji5Kc&dib_tag=se&keywords=google+pixel+10&nsdOptOutParam=true&qid=1757674740&sprefix=google%2Caps%2C354&sr=8-1&linkCode=ll1&tag=onlinemar0fad-21&linkId=fe6b42e029dc2fbed7865e5a7fa1acd6&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
-  </div>
-</div>
+  <!-- Accessories -->
+  <section id="accessories" class="animate__animated animate__fadeInUp">
+    <h2>Accessories</h2>
+    <div class="products">
+      <div class="product"><img src="" alt="Product"><p>Samsung 25W Charger</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Anker 20000mAh Power Bank</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Logitech MX Master 3S Mouse</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Keychron K6 Wireless Keyboard</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>SanDisk 1TB SSD</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Belkin 3-in-1 Wireless Charger</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Spigen Phone Stand</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Ugreen USB-C Hub</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>HyperX Cloud Flight Adapter</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>OtterBox Phone Case</p><a href="" class="btn">Shop Now</a></div>
+    </div>
+  </section>
 
-<div class="category" id="laptops" data-aos="fade-up">
-  <h2>Laptops</h2>
-  <div class="products">
-    <div class="product"><img src="" alt="Laptop"><h3>Product 1</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 2</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 3</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 4</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 5</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 6</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 7</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 8</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 9</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Laptop"><h3>Product 10</h3><a href="">Buy Now</a></div>
-  </div>
-</div>
+  <!-- Cameras -->
+  <section id="cameras" class="animate__animated animate__fadeInUp">
+    <h2>Cameras</h2>
+    <div class="products">
+      <div class="product"><img src="" alt="Product"><p>Canon EOS R8</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Sony A7 IV</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Nikon Z8</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Fujifilm X-T5</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Panasonic Lumix S5II</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Leica Q3</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>OM System OM-1</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>GoPro Hero12</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>DJI Pocket 3</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Product"><p>Insta360 X3</p><a href="" class="btn">Shop Now</a></div>
+    </div>
+  </section>
 
-<div class="category" id="Headphones" data-aos="fade-up">
-  <h2>Headphones</h2>
-  <div class="products">
-    <div class="product"><img src="" alt="Headphone"><h3>Product 1</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 2</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 3</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 4</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 5</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 6</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 7</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 8</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 9</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Headphone"><h3>Product 10</h3><a href="">Buy Now</a></div>
-  </div>                                                                                                                                                                                                                                                                                        
-</div>                                                                                                                                                                                                  
+  <script>
+    // 🔍 Search bar filter
+    document.getElementById("searchBar").addEventListener("keyup", function() {
+      let filter = this.value.toLowerCase();
+      let products = document.querySelectorAll(".product");
 
-  <div class="category" id="Accessories" data-aos="fade-up">
-  <h2>Accessories</h2>
-  <div class="products">
-    <div class="product"><img src="" alt="Accessories"><h3>Product 1</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 2</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 3</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 4</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 5</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 6</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 7</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 8</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 9</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Accessories"><h3>Product 10</h3><a href="">Buy Now</a></div>
-  </div>
-
-   <div class="category" id="Cameras" data-aos="fade-up">
-  <h2>Cameras</h2>
-  <div class="products">
-    <div class="product"><img src="" alt="Camera"><h3>Product 1</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 2</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 3</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 4</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 5</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 6</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 7</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 8</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 9</h3><a href="">Buy Now</a></div>
-    <div class="product"><img src="" alt="Camera"><h3>Product 10</h3><a href="">Buy Now</a></div>
-  </div>
-  
-   </div><footer class="animate__animated animate__fadeInUp">
-  <p>&copy; 2025 Online Marketing Store | Electronics Section</p>
-</footer>
-
-<button id="topBtn">&#8679;</button>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 1200, once: true });
-
-  // Preloader
-  let percentElem = document.getElementById("percent");
-  let count = 0;
-  let loading = setInterval(() => {
-    if (count < 100) {
-      count+=2;
-      percentElem.textContent = count + "%";
-    } else {
-      clearInterval(loading);
-      document.getElementById("preloader").style.display = "none";
-      document.querySelector("header").style.display = "block";
-      document.querySelector(".hero").style.display = "block";
-      document.querySelectorAll(".category").forEach(cat => cat.style.display = "block");
-      document.querySelector("footer").style.display = "block";
-    }
-  }, 15);
-
-  // Back to top button
-  let topBtn = document.getElementById("topBtn");
-  window.onscroll = function() {
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      topBtn.style.display = "block";
-    } else {
-      topBtn.style.display = "none";
-    }
-  };
-  topBtn.onclick = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-</script>
-
+      products.forEach(product => {
+        let text = product.innerText.toLowerCase();
+        if (text.includes(filter)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
