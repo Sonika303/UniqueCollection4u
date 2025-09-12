@@ -3,94 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electronics Store</title>
+  <title>Electronics - Online Marketing Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #0d47a1, #42a5f5);
-      margin: 0;
-      padding: 0;
-      color: white;
-    }
-    header {
-      background: #1565c0;
-      padding: 15px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    nav {
-      margin: 15px 0;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: yellow;
-      text-shadow: 0 0 10px white;
-    }
-    #searchBar {
-      margin-top: 10px;
-      padding: 8px;
-      border-radius: 5px;
-      border: none;
-      width: 240px;
-    }
-    section {
-      padding: 40px 20px;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .product {
-      background: white;
-      color: black;
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .product img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    .product:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 14px;
-      background: #1565c0;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: yellow;
-      color: black;
-      transform: scale(1.1);
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9fbff; color: #333; overflow-x: hidden; }
+    /* Preloader */
+    #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0d47a1, #1976d2); display: flex; align-items: center; justify-content: center; flex-direction: column; z-index: 2000; color: white; }
+    .loader { border: 6px solid #e3f2fd; border-top: 6px solid #42a5f5; border-radius: 50%; width: 70px; height: 70px; animation: spin 0.8s linear infinite, pulse 1.5s infinite; margin-bottom: 15px; }
+    @keyframes spin { 0%{transform:rotate(0);} 100%{transform:rotate(360deg);} }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 10px #42a5f5;} 50%{box-shadow:0 0 30px #90caf9;} }
+    #percent { font-size: 22px; font-weight: bold; margin-top: 10px; }
+    header { background: #0d47a1; color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; display:none; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    header h1 { margin: 0; font-size: 22px; }
+    nav { margin-top: 10px; }
+    nav a { color: white; text-decoration: none; margin-right: 12px; font-size: 15px; transition: color 0.3s, border-bottom 0.3s; }
+    nav a:hover { color: #bbdefb; border-bottom: 2px solid #90caf9; }
+    #searchBar { padding: 8px; border-radius: 4px; border: none; margin-left: 20px; width: 200px; max-width: 50%; }
+    .hero { text-align: center; padding: 60px 20px; background: linear-gradient(to right, #1565c0, #1e88e5); color: white; overflow: hidden; display:none; }
+    .hero h2 { font-size: 36px; margin-bottom: 15px; animation: float 3s ease-in-out infinite; }
+    .hero button { position: relative; overflow: hidden; padding: 12px 25px; font-size: 16px; border: none; background: #42a5f5; color: white; border-radius: 6px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+    .hero button:hover { transform: scale(1.1); box-shadow: 0 4px 15px rgba(66,165,245,0.6); }
+    .hero button:active::after { content: ""; position: absolute; width: 300px; height: 300px; top: 50%; left: 50%; background: rgba(255,255,255,0.4); border-radius: 50%; transform: translate(-50%, -50%); animation: ripple 0.6s linear; }
+    @keyframes ripple { from { width: 0; height: 0; opacity: 1; } to { width: 300px; height: 300px; opacity: 0; } }
+    @keyframes float { 0%,100%{ transform:translateY(0);} 50%{transform:translateY(-8px);} }
+    .category { padding: 40px 20px; text-align: center; display:none; }
+    .category h2 { margin-bottom: 20px; font-size: 28px; color:#0d47a1; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .product { background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.4s, box-shadow 0.4s; cursor: pointer; }
+    .product:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 10px 20px rgba(33,150,243,0.3); }
+    .product img { max-width: 100%; border-radius: 6px; margin-bottom: 10px; transition: transform 0.4s; }
+    .product:hover img { transform: scale(1.08) rotate(1deg); }
+    .product h3 { font-size: 16px; margin: 8px 0; }
+    .product a { display: inline-block; margin-top: 8px; text-decoration: none; color: white; background: #1976d2; padding: 8px 15px; border-radius: 5px; transition: background 0.3s, transform 0.3s; }
+    .product a:hover { background: #0d47a1; transform: translateY(-2px); }
+    footer { text-align: center; padding: 20px; background: #0d47a1; color: white; display:none; }
+    html { scroll-behavior: smooth; }
+    #topBtn { position: fixed; bottom: 20px; right: 20px; background: #42a5f5; color: white; border: none; padding: 12px 15px; border-radius: 50%; font-size: 18px; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s; }
+    #topBtn:hover { background: #1e88e5; transform: scale(1.2); }
   </style>
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <p>Loading Electronics...</p>
+    <div id="percent">0%</div>
+  </div>
+
   <header class="animate__animated animate__fadeInDown">
-    <h1>Electronics Store</h1>
+    <h1>Online Marketing Store</h1>
+    <input type="text" id="searchBar" placeholder="Search products...">
     <nav>
       <a href="index.html">Home</a>
       <a href="#smartphones">Smartphones</a>
@@ -99,107 +62,135 @@
       <a href="#accessories">Accessories</a>
       <a href="#cameras">Cameras</a>
     </nav>
-    <input type="text" id="searchBar" placeholder="Search products...">
   </header>
 
-  <!-- Smartphones -->
-  <section id="smartphones" class="animate__animated animate__fadeInUp">
+  <section class="hero animate__animated animate__zoomIn">
+    <h2>Explore the Latest Electronics</h2>
+    <p class="animate__animated animate__fadeIn animate__delay-1s">Shop the best gadgets, devices, and accessories.</p>
+    <button class="animate__animated animate__pulse animate__infinite">Shop Now</button>
+  </section>
+
+  <!-- Smartphones Section -->
+  <section class="category" id="smartphones">
     <h2>Smartphones</h2>
     <div class="products">
-      <div class="product"><img src="" alt="Product"><p>Samsung Galaxy S24 Ultra</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>OnePlus 12</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Google Pixel 9 Pro</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Xiaomi 14 Ultra</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Realme GT 6 Pro</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Oppo Find X7 Ultra</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Vivo X100 Pro</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Motorola Edge 50 Ultra</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Nothing Phone 2a Plus</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Asus ROG Phone 8</p><a href="" class="btn">Shop Now</a></div>
+      
     </div>
   </section>
 
   <!-- Laptops -->
-  <section id="laptops" class="animate__animated animate__fadeInUp">
+  <section class="category" id="laptops">
     <h2>Laptops</h2>
     <div class="products">
-      <div class="product"><img src="" alt="Product"><p>Dell XPS 15</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>HP Spectre x360</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>ASUS ZenBook Pro</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Lenovo Legion 9i</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Acer Predator Helios</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>MSI Stealth 16</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Razer Blade 18</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>LG Gram Pro</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Microsoft Surface Laptop Studio 2</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Samsung Galaxy Book4 Ultra</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="MacBook Air (M4)"><h3>Apple MacBook Air (M4, 13-inch)</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Asus ZenBook 14 OLED"><h3>Asus ZenBook 14 OLED</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="MSI Raider 18 HX AI"><h3>MSI Raider 18 HX AI</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Acer Swift Go 14"><h3>Acer Swift Go 14</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Dell XPS 15"><h3>Dell XPS 15 (2025)</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="HP Spectre x360"><h3>HP Spectre x360</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Lenovo Yoga 9i"><h3>Lenovo Yoga 9i</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Microsoft Surface Laptop 6"><h3>Microsoft Surface Laptop 6</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Razer Blade 16"><h3>Razer Blade 16</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Samsung Galaxy Book4 Pro"><h3>Samsung Galaxy Book4 Pro</h3><a href="">View Product</a></div>
     </div>
   </section>
 
   <!-- Headphones -->
-  <section id="headphones" class="animate__animated animate__fadeInUp">
+  <section class="category" id="headphones">
     <h2>Headphones</h2>
     <div class="products">
-      <div class="product"><img src="" alt="Product"><p>Sony WH-1000XM5</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Bose QuietComfort Ultra</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Sennheiser Momentum 4</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>JBL Tour One M2</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Apple AirPods Max</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Anker Soundcore Space</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Skullcandy Crusher Evo</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Beats Studio Pro</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Marshall Monitor II</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Shure AONIC 50</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Sony WH-1000XM6"><h3>Sony WH-1000XM6</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Bose QuietComfort Ultra 2"><h3>Bose QuietComfort Ultra (2nd Gen)</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Beyerdynamic Aventho 200"><h3>Beyerdynamic Aventho 200</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Razer Kraken Kitty V3 Pro"><h3>Razer Kraken Kitty V3 Pro</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Sony InZone Buds"><h3>Sony InZone Buds</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Sennheiser Momentum 4"><h3>Sennheiser Momentum 4</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="JBL Tour One M2"><h3>JBL Tour One M2</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Apple AirPods Max 2"><h3>Apple AirPods Max 2</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Anker Soundcore Space Q45"><h3>Anker Soundcore Space Q45</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="SteelSeries Arctis Nova Pro"><h3>SteelSeries Arctis Nova Pro</h3><a href="">View Product</a></div>
     </div>
   </section>
 
   <!-- Accessories -->
-  <section id="accessories" class="animate__animated animate__fadeInUp">
+  <section class="category" id="accessories">
     <h2>Accessories</h2>
     <div class="products">
-      <div class="product"><img src="" alt="Product"><p>Samsung 25W Charger</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Anker 20000mAh Power Bank</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Logitech MX Master 3S Mouse</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Keychron K6 Wireless Keyboard</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>SanDisk 1TB SSD</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Belkin 3-in-1 Wireless Charger</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Spigen Phone Stand</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Ugreen USB-C Hub</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>HyperX Cloud Flight Adapter</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>OtterBox Phone Case</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Logitech MX Master 4"><h3>Logitech MX Master 4</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Anker 737 Power Bank"><h3>Anker 737 Power Bank</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Samsung T9 SSD"><h3>Samsung T9 Portable SSD</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Apple Magic Keyboard"><h3>Apple Magic Keyboard</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Sony DualSense Edge"><h3>Sony DualSense Edge Controller</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Elgato Stream Deck MK2"><h3>Elgato Stream Deck MK2</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Logitech Brio 4K"><h3>Logitech Brio 4K Webcam</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="WD Black P50"><h3>WD Black P50 SSD</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Corsair K100 RGB"><h3>Corsair K100 RGB Keyboard</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Razer Basilisk V3"><h3>Razer Basilisk V3</h3><a href="">View Product</a></div>
     </div>
   </section>
 
   <!-- Cameras -->
-  <section id="cameras" class="animate__animated animate__fadeInUp">
+  <section class="category" id="cameras">
     <h2>Cameras</h2>
     <div class="products">
-      <div class="product"><img src="" alt="Product"><p>Canon EOS R8</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Sony A7 IV</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Nikon Z8</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Fujifilm X-T5</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Panasonic Lumix S5II</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Leica Q3</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>OM System OM-1</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>GoPro Hero12</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>DJI Pocket 3</p><a href="" class="btn">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><p>Insta360 X3</p><a href="" class="btn">Shop Now</a></div>
+      <div class="product"><img src="" alt="Canon EOS R8"><h3>Canon EOS R8</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Sony A7 IV"><h3>Sony A7 IV</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Nikon Z8"><h3>Nikon Z8</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Fujifilm X-T5"><h3>Fujifilm X-T5</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Panasonic Lumix S5 II"><h3>Panasonic Lumix S5 II</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Canon EOS R5 C"><h3>Canon EOS R5 C</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Leica Q3"><h3>Leica Q3</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Olympus OM-1 Mark II"><h3>Olympus OM-1 Mark II</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Sony ZV-E1"><h3>Sony ZV-E1</h3><a href="">View Product</a></div>
+      <div class="product"><img src="" alt="Nikon Zf"><h3>Nikon Zf</h3><a href="">View Product</a></div>
     </div>
   </section>
 
+  <footer class="animate__animated animate__fadeInUp">
+    <p>&copy; 2025 Online Marketing Store | Electronics Section</p>
+  </footer>
+
+  <button id="topBtn">&#8679;</button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // 🔍 Search bar filter
+    AOS.init({ duration: 1200, once: true });
+
+    // Preloader
+    let percentElem = document.getElementById("percent");
+    let count = 0;
+    let loading = setInterval(() => {
+      if (count < 100) {
+        count+=4;
+        percentElem.textContent = count + "%";
+      } else {
+        clearInterval(loading);
+        document.getElementById("preloader").style.display = "none";
+        document.querySelector("header").style.display = "flex";
+        document.querySelector(".hero").style.display = "block";
+        document.querySelectorAll(".category").forEach(cat => cat.style.display = "block");
+        document.querySelector("footer").style.display = "block";
+      }
+    }, 20);
+
+    // Back to top button
+    let topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    topBtn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+
+    // Search filter
     document.getElementById("searchBar").addEventListener("keyup", function() {
       let filter = this.value.toLowerCase();
       let products = document.querySelectorAll(".product");
-
       products.forEach(product => {
-        let text = product.innerText.toLowerCase();
-        if (text.includes(filter)) {
-          product.style.display = "block";
-        } else {
-          product.style.display = "none";
-        }
+        let text = product.textContent.toLowerCase();
+        product.style.display = text.includes(filter) ? "block" : "none";
       });
     });
   </script>
