@@ -1,214 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Electronics - Unique Collection</title>
+
+  <!-- Animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8fbff;
-      color: #222;
+    /* Theme variables */
+    :root{
+      --blue-900: #0d47a1;
+      --blue-700: #1976d2;
+      --accent: #42a5f5;
+      --bg: #f9fbff;
+      --card-bg: #fff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, Arial, system-ui, sans-serif;
+      background:var(--bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Sticky search bar */
-    .search-bar {
+    /* Header + nav */
+    header{
       position: sticky;
       top: 0;
-      background: #1565c0;
-      padding: 10px;
-      z-index: 1001;
-      display: flex;
-      justify-content: center;
+      z-index: 1100;
+      background: linear-gradient(90deg,var(--blue-900),var(--blue-700));
+      color:#fff;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
     }
-
-    .search-bar input {
-      width: 60%;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      font-size: 1rem;
+    header .brand { display:flex; align-items:center; gap:12px; }
+    header h1{ margin:0; font-size:18px; letter-spacing:0.2px; }
+    .top-links{ display:flex; gap:12px; align-items:center; }
+    .top-links a{
+      color: #fff; text-decoration:none; font-weight:600; font-size:13px;
+      padding:6px 8px; border-radius:6px; transition:background .18s, transform .12s;
     }
+    .top-links a:hover{ background: rgba(255,255,255,0.06); transform:translateY(-2px) }
 
-    /* Sticky navigation */
-    nav {
+    /* Sticky search (under header) */
+    .search-bar {
       position: sticky;
-      top: 50px; /* below search bar */
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      background: #1976d2;
-      padding: 10px;
-      z-index: 1000;
+      top: 56px; /* header height */
+      z-index:1099;
+      background: #f1f5ff;
+      padding:10px 18px;
+      box-shadow: 0 2px 6px rgba(13,71,161,0.06);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .search-bar input{
+      width:70%;
+      max-width:760px;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid #dbe7ff;
+      font-size:15px;
+      transition: box-shadow .18s, border-color .18s;
+    }
+    .search-bar input:focus{ outline:none; border-color:var(--blue-700); box-shadow:0 6px 20px rgba(25,118,210,0.08) }
+
+    /* hero */
+    .hero{
+      text-align:center;
+      padding:44px 18px;
+      background: linear-gradient(90deg, rgba(21,101,192,0.95), rgba(30,136,229,0.95));
+      color:white;
+    }
+    .hero h2{ margin:0; font-size:28px; }
+    .hero p{ margin:8px 0 0; opacity:0.95 }
+
+    /* Section titles */
+    .category{
+      padding:36px 18px;
+    }
+    .category h2{
+      color:var(--blue-900);
+      font-size:22px;
+      margin:0 0 18px;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+    /* Grid */
+    .cards {
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      max-width:1200px;
+      margin: 0 auto;
     }
 
-    nav a:hover {
-      color: #ffeb3b;
-      transform: scale(1.1);
+    /* Card (uses your .card class) */
+    .card{
+      background:var(--card-bg);
+      border-radius:10px;
+      padding:12px;
+      box-shadow: 0 6px 18px rgba(13,71,161,0.06);
+      transition: transform .22s ease, box-shadow .22s ease;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      min-height:220px;
+      overflow:hidden;
     }
-
-    /* Category section */
-    section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    section h2 {
-      color: #0d47a1;
-      margin-bottom: 20px;
-      font-size: 2rem;
-      animation: fadeInDown 1s ease;
-    }
-
-    /* Products grid */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: fadeInUp 0.8s ease;
-    }
-
-    .product:hover {
+    .card:hover{
       transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 14px 30px rgba(13,71,161,0.12);
     }
 
-    .product img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      background: #e3f2fd;
+    .card img {
+      width:100%;
+      height:140px;            /* tidy thumbnail */
+      object-fit:cover;
+      border-radius:8px;
+      background:#e9f3ff;
     }
 
-    .product h3 {
-      font-size: 1rem;
-      margin: 10px 0;
+    .card h3{
+      margin:0;
+      font-size:14px;
+      text-align:center;
+      line-height:1.2;
+      color:#111;
+      word-break:break-word;
     }
 
-    .product a {
-      display: inline-block;
-      padding: 8px 14px;
-      background: #1976d2;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      transition: 0.3s;
+    .card a{
+      margin-top:auto;
+      text-decoration:none;
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:8px;
+      background:var(--blue-700);
+      color:white;
+      font-weight:600;
+      font-size:13px;
+      transition: transform .12s, background .12s;
+    }
+    .card a:hover{ background:var(--blue-900); transform:translateY(-3px) }
+
+    /* highlight matched cards */
+    .card.match{
+      outline: 3px solid rgba(66,165,245,0.12);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 36px rgba(13,71,161,0.14);
     }
 
-    .product a:hover {
-      background: #0d47a1;
-      transform: scale(1.1);
+    /* footer + top button */
+    footer{ text-align:center; padding:20px; background:var(--blue-900); color:#fff; margin-top:20px }
+    #topBtn{
+      position:fixed; right:18px; bottom:18px;
+      width:44px; height:44px; border-radius:50%;
+      background:var(--accent); color:#fff; border:none; font-size:18px;
+      box-shadow:0 8px 20px rgba(13,71,161,0.14); cursor:pointer; display:none;
+      z-index:1200;
     }
 
-    /* Animations */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
+    /* responsive tweaks */
+    @media (max-width:600px){
+      .search-bar input{ width:92% }
+      header{ padding:10px 12px }
+      .hero{ padding:28px 12px }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Search Bar -->
+  <!-- Header + nav -->
+  <header class="animate__animated animate__fadeInDown">
+    <div class="brand">
+      <h1>Online Marketing Store</h1>
+    </div>
+
+    <nav class="top-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="#smartphones">Smartphones</a>
+      <a href="#laptops">Laptops</a>
+      <a href="#headphones">Headphones</a>
+     <a href="#cameras">Cameras</a>
+    </nav>
+  </header>
+
+  <!-- Sticky search bar -->
   <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search products...">
+    <input id="searchBox" type="search" placeholder="Search cards (type a product name)...">
   </div>
 
-  <!-- Sticky Navigation -->
-  <nav>
-    <a href="index.html">🏠 Home</a>
-    <a href="#smartphones">Smartphones</a>
-    <a href="#laptops">Laptops</a>
-    <a href="#headphones">Headphones</a>
- </nav>
+  <!-- Hero -->
+  <section class="hero animate__animated animate__zoomIn">
+    <h2>Latest Electronics</h2>
+    <p>Smartphones, laptops, speakers & more — find top picks quickly.</p>
+  </section>
 
-  <!-- Categories -->
-  <section id="smartphones">
+  <!-- Smartphones (filled with 10 names) -->
+  <section class="category" id="smartphones" data-aos="fade-up">
     <h2>Smartphones</h2>
-    <div class="products">
-      <div class="product"><img src="" alt="Product"><h3>Product 1</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 2</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 3</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 4</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 5</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 6</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 7</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 8</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 9</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 10</h3><a href="">Shop Now</a></div>
+    <div class="cards">
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>Samsung Galaxy M05</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>iQOO Z9s 5G</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>OnePlus Nord CE4 Lite 5G</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>realme NARZO N61</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>Samsung Galaxy M35 5G</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>realme NARZO N65 5G</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>iQOO Z9 Lite 5G</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>Redmi 13C 5G</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>realme NARZO 70x 5G</h3><a href="">Buy Now</a></div>
+      <div class="card" data-aos="fade-up"><img src="" alt=""><h3>iQOO Z9 Lite 5G (variant)</h3><a href="">Buy Now</a></div>
     </div>
   </section>
 
-  <section id="laptops">
+  <!-- Laptops (placeholders) -->
+  <section class="category" id="laptops" data-aos="fade-up">
     <h2>Laptops</h2>
-    <div class="products">
-      <div class="product"><img src="" alt="Product"><h3>Product 1</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 2</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 3</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 4</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 5</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 6</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 7</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 8</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 9</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 10</h3><a href="">Shop Now</a></div>
+    <div class="cards">
+      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
     </div>
   </section>
 
-  <section id="headphones">
-    <h2>Headphones</h2>
-    <div class="products">
-      <div class="product"><img src="" alt="Product"><h3>Product 1</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 2</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 3</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 4</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 5</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 6</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 7</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 8</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 9</h3><a href="">Shop Now</a></div>
-      <div class="product"><img src="" alt="Product"><h3>Product 10</h3><a href="">Shop Now</a></div>
+  <!-- Headphones -->
+  <section class="category" id="headphones" data-aos="fade-up">
+    <h2>Headphones & Speakers</h2>
+    <div class="cards">
+      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
     </div>
   </section>
 
+  <!-- Cameras -->
+  <section class="category" id="cameras" data-aos="fade-up">
+    <h2>Cameras</h2>
+    <div class="cards">
+      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
+      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
+    </div>
+  </section>
 
+  <footer>
+    <p>&copy; 2025 Online Marketing Store — Electronics</p>
+  </footer>
+
+  <button id="topBtn" title="Back to top">↑</button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Search filter
-    document.getElementById("searchInput").addEventListener("keyup", function() {
-      let filter = this.value.toLowerCase();
-      let products = document.querySelectorAll(".product");
-      products.forEach(product => {
-        let text = product.innerText.toLowerCase();
-        product.style.display = text.includes(filter) ? "" : "none";
+    AOS.init({ duration: 900, once: true });
+
+    // Back to top button
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Search (targets .card)
+    const searchBox = document.getElementById('searchBox');
+    searchBox.addEventListener('input', function () {
+      const q = this.value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      if (!q) {
+        cards.forEach(c => { c.style.display = ''; c.classList.remove('match'); });
+        return;
+      }
+
+      cards.forEach(card => {
+        const titleEl = card.querySelector('h3');
+        const text = (titleEl ? titleEl.innerText : card.innerText).toLowerCase();
+        const matches = text.includes(q);
+        card.style.display = matches ? '' : 'none';
+        card.classList.toggle('match', matches);
       });
     });
   </script>
