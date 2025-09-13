@@ -1,101 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime - Online Marketing Store</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anime - Unique Collection</title>
+
+  <!-- Animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      margin: 0;
-      padding: 0;
-      color: #333;
+    /* Base */
+    :root{
+      --blue-900: #0d47a1;
+      --blue-700: #1976d2;
+      --accent: #42a5f5;
+      --bg: #f9fbff;
+      --card-bg: #fff;
     }
-    header {
-      background: #222;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, Arial, system-ui, sans-serif;
+      background:var(--bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #444;
-      padding: 10px;
-      flex-wrap: wrap;
+
+    /* Header + nav */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+      background: linear-gradient(90deg,var(--blue-900),var(--blue-700));
+      color:#fff;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
     }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 5px 15px;
-      font-weight: bold;
+    header h1{ margin:0; font-size:18px; letter-spacing:0.2px; }
+    .top-links{ display:flex; gap:12px; align-items:center; }
+    .top-links a{
+      color: #fff; text-decoration:none; font-weight:600; font-size:13px;
+      padding:6px 8px; border-radius:6px; transition:background .18s, transform .12s;
     }
-    nav a:hover {
-      text-decoration: underline;
+    .top-links a:hover{ background: rgba(255,255,255,0.06); transform:translateY(-2px) }
+
+    /* Sticky search (under header) */
+    .search-bar {
+      position: sticky;
+      top: 56px; /* header height +  something */
+      z-index:1099;
+      background: #f1f5ff;
+      padding:10px 18px;
+      box-shadow: 0 2px 6px rgba(13,71,161,0.06);
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
-    h2 {
-      text-align: center;
-      margin: 30px 0 20px;
-      color: #222;
+    .search-bar input{
+      width:70%;
+      max-width:760px;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid #dbe7ff;
+      font-size:15px;
+      transition: box-shadow .18s, border-color .18s;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
+    .search-bar input:focus{ outline:none; border-color:var(--blue-700); box-shadow:0 6px 20px rgba(25,118,210,0.08) }
+
+    /* hero */
+    .hero{
+      text-align:center;
+      padding:44px 18px;
+      background: linear-gradient(90deg, rgba(21,101,192,0.95), rgba(30,136,229,0.95));
+      color:white;
     }
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 10px;
-      text-align: center;
-      background: #fafafa;
+    .hero h2{ margin:0; font-size:28px; }
+    .hero p{ margin:8px 0 0; opacity:0.95 }
+
+    /* Section titles */
+    .category{
+      padding:36px 18px;
     }
+    .category h2{
+      color:var(--blue-900);
+      font-size:22px;
+      margin:0 0 18px;
+    }
+
+    /* Grid */
+    .cards {
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      max-width:1200px;
+      margin: 0 auto;
+    }
+
+    /* Card (your .card class) */
+    .card{
+      background:var(--card-bg);
+      border-radius:10px;
+      padding:12px;
+      box-shadow: 0 6px 18px rgba(13,71,161,0.06);
+      transition: transform .22s ease, box-shadow .22s ease;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      min-height:220px;
+      overflow:hidden;
+    }
+    .card:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 14px 30px rgba(13,71,161,0.12);
+    }
+
     .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 5px;
+      width:100%;
+      height:140px;            /* smaller images */
+      object-fit:cover;        /* crop consistently */
+      border-radius:8px;
+      background:#e9f3ff;
     }
-    .card h3 {
-      margin: 10px 0;
-      font-size: 16px;
+
+    .card h3{
+      margin:0;
+      font-size:14px;
+      text-align:center;
+      line-height:1.2;
+      color:#111;
+      word-break:break-word;
     }
-    .btn {
-      display: inline-block;
-      padding: 8px 12px;
-      background: #007BFF;
-      color: #fff;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 14px;
+
+    .card a{
+      margin-top:auto;
+      text-decoration:none;
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:8px;
+      background:var(--blue-700);
+      color:white;
+      font-weight:600;
+      font-size:13px;
+      transition: transform .12s, background .12s;
     }
-    .btn:hover {
-      background: #0056b3;
+    .card a:hover{ background:var(--blue-900); transform:translateY(-3px) }
+
+    /* highlight matched cards (subtle) */
+    .card.match{
+      outline: 3px solid rgba(66,165,245,0.12);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 36px rgba(13,71,161,0.14);
+    }
+
+    /* footer + top button */
+    footer{ text-align:center; padding:20px; background:var(--blue-900); color:#fff; margin-top:20px }
+    #topBtn{
+      position:fixed; right:18px; bottom:18px;
+      width:44px; height:44px; border-radius:50%;
+      background:var(--accent); color:#fff; border:none; font-size:18px;
+      box-shadow:0 8px 20px rgba(13,71,161,0.14); cursor:pointer; display:none;
+      z-index:1200;
+    }
+
+    /* responsive tweaks */
+    @media (max-width:600px){
+      .search-bar input{ width:92% }
+      header{ padding:10px 12px }
+      .hero{ padding:28px 12px }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Anime - Online Marketing Store</h1>
+
+  <!-- Header + nav -->
+  <header class="animate__animated animate__fadeInDown">
+    <h1>Online Marketing Store</h1>
+    <div class="top-links">
+      <a href="index.html">Home</a>
+      <a href="#manga">Manga</a>
+      <a href="#figures">Figures</a>
+      <a href="#keychains">Keychains</a>
+      <a href="#accessories">Accessories</a>
+      <a href="#wallpapers">Wallpapers</a>
+    </div>
   </header>
 
-  <!-- Navigation with Home -->
-  <nav>
-    <a href="index.html">🏠 Home</a>
-    <a href="#manga">Manga</a>
-    <a href="#figures">Action Figures</a>
-    <a href="#keychains">Keychains</a>
-    <a href="#accessories">Accessories</a>
-    <a href="#wallpapers">Wallpapers</a>
- </nav>                                                                                                    
+  <!-- Sticky search bar -->
+  <div class="search-bar">
+    <input id="searchBox" type="search" placeholder="Search cards (type name like 'naruto', 'figure', etc.)">
+  </div>
+
+  <!-- Hero -->
+  <section class="hero animate__animated animate__zoomIn">
+    <h2>Explore Anime Merchandise</h2>
+    <p>Find manga, figures, keychains, wallpapers and accessories — search across all cards.</p>
+  </section>
 
   <!-- Manga -->
-  <section id="manga">
+  <section class="category" id="manga" data-aos="fade-up">
     <h2>Manga</h2>
-    <div class="grid">
-      <div class="card"><img src="https://m.media-amazon.com/images/I/710Nb1Fd7xL._SX445_.jpg"><h3>Demon Slayer Books Box Set of Vols 1-23: Demon Slayer BOX SET OF Volumes 1-23 </h3><a href="https://www.amazon.in/Demon-Slayer-Books-Vols-1-23/dp/B0FJ6Z8VBD?crid=2H5JGWRD3YPE1&dib=eyJ2IjoiMSJ9.J-d1QNP08t9gKOSLi4SqfLqtLCWrUGLB1FkVfRq_wkjQDdv_262DgscytNIe8xWGGqzYycuWFOP1VKFrLxqQNMYhn2dhS6m1VUbxfBWaqEWSpAS3gwitF_ypKlpRqv2lKR0Z-Ou4e6FE7GAMDPMBFd4LmO1OfZEjc0goda7E9dPESRyDXPZP6nRoKM0lrUd_P7yi81d3yx53IeY7ZXPyELeEU_saQf7LKZJs35_dxRc.O_pveULzDsqNJnRj-WPLi3BxZnq7D35ZLK7Lc4zWIfs&dib_tag=se&keywords=demon+slayer+manga&qid=1757507562&sprefix=demon+slayer+mang%2Caps%2C327&sr=8-1&linkCode=ll1&tag=onlinemar0fad-21&linkId=931652e20b91630413a5c404702db8e6&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
+    <div class="cards">
+    <div class="card"><img src="https://m.media-amazon.com/images/I/710Nb1Fd7xL._SX445_.jpg"><h3>Demon Slayer Books Box Set of Vols 1-23: Demon Slayer BOX SET OF Volumes 1-23 </h3><a href="https://www.amazon.in/Demon-Slayer-Books-Vols-1-23/dp/B0FJ6Z8VBD?crid=2H5JGWRD3YPE1&dib=eyJ2IjoiMSJ9.J-d1QNP08t9gKOSLi4SqfLqtLCWrUGLB1FkVfRq_wkjQDdv_262DgscytNIe8xWGGqzYycuWFOP1VKFrLxqQNMYhn2dhS6m1VUbxfBWaqEWSpAS3gwitF_ypKlpRqv2lKR0Z-Ou4e6FE7GAMDPMBFd4LmO1OfZEjc0goda7E9dPESRyDXPZP6nRoKM0lrUd_P7yi81d3yx53IeY7ZXPyELeEU_saQf7LKZJs35_dxRc.O_pveULzDsqNJnRj-WPLi3BxZnq7D35ZLK7Lc4zWIfs&dib_tag=se&keywords=demon+slayer+manga&qid=1757507562&sprefix=demon+slayer+mang%2Caps%2C327&sr=8-1&linkCode=ll1&tag=onlinemar0fad-21&linkId=931652e20b91630413a5c404702db8e6&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/51ZFYXX0soL._SY342_.jpg"><h3>Manga Blue Lock Books Set Vol.1-21 (Blue Lock Books set: Volume 1-21) by Yusuke Nomura </h3><a href="https://www.amazon.in/Manga-Blue-Lock-Books-Vol-1-21/dp/B0DSG56GQG?crid=1GSV414WMX0MU&dib=eyJ2IjoiMSJ9.h4Yexh0bIukQJ-udxgdIk3ewo-_NLWXH-Oojk7wKgATeosXdfU9Rz3joISKIZK-BAq3I1ngzahILmvjQ5RNXD58OGJ56W_6xJomfKm6kijeuqJR2vW79_1sbUm_GmC-0MoibGMXCLrVZu_eMkbZ8R-FH4s0wsAKndePyAJcK2FoB93u__mUwlYsE26hf1foued6-TVUVw36vEIvDW_y-8xYxyF1EZxa6Oxirfy9rV8I.tgCUx30WP7HJL_oBdQwk7JyKHOgXwYhaydotUYvZHvk&dib_tag=se&keywords=blue+lock+set+manga&qid=1757507979&sprefix=blue+lock+set+mang%2Caps%2C348&sr=8-1&linkCode=ll1&tag=onlinemar0fad-21&linkId=68362468ef35a04d8b670e7c63372713&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/51h2u3eoEEL._SX445_.jpg"><h3>Jujutsu Kaisen Manga Box Set (Vol. 1-21) - Complete Collection - CREAZIONE PRODUCTION pro </h3><a href="https://www.amazon.in/Jujutsu-Kaisen-Manga-Vol-1-21/dp/B0FCFTYR94?crid=CI0T7FKAY732&dib=eyJ2IjoiMSJ9.NLGUYKjczrvtFL02RAkf0SzvH8B0OmB2d1zjWv9mw3ejUZpouRZjKy_IWIWcTw0WDWtFogUqY8CT-2ZXybFb1HqM7l35u8sHd0CXOsHpBmxGf-7iEPQW0ljL7vdEm7Ux5iuMiQYrpBFJH1b8xrbW3ynGM9xVlZ3sNZzpbqTN6DvhUwA1FzXLmcX5u_bWLgSFowSLKgtBkg3qrl9pzNZrN0tIVBf4SnPUFK5hxPi5eWM.BTQ0KYoWpMdPG8kRI14Kgp-dVJcrg9wJqpXnG7BFpYk&dib_tag=se&keywords=jujutsu+kaisen+manga+set&qid=1757508213&sprefix=juju%2Caps%2C341&sr=8-5&linkCode=ll1&tag=onlinemar0fad-21&linkId=0d2dd04519349cb8da029afd9ede8b57&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/81fu7rZ7sDL._SX445_.jpg"><h3>Dragon Ball Z Complete Box Set</h3><a href="https://www.amazon.in/Dragon-Ball-Complete-Box-Set/dp/1974708721?crid=270I43TK3BBVR&dib=eyJ2IjoiMSJ9.jmMZi9xCgNwBXnO9ibi1pBIHwcgtt2EhBf-ODbseQp0tu_6EaUUZXkQnomvXZ-Tai2FmVnmjzAvW6UxiSkuQovTXNfaEkBZ9N-eglhKXGKvleg5ACR9QHEtt8X2n1Uk4LFmIfyJRZdBe45z3zrMFyCsZ_BQ2snkAOk8jyzA_NjCy_CTTzWn3fxHOmEuTVLTJmh_LlzuHkZRTwQvTTwK1JaIFumJUjUnGxVyQPuXzfLA.Y3UfjokGbVMBV41HCwMT_Imcd0mO71NK3sgpVvCM80Q&dib_tag=se&keywords=dragon+ball+daima+manga+set&qid=1757508411&sprefix=dragon+ball+daima+manga+se%2Caps%2C306&sr=8-2&linkCode=ll1&tag=onlinemar0fad-21&linkId=0ca7607da906e8faf5d30c01ba2d2f69&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
@@ -108,11 +219,11 @@
     </div>
   </section>
 
-  <!-- Action Figures -->
-  <section id="figures">
-    <h2>Action Figures</h2>
-    <div class="grid">
-      <div class="card"><img src="https://m.media-amazon.com/images/I/61qbsIBI6gL._SX679_.jpg"><h3>SQUISHCO Plastic Anime Figurine, Action Figure Anime, Small Size Anime Figure Collectible Statue, Perfect For Desk Shelf Or Car Decoration, Multicolor, 14x14 cm</h3><a href="https://www.amazon.in/SQUISHCO-Figurine-Collectible-Decoration-Multicolor/dp/B0F98XJC5X?crid=IAUCZ4BMIVAL&dib=eyJ2IjoiMSJ9.KP0cvUIKqIpSLZvWJ-CSzakCTizlAOAqLIrE2LIOXvr_BqveHG4izCcCxns56Ct1LSCDkevP8OGcpfbIjbsbBP2YYfRUUHe4mJsoQ7SHJ4E3Mi21aYNZ2r1sB0t_j1Bi4QUGORjN-5RGH--37969k98PKlrLfPN-uzP55tO08NqfWcKQ9TMgc_6adLzjxViGKQoeEI_d3pS2Q1lHysJyh1E667kCOwIRj-G8sSLII_jDh-ElHo3PN3r2ISXp0v8dKjFbE8ww3DbSFBtQhlRSivJJutyTqA_izFPmo5-lqig.CoSEuPAbQoAj3_IaANFEJPRzd-HSzssfHT_2rUjpaXU&dib_tag=se&keywords=anime+figures&qid=1757509838&sprefix=anime+figure%2Caps%2C326&sr=8-9&linkCode=ll1&tag=onlinemar0fad-21&linkId=2834932db6b236c6ef08931f9037a3a6&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
+  <!-- Figures -->
+  <section class="category" id="figures" data-aos="fade-up">
+    <h2>Anime Figures</h2>
+    <div class="cards">
+ <div class="card"><img src="https://m.media-amazon.com/images/I/61qbsIBI6gL._SX679_.jpg"><h3>SQUISHCO Plastic Anime Figurine, Action Figure Anime, Small Size Anime Figure Collectible Statue, Perfect For Desk Shelf Or Car Decoration, Multicolor, 14x14 cm</h3><a href="https://www.amazon.in/SQUISHCO-Figurine-Collectible-Decoration-Multicolor/dp/B0F98XJC5X?crid=IAUCZ4BMIVAL&dib=eyJ2IjoiMSJ9.KP0cvUIKqIpSLZvWJ-CSzakCTizlAOAqLIrE2LIOXvr_BqveHG4izCcCxns56Ct1LSCDkevP8OGcpfbIjbsbBP2YYfRUUHe4mJsoQ7SHJ4E3Mi21aYNZ2r1sB0t_j1Bi4QUGORjN-5RGH--37969k98PKlrLfPN-uzP55tO08NqfWcKQ9TMgc_6adLzjxViGKQoeEI_d3pS2Q1lHysJyh1E667kCOwIRj-G8sSLII_jDh-ElHo3PN3r2ISXp0v8dKjFbE8ww3DbSFBtQhlRSivJJutyTqA_izFPmo5-lqig.CoSEuPAbQoAj3_IaANFEJPRzd-HSzssfHT_2rUjpaXU&dib_tag=se&keywords=anime+figures&qid=1757509838&sprefix=anime+figure%2Caps%2C326&sr=8-9&linkCode=ll1&tag=onlinemar0fad-21&linkId=2834932db6b236c6ef08931f9037a3a6&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/61Sp67PBTML._SX679_.jpg"><h3>IN-IMAGINE Anime Figurine, Premium Action Figure Anime Collectible Model Tall Yellow Hair Character Statue for Display & Decoration (7.08 * 1.77 * 3.14in)</h3><a href="https://www.amazon.in/IMAGINE-Figurine-Collectible-Character-Decoration/dp/B0F4N4XF2D?crid=1Q5OGO8YA7S14&dib=eyJ2IjoiMSJ9.TCqZycxZPneUdBhSJIS16JZLnFfEM8udFvZ_Xcv9VjA7heLZAbrraZd0I23cidZFN77_ENKWaAOeCs1xP6KTplZuK533uWkblCha_q6LqBJMjWkFiLJ8kLDYufWK4lD0Cg9hCjVRfinnp8lFw72fgyYPLoBGI1I5QFEy1CDmoWH-qCS0-_h_dw05J2_98idwUxnlJtYAqyolZKAa-YGScZSR0zj3FjYE0SDWOBWX5rpNc8FUvz-cDKuoE7cOTtBzpxZVsaD5OhCeKL2Rod47q1e3WtznWCB7wgqq3jhiErQ.mktlnivF1yYfdMGU2lLL5Q1ulkptlPQBMl7iNl8dEag&dib_tag=se&keywords=anime+figures+under+500&qid=1757509947&sprefix=anime+figures%2Caps%2C473&sr=8-11&linkCode=ll1&tag=onlinemar0fad-21&linkId=80207e7bbac9834230f639eec31035e7&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/61Vr8yGApML._SX522_.jpg"><h3>NHCDFA Anime Figure, Action Figure Anime, Kimono Action Figure, Handsome and Cool Anime Characters for Home Decors, Office Desk and Study Table Suitable for Anime Enthusiasts</h3><a href="https://www.amazon.in/NHCDFA-Handsome-Characters-Suitable-Enthusiasts/dp/B0FBTF2RHD?crid=1A0T9JVA1CN3T&dib=eyJ2IjoiMSJ9.ruft1gQ9cJFUvWTcDl-GIyw3hPOAd116Ew491XUmz6sL-QPlU-iqiEh4RNaNb_KzyDZp9otH3Q0c5FEONs4N-ieRyhKy2Ea4wvS6L7MlR3uU5zdoZ2GaYipMHEyCeorQSLfe4hPvxFa4E4sseew_osqx-_qvwoVjPTB12_F2Q3Q6T_XaPVJUGNiNR5OFu123pI7beuei4OQsTQCfdEIVfACmzmNVgcDh5p55BCTWrjCVk1aWAJLC_jLK3owoRPiNrXtAXAdFJU1fbEi_k1kzTeaY-yY8xjYlVZs4yCxBn08.WMLcsJ63J46Ya5NxGmxwvkkudcRy1VADr4kz5RV6M0Y&dib_tag=se&keywords=anime+figures+under+500&qid=1757510032&sprefix=anime+figures+under+50%2Caps%2C363&sr=8-6&linkCode=ll1&tag=onlinemar0fad-21&linkId=f7783d0791661e8299f7ec1c4baf9ead&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/71bf3C7F0zL._SX679_.jpg"><h3> Anime Hero Figurines Set, Stylized Desk Decor for Office, Home, Car Interiors. (Sitting on Floor), 13 cm, 11 cm, White</h3><a href="https://www.amazon.in/YOURKARTS-COM-Anime-Figurines-Sitting-Floor/dp/B0DRG79TZQ?crid=1A0T9JVA1CN3T&dib=eyJ2IjoiMSJ9.ruft1gQ9cJFUvWTcDl-GIyw3hPOAd116Ew491XUmz6sL-QPlU-iqiEh4RNaNb_KzyDZp9otH3Q0c5FEONs4N-ieRyhKy2Ea4wvS6L7MlR3uU5zdoZ2GaYipMHEyCeorQSLfe4hPvxFa4E4sseew_osqx-_qvwoVjPTB12_F2Q3Q6T_XaPVJUGNiNR5OFu123pI7beuei4OQsTQCfdEIVfACmzmNVgcDh5p55BCTWrjCVk1aWAJLC_jLK3owoRPiNrXtAXAdFJU1fbEi_k1kzTeaY-yY8xjYlVZs4yCxBn08.WMLcsJ63J46Ya5NxGmxwvkkudcRy1VADr4kz5RV6M0Y&dib_tag=se&keywords=anime+figures+under+500&qid=1757510032&sprefix=anime+figures+under+50%2Caps%2C363&sr=8-10&linkCode=ll1&tag=onlinemar0fad-21&linkId=5d453b0476a57371a68d65942094300e&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
@@ -126,10 +237,10 @@
   </section>
 
   <!-- Keychains -->
-  <section id="keychains">
+  <section class="category" id="keychains" data-aos="fade-up">
     <h2>Keychains</h2>
-    <div class="grid">
-      <div class="card"><img src="https://m.media-amazon.com/images/I/51lySyK8QnL._SX466_.jpg"><h3>Daiyamondo Elevate Your Style With Amazing Anime 3D Rubber Silicone Keychain With Long Ribbon Suitable For Car Bike Key rings | Bag Charms | Gifting | Anime Lover</h3><a href="https://www.amazon.in/Daiyamondo-Elevate-Silicone-Keychain-Suitable/dp/B0CJ7YTSSX?crid=35EN7S72BNI92&dib=eyJ2IjoiMSJ9.cgcH6hdKjnD-p7lVCLsEPHxeGh2qldJaWKunTN6nA8wbspY5ivFs01yBjzsem7icmlEo7okv22JBhNZ2Jw0smZWZglBDZha1-S-X2g0RFI1j6rVqLVvtQDCn4mer_lwz0x5TbVxfr9rlRa50r_AC4LerTYF0QrhfeOMruWdUrHeq2sQjN1h5SsMPWpEtvgp4U6O9eqGe2TWBmUOeBFZNQfGyEF__INCV6PvzeEb1WOObYgHfTUV-_Zxf3qXMkBeISHHNcL_qbGYiUd1pBt5bW4dPSz5pXYhTPUFfOcyG4zM.psfEUNw9lY0PwqZwic0-93WhOw06bHvDadjg7G_yR9M&dib_tag=se&keywords=anime+keychains&qid=1757510731&sprefix=anime+keychai%2Caps%2C343&sr=8-16&linkCode=ll1&tag=onlinemar0fad-21&linkId=ca68e4ce06a7e63a9998a1a0aadb0045&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
+    <div class="cards">
+       <div class="card"><img src="https://m.media-amazon.com/images/I/51lySyK8QnL._SX466_.jpg"><h3>Daiyamondo Elevate Your Style With Amazing Anime 3D Rubber Silicone Keychain With Long Ribbon Suitable For Car Bike Key rings | Bag Charms | Gifting | Anime Lover</h3><a href="https://www.amazon.in/Daiyamondo-Elevate-Silicone-Keychain-Suitable/dp/B0CJ7YTSSX?crid=35EN7S72BNI92&dib=eyJ2IjoiMSJ9.cgcH6hdKjnD-p7lVCLsEPHxeGh2qldJaWKunTN6nA8wbspY5ivFs01yBjzsem7icmlEo7okv22JBhNZ2Jw0smZWZglBDZha1-S-X2g0RFI1j6rVqLVvtQDCn4mer_lwz0x5TbVxfr9rlRa50r_AC4LerTYF0QrhfeOMruWdUrHeq2sQjN1h5SsMPWpEtvgp4U6O9eqGe2TWBmUOeBFZNQfGyEF__INCV6PvzeEb1WOObYgHfTUV-_Zxf3qXMkBeISHHNcL_qbGYiUd1pBt5bW4dPSz5pXYhTPUFfOcyG4zM.psfEUNw9lY0PwqZwic0-93WhOw06bHvDadjg7G_yR9M&dib_tag=se&keywords=anime+keychains&qid=1757510731&sprefix=anime+keychai%2Caps%2C343&sr=8-16&linkCode=ll1&tag=onlinemar0fad-21&linkId=ca68e4ce06a7e63a9998a1a0aadb0045&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/61zQeF7rz8L._SX569_.jpg"><h3>Replix Premium (Pack Of 2) Anime Printed Keychain For Bike, Scooty, Car, Acrylic Keyholder (Demon Slayer),Multicolor</h3><a href="https://www.amazon.in/Replix-Premium-Printed-Keychain-Keyholder/dp/B0D1NJWYXZ?crid=35EN7S72BNI92&dib=eyJ2IjoiMSJ9.cgcH6hdKjnD-p7lVCLsEPHxeGh2qldJaWKunTN6nA8wbspY5ivFs01yBjzsem7icmlEo7okv22JBhNZ2Jw0smZWZglBDZha1-S-X2g0RFI1j6rVqLVvtQDCn4mer_lwz0x5TbVxfr9rlRa50r_AC4LerTYF0QrhfeOMruWdUrHeq2sQjN1h5SsMPWpEtvgp4U6O9eqGe2TWBmUOeBFZNQfGyEF__INCV6PvzeEb1WOObYgHfTUV-_Zxf3qXMkBeISHHNcL_qbGYiUd1pBt5bW4dPSz5pXYhTPUFfOcyG4zM.psfEUNw9lY0PwqZwic0-93WhOw06bHvDadjg7G_yR9M&dib_tag=se&keywords=anime+keychains&qid=1757510731&sprefix=anime+keychai%2Caps%2C343&sr=8-26&linkCode=ll1&tag=onlinemar0fad-21&linkId=1dc1424110659286bde731b6e4c55c57&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/71E85LnpB9L._SX569_.jpg"><h3>Wood 2 Combo Chabi Ring Black & White Gojo And Geto Anime Key Chains For Anime Fans, For Gifting, Bike, Scooty, Car Key Chain</h3><a href="https://www.amazon.in/Combo-Chabi-Chains-Gifting-Scooty/dp/B0D7L72MQR?crid=35EN7S72BNI92&dib=eyJ2IjoiMSJ9.cgcH6hdKjnD-p7lVCLsEPHxeGh2qldJaWKunTN6nA8wbspY5ivFs01yBjzsem7icmlEo7okv22JBhNZ2Jw0smZWZglBDZha1-S-X2g0RFI1j6rVqLVvtQDCn4mer_lwz0x5TbVxfr9rlRa50r_AC4LerTYF0QrhfeOMruWdUrHeq2sQjN1h5SsMPWpEtvgp4U6O9eqGe2TWBmUOeBFZNQfGyEF__INCV6PvzeEb1WOObYgHfTUV-_Zxf3qXMkBeISHHNcL_qbGYiUd1pBt5bW4dPSz5pXYhTPUFfOcyG4zM.psfEUNw9lY0PwqZwic0-93WhOw06bHvDadjg7G_yR9M&dib_tag=se&keywords=anime+keychains&qid=1757510731&sprefix=anime+keychai%2Caps%2C343&sr=8-30&linkCode=ll1&tag=onlinemar0fad-21&linkId=26d72493c17e16d183758d73776107fb&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/51KxwlxgTHL._SX569_.jpg"><h3>Arkanum One Piece Anima Manga Ship Steering Wheel Spinning Rotating Golden Keychain | Stainless Steel</h3><a href="https://www.amazon.in/Arkanum-Steering-Spinning-Rotating-Keychain/dp/B09GVHZPXX?crid=35EN7S72BNI92&dib=eyJ2IjoiMSJ9.cgcH6hdKjnD-p7lVCLsEPHxeGh2qldJaWKunTN6nA8wbspY5ivFs01yBjzsem7icmlEo7okv22JBhNZ2Jw0smZWZglBDZha1-S-X2g0RFI1j6rVqLVvtQDCn4mer_lwz0x5TbVxfr9rlRa50r_AC4LerTYF0QrhfeOMruWdUrHeq2sQjN1h5SsMPWpEtvgp4U6O9eqGe2TWBmUOeBFZNQfGyEF__INCV6PvzeEb1WOObYgHfTUV-_Zxf3qXMkBeISHHNcL_qbGYiUd1pBt5bW4dPSz5pXYhTPUFfOcyG4zM.psfEUNw9lY0PwqZwic0-93WhOw06bHvDadjg7G_yR9M&dib_tag=se&keywords=anime+keychains&qid=1757510731&sprefix=anime+keychai%2Caps%2C343&sr=8-33&linkCode=ll1&tag=onlinemar0fad-21&linkId=e0fb36946de933ee1888d67c251c36a1&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
@@ -143,10 +254,10 @@
   </section>
 
   <!-- Accessories -->
-  <section id="accessories">
+  <section class="category" id="accessories" data-aos="fade-up">
     <h2>Accessories</h2>
-    <div class="grid">
-      <div class="card"><img src="https://m.media-amazon.com/images/I/51lguNmECiL._SX679_.jpg"><h3>Zibuyu Naruto Kunai Cosplay Accessories Uchiha Itachi Cosplay Prop Pvc Kunai Japanese Ninja Training Tool Anime Merchandise Naruto (10.43 Inch) - Black</h3><a href="https://www.amazon.in/ZIBUYU%C2%AE-Accessories-Japanese-Training-Merchandise/dp/B0C8T8CFL5?crid=2MCOA4C920JY8&dib=eyJ2IjoiMSJ9.uMccvOGv6GfokFDSmRieE04Oq9fjQtiIt4r_Ym_XoBtbX6s8OFXur3vXwNNqRgMN1p54P4JTAPTOx8ng0E0UaJ18c65TOf9lgs5nu2uMFiJ07KKdOBQnm6Umpz3vSuQrSHmJ_ROSUbxAGZVR5N6QEAvmjz0Lhubw0Qj-IAuS2FwOaWuBaXrxrRHCUhrkkN9XLFRGUvltkUJhi-BEXFjUQJjoGtKqQ4ctnBQqi-BaKY94LSoDKm8xf9tA-R44gP6a-NYaH4z9fvQuxsxPZdV5Kd-pGOB4BYOmiL8lAnE0QDA.aazBeJ4cC0yp_35DUokXPr0GxAzLRiJjqt8BH_3eJNI&dib_tag=se&keywords=anime%2Baccessory&qid=1757597494&sprefix=anime%2Baccesr%2Caps%2C408&sr=8-11&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=1e3269f3e371ed2bde56f510a9d220d4&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
+    <div class="cards">
+          <div class="card"><img src="https://m.media-amazon.com/images/I/51lguNmECiL._SX679_.jpg"><h3>Zibuyu Naruto Kunai Cosplay Accessories Uchiha Itachi Cosplay Prop Pvc Kunai Japanese Ninja Training Tool Anime Merchandise Naruto (10.43 Inch) - Black</h3><a href="https://www.amazon.in/ZIBUYU%C2%AE-Accessories-Japanese-Training-Merchandise/dp/B0C8T8CFL5?crid=2MCOA4C920JY8&dib=eyJ2IjoiMSJ9.uMccvOGv6GfokFDSmRieE04Oq9fjQtiIt4r_Ym_XoBtbX6s8OFXur3vXwNNqRgMN1p54P4JTAPTOx8ng0E0UaJ18c65TOf9lgs5nu2uMFiJ07KKdOBQnm6Umpz3vSuQrSHmJ_ROSUbxAGZVR5N6QEAvmjz0Lhubw0Qj-IAuS2FwOaWuBaXrxrRHCUhrkkN9XLFRGUvltkUJhi-BEXFjUQJjoGtKqQ4ctnBQqi-BaKY94LSoDKm8xf9tA-R44gP6a-NYaH4z9fvQuxsxPZdV5Kd-pGOB4BYOmiL8lAnE0QDA.aazBeJ4cC0yp_35DUokXPr0GxAzLRiJjqt8BH_3eJNI&dib_tag=se&keywords=anime%2Baccessory&qid=1757597494&sprefix=anime%2Baccesr%2Caps%2C408&sr=8-11&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=1e3269f3e371ed2bde56f510a9d220d4&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/5136KdBDbmL._SY625_.jpg"><h3>RVM Jewels Attack of Titan Eren Key Pendant Necklace Cosplay Jewelry Anime Accessory for Men and Women</h3><a href="https://www.amazon.in/RVM-Jewels-Pendant-Necklace-Accessory/dp/B0C6NM8SXG?crid=2MCOA4C920JY8&dib=eyJ2IjoiMSJ9.uMccvOGv6GfokFDSmRieE04Oq9fjQtiIt4r_Ym_XoBtbX6s8OFXur3vXwNNqRgMN1p54P4JTAPTOx8ng0E0UaJ18c65TOf9lgs5nu2uMFiJ07KKdOBQnm6Umpz3vSuQrSHmJ_ROSUbxAGZVR5N6QEAvmjz0Lhubw0Qj-IAuS2FwOaWuBaXrxrRHCUhrkkN9XLFRGUvltkUJhi-BEXFjUQJjoGtKqQ4ctnBQqi-BaKY94LSoDKm8xf9tA-R44gP6a-NYaH4z9fvQuxsxPZdV5Kd-pGOB4BYOmiL8lAnE0QDA.aazBeJ4cC0yp_35DUokXPr0GxAzLRiJjqt8BH_3eJNI&dib_tag=se&keywords=anime+accessory&qid=1757597494&sprefix=anime+accesr%2Caps%2C408&sr=8-16&linkCode=ll1&tag=onlinemar0fad-21&linkId=99c90b2692140fddae0fe6e159c55eb7&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/51HkRji2VAL._SX522_.jpg"><h3>MC SID RAZZ - Anime - Design Ruled Binded A5 Notebook (Flat Lay & Soft Cover) - Notebooks For Anime Fans/Stationery Items For Anime Fandom (Death Note)</h3><a href="https://www.amazon.in/MCSID-RAZZ-Anime-Notebooks-Stationery/dp/B0BTHKDBXH?crid=2MCOA4C920JY8&dib=eyJ2IjoiMSJ9.uMccvOGv6GfokFDSmRieE04Oq9fjQtiIt4r_Ym_XoBtbX6s8OFXur3vXwNNqRgMN1p54P4JTAPTOx8ng0E0UaJ18c65TOf9lgs5nu2uMFiJ07KKdOBQnm6Umpz3vSuQrSHmJ_ROSUbxAGZVR5N6QEAvmjz0Lhubw0Qj-IAuS2FwOaWuBaXrxrRHCUhrkkN9XLFRGUvltkUJhi-BEXFjUQJjoGtKqQ4ctnBQqi-BaKY94LSoDKm8xf9tA-R44gP6a-NYaH4z9fvQuxsxPZdV5Kd-pGOB4BYOmiL8lAnE0QDA.aazBeJ4cC0yp_35DUokXPr0GxAzLRiJjqt8BH_3eJNI&dib_tag=se&keywords=anime+accessory&qid=1757597494&sprefix=anime+accesr%2Caps%2C408&sr=8-27&linkCode=ll1&tag=onlinemar0fad-21&linkId=8cd6dea44fe87adc8ca8ee9f9bd7cff7&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/510arSHJleL._SY625_.jpg"><h3>RVM Jewels Anime Attack of Titan Hand Band Eren AOT Leather Bracelet Cosplay Accessory For Boys and Men</h3><a href="https://www.amazon.in/RVM-Jewels-Leather-Bracelet-Accessory/dp/B0BG65JDKC?crid=2MCOA4C920JY8&dib=eyJ2IjoiMSJ9.uMccvOGv6GfokFDSmRieE04Oq9fjQtiIt4r_Ym_XoBtbX6s8OFXur3vXwNNqRgMN1p54P4JTAPTOx8ng0E0UaJ18c65TOf9lgs5nu2uMFiJ07KKdOBQnm6Umpz3vSuQrSHmJ_ROSUbxAGZVR5N6QEAvmjz0Lhubw0Qj-IAuS2FwOaWuBaXrxrRHCUhrkkN9XLFRGUvltkUJhi-BEXFjUQJjoGtKqQ4ctnBQqi-BaKY94LSoDKm8xf9tA-R44gP6a-NYaH4z9fvQuxsxPZdV5Kd-pGOB4BYOmiL8lAnE0QDA.aazBeJ4cC0yp_35DUokXPr0GxAzLRiJjqt8BH_3eJNI&dib_tag=se&keywords=anime+accessory&qid=1757597494&sprefix=anime+accesr%2Caps%2C408&sr=8-31&linkCode=ll1&tag=onlinemar0fad-21&linkId=4822240c6a74a32f38198652e23164c6&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
@@ -160,9 +271,9 @@
   </section>
 
   <!-- Wallpapers -->
-  <section id="wallpapers">
+  <section class="category" id="wallpapers" data-aos="fade-up">
     <h2>Wallpapers</h2>
-    <div class="grid">
+    <div class="cards">
       <div class="card"><img src="https://m.media-amazon.com/images/I/91Q0mztnT8L._SX679_.jpg"><h3>Moment Prints Goku Manga Collage Poster Set - Set of 20, 210 mm x 297 mm, W/Self-Adhesive, Premium-Quality Posters, 300 GSM Paper, Posters For Anime Fans (Goku Manga 1) - Glue Dots Included, Cardstock</h3><a href="https://www.amazon.in/Moment-Prints-Manga-Collage-Poster/dp/B0CPFPTJRV?crid=2VWM34Y968EB6&dib=eyJ2IjoiMSJ9.z_9NRWLoOb0qsk_QQFxs4Ko2k1lJvF_BB8WBGDA8189N7hed2dmNr8VlaADL86GQHz0DPBUzp9obZVnlWpGlwhcRtyAsiAvwxTWB_LTb49ZuELK72eydysoO2Gcaj0m1OI0uIEE2r24VlTArTNFIlawvidnpQ-eio_0whgd-Nnm499thMnsg9SJ0PVM1UH8FLVzeDiRamf66Qa5CyqsFSFb-x3utAmdYkMncfzvWcy33HSrSYTKF9Ih5R0qDmXTia_RfeCORgGx9-eb4mf84unosXDTQwcbQGX_ykRM1W6E.hqwrHpj13rql2LxF38meMaUspgXZWmUWzTXmTls0h8k&dib_tag=se&keywords=anime%2Bwallpapers&qid=1757596243&sprefix=anime%2Bwallpaper%2Caps%2C316&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=3ab8e2a5a1f376b82af69fb0db94875d&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/61XER7AU-iL._SX679_.jpg"><h3>Attack on Titan Anime Wall Poster/Wallpaper A3 Size</h3><a href="https://www.amazon.in/Attack-Titan-Anime-Poster-Wallpaper/dp/B0DCSQTP2F?crid=2VWM34Y968EB6&dib=eyJ2IjoiMSJ9.z_9NRWLoOb0qsk_QQFxs4Ko2k1lJvF_BB8WBGDA8189N7hed2dmNr8VlaADL86GQHz0DPBUzp9obZVnlWpGlwhcRtyAsiAvwxTWB_LTb49ZuELK72eydysoO2Gcaj0m1OI0uIEE2r24VlTArTNFIlawvidnpQ-eio_0whgd-Nnm499thMnsg9SJ0PVM1UH8FLVzeDiRamf66Qa5CyqsFSFb-x3utAmdYkMncfzvWcy33HSrSYTKF9Ih5R0qDmXTia_RfeCORgGx9-eb4mf84unosXDTQwcbQGX_ykRM1W6E.hqwrHpj13rql2LxF38meMaUspgXZWmUWzTXmTls0h8k&dib_tag=se&keywords=anime%2Bwallpapers&qid=1757596243&sprefix=anime%2Bwallpaper%2Caps%2C316&sr=8-4-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=89d75b382c87bcc0f84879183f644e92&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
       <div class="card"><img src="https://m.media-amazon.com/images/I/81DnBvT9NzL._SX679_.jpg"><h3>Moment Prints Luffy Colored Manga Collage Poster Set - Set of 20, 210 mm x 297 mm, 300 GSM Paper, One Piece Posters, Monkey D. Luffy Poster (Luffy Manga) - Glue Dots Included, Cardstock</h3><a href="https://www.amazon.in/Moment-Prints-Colored-Collage-Poster/dp/B0D7J1HNXZ?content-id=amzn1.sym.0629fcb0-94ed-4eba-9abe-6c93c227c465%3Aamzn1.sym.0629fcb0-94ed-4eba-9abe-6c93c227c465&crid=2VWM34Y968EB6&cv_ct_cx=anime%2Bwallpapers&keywords=anime%2Bwallpapers&pd_rd_i=B0D7J1HNXZ&pd_rd_r=cde64be0-c6bc-43f5-b924-ed24bd27a08f&pd_rd_w=0Abs5&pd_rd_wg=4WI6J&pf_rd_p=0629fcb0-94ed-4eba-9abe-6c93c227c465&pf_rd_r=4J52D7W9AAY87N0S9Z8Z&qid=1757596243&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=anime%2Bwallpaper%2Caps%2C316&sr=1-3-66673dcf-083f-43ba-b782-d4a436cc5cfb-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=248ef9936e35e8b595417dc7edd367d7&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
@@ -176,6 +287,47 @@
     </div>
   </section>
 
+  <footer>
+    <p>&copy; 2025 Online Marketing Store — Anime</p>
+  </footer>
+
+  <button id="topBtn" title="Back to top">↑</button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+
+    // Back to top button
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Search (targets .card because your markup uses 'card' class)
+    const searchBox = document.getElementById('searchBox');
+    searchBox.addEventListener('input', function () {
+      const q = this.value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      // If empty query, show all
+      if (!q) {
+        cards.forEach(c => { c.style.display = ''; c.classList.remove('match'); });
+        return;
+      }
+
+      cards.forEach(card => {
+        // prefer title (h3) for searching, fallback to whole card text
+        const titleEl = card.querySelector('h3');
+        const text = (titleEl ? titleEl.innerText : card.innerText).toLowerCase();
+        const matches = text.includes(q);
+        card.style.display = matches ? '' : 'none';
+        card.classList.toggle('match', matches);
+      });
+    });
+  </script>
+</body>
+</html>
  
 
 </body>
