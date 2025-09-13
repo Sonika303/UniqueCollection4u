@@ -10,12 +10,11 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --blue-900:#0d47a1;
       --blue-700:#1976d2;
       --accent:#42a5f5;
       --bg:#f9fbff;
-      --card-bg:#fff;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#222;}
@@ -38,21 +37,17 @@
     .hero p{margin:10px 0 20px}
     .hero button{padding:12px 25px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-size:16px;cursor:pointer;position:relative;overflow:hidden;transition:0.3s}
     .hero button:hover{transform:scale(1.05);box-shadow:0 6px 18px rgba(66,165,245,0.5)}
-    .hero button:active::after{content:"";position:absolute;width:300px;height:300px;top:50%;left:50%;background:rgba(255,255,255,0.4);border-radius:50%;transform:translate(-50%,-50%);animation:ripple .6s linear}
-    @keyframes ripple{from{width:0;height:0;opacity:1}to{width:300px;height:300px;opacity:0}}
+
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-    /* Categories */
-    .showcase{padding:40px 20px;max-width:1200px;margin:auto}
-    .showcase h2{text-align:center;font-size:26px;color:var(--blue-900);margin-bottom:30px}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-    .cat-card{background:#fff;border-radius:10px;padding:18px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);transition:.3s}
-    .cat-card:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
-    .cat-card img{width:100%;height:130px;object-fit:cover;border-radius:8px;margin-bottom:10px;transition:.3s}
-    .cat-card:hover img{transform:scale(1.05)}
-    .cat-card h3{margin:8px 0;font-size:18px;color:var(--blue-900)}
-    .cat-card a{display:inline-block;margin-top:10px;background:var(--blue-700);color:#fff;padding:8px 14px;border-radius:6px;text-decoration:none;transition:.3s}
-    .cat-card a:hover{background:var(--blue-900)}
+    /* Categories List */
+    .categories{max-width:1000px;margin:50px auto;padding:0 20px}
+    .category-item{margin-bottom:35px;padding:20px;border-radius:8px;background:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);transition:.3s}
+    .category-item:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
+    .category-item h3{margin:0 0 8px;font-size:22px;color:var(--blue-900)}
+    .category-item p{margin:0;color:#555;font-size:15px}
+    .category-item a{display:inline-block;margin-top:10px;background:var(--blue-700);color:#fff;padding:7px 14px;border-radius:6px;text-decoration:none;font-size:14px}
+    .category-item a:hover{background:var(--blue-900)}
 
     /* Footer + Top */
     footer{text-align:center;padding:20px;background:var(--blue-900);color:#fff;margin-top:40px}
@@ -85,24 +80,65 @@
 
   <section class="hero">
     <h2>Welcome to Online Marketing Store</h2>
-    <p>One place for Electronics, Anime, Fashion, Fitness & more!</p>
-    <button onclick="location.href='electronics.html'">Explore Now</button>
+    <p>Shop across multiple categories with ease and style.</p>
+    <button onclick="location.href='electronics.html'">Start Shopping</button>
   </section>
 
-  <section class="showcase">
-    <h2>Shop by Category</h2>
-    <div class="cards">
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71P85R392uL._SX679_.jpg"><h3>Electronics</h3><a href="electronics.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/81JygP4Fz2L._SX679_.jpg"><h3>Anime</h3><a href="anime.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71xLmdLOQ0L._SX679_.jpg"><h3>Fashion</h3><a href="fashion.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/61Iz2yy2CKL._SX679_.jpg"><h3>Fitness</h3><a href="fitness.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71cL5T4z7IL._SX679_.jpg"><h3>Kitchenware</h3><a href="kitchenware.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/81iMyY7z5VL._SX679_.jpg"><h3>Gaming</h3><a href="gaming.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/41DnuJfZz5L._SX331_BO1,204,203,200_.jpg"><h3>Books</h3><a href="books.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71tW8koTgHL._SX679_.jpg"><h3>Beauty</h3><a href="beauty.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/81B87jTbgPL._SX679_.jpg"><h3>Home Décor</h3><a href="homedecor.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71j7jGcyKxL._SX679_.jpg"><h3>Toys & Kids</h3><a href="toys.html">Shop</a></div>
-      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/61PRVY7oKXL._SX679_.jpg"><h3>About</h3><a href="about.html">Learn More</a></div>
+  <section class="categories">
+    <div class="category-item" data-aos="fade-up">
+      <h3>Anime</h3>
+      <p>Discover manga sets, anime figures, keychains, and more.</p>
+      <a href="anime.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Electronics</h3>
+      <p>Latest smartphones, laptops, headphones, and accessories.</p>
+      <a href="electronics.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Fashion</h3>
+      <p>Trendy clothing, shoes, and fashion accessories for all styles.</p>
+      <a href="fashion.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Fitness</h3>
+      <p>Gear, supplements, and equipment to keep you fit.</p>
+      <a href="fitness.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Kitchenware</h3>
+      <p>Cooking essentials, utensils, and smart kitchen gadgets.</p>
+      <a href="kitchenware.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Gaming</h3>
+      <p>Consoles, gaming accessories, and must-have titles.</p>
+      <a href="gaming.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Books</h3>
+      <p>Wide range of genres: novels, educational, and comics.</p>
+      <a href="books.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Beauty</h3>
+      <p>Skincare, makeup, and grooming essentials.</p>
+      <a href="beauty.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Home Décor</h3>
+      <p>Modern and traditional décor items to enhance your home.</p>
+      <a href="homedecor.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>Toys & Kids</h3>
+      <p>Toys, puzzles, and educational games for children.</p>
+      <a href="toys.html">Explore</a>
+    </div>
+    <div class="category-item" data-aos="fade-up">
+      <h3>About</h3>
+      <p>Learn more about our store and what we offer.</p>
+      <a href="about.html">Read More</a>
     </div>
   </section>
 
@@ -121,12 +157,12 @@
     window.addEventListener('scroll',()=>{topBtn.style.display=(window.scrollY>300)?'block':'none';});
     topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
 
-    // Search
+    // Search filter
     document.getElementById('homeSearch').addEventListener('input',function(){
       const q=this.value.toLowerCase();
-      document.querySelectorAll('.cat-card').forEach(card=>{
-        const txt=card.innerText.toLowerCase();
-        card.style.display= txt.includes(q)?'':'none';
+      document.querySelectorAll('.category-item').forEach(item=>{
+        const txt=item.innerText.toLowerCase();
+        item.style.display= txt.includes(q)?'':'none';
       });
     });
   </script>
