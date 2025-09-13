@@ -1,15 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Marketing Store</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Online Marketing Store - Home</title>
+
+  <!-- Animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue-900:#0d47a1;
+      --blue-700:#1976d2;
+      --accent:#42a5f5;
+      --bg:#f9fbff;
+      --card-bg:#fff;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#222;}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:1200;background:linear-gradient(90deg,var(--blue-900),var(--blue-700));
+      color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    header h1{margin:0;font-size:18px;font-weight:700}
+    nav.top-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+    nav.top-nav a{color:#fff;text-decoration:none;font-size:14px;padding:6px 10px;border-radius:6px;transition:0.2s}
+    nav.top-nav a:hover{background:rgba(255,255,255,0.1)}
+
+    /* Search */
+    .search-bar{position:sticky;top:58px;z-index:1199;background:#eef3ff;padding:10px;display:flex;justify-content:center}
+    .search-bar input{width:80%;max-width:880px;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+
+    /* Hero */
+    .hero{text-align:center;padding:70px 20px;background:linear-gradient(90deg,#1565c0,#1e88e5);color:#fff}
+    .hero h2{margin:0;font-size:32px;animation:float 3s ease-in-out infinite}
+    .hero p{margin:10px 0 20px}
+    .hero button{padding:12px 25px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-size:16px;cursor:pointer;position:relative;overflow:hidden;transition:0.3s}
+    .hero button:hover{transform:scale(1.05);box-shadow:0 6px 18px rgba(66,165,245,0.5)}
+    .hero button:active::after{content:"";position:absolute;width:300px;height:300px;top:50%;left:50%;background:rgba(255,255,255,0.4);border-radius:50%;transform:translate(-50%,-50%);animation:ripple .6s linear}
+    @keyframes ripple{from{width:0;height:0;opacity:1}to{width:300px;height:300px;opacity:0}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+    /* Categories */
+    .showcase{padding:40px 20px;max-width:1200px;margin:auto}
+    .showcase h2{text-align:center;font-size:26px;color:var(--blue-900);margin-bottom:30px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .cat-card{background:#fff;border-radius:10px;padding:18px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);transition:.3s}
+    .cat-card:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
+    .cat-card img{width:100%;height:130px;object-fit:cover;border-radius:8px;margin-bottom:10px;transition:.3s}
+    .cat-card:hover img{transform:scale(1.05)}
+    .cat-card h3{margin:8px 0;font-size:18px;color:var(--blue-900)}
+    .cat-card a{display:inline-block;margin-top:10px;background:var(--blue-700);color:#fff;padding:8px 14px;border-radius:6px;text-decoration:none;transition:.3s}
+    .cat-card a:hover{background:var(--blue-900)}
+
+    /* Footer + Top */
+    footer{text-align:center;padding:20px;background:var(--blue-900);color:#fff;margin-top:40px}
+    #topBtn{position:fixed;bottom:20px;right:20px;width:45px;height:45px;border:none;border-radius:50%;background:var(--accent);color:#fff;font-size:18px;display:none;cursor:pointer}
+  </style>
 </head>
 <body>
+
   <header>
-    <h1>Online Marketing Store 🛒</h1>
-    <nav>
+    <h1>Online Marketing Store</h1>
+    <nav class="top-nav">
       <a href="index.html">Home</a>
       <a href="anime.html">Anime</a>
       <a href="electronics.html">Electronics</a>
@@ -25,69 +79,56 @@
     </nav>
   </header>
 
+  <div class="search-bar">
+    <input id="homeSearch" type="search" placeholder="Search categories...">
+  </div>
+
   <section class="hero">
-    <h2>Welcome 🚀</h2>
-    <p>Your one-stop Online Marketing Store — Explore 10 amazing categories!</p>
+    <h2>Welcome to Online Marketing Store</h2>
+    <p>One place for Electronics, Anime, Fashion, Fitness & more!</p>
+    <button onclick="location.href='electronics.html'">Explore Now</button>
   </section>
 
-  <section class="categories">
+  <section class="showcase">
     <h2>Shop by Category</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Anime 🎌</h3>
-        <p>Figures, posters, manga & more!</p>
-        <a href="anime.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Electronics 🔌</h3>
-        <p>Smartphones, headphones, gadgets.</p>
-        <a href="electronics.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Fashion 👗</h3>
-        <p>Latest trends & styles.</p>
-        <a href="fashion.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Fitness 💪</h3>
-        <p>Gear up for strength & health.</p>
-        <a href="fitness.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Kitchenware 🍳</h3>
-        <p>Cookware, blenders, essentials.</p>
-        <a href="kitchenware.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Gaming 🎮</h3>
-        <p>Consoles, accessories, chairs.</p>
-        <a href="gaming.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Books 📚</h3>
-        <p>Bestsellers, novels, manga.</p>
-        <a href="books.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Beauty 💄</h3>
-        <p>Skincare, makeup & self-care.</p>
-        <a href="beauty.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Home Décor 🛋️</h3>
-        <p>Wall art, rugs, modern interiors.</p>
-        <a href="homedecor.html" class="btn">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Toys & Kids 🧸</h3>
-        <p>Fun toys, learning & play.</p>
-        <a href="toys.html" class="btn">Explore</a>
-      </div>
+    <div class="cards">
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71P85R392uL._SX679_.jpg"><h3>Electronics</h3><a href="electronics.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/81JygP4Fz2L._SX679_.jpg"><h3>Anime</h3><a href="anime.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71xLmdLOQ0L._SX679_.jpg"><h3>Fashion</h3><a href="fashion.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/61Iz2yy2CKL._SX679_.jpg"><h3>Fitness</h3><a href="fitness.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71cL5T4z7IL._SX679_.jpg"><h3>Kitchenware</h3><a href="kitchenware.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/81iMyY7z5VL._SX679_.jpg"><h3>Gaming</h3><a href="gaming.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/41DnuJfZz5L._SX331_BO1,204,203,200_.jpg"><h3>Books</h3><a href="books.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71tW8koTgHL._SX679_.jpg"><h3>Beauty</h3><a href="beauty.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/81B87jTbgPL._SX679_.jpg"><h3>Home Décor</h3><a href="homedecor.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/71j7jGcyKxL._SX679_.jpg"><h3>Toys & Kids</h3><a href="toys.html">Shop</a></div>
+      <div class="cat-card" data-aos="fade-up"><img src="https://m.media-amazon.com/images/I/61PRVY7oKXL._SX679_.jpg"><h3>About</h3><a href="about.html">Learn More</a></div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Online Marketing Store</p>
+    <p>&copy; 2025 Online Marketing Store | All Rights Reserved</p>
   </footer>
+
+  <button id="topBtn">↑</button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration:900, once:true });
+
+    // Back-to-top
+    const topBtn=document.getElementById('topBtn');
+    window.addEventListener('scroll',()=>{topBtn.style.display=(window.scrollY>300)?'block':'none';});
+    topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+    // Search
+    document.getElementById('homeSearch').addEventListener('input',function(){
+      const q=this.value.toLowerCase();
+      document.querySelectorAll('.cat-card').forEach(card=>{
+        const txt=card.innerText.toLowerCase();
+        card.style.display= txt.includes(q)?'':'none';
+      });
+    });
+  </script>
 </body>
 </html>
