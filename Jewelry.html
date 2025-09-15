@@ -6,15 +6,17 @@
   <title>Jewelry - Online Marketing Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #fefefe;
+      background: #fdfdfd;
       color: #333;
       overflow-x: hidden;
     }
+
     header {
       background: #880e4f;
       color: white;
@@ -26,55 +28,42 @@
       justify-content: space-between;
       align-items: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
+    header h1 { margin: 0; font-size: 22px; }
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 15px;
+      margin: 0 10px;
       font-size: 15px;
       transition: color 0.3s, border-bottom 0.3s;
     }
-    nav a:hover {
-      color: #f8bbd0;
-      border-bottom: 2px solid #f48fb1;
-    }
-    .search-bar {
-      margin-left: 20px;
-    }
-    .search-bar input {
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
-    }
+    nav a:hover { color: #f8bbd0; border-bottom: 2px solid #f48fb1; }
+
     .hero {
       text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(to right, #ad1457, #ec407a);
+      padding: 60px 20px;
+      background: linear-gradient(to right, #ad1457, #d81b60);
       color: white;
+      overflow: hidden;
     }
-    .hero h2 {
-      font-size: 34px;
-      margin-bottom: 10px;
-    }
+    .hero h2 { font-size: 36px; margin-bottom: 15px; animation: float 3s ease-in-out infinite; }
+    .hero p { font-size: 18px; }
+    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+
     .category {
       padding: 40px 20px;
       text-align: center;
     }
     .category h2 {
       margin-bottom: 20px;
-      font-size: 26px;
-      color: #ad1457;
+      font-size: 28px;
+      color: #880e4f;
     }
-    .cards {
+    .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
-    .card {
+    .product {
       background: #fff;
       padding: 15px;
       border-radius: 10px;
@@ -82,44 +71,47 @@
       transition: transform 0.4s, box-shadow 0.4s;
       cursor: pointer;
     }
-    .card:hover {
+    .product:hover {
       transform: translateY(-8px) scale(1.05);
       box-shadow: 0 10px 20px rgba(233,30,99,0.3);
     }
-    .card img {
-      max-width: 100%;
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
       border-radius: 6px;
       margin-bottom: 10px;
+      background: #fce4ec;
     }
-    .card h3 {
+    .product h3 {
       font-size: 16px;
       margin: 8px 0;
+      color: #000;
     }
-    .card a {
+    .product a {
       display: inline-block;
       margin-top: 8px;
       text-decoration: none;
       color: white;
-      background: #ec407a;
+      background: #d81b60;
       padding: 8px 15px;
       border-radius: 5px;
       transition: background 0.3s, transform 0.3s;
     }
-    .card a:hover {
-      background: #ad1457;
-      transform: translateY(-2px);
-    }
+    .product a:hover { background: #880e4f; transform: translateY(-2px); }
+
     footer {
       text-align: center;
       padding: 20px;
       background: #880e4f;
       color: white;
     }
+
     #topBtn {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #ec407a;
+      background: #d81b60;
       color: white;
       border: none;
       padding: 12px 15px;
@@ -130,172 +122,172 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
-    #topBtn:hover {
-      background: #ad1457;
-      transform: scale(1.2);
-    }
+    #topBtn:hover { background: #880e4f; transform: scale(1.2); }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Online Marketing Store</h1>
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search jewelry...">
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#necklaces">Necklaces</a>
-      <a href="#earrings">Earrings</a>
-      <a href="#rings">Rings</a>
-      <a href="#bracelets">Bracelets</a>
-      <a href="#anklets">Anklets</a>
-      <a href="#sets">Jewelry Sets</a>
-      <a href="#watches">Watches</a>
-    </nav>
-  </header>
 
-  <section class="hero animate__animated animate__fadeIn">
-    <h2>Explore Elegant Jewelry</h2>
-    <p class="animate__animated animate__fadeInUp animate__delay-1s">Discover timeless designs for every occasion.</p>
-  </section>
+<header class="animate__animated animate__fadeInDown">
+  <h1>Online Marketing Store</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#rings">Rings</a>
+    <a href="#necklaces">Necklaces</a>
+    <a href="#earrings">Earrings</a>
+    <a href="#bracelets">Bracelets</a>
+    <a href="#watches">Watches</a>
+    <a href="#anklets">Anklets</a>
+    <a href="#brooches">Brooches</a>
+  </nav>
+</header>
 
-  <!-- Necklaces -->
-  <section class="category" id="necklaces" data-aos="fade-up">
-    <h2>Necklaces & Pendants</h2>
-    <div class="cards">
-      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
-    </div>
-  </section>
+<section class="hero animate__animated animate__zoomIn">
+  <h2>Elegant Jewelry Collection</h2>
+  <p class="animate__animated animate__fadeIn animate__delay-1s">Discover timeless beauty in rings, necklaces, earrings, and more.</p>
+</section>
 
-  <!-- Earrings -->
-  <section class="category" id="earrings" data-aos="fade-up">
-    <h2>Earrings</h2>
-    <div class="cards">
-      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
-    </div>
-  </section>
+<!-- Rings -->
+<div class="category" id="rings" data-aos="fade-up">
+  <h2>Rings</h2>
+  <div class="products">
+    <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  </div>
+</div>
 
-  <!-- Rings -->
-  <section class="category" id="rings" data-aos="fade-up">
-    <h2>Rings</h2>
-    <div class="cards">
-      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
-    </div>
-  </section>
+<!-- Necklaces -->
+<div class="category" id="necklaces" data-aos="fade-up">
+  <h2>Necklaces</h2>
+  <div class="products">
+    <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  </div>
+</div>
 
-  <!-- Bracelets -->
-  <section class="category" id="bracelets" data-aos="fade-up">
-    <h2>Bracelets & Bangles</h2>
-    <div class="cards">
-      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
-    </div>
-  </section>
+<!-- Earrings -->
+<div class="category" id="earrings" data-aos="fade-up">
+  <h2>Earrings</h2>
+  <div class="products">
+    <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  </div>
+</div>
 
-  <!-- Anklets -->
-  <section class="category" id="anklets" data-aos="fade-up">
-    <h2>Anklets</h2>
-    <div class="cards">
-      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
-    </div>
-  </section>
+<!-- Bracelets -->
+<div class="category" id="bracelets" data-aos="fade-up">
+  <h2>Bracelets</h2>
+  <div class="products">
+    <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  </div>
+</div>
 
-  <!-- Sets -->
-  <section class="category" id="sets" data-aos="fade-up">
-    <h2>Jewelry Sets</h2>
-    <div class="cards">
-      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
-    </div>
-  </section>
+<!-- Watches -->
+<div class="category" id="watches" data-aos="fade-up">
+  <h2>Watches</h2>
+  <div class="products">
+    <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  </div>
+</div>
 
-  <!-- Watches -->
-  <section class="category" id="watches" data-aos="fade-up">
-    <h2>Watches & Smart Jewelry</h2>
-    <div class="cards">
-      <div class="card"><img src="" alt=""><h3>Product 1</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 2</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 3</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 4</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 5</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 6</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 7</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 8</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 9</h3><a href="">Buy Now</a></div>
-      <div class="card"><img src="" alt=""><h3>Product 10</h3><a href="">Buy Now</a></div>
-    </div>
-  </section>
+<!-- Anklets -->
+<div class="category" id="anklets" data-aos="fade-up">
+  <h2>Anklets</h2>
+  <div class="products">
+    <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  </div>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Online Marketing Store | Jewelry Section</p>
-  </footer>
+<!-- Brooches -->
+<div class="category" id="brooches" data-aos="fade-up">
+  <h2>Brooches</h2>
+  <div class="products">
+    <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  </div>
+</div>
 
-  <button id="topBtn">&#8679;</button>
+<footer class="animate__animated animate__fadeInUp">
+  <p>&copy; 2025 Online Marketing Store | Jewelry Section</p>
+</footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1200, once: true });
+<button id="topBtn">&#8679;</button>
 
-    // Back to top
-    let topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        topBtn.style.display = "block";
-      } else {
-        topBtn.style.display = "none";
-      }
-    };
-    topBtn.onclick =
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1200, once: true });
 
+  // Back to top button
+  let topBtn = document.getElementById("topBtn");
+  window.onscroll = function() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      topBtn.style.display = "block";
+    } else {
+      topBtn.style.display = "none";
+    }
+  };
+  topBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
+
+</body>
+</html>
