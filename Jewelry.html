@@ -25,28 +25,50 @@
       top: 0;
       z-index: 1000;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
     }
-    header h1 { margin: 0; font-size: 22px; }
+    header h1 { margin: 0; font-size: 20px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 10px;
-      font-size: 15px;
+      margin: 0 8px;
+      font-size: 14px;
       transition: color 0.3s, border-bottom 0.3s;
     }
     nav a:hover { color: #f8bbd0; border-bottom: 2px solid #f48fb1; }
 
+    .search-bar {
+      margin-top: 10px;
+      flex-basis: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .search-bar input {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 20px;
+      width: 250px;
+      max-width: 90%;
+      font-size: 14px;
+      outline: none;
+    }
+
     .hero {
       text-align: center;
-      padding: 60px 20px;
+      padding: 50px 20px;
       background: linear-gradient(to right, #ad1457, #d81b60);
       color: white;
       overflow: hidden;
     }
-    .hero h2 { font-size: 36px; margin-bottom: 15px; animation: float 3s ease-in-out infinite; }
-    .hero p { font-size: 18px; }
+    .hero h2 { font-size: 32px; margin-bottom: 12px; animation: float 3s ease-in-out infinite; }
+    .hero p { font-size: 16px; }
     @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
 
     .category {
@@ -55,7 +77,7 @@
     }
     .category h2 {
       margin-bottom: 20px;
-      font-size: 28px;
+      font-size: 24px;
       color: #880e4f;
     }
     .products {
@@ -77,26 +99,27 @@
     }
     .product img {
       width: 100%;
-      height: 180px;
+      height: 160px;
       object-fit: cover;
       border-radius: 6px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       background: #fce4ec;
     }
     .product h3 {
-      font-size: 16px;
-      margin: 8px 0;
+      font-size: 15px;
+      margin: 6px 0;
       color: #000;
     }
     .product a {
       display: inline-block;
-      margin-top: 8px;
+      margin-top: 5px;
       text-decoration: none;
       color: white;
       background: #d81b60;
-      padding: 8px 15px;
+      padding: 6px 12px;
       border-radius: 5px;
       transition: background 0.3s, transform 0.3s;
+      font-size: 14px;
     }
     .product a:hover { background: #880e4f; transform: translateY(-2px); }
 
@@ -139,6 +162,9 @@
     <a href="#anklets">Anklets</a>
     <a href="#brooches">Brooches</a>
   </nav>
+  <div class="search-bar">
+    <input type="text" id="searchBox" placeholder="Search jewelry...">
+  </div>
 </header>
 
 <section class="hero animate__animated animate__zoomIn">
@@ -146,7 +172,7 @@
   <p class="animate__animated animate__fadeIn animate__delay-1s">Discover timeless beauty in rings, necklaces, earrings, and more.</p>
 </section>
 
-<!-- Rings -->
+<!-- Categories -->
 <div class="category" id="rings" data-aos="fade-up">
   <h2>Rings</h2>
   <div class="products">
@@ -163,7 +189,6 @@
   </div>
 </div>
 
-<!-- Necklaces -->
 <div class="category" id="necklaces" data-aos="fade-up">
   <h2>Necklaces</h2>
   <div class="products">
@@ -180,7 +205,6 @@
   </div>
 </div>
 
-<!-- Earrings -->
 <div class="category" id="earrings" data-aos="fade-up">
   <h2>Earrings</h2>
   <div class="products">
@@ -197,7 +221,6 @@
   </div>
 </div>
 
-<!-- Bracelets -->
 <div class="category" id="bracelets" data-aos="fade-up">
   <h2>Bracelets</h2>
   <div class="products">
@@ -214,7 +237,6 @@
   </div>
 </div>
 
-<!-- Watches -->
 <div class="category" id="watches" data-aos="fade-up">
   <h2>Watches</h2>
   <div class="products">
@@ -231,7 +253,6 @@
   </div>
 </div>
 
-<!-- Anklets -->
 <div class="category" id="anklets" data-aos="fade-up">
   <h2>Anklets</h2>
   <div class="products">
@@ -248,7 +269,6 @@
   </div>
 </div>
 
-<!-- Brooches -->
 <div class="category" id="brooches" data-aos="fade-up">
   <h2>Brooches</h2>
   <div class="products">
@@ -287,6 +307,16 @@
   topBtn.onclick = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // 🔎 Search filter
+  document.getElementById("searchBox").addEventListener("keyup", function() {
+    let filter = this.value.toLowerCase();
+    let products = document.querySelectorAll(".product");
+    products.forEach(product => {
+      let text = product.innerText.toLowerCase();
+      product.style.display = text.includes(filter) ? "block" : "none";
+    });
+  });
 </script>
 
 </body>
