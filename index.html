@@ -1,170 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Online Marketing Store - Home</title>
-
-  <!-- Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <style>
-    :root {
-      --blue-900:#0d47a1;
-      --blue-700:#1976d2;
-      --accent:#42a5f5;
-      --bg:#f9fbff;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#222;}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:1200;background:linear-gradient(90deg,var(--blue-900),var(--blue-700));
-      color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    header h1{margin:0;font-size:18px;font-weight:700}
-    nav.top-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-    nav.top-nav a{color:#fff;text-decoration:none;font-size:14px;padding:6px 10px;border-radius:6px;transition:0.2s}
-    nav.top-nav a:hover{background:rgba(255,255,255,0.1)}
-
-    /* Search */
-    .search-bar{position:sticky;top:58px;z-index:1199;background:#eef3ff;padding:10px;display:flex;justify-content:center}
-    .search-bar input{width:80%;max-width:880px;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:15px}
-
-    /* Hero */
-    .hero{text-align:center;padding:70px 20px;background:linear-gradient(90deg,#1565c0,#1e88e5);color:#fff}
-    .hero h2{margin:0;font-size:32px;animation:float 3s ease-in-out infinite}
-    .hero p{margin:10px 0 20px}
-    .hero button{padding:12px 25px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-size:16px;cursor:pointer;position:relative;overflow:hidden;transition:0.3s}
-    .hero button:hover{transform:scale(1.05);box-shadow:0 6px 18px rgba(66,165,245,0.5)}
-
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
-    /* Categories List */
-    .categories{max-width:1000px;margin:50px auto;padding:0 20px}
-    .category-item{margin-bottom:35px;padding:20px;border-radius:8px;background:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);transition:.3s}
-    .category-item:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
-    .category-item h3{margin:0 0 8px;font-size:22px;color:var(--blue-900)}
-    .category-item p{margin:0;color:#555;font-size:15px}
-    .category-item a{display:inline-block;margin-top:10px;background:var(--blue-700);color:#fff;padding:7px 14px;border-radius:6px;text-decoration:none;font-size:14px}
-    .category-item a:hover{background:var(--blue-900)}
-
-    /* Footer + Top */
-    footer{text-align:center;padding:20px;background:var(--blue-900);color:#fff;margin-top:40px}
-    #topBtn{position:fixed;bottom:20px;right:20px;width:45px;height:45px;border:none;border-radius:50%;background:var(--accent);color:#fff;font-size:18px;display:none;cursor:pointer}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Marketing Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- Header -->
   <header>
     <h1>Online Marketing Store</h1>
-    <nav class="top-nav">
+    <nav>
       <a href="index.html">Home</a>
       <a href="anime.html">Anime</a>
       <a href="electronics.html">Electronics</a>
       <a href="fashion.html">Fashion</a>
-      <a href="fitness.html">Fitness</a>
-      <a href="kitchenware.html">Kitchenware</a>
-      <a href="Jewelry.html">Jewelry</a>
       <a href="books.html">Books</a>
       <a href="beauty.html">Beauty</a>
-      <a href="homedecor.html">Home Décor</a>
+      <a href="kitchenware.html">Kitchenware</a>
+      <a href="jewelry.html">Gaming</a>
+      <a href="home-decor.html">Home Décor</a>
       <a href="toys.html">Toys & Kids</a>
       <a href="about.html">About</a>
     </nav>
   </header>
 
-  <div class="search-bar">
-    <input id="homeSearch" type="search" placeholder="Search categories...">
-  </div>
-
+  <!-- Hero -->
   <section class="hero">
     <h2>Welcome to Online Marketing Store</h2>
-    <p>Shop across multiple categories with ease and style.</p>
-    <button onclick="location.href='electronics.html'">Start Shopping</button>
+    <p>Your one-stop shop for Anime, Fashion, Electronics, Books, and more!</p>
+    <button onclick="location.href='electronics.html'">Shop Now</button>
   </section>
 
+  <!-- Categories -->
   <section class="categories">
-    <div class="category-item" data-aos="fade-up">
+    <div class="category-card">
       <h3>Anime</h3>
-      <p>Discover manga sets, anime figures, keychains, and more.</p>
-      <a href="anime.html">Explore</a>
+      <p>Manga, figures, keychains, wallpapers, and more.</p>
     </div>
-    <div class="category-item" data-aos="fade-up">
+    <div class="category-card">
       <h3>Electronics</h3>
-      <p>Latest smartphones, laptops, headphones, and accessories.</p>
-      <a href="electronics.html">Explore</a>
+      <p>Latest smartphones, laptops, headphones, and gadgets.</p>
     </div>
-    <div class="category-item" data-aos="fade-up">
+    <div class="category-card">
       <h3>Fashion</h3>
-      <p>Trendy clothing, shoes, and fashion accessories for all styles.</p>
-      <a href="fashion.html">Explore</a>
+      <p>Stylish outfits for men, women, and kids.</p>
     </div>
-    <div class="category-item" data-aos="fade-up">
-      <h3>Fitness</h3>
-      <p>Gear, supplements, and equipment to keep you fit.</p>
-      <a href="fitness.html">Explore</a>
-    </div>
-    <div class="category-item" data-aos="fade-up">
-      <h3>Kitchenware</h3>
-      <p>Cooking essentials, utensils, and smart kitchen gadgets.</p>
-      <a href="kitchenware.html">Explore</a>
-    </div>
-    <div class="category-item" data-aos="fade-up">
-      <h3>Jewelry</h3>
-      <p>"Explore different types jewelry"</p>
-      <a href="Jewelry.html">Explore</a>
-    </div>
-    <div class="category-item" data-aos="fade-up">
+    <div class="category-card">
       <h3>Books</h3>
-      <p>Wide range of genres: novels, educational, and comics.</p>
-      <a href="books.html">Explore</a>
+      <p>Novels, manga, and trending bestsellers.</p>
     </div>
-    <div class="category-item" data-aos="fade-up">
+    <div class="category-card">
       <h3>Beauty</h3>
-      <p>Skincare, makeup, and grooming essentials.</p>
-      <a href="beauty.html">Explore</a>
+      <p>Skincare, makeup, and self-care essentials.</p>
     </div>
-    <div class="category-item" data-aos="fade-up">
+    <div class="category-card">
+      <h3>Kitchenware</h3>
+      <p>Cookware, tools, and everything for your kitchen.</p>
+    </div>
+    <div class="category-card">
+      <h3>jewelry</h3>
+      <p>Explore Different Types Of jewelry</p>
+    </div>
+    <div class="category-card">
       <h3>Home Décor</h3>
-      <p>Modern and traditional décor items to enhance your home.</p>
-      <a href="homedecor.html">Explore</a>
+      <p>Decorations, furniture, and home essentials.</p>
     </div>
-    <div class="category-item" data-aos="fade-up">
+    <div class="category-card">
       <h3>Toys & Kids</h3>
-      <p>Toys, puzzles, and educational games for children.</p>
-      <a href="toys.html">Explore</a>
+      <p>Educational toys, action figures, and kids’ essentials.</p>
     </div>
-    <div class="category-item" data-aos="fade-up">
+    <div class="category-card">
       <h3>About</h3>
-      <p>Learn more about our store and what we offer.</p>
-      <a href="about.html">Read More</a>
+      <p>Learn more about us and our vision.</p>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Online Marketing Store | All Rights Reserved</p>
+    <p>&copy; 2025 Online Marketing Store. All rights reserved.</p>
   </footer>
 
-  <button id="topBtn">↑</button>
+  <!-- Back to Top -->
+  <button id="topBtn">&#8679;</button>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration:900, once:true });
-
-    // Back-to-top
-    const topBtn=document.getElementById('topBtn');
-    window.addEventListener('scroll',()=>{topBtn.style.display=(window.scrollY>300)?'block':'none';});
-    topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-
-    // Search filter
-    document.getElementById('homeSearch').addEventListener('input',function(){
-      const q=this.value.toLowerCase();
-      document.querySelectorAll('.category-item').forEach(item=>{
-        const txt=item.innerText.toLowerCase();
-        item.style.display= txt.includes(q)?'':'none';
-      });
-    });
+    let topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    topBtn.onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
   </script>
 </body>
 </html>
