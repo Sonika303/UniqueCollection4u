@@ -16,51 +16,79 @@
       overflow-x: hidden;
     }
 
+    /* Header */
     header {
       background: #0d47a1;
       color: white;
       padding: 15px 20px;
       position: sticky;
       top: 0;
-
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    header h1 { margin: 0; font-size: 20px; }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
     nav a {
-      color: white; text-decoration: none;
-      margin-left: 12px; font-size: 14px;
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 15px;
       transition: color 0.3s, border-bottom 0.3s;
     }
-    nav a:hover { color: #bbdefb; border-bottom: 2px solid #42a5f5; }
-
-    .search-bar {
-      margin-top: 10px; flex-basis: 100%;
-      display: flex; justify-content: center;
-    }
-    .search-bar input {
-      padding: 8px 12px;
-      border: none; border-radius: 20px;
-      width: 250px; max-width: 90%;
-      font-size: 14px; outline: none;
+    nav a:hover {
+      color: #bbdefb;
+      border-bottom: 2px solid #90caf9;
     }
 
+    /* Search bar */
+    #searchBox {
+      width: 300px;
+      padding: 8px;
+      margin-left: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Hero */
     .hero {
       text-align: center;
       padding: 60px 20px;
       background: linear-gradient(to right, #1565c0, #1e88e5);
       color: white;
+      overflow: hidden;
     }
-    .hero h2 { font-size: 32px; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
-    .hero p { font-size: 16px; }
-    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
 
-    .category { padding: 40px 20px; text-align: center; }
-    .category h2 { margin-bottom: 20px; font-size: 24px; color: #0d47a1; }
+    /* Products */
+    .category {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .category h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color:#0d47a1;
+    }
     .products {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
     .product {
-      background: #fff; padding: 15px;
+      background: #fff;
+      padding: 15px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.4s, box-shadow 0.4s;
@@ -68,33 +96,52 @@
     }
     .product:hover {
       transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 10px 20px rgba(25,118,210,0.3);
+      box-shadow: 0 10px 20px rgba(33,150,243,0.3);
     }
     .product img {
-      width: 100%; height: 160px; object-fit: cover;
-      border-radius: 6px; margin-bottom: 8px; background: #e3f2fd;
+      max-width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
     }
-    .product h3 { font-size: 15px; margin: 6px 0; color: #000; }
+    .product h3 {
+      font-size: 16px;
+      margin: 8px 0;
+    }
     .product a {
-      display: inline-block; margin-top: 5px;
-      text-decoration: none; color: white;
-      background: #1976d2; padding: 6px 12px;
-      border-radius: 5px; transition: background 0.3s, transform 0.3s;
-      font-size: 14px;
+      display: inline-block;
+      margin-top: 8px;
+      text-decoration: none;
+      color: white;
+      background: #1976d2;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s, transform 0.3s;
     }
-    .product a:hover { background: #0d47a1; transform: translateY(-2px); }
+    .product a:hover {
+      background: #0d47a1;
+      transform: translateY(-2px);
+    }
 
     footer {
-      text-align: center; padding: 20px;
-      background: #0d47a1; color: white;
+      text-align: center;
+      padding: 20px;
+      background: #0d47a1;
+      color: white;
     }
 
+    /* Back to top */
     #topBtn {
-      position: fixed; bottom: 20px; right: 20px;
-      background: #42a5f5; color: white;
-      border: none; padding: 12px 15px;
-      border-radius: 50%; font-size: 18px;
-      cursor: pointer; display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #42a5f5;
+      color: white;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
@@ -103,25 +150,25 @@
 </head>
 <body>
 
-<header class="animate__animated animate__fadeInDown">
+<header>
   <h1>Online Marketing Store</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="fashion.html">Back to Fashion</a>
-  </nav>
-  <div class="search-bar">
-    <input type="text" id="searchBox" placeholder="Search women's fashion...">
+  <div>
+    <input type="text" id="searchBox" placeholder="Search products...">
+    <nav>
+      <a href="fashion.html">Back to Fashion</a>
+      <a href="index.html">Home</a>
+    </nav>
   </div>
 </header>
 
 <section class="hero animate__animated animate__zoomIn">
-  <h2>Women's Fashion</h2>
-  <p>Discover the latest styles and trends for women</p>
+  <h2>Women's Fashion Collection</h2>
+  <p class="animate__animated animate__fadeIn animate__delay-1s">Discover the latest trends in women's fashion.</p>
 </section>
 
-<!-- Women's Products -->
-<div class="category" id="women-products" data-aos="fade-up">
-  <h2>Products</h2>
+<!-- Products -->
+<div class="category" id="women-fashion" data-aos="fade-up">
+  <h2>Top Women's Picks</h2>
   <div class="products">
     <div class="product"><img src="https://m.media-amazon.com/images/I/610InQb9rTL._SX569_.jpg"><h3>Rayon Viscose Straight Bandhej Printed Kurta with Pant & Dupatta</h3><a href="https://www.amazon.in/GoSriKi-Bandhani-Printed-Straight-TURAE-RED-GS_XXL_Red_XX-Large/dp/B0D1CQY4FQ?crid=TTYFE59F48JD&dib=eyJ2IjoiMSJ9.mIUKTHsKAED4owDDVQbf3pkYHYLBcnrwkRPMxdi5O79LKWUdl0lZ5nxscOL7S01hz6fSx1OOaN62xZx60A1hnk-WgLpQ0OF49sqAdrGTWEvNoe39_3mDf4G_3l3EH1hO4hF4EApIN1T1o-qNiLkGSFKWCZdn1nZ7jRhvnDfrF2SSw3CH-HNlGaFr4xDgwvO_yHUPo1oJafVAvLc1bAB_0LpafboKxhz_LeHnuTWbVcdjlNtb_kW9GmmSag_IeJ0zVgfj23_BAMsmUkOOkffjophgilGsTbS5bzAu3OBCo_k.265n8BVa4ctsXPB9qTIo6IjjZVUjG6XEroTMB1jcOug&dib_tag=se&keywords=women%2Bclothing&qid=1757488089&sprefix=women%2Bclothin%2Caps%2C316&sr=8-15&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=b9e26a60d7e3e57ee090e428b881fb7f&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
     <div class="product"><img src="https://m.media-amazon.com/images/I/61jjKBU1xbL._SY741_.jpg"><h3>Cotton Printed A-Line Kurta With Pant Set</h3><a href="https://www.amazon.in/rytras-Womens-Cotton-Printed-RYT563/dp/B0D33L6X89?crid=TTYFE59F48JD&dib=eyJ2IjoiMSJ9.mIUKTHsKAED4owDDVQbf3pkYHYLBcnrwkRPMxdi5O79LKWUdl0lZ5nxscOL7S01hz6fSx1OOaN62xZx60A1hnk-WgLpQ0OF49sqAdrGTWEvNoe39_3mDf4G_3l3EH1hO4hF4EApIN1T1o-qNiLkGSFKWCZdn1nZ7jRhvnDfrF2SSw3CH-HNlGaFr4xDgwvO_yHUPo1oJafVAvLc1bAB_0LpafboKxhz_LeHnuTWbVcdjlNtb_kW9GmmSag_IeJ0zVgfj23_BAMsmUkOOkffjophgilGsTbS5bzAu3OBCo_k.265n8BVa4ctsXPB9qTIo6IjjZVUjG6XEroTMB1jcOug&dib_tag=se&keywords=women%2Bclothing&qid=1757488089&sprefix=women%2Bclothin%2Caps%2C316&sr=8-30&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=0cc12d265785be8a19a7df0a951621cf&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
@@ -205,28 +252,11 @@
     <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
     <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
     <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
-    <div class="product"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+    <div class="product"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div> 
   </div>
 </div>
 
-<footer class="animate__animated animate__fadeInUp">
+<footer>
   <p>&copy; 2025 Online Marketing Store | Women's Fashion</p>
 </footer>
 
@@ -236,7 +266,7 @@
 <script>
   AOS.init({ duration: 1200, once: true });
 
-  // Back to top
+  // Back to top button
   let topBtn = document.getElementById("topBtn");
   window.onscroll = function() {
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
@@ -259,6 +289,6 @@
     });
   });
 </script>
+
 </body>
 </html>
-
