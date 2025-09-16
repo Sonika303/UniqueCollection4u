@@ -3,222 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fashion | Online Marketing Store</title>
+  <title>Fashion - Online Marketing Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0; padding: 0;
+      background: #fdfdfd;
       color: #333;
+      overflow-x: hidden;
     }
-
     header {
-      background: #222;
-      padding: 20px;
-      text-align: center;
-      color: white;
+      background: #000; color: white;
+      padding: 15px 20px;
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
     }
-
-    header h1 {
-      margin: 0;
-    }
-
+    header h1 { margin: 0; font-size: 20px; }
     nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
+      color: white; text-decoration: none;
+      margin-left: 15px; font-size: 14px;
+      transition: color 0.3s;
     }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { color: #ff4081; }
 
     .hero {
-      padding: 40px 20px;
       text-align: center;
-      background: #f0f0f0;
-    }
-
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-
-    .tabs button {
-      margin: 5px;
-      padding: 10px 20px;
-      border: none;
-      background: #222;
+      padding: 70px 20px;
+      background: linear-gradient(to right, #212121, #424242);
       color: white;
-      cursor: pointer;
-      border-radius: 6px;
+    }
+    .hero h2 { font-size: 34px; animation: float 3s infinite ease-in-out; }
+    .hero p { font-size: 16px; color: #e0e0e0; }
+    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+
+    .categories { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 20px; padding: 40px; }
+    .category {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .category:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .category h3 { margin: 10px 0; font-size: 20px; color: #000; }
+    .category p { font-size: 14px; color: #555; }
+    .category a {
+      display: inline-block; margin-top: 10px;
+      padding: 8px 16px; background: #ff4081; color: white;
+      text-decoration: none; border-radius: 6px; font-size: 14px;
       transition: background 0.3s;
     }
-
-    .tabs button:hover {
-      background: #444;
-    }
-
-    .tabs button.active {
-      background: #ff6600;
-    }
-
-    .products {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-      display: none;
-    }
-
-    .products.active {
-      display: block;
-    }
-
-    .products h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.6em;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      text-align: center;
-      padding: 15px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-
-    .card h3 {
-      margin: 10px 0;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 8px 16px;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    .btn:hover {
-      background: #444;
-    }
+    .category a:hover { background: #c51162; }
 
     footer {
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-      background: #222;
-      color: white;
+      text-align: center; padding: 20px;
+      background: #000; color: white; margin-top: 40px;
     }
+    #topBtn {
+      position: fixed; bottom: 20px; right: 20px;
+      background: #ff4081; color: white;
+      border: none; padding: 12px;
+      border-radius: 50%; font-size: 18px;
+      display: none; cursor: pointer;
+    }
+    #topBtn:hover { background: #c51162; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Fashion</h1>
-    <nav>
-      <a href="index.html">Home</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Explore Fashion Categories</h2>
-    <p>Choose Men, Women, or Kids</p>
-  </section>
+<header class="animate__animated animate__fadeInDown">
+  <h1>Online Marketing Store</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="anime.html">Anime</a>
+    <a href="electronics.html">Electronics</a>
+    <a href="fashion.html">Fashion</a>
+    <a href="books.html">Books</a>
+    <a href="beauty.html">Beauty</a>
+    <a href="jewelry.html">Jewelry</a>
+    <a href="toys.html">Toys</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <button class="tablink active" onclick="openTab('men')">Men</button>
-    <button class="tablink" onclick="openTab('women')">Women</button>
-    <button class="tablink" onclick="openTab('kids')">Kids</button>
+<section class="hero animate__animated animate__zoomIn">
+  <h2>Discover the Latest Fashion</h2>
+  <p>Style trends for Men, Women & Kids — all in one place.</p>
+</section>
+
+<section class="categories">
+  <div class="category animate__animated animate__fadeInUp">
+    <h3>Men's Fashion</h3>
+    <p>Trendy outfits, shoes, watches & accessories designed for men.</p>
+    <a href="men.html">Explore</a>
   </div>
+  <div class="category animate__animated animate__fadeInUp">
+    <h3>Women's Fashion</h3>
+    <p>Stylish clothing, handbags, beauty essentials & more for women.</p>
+    <a href="women.html">Explore</a>
+  </div>
+  <div class="category animate__animated animate__fadeInUp">
+    <h3>Kids' Fashion</h3>
+    <p>Fun, colorful & comfortable fashion for kids of all ages.</p>
+    <a href="kids.html">Explore</a>
+  </div>
+</section>
 
-  <!-- Men -->
-  <section id="men" class="products active">
-    <h2>Men's Fashion</h2>
-    <div class="grid">
-      <div class="card"><img src="https://i.ibb.co/4pMkF8g/shirt.jpg"><h3>Casual Shirt</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/pfD0nCt/jeans.jpg"><h3>Denim Jeans</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/YBQPrxv/jacket.jpg"><h3>Leather Jacket</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/Gvxt4Rm/watch.jpg"><h3>Wrist Watch</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/BLtzYJp/suit.jpg"><h3>Business Suit</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/QFsYQ70/sunglasses.jpg"><h3>Sunglasses</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/3y5Dnp9/shoes.jpg"><h3>Formal Shoes</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/94HZ1gb/belt.jpg"><h3>Leather Belt</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/2y1cG7M/tshirt.jpg"><h3>Graphic T-Shirt</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/8rFWhQf/sneakers.jpg"><h3>Sneakers</h3><a href="#" class="btn">Shop Now</a></div>
-    </div>
-  </section>
+<footer>
+  <p>&copy; 2025 Online Marketing Store | Fashion Hub</p>
+</footer>
 
-  <!-- Women -->
-  <section id="women" class="products">
-    <h2>Women's Fashion</h2>
-    <div class="grid">
-      <div class="card"><img src="https://m.media-amazon.com/images/I/610InQb9rTL._SX569_.jpg"><h3>Rayon Viscose Straight Bandhej Printed Kurta with Pant & Dupatta</h3><a href="https://www.amazon.in/GoSriKi-Bandhani-Printed-Straight-TURAE-RED-GS_XXL_Red_XX-Large/dp/B0D1CQY4FQ?crid=TTYFE59F48JD&dib=eyJ2IjoiMSJ9.mIUKTHsKAED4owDDVQbf3pkYHYLBcnrwkRPMxdi5O79LKWUdl0lZ5nxscOL7S01hz6fSx1OOaN62xZx60A1hnk-WgLpQ0OF49sqAdrGTWEvNoe39_3mDf4G_3l3EH1hO4hF4EApIN1T1o-qNiLkGSFKWCZdn1nZ7jRhvnDfrF2SSw3CH-HNlGaFr4xDgwvO_yHUPo1oJafVAvLc1bAB_0LpafboKxhz_LeHnuTWbVcdjlNtb_kW9GmmSag_IeJ0zVgfj23_BAMsmUkOOkffjophgilGsTbS5bzAu3OBCo_k.265n8BVa4ctsXPB9qTIo6IjjZVUjG6XEroTMB1jcOug&dib_tag=se&keywords=women%2Bclothing&qid=1757488089&sprefix=women%2Bclothin%2Caps%2C316&sr=8-15&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=b9e26a60d7e3e57ee090e428b881fb7f&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/61jjKBU1xbL._SY741_.jpg"><h3>Cotton Printed A-Line Kurta With Pant Set</h3><a href="https://www.amazon.in/rytras-Womens-Cotton-Printed-RYT563/dp/B0D33L6X89?crid=TTYFE59F48JD&dib=eyJ2IjoiMSJ9.mIUKTHsKAED4owDDVQbf3pkYHYLBcnrwkRPMxdi5O79LKWUdl0lZ5nxscOL7S01hz6fSx1OOaN62xZx60A1hnk-WgLpQ0OF49sqAdrGTWEvNoe39_3mDf4G_3l3EH1hO4hF4EApIN1T1o-qNiLkGSFKWCZdn1nZ7jRhvnDfrF2SSw3CH-HNlGaFr4xDgwvO_yHUPo1oJafVAvLc1bAB_0LpafboKxhz_LeHnuTWbVcdjlNtb_kW9GmmSag_IeJ0zVgfj23_BAMsmUkOOkffjophgilGsTbS5bzAu3OBCo_k.265n8BVa4ctsXPB9qTIo6IjjZVUjG6XEroTMB1jcOug&dib_tag=se&keywords=women%2Bclothing&qid=1757488089&sprefix=women%2Bclothin%2Caps%2C316&sr=8-30&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=0cc12d265785be8a19a7df0a951621cf&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/7190UVG+FkL._SY741_.jpg"><h3>Cotton Ikat Print Kurta Set | Soft Fabric | Stylish Ethnic Suit</h3><a href="https://www.amazon.in/GoSriKi-Viscose-Straight-Printed-ONION-VKS01-GS_M_Lavender_Medium/dp/B0F1T24G97?crid=TTYFE59F48JD&dib=eyJ2IjoiMSJ9.mIUKTHsKAED4owDDVQbf3pkYHYLBcnrwkRPMxdi5O79LKWUdl0lZ5nxscOL7S01hz6fSx1OOaN62xZx60A1hnk-WgLpQ0OF49sqAdrGTWEvNoe39_3mDf4G_3l3EH1hO4hF4EApIN1T1o-qNiLkGSFKWCZdn1nZ7jRhvnDfrF2SSw3CH-HNlGaFr4xDgwvO_yHUPo1oJafVAvLc1bAB_0LpafboKxhz_LeHnuTWbVcdjlNtb_kW9GmmSag_IeJ0zVgfj23_BAMsmUkOOkffjophgilGsTbS5bzAu3OBCo_k.265n8BVa4ctsXPB9qTIo6IjjZVUjG6XEroTMB1jcOug&dib_tag=se&keywords=women%2Bclothing&qid=1757488089&sprefix=women%2Bclothin%2Caps%2C316&sr=8-51&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=0289f978cba4d154e71162f3116147b4&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/61lGNxvIfVL._SX679_.jpg"><h3>BIBA Women Polyester Straight Dyed Suit Set</h3><a href="https://www.amazon.in/BIBA-Womens-Polyester-Kurta-SKDMEWAR10858SS25POWBLU_Powder/dp/B0DYDTH77L?crid=AYG4PZBGRELO&dib=eyJ2IjoiMSJ9.14hob3_rjYyaHZou3LpR8NZsC4Fr53IVxB8SVh1mIamk_4jedf8gsu_BHRISkBVzdzMaHmfJ4KMyZfi-NGrDQgXAJs0FxGX4vtD1Zza8OBj-ViZvFg9A8cXXjRsLLsQpdg-XNNMXTIWFGBL8C_jdSBhB_iR4GJRE7lxAY5RHqQO1Qw4dwh8IRMmL2TUgE0l9k1UQKfqMboZt-dhBb5sbVXFmll39tq-vlqTfIn4ytmOdmHPzwNIFKCV9KSLJIsPaYsUpzQnM69FIjJPjYQOOx1ubasUtQXOocDcVIDVp2j4._cgE8RXTcSUDnAA9FjEO2k8V72ai6V3rX3L4xE0xd80&dib_tag=se&keywords=women%2Bsuit&qid=1757489752&sprefix=women%2Bsu%2Caps%2C336&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=49576ca226d1850e85c8f155d2aa09db&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/61VpjokqnVL._SY741_.jpg"><h3>PARTHVI|Women's Pure Cotton Printed with Handwork Kurta with Pants and Dupatta Set | Ethnic Set | Suit Set | Kurta Set | Wedding Suit Set</h3><a href="https://www.amazon.in/PARTHVI-Printed-Handwork-Dupatta-P-1079-Yellow-XXL/dp/B0F38CJ4NR?crid=AYG4PZBGRELO&dib=eyJ2IjoiMSJ9.14hob3_rjYyaHZou3LpR8NZsC4Fr53IVxB8SVh1mIamk_4jedf8gsu_BHRISkBVzdzMaHmfJ4KMyZfi-NGrDQgXAJs0FxGX4vtD1Zza8OBj-ViZvFg9A8cXXjRsLLsQpdg-XNNMXTIWFGBL8C_jdSBhB_iR4GJRE7lxAY5RHqQO1Qw4dwh8IRMmL2TUgE0l9k1UQKfqMboZt-dhBb5sbVXFmll39tq-vlqTfIn4ytmOdmHPzwNIFKCV9KSLJIsPaYsUpzQnM69FIjJPjYQOOx1ubasUtQXOocDcVIDVp2j4._cgE8RXTcSUDnAA9FjEO2k8V72ai6V3rX3L4xE0xd80&dib_tag=se&keywords=women%2Bsuit&qid=1757489752&sprefix=women%2Bsu%2Caps%2C336&sr=8-19&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=547334e45096e2b56963af1e48aa8856&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/71L95U3Hc2L._SY741_.jpg"><h3>ANNI DESIGNER Women's Rayon Blend Anarkali Printed Kurta with Pant</h3><a href="https://www.amazon.in/ANNI-DESIGNER-Anarkali-Printed-Orange-VKS06_M_Orange_Medium/dp/B0DRJCM913?crid=13B0DE17ECX9F&dib=eyJ2IjoiMSJ9.QXi7NqFGfr8YatdeZF6NFoeXwjtnjHL-aNwokiZRNtVeTN5hcjRj8LddLoPHtnaNV4ktZuRH1toCAgUMiRlBgtdWUpaMcbB8-C7XpdQpZxHSxkGR-k2BeehTjEK37UIIuLGlxaPy5LZhm_0CsQOOnhF-rO6kbRI3EJCYGSy0DgCkoEhj82dQyj9QpYd5wDHPX3nwhZmY6bB8McZxERTsqXPBQNS_6XqlTX95BWEWW_tOGECCE_Kc0mxtNGuS6yB3xf_Iu38M7M9lrlLnQ8WflG2WxDkriMmVVH8r90A_s7Y.OW7b-wQsMr6XORxKUm1Vkcskae9806-P4iz84TTq8lU&dib_tag=se&keywords=women%2Bsuit%2Bunder%2B500&qid=1757490255&sprefix=women%2Bsuit%2Bunder%2B500%2Caps%2C288&sr=8-15&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=805b659a230db347b1c5b9be00922731&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/81QhZs0BqEL._SX679_.jpg"><h3>Tee Projekt Printed Crepe Kurti & Pant Set for Women Festival Wear for Women</h3><a href="https://www.amazon.in/Tee-Projekt-Printed-Crepe-Festival/dp/B0F1D13HR1?content-id=amzn1.sym.9b258dad-f808-4e5e-8df5-9b8946a31daf%3Aamzn1.sym.9b258dad-f808-4e5e-8df5-9b8946a31daf&crid=FG4OMFF2YKR5&cv_ct_cx=women%2Bclothing%2Bunder%2B400%2Bkurti&keywords=women%2Bclothing%2Bunder%2B400%2Bkurti&pd_rd_i=B0F1D13HR1&pd_rd_r=57196a1c-4216-494e-b77b-5805fe1e8f27&pd_rd_w=J2Bmz&pd_rd_wg=Piqo9&pf_rd_p=9b258dad-f808-4e5e-8df5-9b8946a31daf&pf_rd_r=HAPF4EFDPA81PN9KKQAP&qid=1757515865&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=women%2Bclothing%2Bunder%2B400%2Bkurt%2Caps%2C300&sr=1-3-883a54c7-f466-4d42-997c-6d482a360a1a-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=aaead8bcaa929fc209a88d97019f50ee&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/71WyKmZZ35L._SY741_.jpg"><h3>FABNEX Kurta Set for Women | Women Kurta Set with Dupatta | Women Kurta Sets Kurtis | Women Kurta Pant Set (Kurta Mix)</h3><a href="https://www.amazon.in/FABNEX-kurta-women-Kurtis-K-24-25-26/dp/B0CXX81RK3?dib=eyJ2IjoiMSJ9.3bI8BukwXzmzn3l5SO6hU7iYUQv3f8z_QAW5oBJSQ1iRSSwpeS5p3Jf0rrkHrcQcAFgBWbpMww3NOAocNYBhFvlImpMyCQCfFFlE_2p0zppSgGfJkOBqy7QLKBlb2BOJBZc-yyTCxeGzH-tqbbo7SAdwyZpmZSYTvrusGdTuiG2LBH481yG5ASai-uoWdcvibSHBBfibntx-cX_Th2ScY589Eel2dJ70vxvBx6UIHEkpLNOZATm0eT4z6U_mxubgpiHoyp19ldn7SMyZ7Iuvnn7Eg-5JmRXy7RubSGdooZ0.OOlVymrhPQzVS_ioCvtvVw8Nx1mqmGr6pDfVrDUvNfA&dib_tag=se&keywords=women%2Bclothing%2Bunder%2B400%2Bkurti&qid=1757516074&s=apparel&sr=1-11&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=28035ea2048974bf9a861943f86e5af7&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/41oVFquGEpL.jpg"><h3>ALENJAN Rayon Kurti for Women | Sleeveless Single Long Kurti for Women | Blue </h3><a href="https://www.amazon.in/ALENJAN-Rayon-Kurti-Sleeveless-Single/dp/B0FD8P3LGT?content-id=amzn1.sym.9b258dad-f808-4e5e-8df5-9b8946a31daf%3Aamzn1.sym.9b258dad-f808-4e5e-8df5-9b8946a31daf&crid=267JVKMO60BAC&cv_ct_cx=women%2Bclothing%2Bunder%2B400%2Bkurti&keywords=women%2Bclothing%2Bunder%2B400%2Bkurti&pd_rd_i=B0FD8P3LGT&pd_rd_r=e323db5b-a103-44ef-8a8d-a7e88fe3a754&pd_rd_w=vjw9O&pd_rd_wg=BZSL2&pf_rd_p=9b258dad-f808-4e5e-8df5-9b8946a31daf&pf_rd_r=KZGWWDFG183W91ZHF53N&qid=1757516195&s=apparel&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=women%2Bclothing%2Bunder%2B400%2Bkurti%2Capparel%2C367&sr=1-1-883a54c7-f466-4d42-997c-6d482a360a1a-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=133c89ac9714a271c1ee497459c64803&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://m.media-amazon.com/images/I/61m1aYEIZSL._SY741_.jpg"><h3>Libas Womens Solid Cotton A-Line Kurta for Women</h3><a href="https://www.amazon.in/Libas-Womens-Cotton-Straight-4336_Maroon/dp/B0D93ZQ6G1?crid=267JVKMO60BAC&dib=eyJ2IjoiMSJ9.OCfCys1TM7f0OuZb1t1zOdD9rsaVes-3QR_rCSTzutHgwCY36dZSBBzybioDlvTYeksZQXcF7tJ2kWZnGxmNONH6sRXM057dmGAoMUanLHYl5znoRFIIDOuoR5AWOL1BKBLTB2QS55FcKpK3gXmV3cJcHlFBJF0aUo3_-jjPd4EFoY1zOK2ryTE-7hHMsVH58tHFg2xeT9tm3v2Ahpo_4ZZ-SQUhLkWTzXB3uZZfn8UAQ4qBEaP9ZWpfWc2khxHtbOupD6TQ9-2OWgMKL21T90sDDnOXvmlHQgb_RA7MMCI.WRgPEIkdtreqRb4QGd5dfE3pbNRMSSO30CeJXsfBk7w&dib_tag=se&keywords=women%2Bclothing%2Bunder%2B400%2Bkurti&qid=1757516394&s=apparel&sprefix=women%2Bclothing%2Bunder%2B400%2Bkurti%2Capparel%2C367&sr=1-71&xpid=xenha4qhH3fqT&th=1&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=af50a32629f691e49b927d6d8666a3b2&language=en_IN&ref_=as_li_ss_tl" class="btn">Shop Now</a></div>
-    </div>
-  </section>
+<button id="topBtn">&#8679;</button>
 
-  <!-- Kids -->
-  <section id="kids" class="products">
-    <h2>Kids Fashion</h2>
-    <div class="grid">
-      <div class="card"><img src="https://i.ibb.co/2y1cG7M/tshirt.jpg"><h3>Kids T-shirt</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/pfD0nCt/jeans.jpg"><h3>Kids Jeans</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/YBQPrxv/jacket.jpg"><h3>Kids Jacket</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/4pMkF8g/shirt.jpg"><h3>Kids Shirt</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/BLtzYJp/suit.jpg"><h3>Kids Dress</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/QFsYQ70/sunglasses.jpg"><h3>Kids Sunglasses</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/3y5Dnp9/shoes.jpg"><h3>Kids Shoes</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/94HZ1gb/belt.jpg"><h3>Kids Belt</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/Gvxt4Rm/watch.jpg"><h3>Kids Watch</h3><a href="#" class="btn">Shop Now</a></div>
-      <div class="card"><img src="https://i.ibb.co/8rFWhQf/sneakers.jpg"><h3>Kids Sneakers</h3><a href="#" class="btn">Shop Now</a></div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Online Marketing Store - Fashion</p>
-  </footer>
-
-  <script>
-    function openTab(tabId) {
-      document.querySelectorAll(".products").forEach(el => el.classList.remove("active"));
-      document.querySelectorAll(".tablink").forEach(el => el.classList.remove("active"));
-      document.getElementById(tabId).classList.add("active");
-      event.target.classList.add("active");
+<script>
+  // Back to top button
+  let topBtn = document.getElementById("topBtn");
+  window.onscroll = function() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      topBtn.style.display = "block";
+    } else {
+      topBtn.style.display = "none";
     }
-  </script>
+  };
+  topBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
 </body>
 </html>
