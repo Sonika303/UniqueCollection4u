@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fashion - Online Marketing Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0; padding: 0;
-      background: #fdfdfd;
-      color: #333;
+      background: #f9fbff; color: #333;
       overflow-x: hidden;
     }
     header {
-      background: #000; color: white;
+      background: #0d47a1; color: white;
       padding: 15px 20px;
       position: sticky; top: 0; z-index: 1000;
       display: flex; justify-content: space-between; align-items: center;
@@ -22,53 +22,60 @@
     header h1 { margin: 0; font-size: 20px; }
     nav a {
       color: white; text-decoration: none;
-      margin-left: 15px; font-size: 14px;
-      transition: color 0.3s;
+      margin-left: 12px; font-size: 14px;
+      transition: color 0.3s, border-bottom 0.3s;
     }
-    nav a:hover { color: #ff4081; }
+    nav a:hover { color: #bbdefb; border-bottom: 2px solid #42a5f5; }
 
     .hero {
-      text-align: center;
-      padding: 70px 20px;
-      background: linear-gradient(to right, #212121, #424242);
+      text-align: center; padding: 60px 20px;
+      background: linear-gradient(to right, #1565c0, #1e88e5);
       color: white;
     }
-    .hero h2 { font-size: 34px; animation: float 3s infinite ease-in-out; }
-    .hero p { font-size: 16px; color: #e0e0e0; }
+    .hero h2 { font-size: 32px; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+    .hero p { font-size: 16px; }
     @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
 
-    .categories { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 20px; padding: 40px; }
-    .category {
-      background: #fff;
+    .category { padding: 40px 20px; text-align: center; }
+    .category h2 { margin-bottom: 15px; font-size: 24px; color: #0d47a1; }
+    .products {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 20px;
+    }
+    .product {
+      background: #fff; padding: 20px;
       border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.4s, box-shadow 0.4s;
     }
-    .category:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-    .category h3 { margin: 10px 0; font-size: 20px; color: #000; }
-    .category p { font-size: 14px; color: #555; }
-    .category a {
+    .product:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(25,118,210,0.3);
+    }
+    .product h3 { margin: 0; font-size: 18px; color: #0d47a1; }
+    .product a {
       display: inline-block; margin-top: 10px;
-      padding: 8px 16px; background: #ff4081; color: white;
-      text-decoration: none; border-radius: 6px; font-size: 14px;
-      transition: background 0.3s;
+      text-decoration: none; color: white;
+      background: #1976d2; padding: 8px 15px;
+      border-radius: 5px; transition: background 0.3s, transform 0.3s;
     }
-    .category a:hover { background: #c51162; }
+    .product a:hover { background: #0d47a1; transform: translateY(-2px); }
 
     footer {
       text-align: center; padding: 20px;
-      background: #000; color: white; margin-top: 40px;
+      background: #0d47a1; color: white;
     }
+
     #topBtn {
       position: fixed; bottom: 20px; right: 20px;
-      background: #ff4081; color: white;
-      border: none; padding: 12px;
+      background: #42a5f5; color: white;
+      border: none; padding: 12px 15px;
       border-radius: 50%; font-size: 18px;
-      display: none; cursor: pointer;
+      cursor: pointer; display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
     }
-    #topBtn:hover { background: #c51162; }
+    #topBtn:hover { background: #1e88e5; transform: scale(1.2); }
   </style>
 </head>
 <body>
@@ -79,46 +86,49 @@
     <a href="index.html">Home</a>
     <a href="anime.html">Anime</a>
     <a href="electronics.html">Electronics</a>
-    <a href="fashion.html">Fashion</a>
     <a href="books.html">Books</a>
-    <a href="beauty.html">Beauty</a>
-    <a href="jewelry.html">Jewelry</a>
-    <a href="toys.html">Toys</a>
-    <a href="about.html">About</a>
+    <a href="fashion.html">Fashion</a>
   </nav>
 </header>
 
 <section class="hero animate__animated animate__zoomIn">
-  <h2>Discover the Latest Fashion</h2>
-  <p>Style trends for Men, Women & Kids — all in one place.</p>
+  <h2>Fashion Hub</h2>
+  <p>Discover the latest styles for everyone</p>
 </section>
 
-<section class="categories">
-  <div class="category animate__animated animate__fadeInUp">
-    <h3>Men's Fashion</h3>
-    <p>Trendy outfits, shoes, watches & accessories designed for men.</p>
-    <a href="men.html">Explore</a>
+<!-- Categories -->
+<div class="category" id="men" data-aos="fade-up">
+  <h2>Men's Fashion</h2>
+  <div class="products">
+    <div class="product"><h3>Explore Men's Collection</h3><a href="men.html">Shop Now</a></div>
   </div>
-  <div class="category animate__animated animate__fadeInUp">
-    <h3>Women's Fashion</h3>
-    <p>Stylish clothing, handbags, beauty essentials & more for women.</p>
-    <a href="women.html">Explore</a>
-  </div>
-  <div class="category animate__animated animate__fadeInUp">
-    <h3>Kids' Fashion</h3>
-    <p>Fun, colorful & comfortable fashion for kids of all ages.</p>
-    <a href="kids.html">Explore</a>
-  </div>
-</section>
+</div>
 
-<footer>
-  <p>&copy; 2025 Online Marketing Store | Fashion Hub</p>
+<div class="category" id="women" data-aos="fade-up">
+  <h2>Women's Fashion</h2>
+  <div class="products">
+    <div class="product"><h3>Explore Women's Collection</h3><a href="women.html">Shop Now</a></div>
+  </div>
+</div>
+
+<div class="category" id="kids" data-aos="fade-up">
+  <h2>Kids' Fashion</h2>
+  <div class="products">
+    <div class="product"><h3>Explore Kids' Collection</h3><a href="kids.html">Shop Now</a></div>
+  </div>
+</div>
+
+<footer class="animate__animated animate__fadeInUp">
+  <p>&copy; 2025 Online Marketing Store | Fashion Section</p>
 </footer>
 
 <button id="topBtn">&#8679;</button>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  // Back to top button
+  AOS.init({ duration: 1200, once: true });
+
+  // Back to top
   let topBtn = document.getElementById("topBtn");
   window.onscroll = function() {
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
