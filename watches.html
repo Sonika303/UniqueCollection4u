@@ -41,15 +41,14 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            padding: 0 2rem 2rem 2rem;
-            max-width: 1200px;
-            margin: auto;
+        .product-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 0 1rem 2rem 1rem;
         }
         .product {
+            flex: 0 0 calc(10% - 1rem); /* 10 products per row */
             background: #fff;
             padding: 1rem;
             border-radius: 10px;
@@ -62,22 +61,23 @@
         }
         .product img {
             width: 100%;
-            height: 200px;
+            height: 150px;
             object-fit: contain;
             border-radius: 10px;
         }
         .product h3 {
             margin: 0.5rem 0;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
         .product a {
             display: inline-block;
             margin-top: 0.5rem;
-            padding: 0.5rem 1rem;
+            padding: 0.3rem 0.7rem;
             background: #ff6600;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
+            font-size: 0.8rem;
         }
         .product a:hover {
             background: #e65c00;
@@ -98,8 +98,13 @@
         <input type="text" id="search" placeholder="Search watches...">
     </div>
 
-    <div class="products" id="products">
+    <!-- Row 1 -->
+    <div class="product-row" id="row1">
         <div class="product animate__animated animate__fadeIn">
+            <img src="" alt="Product Image">
+            <h3></h3>
+            <a href="" target="_blank">Buy Now</a>
+        </div>
           <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71YJyrWBvCL._SX522_.jpg" alt=""><h3>Fastrack Vyb Charmer Quartz Analog Pink Dial Watch for Women</h3><a href="https://www.amazon.in/Fastrack-Charmer-Quartz-Analog-Watch/dp/B0DTTXNZT2?crid=3KHOH92M5L5R9&dib=eyJ2IjoiMSJ9.0rjGjn-EfvNMwk21goTG8Hx-pVTzWgbvvKrRHmQl5euku6lALinwZizkzfcQFwZWU1LEgBANSWmr1bfMBaSeWxICmd-y_j1sOfCH3L_8bjrTPw01h4E5_Z2W5dsVvM5u39DE8o44RItkfEwK65xW3rRnGUW_USo-wCYSy4mH2c4yQbh4CpvgO7LdHylwOd_MSLrfDmvfLWJYROwAU3uQOzd0SPGqwG-WwszpHUGu7EUsAsBjY40yaEZSeFjaCgn-shvGJzpw54BD9_0cmbhS-O1cv7ypse7zA1UlLDXogIA.e2mcfyxUKI8QTk8xo2t3iJjWq9VmSnT31DTBGxu3PgE&dib_tag=se&keywords=watch%2Bfor%2Bwoman&qid=1758090979&refinements=p_72%3A1318476031&rnid=1318475031&sprefix=watch%2Caps%2C271&sr=8-8&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=fa7598fb48648e3f7e46e9675f68068c&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71rn78i6zSL._SX679_.jpg" alt=""><h3>BRUNO MILANO Stylish Watches Mesh Band Shiny Dial for Women and Girls</h3><a href="https://www.amazon.in/BRUNO-MILANO-Stylish-Analogue-Gold-Teal/dp/B0DNK1Y1P1?content-id=amzn1.sym.88162dec-e7ad-44a4-bc35-c1ae6ac07aba%3Aamzn1.sym.88162dec-e7ad-44a4-bc35-c1ae6ac07aba&crid=3KHOH92M5L5R9&cv_ct_cx=watch%2Bfor%2Bwoman&keywords=watch%2Bfor%2Bwoman&pd_rd_i=B0DNK1Y1P1&pd_rd_r=233e5642-2573-4cf0-8c6a-9d67e8c941b6&pd_rd_w=XNZhK&pd_rd_wg=6v1c3&pf_rd_p=88162dec-e7ad-44a4-bc35-c1ae6ac07aba&pf_rd_r=MFBTPMNXYDW6MW7F4MK2&qid=1758090979&refinements=p_72%3A1318476031&rnid=1318475031&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=watch%2Caps%2C271&sr=1-4-883a54c7-f466-4d42-997c-6d482a360a1a-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=7428054a24718359cc18398d88f6ac13&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71Br2efqV3L._SX679_.jpg" alt=""><h3>Carlton London Green Dial Watch for Women | Stainless Steel | Analog | Gold-Green Waterproof Watches for Women Girls Ladies | Fashionable Trendy Quartz Movement Wrist Watch-CLSSCDGRN</h3><a href="https://www.amazon.in/Carlton-London-Gold-Green-Waterproof-Fashionable/dp/B0D8GHRGCH?crid=3KHOH92M5L5R9&dib=eyJ2IjoiMSJ9.0rjGjn-EfvNMwk21goTG8Hx-pVTzWgbvvKrRHmQl5euku6lALinwZizkzfcQFwZWU1LEgBANSWmr1bfMBaSeWxICmd-y_j1sOfCH3L_8bjrTPw01h4E5_Z2W5dsVvM5u39DE8o44RItkfEwK65xW3rRnGUW_USo-wCYSy4mH2c4yQbh4CpvgO7LdHylwOd_MSLrfDmvfLWJYROwAU3uQOzd0SPGqwG-WwszpHUGu7EUsAsBjY40yaEZSeFjaCgn-shvGJzpw54BD9_0cmbhS-O1cv7ypse7zA1UlLDXogIA.e2mcfyxUKI8QTk8xo2t3iJjWq9VmSnT31DTBGxu3PgE&dib_tag=se&keywords=watch+for+woman&qid=1758090979&refinements=p_72%3A1318476031&rnid=1318475031&sprefix=watch%2Caps%2C271&sr=8-59-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9idGY&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=887602cf7a53166a559c265ce7039c5d&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
@@ -200,6 +205,11 @@
   <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
     </div>
 
+    <!-- Row 2 (Optional) -->
+    <div class="product-row" id="row2">
+        <!-- Another 10 products -->
+    </div>
+
     <script>
         const searchInput = document.getElementById('search');
         const products = document.querySelectorAll('.product');
@@ -209,7 +219,7 @@
             products.forEach(product => {
                 const title = product.querySelector('h3').textContent.toLowerCase();
                 if(title.includes(filter)) {
-                    product.style.display = '';
+                    product.style.display = 'block';
                 } else {
                     product.style.display = 'none';
                 }
