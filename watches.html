@@ -3,53 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Watches - Jewellery | Online Marketing Store</title>
+  <title>Watches - Online Marketing Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9fbff; color: #333; }
-    header { background: #0d47a1; color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; display:flex; justify-content:space-between; align-items:center; }
-    header h1 { margin: 0; font-size: 22px; }
-    nav a { color: white; text-decoration: none; margin-left: 15px; font-size: 15px; transition: color 0.3s, border-bottom 0.3s; }
-    nav a:hover { color: #bbdefb; border-bottom: 2px solid #90caf9; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fbff;
+      color: #333;
+    }
 
-    .search-container { text-align: center; margin: 20px 0; }
-    .search-container input { padding: 10px; width: 40%; border: 1px solid #ccc; border-radius: 5px; }
-    .search-container button { padding: 10px 20px; border: none; background: #1565c0; color: white; border-radius: 5px; cursor: pointer; margin-left: 5px; }
-    .search-container button:hover { background: #0d47a1; }
+    header {
+      background: #0d47a1;
+      color: white;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-    h2 { text-align: center; margin: 30px 0; color: #0d47a1; }
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 20px; }
-    .product { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
-    .product:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 20px rgba(33,150,243,0.3); }
-    .product img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; }
-    .product h3 { margin: 10px 0; font-size: 16px; color: #1565c0; }
-    .product a { display: inline-block; margin-top: 8px; padding: 8px 15px; background: #42a5f5; color: white; text-decoration: none; border-radius: 5px; transition: background 0.3s; }
-    .product a:hover { background: #1e88e5; }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
 
-    footer { text-align: center; padding: 20px; background: #0d47a1; color: white; margin-top: 40px; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 15px;
+      transition: color 0.3s, border-bottom 0.3s;
+    }
 
-    #topBtn { position: fixed; bottom: 20px; right: 20px; background: #42a5f5; color: white; border: none; padding: 12px 15px; border-radius: 50%; font-size: 18px; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s; }
-    #topBtn:hover { background: #1e88e5; transform: scale(1.2); }
+    nav a:hover {
+      color: #bbdefb;
+      border-bottom: 2px solid #90caf9;
+    }
+
+    /* Search bar */
+    .search-bar {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: 60%;
+      max-width: 400px;
+      border: 2px solid #1565c0;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .category {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .category h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #0d47a1;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 350px; /* equal height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(33,150,243,0.3);
+    }
+
+    .product img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .product h3 {
+      font-size: 14px;
+      margin: 8px 0;
+      line-height: 1.3em;
+      max-height: 2.6em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #1565c0;
+    }
+
+    .product a {
+      display: inline-block;
+      margin-top: 5px;
+      text-decoration: none;
+      color: white;
+      background: #1976d2;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .product a:hover {
+      background: #0d47a1;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0d47a1;
+      color: white;
+      margin-top: 40px;
+    }
+
+    #topBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #42a5f5;
+      color: white;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    #topBtn:hover {
+      background: #1e88e5;
+      transform: scale(1.2);
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Online Marketing Store</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="jewellery.html">Back to Jewellery</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Online Marketing Store</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="jewellery.html">Back to Jewellery</a>
-  </nav>
-</header>
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search Watches...">
+  </div>
 
-<div class="search-container">
-  <input type="text" id="search" placeholder="Search Earrings...">
-  <button onclick="searchProducts()">Search</button>
-</div>
-
-<h2>Watch Collection</h2>
-<div class="product-grid" id="productGrid">
-  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71YJyrWBvCL._SX522_.jpg" alt=""><h3>Fastrack Vyb Charmer Quartz Analog Pink Dial Watch for Women</h3><a href="https://www.amazon.in/Fastrack-Charmer-Quartz-Analog-Watch/dp/B0DTTXNZT2?crid=3KHOH92M5L5R9&dib=eyJ2IjoiMSJ9.0rjGjn-EfvNMwk21goTG8Hx-pVTzWgbvvKrRHmQl5euku6lALinwZizkzfcQFwZWU1LEgBANSWmr1bfMBaSeWxICmd-y_j1sOfCH3L_8bjrTPw01h4E5_Z2W5dsVvM5u39DE8o44RItkfEwK65xW3rRnGUW_USo-wCYSy4mH2c4yQbh4CpvgO7LdHylwOd_MSLrfDmvfLWJYROwAU3uQOzd0SPGqwG-WwszpHUGu7EUsAsBjY40yaEZSeFjaCgn-shvGJzpw54BD9_0cmbhS-O1cv7ypse7zA1UlLDXogIA.e2mcfyxUKI8QTk8xo2t3iJjWq9VmSnT31DTBGxu3PgE&dib_tag=se&keywords=watch%2Bfor%2Bwoman&qid=1758090979&refinements=p_72%3A1318476031&rnid=1318475031&sprefix=watch%2Caps%2C271&sr=8-8&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=fa7598fb48648e3f7e46e9675f68068c&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <!-- Watches Section -->
+  <div class="category" id="watches" data-aos="fade-up">
+    <h2>Watches Collection</h2>
+    <div class="products" id="productList">
+      <div class="product" data-aos="zoom-in">
+ <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71YJyrWBvCL._SX522_.jpg" alt=""><h3>Fastrack Vyb Charmer Quartz Analog Pink Dial Watch for Women</h3><a href="https://www.amazon.in/Fastrack-Charmer-Quartz-Analog-Watch/dp/B0DTTXNZT2?crid=3KHOH92M5L5R9&dib=eyJ2IjoiMSJ9.0rjGjn-EfvNMwk21goTG8Hx-pVTzWgbvvKrRHmQl5euku6lALinwZizkzfcQFwZWU1LEgBANSWmr1bfMBaSeWxICmd-y_j1sOfCH3L_8bjrTPw01h4E5_Z2W5dsVvM5u39DE8o44RItkfEwK65xW3rRnGUW_USo-wCYSy4mH2c4yQbh4CpvgO7LdHylwOd_MSLrfDmvfLWJYROwAU3uQOzd0SPGqwG-WwszpHUGu7EUsAsBjY40yaEZSeFjaCgn-shvGJzpw54BD9_0cmbhS-O1cv7ypse7zA1UlLDXogIA.e2mcfyxUKI8QTk8xo2t3iJjWq9VmSnT31DTBGxu3PgE&dib_tag=se&keywords=watch%2Bfor%2Bwoman&qid=1758090979&refinements=p_72%3A1318476031&rnid=1318475031&sprefix=watch%2Caps%2C271&sr=8-8&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=fa7598fb48648e3f7e46e9675f68068c&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71rn78i6zSL._SX679_.jpg" alt=""><h3>BRUNO MILANO Stylish Watches Mesh Band Shiny Dial for Women and Girls</h3><a href="https://www.amazon.in/BRUNO-MILANO-Stylish-Analogue-Gold-Teal/dp/B0DNK1Y1P1?content-id=amzn1.sym.88162dec-e7ad-44a4-bc35-c1ae6ac07aba%3Aamzn1.sym.88162dec-e7ad-44a4-bc35-c1ae6ac07aba&crid=3KHOH92M5L5R9&cv_ct_cx=watch%2Bfor%2Bwoman&keywords=watch%2Bfor%2Bwoman&pd_rd_i=B0DNK1Y1P1&pd_rd_r=233e5642-2573-4cf0-8c6a-9d67e8c941b6&pd_rd_w=XNZhK&pd_rd_wg=6v1c3&pf_rd_p=88162dec-e7ad-44a4-bc35-c1ae6ac07aba&pf_rd_r=MFBTPMNXYDW6MW7F4MK2&qid=1758090979&refinements=p_72%3A1318476031&rnid=1318475031&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=watch%2Caps%2C271&sr=1-4-883a54c7-f466-4d42-997c-6d482a360a1a-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=7428054a24718359cc18398d88f6ac13&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71Br2efqV3L._SX679_.jpg" alt=""><h3>Carlton London Green Dial Watch for Women | Stainless Steel | Analog | Gold-Green Waterproof Watches for Women Girls Ladies | Fashionable Trendy Quartz Movement Wrist Watch-CLSSCDGRN</h3><a href="https://www.amazon.in/Carlton-London-Gold-Green-Waterproof-Fashionable/dp/B0D8GHRGCH?crid=3KHOH92M5L5R9&dib=eyJ2IjoiMSJ9.0rjGjn-EfvNMwk21goTG8Hx-pVTzWgbvvKrRHmQl5euku6lALinwZizkzfcQFwZWU1LEgBANSWmr1bfMBaSeWxICmd-y_j1sOfCH3L_8bjrTPw01h4E5_Z2W5dsVvM5u39DE8o44RItkfEwK65xW3rRnGUW_USo-wCYSy4mH2c4yQbh4CpvgO7LdHylwOd_MSLrfDmvfLWJYROwAU3uQOzd0SPGqwG-WwszpHUGu7EUsAsBjY40yaEZSeFjaCgn-shvGJzpw54BD9_0cmbhS-O1cv7ypse7zA1UlLDXogIA.e2mcfyxUKI8QTk8xo2t3iJjWq9VmSnT31DTBGxu3PgE&dib_tag=se&keywords=watch+for+woman&qid=1758090979&refinements=p_72%3A1318476031&rnid=1318475031&sprefix=watch%2Caps%2C271&sr=8-59-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9idGY&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=887602cf7a53166a559c265ce7039c5d&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/61LHCKSBZtL._SX679_.jpg" alt=""><h3>NIBOSI Women Stainless Steel Watches Analog Rose Gold Band and Square Dial Women's Watch for Girls&Miss&Ladies Diamond Studded with Stylish Watches Waterproof</h3><a href="https://www.amazon.in/NIBOSI-Watches-Diamond-Studded-Waterproof/dp/B0BVLNSXWZ?content-id=amzn1.sym.1ee134bc-32b2-41b4-b087-995ae57bc094%3Aamzn1.sym.1ee134bc-32b2-41b4-b087-995ae57bc094&crid=3KHOH92M5L5R9&cv_ct_cx=watch%2Bfor%2Bwoman&keywords=watch%2Bfor%2Bwoman&pd_rd_i=B0BVLNSXWZ&pd_rd_r=4671042a-0627-4925-9f0a-e553921a2ce6&pd_rd_w=ACBY6&pd_rd_wg=4H5No&pf_rd_p=1ee134bc-32b2-41b4-b087-995ae57bc094&pf_rd_r=ESZKJSPCAQF9MFS855JR&qid=1758091684&refinements=p_72%3A1318476031&rnid=1318475031&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=watch%2Caps%2C271&sr=1-49-39d2cf51-924d-44a4-921d-0c8fa4cce3c9-spons&xpid=iRQvIoi26-vcF&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWNfYnRm&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=5bd1826e800ee973d425f24f1daa9f4&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
@@ -59,6 +188,7 @@
   <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71k4tZeqSvL._SX522_.jpg" alt=""><h3>Fastrack Vyb Iconique Quartz Analog White Dial Watch for Women</h3><a href="https://www.amazon.in/Fastrack-Iconique-Quartz-Analog-White/dp/B0DTTWKNH6?crid=1608JQ8TY84L6&dib=eyJ2IjoiMSJ9.-YIVHCFkRVR8ZlJfkDpSZAvVJd1IYcFjRPY-n1jnT48hdHnKswrukiydnIkbTJfHzagXoIWKazaYr1Azw6NZxJToDvmJfwoA69cahh9zXKkOeMgqSttiAkjjn-0knd28ek_29aqIFcnZA9-Yhrf_tg8JkV1dDtNZd4eN_sV9rj0s8c96-2s7O2JNdJUmY8JhW44_NErM7d9DcED9ezdWx6Dw5BqFpdRurl2NvAHW59hrU2NYJ44AYaECbo9fV1IMyqSkeBtSVkDFFrDp3N2jbF5_4vvkba4mGjXFPPDUEqM.Bf2Had0bTjydHN80w3Kmr-oW7E8Hx2iNzDJvQAcRjps&dib_tag=se&keywords=watches%2Bfor%2Bwoman&qid=1758092226&sprefix=watches%2Caps%2C341&sr=8-278&xpid=BgbZFJ69sXXna&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=c4b1850b8bf7c76da83f887f43326e2f&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/61Cxwu05uGS._SY741_.jpg" alt=""><h3>Fastrack Quartz Analog White Dial White Leather Strap Watch for Girls - NS6093SL01</h3><a href="https://www.amazon.in/Fastrack-Forms-Analog-Womens-Watch-NK6093SL01/dp/B00GSJ4A26?content-id=amzn1.sym.1ee134bc-32b2-41b4-b087-995ae57bc094%3Aamzn1.sym.1ee134bc-32b2-41b4-b087-995ae57bc094&crid=1608JQ8TY84L6&cv_ct_cx=watches+for+woman&keywords=watches+for+woman&pd_rd_i=B00GSJ4A26&pd_rd_r=ce28de65-e871-4c09-9667-7b6ee4e6fe41&pd_rd_w=x2v56&pd_rd_wg=5sI5i&pf_rd_p=1ee134bc-32b2-41b4-b087-995ae57bc094&pf_rd_r=KCVK7HP9EY3MQWT6M6RZ&qid=1758092551&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=watches%2Caps%2C341&sr=1-293-39d2cf51-924d-44a4-921d-0c8fa4cce3c9-spons&xpid=BgbZFJ69sXXna&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWNfYnRm&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=c083cffae0450cba884a0d19885c81c1&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71HvHiqhLsL._SX679_.jpg"alt=""><h3>OLEVS Luxury Watch for Women Rose Gold Studded Diamond Square Girls&Ladies Wrist Watches Stainless Steel Waterproof Luminous Elegant Women's Gift</h3><a href="https://www.amazon.in/OLEVS-Analogue-Stainless-Waterproof-Luminous/dp/B0F31WM8TV?content-id=amzn1.sym.f4325b99-8968-4d6c-a274-a54cc530dfac%3Aamzn1.sym.f4325b99-8968-4d6c-a274-a54cc530dfac&crid=1608JQ8TY84L6&cv_ct_cx=watches%2Bfor%2Bwoman&keywords=watches%2Bfor%2Bwoman&pd_rd_i=B0F31WM8TV&pd_rd_r=feac1854-945f-49aa-b56c-f83ad1d34af6&pd_rd_w=dNbXu&pd_rd_wg=8NFIG&pf_rd_p=f4325b99-8968-4d6c-a274-a54cc530dfac&pf_rd_r=B41S0YWWA4X6M17C7JKN&qid=1758092671&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=watches%2Caps%2C341&sr=1-243-2ec22325-1003-449d-8aaf-c0bcc24717ae-spons&xpid=BgbZFJ69sXXna&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=4714fff291b5e84208d5d6474e36de81&language=en_IN&ref_=as_li_ss_tl">Buy Now</a>     
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
@@ -151,40 +281,43 @@
   <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
   <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
-</div>
+        <a href="">Buy Now</a>
+      </div>
+    </div>
+  </div>
 
-<footer>
-  <p>&copy; 2025 Online Marketing Store | Watch Collection</p>
-</footer>
+  <footer>
+    <p>&copy; 2025 Online Marketing Store | Watches Collection</p>
+  </footer>
 
-<button id="topBtn">&#8679;</button>
+  <button id="topBtn">&#8679;</button>
 
-<script>
-function searchProducts() {
-  let input = document.getElementById('search').value.toLowerCase();
-  let products = document.querySelectorAll('.product');
-  products.forEach(product => {
-    let name = product.querySelector("h3").innerText.toLowerCase();
-    if (name.includes(input)) {
-      product.style.display = 'block';
-    } else {
-      product.style.display = 'none';
-    }
-  });
-}
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1200, once: true });
 
-let topBtn = document.getElementById("topBtn");
-window.onscroll = function() {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    topBtn.style.display = "block";
-  } else {
-    topBtn.style.display = "none";
-  }
-};
-topBtn.onclick = function() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
-</script>
+    // Back to top button
+    let topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    topBtn.onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
+    // Search functionality
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+      let filter = this.value.toLowerCase();
+      let products = document.querySelectorAll("#productList .product");
+      products.forEach(product => {
+        let text = product.innerText.toLowerCase();
+        product.style.display = text.includes(filter) ? "" : "none";
+      });
+    });
+  </script>
 </body>
 </html>
