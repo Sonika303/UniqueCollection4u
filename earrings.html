@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earrings - Jewellery | Online Marketing Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9fbff; color: #333; }
+    header { background: #0d47a1; color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { margin: 0; font-size: 22px; }
+    nav a { color: white; text-decoration: none; margin-left: 15px; font-size: 15px; transition: color 0.3s, border-bottom 0.3s; }
+    nav a:hover { color: #bbdefb; border-bottom: 2px solid #90caf9; }
+
+    .search-container { text-align: center; margin: 20px 0; }
+    .search-container input { padding: 10px; width: 40%; border: 1px solid #ccc; border-radius: 5px; }
+    .search-container button { padding: 10px 20px; border: none; background: #1565c0; color: white; border-radius: 5px; cursor: pointer; margin-left: 5px; }
+    .search-container button:hover { background: #0d47a1; }
+
+    h2 { text-align: center; margin: 30px 0; color: #0d47a1; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 20px; }
+    .product { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
+    .product:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 20px rgba(33,150,243,0.3); }
+    .product img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; }
+    .product h3 { margin: 10px 0; font-size: 16px; color: #1565c0; }
+    .product a { display: inline-block; margin-top: 8px; padding: 8px 15px; background: #42a5f5; color: white; text-decoration: none; border-radius: 5px; transition: background 0.3s; }
+    .product a:hover { background: #1e88e5; }
+
+    footer { text-align: center; padding: 20px; background: #0d47a1; color: white; margin-top: 40px; }
+
+    #topBtn { position: fixed; bottom: 20px; right: 20px; background: #42a5f5; color: white; border: none; padding: 12px 15px; border-radius: 50%; font-size: 18px; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s; }
+    #topBtn:hover { background: #1e88e5; transform: scale(1.2); }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Online Marketing Store</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="jewellery.html">Back to Jewellery</a>
+  </nav>
+</header>
+
+<div class="search-container">
+  <input type="text" id="search" placeholder="Search Earrings...">
+  <button onclick="searchProducts()">Search</button>
+</div>
+
+<h2>Earrings Collection</h2>
+<div class="product-grid" id="productGrid">
+ <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/81qP8jYjQ8S._SY625_.jpg"><h3>Karatcart Womens Gold Plated Kundan Tassel Earrings" alt="</h3><a href="https://www.amazon.in/Karatcart-GoldPlated-Fashion-Chandbali-Earrings/dp/B07RCYYF2P?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.3TBXyjKtsflsITV05iDpLr6ssgGmbN8JNpoOuIkU4HrusU3JkGQJK00N0YlRtWtUoNAnvyDAFAxqTsoIvWXTN_HyHzSe0iPYdyBC9EM57pYkF-mGM6Zuk6Pk1vVMwyPiM0lh2TzupNg4j3it689xirlbAUMn_qsXqIBWHPsomiZEhKAc7N2F8HA6z7ZfbTnQDSBasMZUKiDJx7eTCGBSDZZL1JFKJBwTh3j5EJXdLEsTNgvQlwayf5vMlV0FsYnLtmpK7pe1cTwFbsT1rWJlL-a15-42k9q1EcVpTGi_OJU.74ZaUwQoRbOf0O-X521dl4sZBzyRwo4NMVhixHpK0VU&dib_tag=se&keywords=earning&qid=1758035020&sprefix=earing%2Caps%2C389&sr=8-17&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=5b6e68e74b1425424343659e2b9cfe0e&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/51vKG98jLbL._SY625_.jpg" alt=""><h3>Shining Diva Fashion Latest Stylish Earrings for Women and Girls (15038er)</h3><a href="https://www.amazon.in/Shining-Diva-Fashion-Earrings-15038er/dp/B0CNH3Z13W?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.3TBXyjKtsflsITV05iDpLr6ssgGmbN8JNpoOuIkU4HrusU3JkGQJK00N0YlRtWtUoNAnvyDAFAxqTsoIvWXTN_HyHzSe0iPYdyBC9EM57pYkF-mGM6Zuk6Pk1vVMwyPiM0lh2TzupNg4j3it689xirlbAUMn_qsXqIBWHPsomiZEhKAc7N2F8HA6z7ZfbTnQDSBasMZUKiDJx7eTCGBSDZZL1JFKJBwTh3j5EJXdLEsTNgvQlwayf5vMlV0FsYnLtmpK7pe1cTwFbsT1rWJlL-a15-42k9q1EcVpTGi_OJU.74ZaUwQoRbOf0O-X521dl4sZBzyRwo4NMVhixHpK0VU&dib_tag=se&keywords=earning&qid=1758035020&sprefix=earing%2Caps%2C389&sr=8-30&linkCode=ll1&tag=onlinemar0fad-21&linkId=57b672c6a7f7186b13b9e5ecd8a25a37&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/61vzfFXbIzL._SY625_.jpg" alt=""><h3>Shining Diva Fashion Enamel Blue Flower Fancy Tops Stud Earrings for Women and Girls (Blue) (8540er)</h3><a href="https://www.amazon.in/Shining-Diva-Fashion-Earrings-8540er/dp/B071J5KTJ5?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.3TBXyjKtsflsITV05iDpLr6ssgGmbN8JNpoOuIkU4HrusU3JkGQJK00N0YlRtWtUoNAnvyDAFAxqTsoIvWXTN_HyHzSe0iPYdyBC9EM57pYkF-mGM6Zuk6Pk1vVMwyPiM0lh2TzupNg4j3it689xirlbAUMn_qsXqIBWHPsomiZEhKAc7N2F8HA6z7ZfbTnQDSBasMZUKiDJx7eTCGBSDZZL1JFKJBwTh3j5EJXdLEsTNgvQlwayf5vMlV0FsYnLtmpK7pe1cTwFbsT1rWJlL-a15-42k9q1EcVpTGi_OJU.74ZaUwQoRbOf0O-X521dl4sZBzyRwo4NMVhixHpK0VU&dib_tag=se&keywords=earning&qid=1758035020&sprefix=earing%2Caps%2C389&sr=8-40&linkCode=ll1&tag=onlinemar0fad-21&linkId=1705f3e8f1b6ad0316d69a744ba34351&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/61s0vyQ+7KL._SY695_.jpg" alt=""><h3>Zaveri Pearls Purple Cluster Beads Embellished Kundan Traditional Drop Earring For Women-ZPFK15637</h3><a href="https://www.amazon.in/Cluster-Embellished-Traditional-Earring-Women-ZPFK15637/dp/B0BTVSF87N?content-id=amzn1.sym.18605237-3dd5-4a52-a8b1-8780f1e358d2%3Aamzn1.sym.18605237-3dd5-4a52-a8b1-8780f1e358d2&crid=1HTLEE2CQKW2G&cv_ct_cx=earning&keywords=earning&pd_rd_i=B0BTVSF87N&pd_rd_r=1b277b7e-5fce-4b02-b54a-13d4e87e96ca&pd_rd_w=P6XSQ&pd_rd_wg=sAZMI&pf_rd_p=18605237-3dd5-4a52-a8b1-8780f1e358d2&pf_rd_r=7JWJNB6W454MDT87FKMQ&qid=1758035589&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=earing%2Caps%2C389&sr=1-52-8d8a630f-9552-43b8-918c-ecb8bfd66a58-spons&xpid=QlfmCFy5WApTt&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=80c23557f2c21eb5e7de93be124ba3d2&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71WdysB5ozL._SY625_.jpg" alt="Shining Diva Fashion 6 Pairs Combo Stylish Drop Earrings for Women (Silver Gold)(9919er)"><h3>Product 6</h3><a href="https://www.amazon.in/Shining-Diva-Fashion-Earrings-9919er/dp/B07JVVXFF4?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.34hzX3q2Jr2zq9GoffXybDwf8xd8t8vMPvaNg-rXGz0RVZI3Ba45gCEA2Nb0LUsXd8IGOcCrOzf62X6WP1JhaIXEDz8Cy6MkOmXkWq8tUoIngZdJ4L2poImG21e0Dj7gty08EWOGwPsdQ1EVJEUk7k1YNl2-mZlqsCGF9Cl-v7vsj2c7NNr9lthIegrp1Ji9ZG_m63KIXKKvbJ9xlesQEKmtuRanfqq-JWIdWGy6-qcrWwH3MXSlZQgpf2UPKrgUs408zrhGpBJ6gqVTcsy_QNEj8E7l1dBq7-d4LKYwdO8.OdnrVO7zVOGBMUutebnUETkSXPLqLraRZHy3Y0YSQ1Q&dib_tag=se&keywords=earning&qid=1758035589&sprefix=earing%2Caps%2C389&sr=8-76&xpid=QlfmCFy5WApTt&linkCode=ll1&tag=onlinemar0fad-21&linkId=85c605ccaa62b422c2573a529da1eb3b&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/71UAzrbNntL._SY625_.jpg" alt=""><h3>ZENEME Oxidised Silver-Plated American Diamond studded Oval Shaped Drop Earrings Jewellery For Girls and Women</h3><a href="https://www.amazon.in/Oxidised-Silver-Plated-American-Geometric-Earrings/dp/B0C1KG5GS8?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.34hzX3q2Jr2zq9GoffXybDwf8xd8t8vMPvaNg-rXGz0RVZI3Ba45gCEA2Nb0LUsXd8IGOcCrOzf62X6WP1JhaIXEDz8Cy6MkOmXkWq8tUoIngZdJ4L2poImG21e0Dj7gty08EWOGwPsdQ1EVJEUk7k1YNl2-mZlqsCGF9Cl-v7vsj2c7NNr9lthIegrp1Ji9ZG_m63KIXKKvbJ9xlesQEKmtuRanfqq-JWIdWGy6-qcrWwH3MXSlZQgpf2UPKrgUs408zrhGpBJ6gqVTcsy_QNEj8E7l1dBq7-d4LKYwdO8.OdnrVO7zVOGBMUutebnUETkSXPLqLraRZHy3Y0YSQ1Q&dib_tag=se&keywords=earning&qid=1758035589&sprefix=earing%2Caps%2C389&sr=8-83&xpid=QlfmCFy5WApTt&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=2cab48f2925b50aef7aaa4963ba42480&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/61SJCRI38QL._SY695_.jpg" alt=""><h3>Zaveri Pearls Wine Color Stone Kundan Pearls Layer Yellow Gold Drop Earring For Women-ZPFK15441</h3><a href="https://www.amazon.in/Zaveri-Pearls-Kundan-Earring-Women-ZPFK15441/dp/B0BTVSB1JH?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.34hzX3q2Jr2zq9GoffXybDwf8xd8t8vMPvaNg-rXGz0RVZI3Ba45gCEA2Nb0LUsXd8IGOcCrOzf62X6WP1JhaIXEDz8Cy6MkOmXkWq8tUoIngZdJ4L2poImG21e0Dj7gty08EWOGwPsdQ1EVJEUk7k1YNl2-mZlqsCGF9Cl-v7vsj2c7NNr9lthIegrp1Ji9ZG_m63KIXKKvbJ9xlesQEKmtuRanfqq-JWIdWGy6-qcrWwH3MXSlZQgpf2UPKrgUs408zrhGpBJ6gqVTcsy_QNEj8E7l1dBq7-d4LKYwdO8.OdnrVO7zVOGBMUutebnUETkSXPLqLraRZHy3Y0YSQ1Q&dib_tag=se&keywords=earning&qid=1758035589&sprefix=earing%2Caps%2C389&sr=8-89&xpid=QlfmCFy5WApTt&linkCode=ll1&tag=onlinemar0fad-21&linkId=af87944000e7ddacd5fafd47882848f3&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/41nmKy7+jZL._SY625_.jpg" alt=""><h3>AJS Lates Fashion Stone Golden Earning For Women, your Loved, Birthday,Festival and any Occasion (Stone Golden Earning)</h3><a href="https://www.amazon.in/AJS-Fashion-Birthday-Festival-Occasion/dp/B0C28G9B5M?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.qfNzaYa0YX788v-BcQlq2MKaQb4W9OYDvV_zbDSoH0aABq6LTNWs-GoW1v4BbqNbJGcOMV7kXCXqeqe4R0-CH0OFGXyNwrCKIbfeQnHBsVRTJDPT5NEUzi80OPAkPTvwIwuiF73iS3aRBz6W0I4TY4xOeEaVjdGYi-bph28rQPRpVJcX7TNp0Tg7-FT9GkiyzrBQImf7MajSqdoxLb5dyju3OlNs6tF8zyfXfFrTV-6rW-TZ8esuJOtvWQXL8MzvLurCd19hjG6Q7J7aEbjZqVfz5fgojXPYvROJ7FYagmI.XjiL97BRiEi4ZyY_oBoKhKCFEFVsDy0v3qR2qQBe3_U&dib_tag=se&keywords=earning&qid=1758037195&sprefix=earing%2Caps%2C389&sr=8-101&xpid=QlfmCFy5WApTt&linkCode=ll1&tag=onlinemar0fad-21&linkId=cdb8a03fdfaef845b5d7332682534f8b&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/61Vauf+vfdL._SX625_.jpg" alt=""><h3>Estele 24 Kt Gold Plated Earrings With Green Coloured Flower Print For Women</h3><a href="https://www.amazon.in/Valentine-Gifts-Girlfriend-Wife-Austrian/dp/B08D6TCNVG?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.qfNzaYa0YX788v-BcQlq2MKaQb4W9OYDvV_zbDSoH0aABq6LTNWs-GoW1v4BbqNbJGcOMV7kXCXqeqe4R0-CH0OFGXyNwrCKIbfeQnHBsVRTJDPT5NEUzi80OPAkPTvwIwuiF73iS3aRBz6W0I4TY4xOeEaVjdGYi-bph28rQPRpVJcX7TNp0Tg7-FT9GkiyzrBQImf7MajSqdoxLb5dyju3OlNs6tF8zyfXfFrTV-6rW-TZ8esuJOtvWQXL8MzvLurCd19hjG6Q7J7aEbjZqVfz5fgojXPYvROJ7FYagmI.XjiL97BRiEi4ZyY_oBoKhKCFEFVsDy0v3qR2qQBe3_U&dib_tag=se&keywords=earning&qid=1758037195&sprefix=earing%2Caps%2C389&sr=8-130&xpid=QlfmCFy5WApTt&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=193eac0bebb1501aa79088c15362b048&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="https://m.media-amazon.com/images/I/61B0EiqhViL._SY575_.jpg" alt=""><h3>YouBella Fashion Jewellery Ear Rings Drop and Dangler Earings Crystal Earrings for Girls and Women</h3><a href="https://www.amazon.in/YouBella-Jewellery-Earrings-stylish-Crystal/dp/B07W9KXP9Q?crid=1HTLEE2CQKW2G&dib=eyJ2IjoiMSJ9.qfNzaYa0YX788v-BcQlq2MKaQb4W9OYDvV_zbDSoH0aABq6LTNWs-GoW1v4BbqNbJGcOMV7kXCXqeqe4R0-CH0OFGXyNwrCKIbfeQnHBsVRTJDPT5NEUzi80OPAkPTvwIwuiF73iS3aRBz6W0I4TY4xOeEaVjdGYi-bph28rQPRpVJcX7TNp0Tg7-FT9GkiyzrBQImf7MajSqdoxLb5dyju3OlNs6tF8zyfXfFrTV-6rW-TZ8esuJOtvWQXL8MzvLurCd19hjG6Q7J7aEbjZqVfz5fgojXPYvROJ7FYagmI.XjiL97BRiEi4ZyY_oBoKhKCFEFVsDy0v3qR2qQBe3_U&dib_tag=se&keywords=earning&qid=1758037195&sprefix=earing%2Caps%2C389&sr=8-140&xpid=QlfmCFy5WApTt&th=1&linkCode=ll1&tag=onlinemar0fad-21&linkId=0c731816d18c47137c490266abd78dc2&language=en_IN&ref_=as_li_ss_tl">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Online Marketing Store | Earrings Collection</p>
+</footer>
+
+<button id="topBtn">&#8679;</button>
+
+<script>
+function searchProducts() {
+  let input = document.getElementById('search').value.toLowerCase();
+  let products = document.querySelectorAll('.product');
+  products.forEach(product => {
+    let name = product.querySelector("h3").innerText.toLowerCase();
+    if (name.includes(input)) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+}
+
+let topBtn = document.getElementById("topBtn");
+window.onscroll = function() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
+};
+topBtn.onclick = function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+
+</body>
+</html>
