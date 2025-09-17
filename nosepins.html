@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosepins - Jewellery | Online Marketing Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9fbff; color: #333; }
+    header { background: #0d47a1; color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { margin: 0; font-size: 22px; }
+    nav a { color: white; text-decoration: none; margin-left: 15px; font-size: 15px; transition: color 0.3s, border-bottom 0.3s; }
+    nav a:hover { color: #bbdefb; border-bottom: 2px solid #90caf9; }
+
+    .search-container { text-align: center; margin: 20px 0; }
+    .search-container input { padding: 10px; width: 40%; border: 1px solid #ccc; border-radius: 5px; }
+    .search-container button { padding: 10px 20px; border: none; background: #1565c0; color: white; border-radius: 5px; cursor: pointer; margin-left: 5px; }
+    .search-container button:hover { background: #0d47a1; }
+
+    h2 { text-align: center; margin: 30px 0; color: #0d47a1; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 20px; }
+    .product { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
+    .product:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 20px rgba(33,150,243,0.3); }
+    .product img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; }
+    .product h3 { margin: 10px 0; font-size: 16px; color: #1565c0; }
+    .product a { display: inline-block; margin-top: 8px; padding: 8px 15px; background: #42a5f5; color: white; text-decoration: none; border-radius: 5px; transition: background 0.3s; }
+    .product a:hover { background: #1e88e5; }
+
+    footer { text-align: center; padding: 20px; background: #0d47a1; color: white; margin-top: 40px; }
+
+    #topBtn { position: fixed; bottom: 20px; right: 20px; background: #42a5f5; color: white; border: none; padding: 12px 15px; border-radius: 50%; font-size: 18px; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s; }
+    #topBtn:hover { background: #1e88e5; transform: scale(1.2); }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Online Marketing Store</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="jewellery.html">Back to Jewellery</a>
+  </nav>
+</header>
+
+<div class="search-container">
+  <input type="text" id="search" placeholder="Search Nosepins...">
+  <button onclick="searchProducts()">Search</button>
+</div>
+
+<h2>Nosepins Collection</h2>
+<div class="product-grid" id="productGrid">
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 1</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 2</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 3</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 4</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 5</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 6</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 7</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+   <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 8</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 9</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  <div class="product animate__animated animate__fadeIn"><img src="" alt=""><h3>Product 10</h3><a href="#">Buy Now</a></div>
+  
+</div>
+
+<footer>
+  <p>&copy; 2025 Online Marketing Store | Nosepins Collection</p>
+</footer>
+
+<button id="topBtn">&#8679;</button>
+
+<script>
+function searchProducts() {
+  let input = document.getElementById('search').value.toLowerCase();
+  let products = document.querySelectorAll('.product');
+  products.forEach(product => {
+    let name = product.querySelector("h3").innerText.toLowerCase();
+    if (name.includes(input)) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+}
+
+let topBtn = document.getElementById("topBtn");
+window.onscroll = function() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
+};
+topBtn.onclick = function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+
+</body>
+</html>
