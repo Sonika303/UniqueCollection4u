@@ -1,110 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore top toys for kids. Choose from categories like LEGO, Hot Wheels, Nerf, and Sports to find the best products.">
-    <meta name="keywords" content="toys, kids toys, LEGO toys, Hot Wheels, Nerf, sports toys, top-rated toys">
-    <meta name="robots" content="index, follow">
-    <title>Toy Categories | Unique Collection4u</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-        }
-        header, footer {
-            background-color: #ff6600;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-        }
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            text-align: center;
-        }
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .category-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            padding: 1rem;
-            text-align: center;
-        }
-        .category-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .category-card h3 {
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-        }
-        .category-card a {
-            display: inline-block;
-            margin-top: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: #ff6600;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .category-card a:hover {
-            background-color: #e65c00;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore different toy categories including LEGO, Nerf, Hot Wheels, and Sports toys. Find the best toys for kids with high-quality products.">
+<meta name="keywords" content="Toys, LEGO, Nerf, Hot Wheels, Sports Toys, Kids Toys">
+<meta name="robots" content="index, follow">
+<title>Toy Categories | Unique Collection4u</title>
+
+<!-- Animate.css CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+header, footer {
+    background-color: #ff6600;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.category-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    text-align: center;
+    padding: 2rem 1rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.category-card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+.category-card img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+.category-card h2 {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+}
+.category-card a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #ff6600;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.category-card a:hover {
+    background-color: #e65c00;
+}
+/* Sticky Navigation Buttons */
+#navButtons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nav-btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+}
+.nav-btn:hover {
+    background-color: #e65c00;
+}
+/* Back to Top Button */
+#backToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 99;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    background-color: #ff6600;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+}
+#backToTopBtn:hover {
+    background-color: #e65c00;
+}
+</style>
 </head>
 <body>
 
 <header>
-    <h1>Top Toy Categories</h1>
-    <p>Choose a category to explore the best toys for kids</p>
+    <h1>Explore Toy Categories</h1>
+    <p>Choose from LEGO, Nerf, Hot Wheels, and Sports Toys</p>
 </header>
+
+<!-- Sticky Navigation Buttons -->
+<div id="navButtons">
+    <a href="index.html" class="nav-btn">Home</a>
+</div>
 
 <main>
     <div class="category-grid">
-        <!-- Category 1: LEGO -->
-        <div class="category-card">
+        <!-- LEGO -->
+        <div class="category-card animate__animated animate__fadeInUp" style="animation-delay:0.1s;">
             <img src="" alt="">
-            <h3>LEGO</h3>
-            <a href="lego.html">Explore LEGO Toys</a>
+            <h2>LEGO</h2>
+            <a href="lego.html">View Products</a>
         </div>
 
-        <!-- Category 2: Hot Wheels -->
-        <div class="category-card">
+        <!-- Nerf -->
+        <div class="category-card animate__animated animate__fadeInUp" style="animation-delay:0.3s;">
             <img src="" alt="">
-            <h3>Hot Wheels</h3>
-            <a href="hotwheels.html">Explore Hot Wheels</a>
+            <h2>Nerf</h2>
+            <a href="nerf.html">View Products</a>
         </div>
 
-        <!-- Category 3: Nerf -->
-        <div class="category-card">
+        <!-- Hot Wheels -->
+        <div class="category-card animate__animated animate__fadeInUp" style="animation-delay:0.5s;">
             <img src="" alt="">
-            <h3>Nerf</h3>
-            <a href="nerf.html">Explore Nerf Toys</a>
+            <h2>Hot Wheels</h2>
+            <a href="hotwheels.html">View Products</a>
         </div>
 
-        <!-- Category 4: Sports -->
-        <div class="category-card">
+        <!-- Sports -->
+        <div class="category-card animate__animated animate__fadeInUp" style="animation-delay:0.7s;">
             <img src="" alt="">
-            <h3>Sports</h3>
-            <a href="sports.html">Explore Sports Toys</a>
-        </div>
+            <h2>Sports</h2>
+            <a href="sports.html">View Products</a>
         </div>
     </div>
 </main>
 
+<!-- Back to Top Button -->
+<button onclick="topFunction()" id="backToTopBtn" title="Go to top">↑</button>
+
 <footer>
     <p>&copy; 2025 Unique Collection4u | All Rights Reserved</p>
 </footer>
+
+<script>
+    // Back to Top Button
+    let backToTopBtn = document.getElementById("backToTopBtn");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+</script>
 
 </body>
 </html>
