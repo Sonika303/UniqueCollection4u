@@ -1,185 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unique Collection4u - Home</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-9860497702017992">
+<title>Unique Collection4u - Home</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4VZECMXF80"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4VZECMXF80');
+</script>
+<style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #007bff, #66b3ff);
-      min-height: 100vh;
-      overflow-x: hidden;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fc;
     }
-
-    /* Navigation Bar */
-    nav {
-      background: #007bff;
-      padding: 15px;
-      text-align: center;
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    header {
+        background: #007bff;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
     }
-    nav a {
-      color: white;
-      font-weight: bold;
-      margin: 0 15px;
-      text-decoration: none;
-      transition: 0.3s ease;
+    header h1 {
+        margin: 0;
+        font-size: 2.2rem;
     }
-    nav a:hover {
-      color: #ffeb3b;
-      text-decoration: underline;
+    nav.main-nav {
+        background: #0056b3;
+        padding: 10px 0;
+        text-align: center;
     }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      color: white;
-      padding: 60px 20px 40px 20px;
-      animation: fadeIn 1s ease-in-out, bounce 1.5s ease-in-out infinite alternate;
+    nav.main-nav a {
+        display: inline-block;
+        margin: 0 15px;
+        padding: 10px 20px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 8px;
+        transition: 0.3s;
     }
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+    nav.main-nav a:hover {
+        background: #007bff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .hero p {
-      font-size: 18px;
-      color: #e0e0e0;
+    section {
+        max-width: 1200px;
+        margin: 40px auto;
+        text-align: center;
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: #007bff;
     }
-    @keyframes bounce {
-      0% { transform: translateY(0);}
-      100% { transform: translateY(-10px);}
+    .categories a {
+        display: inline-block;
+        margin: 10px;
+        padding: 15px 25px;
+        background: #007bff;
+        color: #fff;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
     }
-
-    /* Categories Grid */
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      width: 90%;
-      max-width: 1200px;
-      margin: 40px auto;
+    .categories a:hover {
+        background: #0056b3;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(30px);
+    footer {
+        background: #007bff;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
     }
-    .card h3 {
-      color: #007bff;
-      margin-bottom: 10px;
+    footer a {
+        color: #fff;
+        text-decoration: underline;
     }
-    .card a {
-      text-decoration: none;
-      color: #555;
-      font-size: 14px;
-      display: inline-block;
-      margin-top: 8px;
-      transition: color 0.3s ease;
-    }
-    .card a:hover {
-      color: #007bff;
-      font-weight: bold;
-    }
-
-    .card:hover {
-      transform: translateY(-10px) rotate(-1deg) scale(1.03);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
-      background: linear-gradient(135deg, #66b3ff, #007bff, #33aaff);
-      color: #fff;
-    }
-
-    /* Fade-in on scroll animation */
-    .show {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-
-    /* Footer info */
-    .footer {
-      text-align: center;
-      margin: 40px 0;
-      color: #fff;
-      font-size: 14px;
-    }
-
-    @media(max-width:600px){
-      .hero h1 { font-size:28px; }
-      .hero p { font-size:16px; }
-      nav a { display:block; margin:8px 0; }
-    }
-  </style>
+</style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-  <a href="index.html">🏠 Home</a>
-  <a href="contact.html">📧 Contact</a>
-  <a href="privacy.html">🔒 Privacy</a>
-  <a href="about.html">ℹ️ About</a>
-  <a href="signup.html">📝 Sign Up</a>
-  <a href="login.html">🔑 Login</a>
+
+<header data-aos="fade-down">
+    <h1>Welcome to Unique Collection4u</h1>
+</header>
+
+<!-- Main Navigation -->
+<nav class="main-nav" data-aos="fade-down">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Login</a>
 </nav>
 
-  </nav>
+<!-- Welcome Section -->
+<section>
+    <h2 data-aos="fade-up">Welcome!</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Explore Unique Collection4u for a wide range of amazing products. Use the navigation above or click a category below to start shopping.</p>
+</section>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <h1>Welcome to Unique Collection4u</h1>
-    <p>Your one-stop place for toys, collectibles, fashion, kitchenware, beauty products & more!</p>
-  </div>
+<!-- Shop by Category -->
+<section>
+    <h2 data-aos="fade-up">Shop by Category</h2>
+    <div class="categories" data-aos="fade-up" data-aos-delay="100">
+        <a href="fashion.html" data-aos="zoom-in">Fashion</a>
+        <a href="books.html" data-aos="zoom-in" data-aos-delay="100">Books</a>
+        <a href="beauty.html" data-aos="zoom-in" data-aos-delay="200">Beauty</a>
+        <a href="toys.html" data-aos="zoom-in" data-aos-delay="300">Toys</a>
+        <a href="homedecor.html" data-aos="zoom-in" data-aos-delay="400">Home Decor</a>
+        <a href="fitness.html" data-aos="zoom-in" data-aos-delay="500">Fitness</a>
+        <a href="kitchenware.html" data-aos="zoom-in" data-aos-delay="600">Kitchenware</a>
+        <a href="anime.html" data-aos="zoom-in" data-aos-delay="700">Anime</a>
+    </div>
+</section>
 
-  <!-- Categories -->
-  <div class="categories">
-    <div class="card"><h3>Anime</h3><a href="anime.html">Explore Anime Products</a></div>
-    <div class="card"><h3>Electronics</h3><a href="electronics.html">Explore Electronics</a></div>
-    <div class="card"><h3>Fashion</h3><a href="fashion.html">Explore Fashion</a></div>
-    <div class="card"><h3>Books</h3><a href="books.html">Explore Books</a></div>
-    <div class="card"><h3>Beauty</h3><a href="beauty.html">Explore Beauty</a></div>
-    <div class="card"><h3>Kitchenware</h3><a href="kitchenware.html">Explore Kitchenware</a></div>
-    <div class="card"><h3>Jewellery</h3><a href="jewellery.html">Explore Jewellery</a></div>
-    <div class="card"><h3>Home Décor</h3><a href="homedecor.html">Explore Home Décor</a></div>
-    <div class="card"><h3>Toys & Kids</h3><a href="toys.html">Explore Toys & Kids</a></div>
+<footer data-aos="fade-up">
+    <p>© 2025 Unique Collection4u | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
+</footer>
 
-    <!-- Site Pages -->
-    <div class="card"><h3>About</h3><a href="about.html">Learn About Us</a></div>
-    <div class="card"><h3>Contact Us</h3><a href="contact.html">Get in Touch</a></div>
-    <div class="card"><h3>Privacy</h3><a href="privacy.html">Privacy Policy</a></div>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p>© 2025 Unique Collection4u | <strong>uniquecollection4u.contact@gmail.com</strong> | www.uniquecollection4u.com</p>
-  </div>
-
-  <script>
-    // Fade-in on scroll for cards
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, {threshold: 0.1});
-    cards.forEach(card => observer.observe(card));
-  </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
 </body>
 </html>
