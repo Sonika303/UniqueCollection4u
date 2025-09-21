@@ -21,17 +21,23 @@ gtag('config', 'G-4VZECMXF80');
 
 <style>
 body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f7fc;}
-header { background:#007bff; color:#fff; padding:20px; text-align:center;}
-nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold;}
-nav a:hover { text-decoration:underline;}
-.container { max-width:1200px; margin:20px auto; padding:20px; display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
-.card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); text-align:center; flex:1 1 250px; transition:0.3s;}
+header { background:#007bff; color:#fff; padding:15px 20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;}
+header h1 { margin:0; font-size:1.5rem;}
+nav { display:flex; flex-wrap:wrap; gap:10px;}
+nav a { color:#fff; text-decoration:none; font-weight:bold; padding:5px 10px; border-radius:5px; transition:0.3s;}
+nav a:hover { background: rgba(255,255,255,0.2);}
+.container { max-width:1200px; margin:20px auto; padding:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+.card { background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); text-align:center; flex:1 1 250px; transition:0.3s;}
 .card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
-h1 { color:#fff; margin-bottom:10px;}
 h2 { color:#007bff; margin-bottom:10px;}
 .user-counter { font-size:2rem; color:#007bff; font-weight:bold;}
-.category-btn { display:inline-block; margin:5px; padding:10px 15px; border:none; border-radius:8px; background:#007bff; color:#fff; cursor:pointer; transition:0.3s; text-decoration:none;}
+.category-btn { display:inline-block; margin:5px; padding:10px 15px; border:none; border-radius:8px; background:#007bff; color:#fff; cursor:pointer; transition:0.3s; text-decoration:none; font-size:0.9rem;}
 .category-btn:hover { background:#0056b3; transform:translateY(-2px);}
+@media (max-width:768px) {
+  header { flex-direction: column; align-items:flex-start; gap:10px;}
+  .container { flex-direction: column; align-items:center;}
+  .category-btn { font-size:0.8rem; padding:8px 12px;}
+}
 </style>
 </head>
 <body>
