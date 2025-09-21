@@ -3,32 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-9860497702017992">
 <title>Sign Up - Unique Collection4u</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-body { font-family: Arial, sans-serif; background:#f4f7fc; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0;}
-form { background:#fff; padding:30px; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2); width:100%; max-width:400px; text-align:center;}
-h2 { color:#007bff; margin-bottom:20px;}
-input { width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid #ccc; transition:0.3s;}
-input:focus { border-color:#007bff; box-shadow:0 0 5px rgba(0,123,255,0.5);}
-button { width:100%; padding:12px; margin-top:15px; border:none; border-radius:8px; background:#007bff; color:#fff; font-weight:bold; cursor:pointer; transition:0.3s;}
-button:hover { background:#0056b3;}
-p { margin-top:12px; font-size:14px;}
-a { color:#007bff; text-decoration:none;}
-a:hover { text-decoration:underline;}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       background: linear-gradient(135deg, #007bff, #66b3ff);
+       margin:0; padding:0; display:flex; justify-content:center; align-items:center; min-height:100vh; }
+form { background:#fff; padding:40px; border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,0.2);
+       width:100%; max-width:400px; text-align:center; }
+h2 { color:#007bff; margin-bottom:20px; }
+input { width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid #ccc; transition:0.3s; }
+input:focus { border-color:#007bff; box-shadow:0 0 5px rgba(0,123,255,0.5); }
+button { width:100%; padding:12px; margin-top:15px; border:none; border-radius:8px;
+         background:#007bff; color:#fff; font-weight:bold; cursor:pointer; transition:0.3s; }
+button:hover { background:#0056b3; }
+p { margin-top:12px; font-size:14px; }
+a { color:#007bff; text-decoration:none; }
+a:hover { text-decoration:underline; }
+#googleSignIn { background:#db4437; margin-top:10px; }
+#googleSignIn:hover { background:#c1351d; }
 </style>
 </head>
 <body>
 
-<form class="animate__animated animate__fadeIn">
+<form class="animate__animated animate__fadeIn" id="signupForm">
   <h2>Sign Up</h2>
   <input type="text" placeholder="Full Name" required>
   <input type="email" placeholder="Email" required>
   <input type="password" placeholder="Password" required>
   <button type="submit">Create Account</button>
+  <button type="button" id="googleSignIn">Sign Up with Google</button>
   <p>Already have an account? <a href="login.html">Login</a></p>
 </form>
 
+<!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
@@ -47,8 +58,16 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.database();
 
-const signupForm = document.querySelector('form');
-signupForm.addEventListener('submit', (e)=>{
+// Keep user logged in and redirect if already signed in
+auth.onAuthStateChanged(user => {
+  if(user){
+    window.location.href = 'index.html';
+  }
+});
+
+// Email/Password Signup
+const signupForm = document.getElementById('signupForm');
+signupForm.addEventListener('submit', e=>{
   e.preventDefault();
   const name = signupForm.querySelector('input[type="text"]').value;
   const email = signupForm.querySelector('input[type="email"]').value;
@@ -56,17 +75,46 @@ signupForm.addEventListener('submit', (e)=>{
 
   auth.createUserWithEmailAndPassword(email, password)
       .then(userCredential=>{
-        const userId = userCredential.user.uid;
-        db.ref('users/' + userId).set({name,email,createdAt:new Date().toISOString()});
-        db.ref('stats/totalUsers').transaction(current => (current || 0) + 1);
-        alert('Account created successfully!');
-        signupForm.reset();
-        window.location.href='login.html';
+          const user = userCredential.user;
+          // Save user info in Realtime DB
+          db.ref('users/' + user.uid).set({
+              name: name,
+              email: email,
+              createdAt: new Date().toISOString()
+          });
+          // Increment totalUsers
+          db.ref('stats/totalUsers').transaction(current => (current || 0) + 1);
+          alert('Account created successfully!');
+          signupForm.reset();
+          window.location.href='index.html';
       })
       .catch(error=>{
-        alert(error.message);
+          alert(error.message);
+      });
+});
+
+// Google Sign-In
+const googleSignInBtn = document.getElementById('googleSignIn');
+const provider = new firebase.auth.GoogleAuthProvider();
+googleSignInBtn.addEventListener('click', ()=>{
+  auth.signInWithPopup(provider)
+      .then(result=>{
+          const user = result.user;
+          // Add to DB if new
+          db.ref('users/' + user.uid).set({
+              name: user.displayName,
+              email: user.email,
+              createdAt: new Date().toISOString()
+          });
+          db.ref('stats/totalUsers').transaction(current => (current || 0) + 1);
+          alert('Signed up with Google successfully!');
+          window.location.href='index.html';
+      })
+      .catch(error=>{
+          alert(error.message);
       });
 });
 </script>
+
 </body>
 </html>
