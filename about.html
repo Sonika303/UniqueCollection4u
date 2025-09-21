@@ -4,170 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Unique Collection4u</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #007bff, #66b3ff);
       margin: 0;
       padding: 0;
-      background: #f9fbff;
-      color: #333;
+      min-height: 100vh;
     }
-
-    header {
-      background: #0d47a1;
-      color: white;
-      padding: 15px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 600;
-    }
-
+    /* Navigation Bar */
     nav {
-      display: flex;
-      gap: 15px;
+      background:#007bff;
+      padding:15px;
+      text-align:center;
+      border-radius:0 0 12px 12px;
     }
-
     nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
-      transition: color 0.3s, border-bottom 0.3s;
+      color:white;
+      font-weight:bold;
+      margin:0 15px;
+      text-decoration:none;
+      transition: 0.3s ease;
     }
-
     nav a:hover {
-      color: #bbdefb;
-      border-bottom: 2px solid #90caf9;
+      text-decoration: underline;
+      color:#ffeb3b;
     }
 
-    .about-hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to right, #1565c0, #1e88e5);
-      color: white;
-    }
-
-    .about-hero h2 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
-
-    .about-section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+    .container {
       background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    h1 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: #007bff;
+      margin-top: 20px;
+    }
+    p {
+      color: #555;
       line-height: 1.7;
-    }
-
-    .about-section h3 {
-      color: #0d47a1;
-      margin-top: 25px;
-    }
-
-    .about-section p {
-      font-size: 15px;
       margin-bottom: 15px;
     }
-
-    .highlight {
-      background: #e3f2fd;
-      padding: 10px;
-      border-left: 4px solid #1976d2;
-      border-radius: 6px;
-      margin: 15px 0;
-    }
-
-    footer {
+    .info {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
       text-align: center;
-      padding: 20px;
-      background: #0d47a1;
-      color: white;
-      margin-top: 40px;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 25px; margin: 20px auto; }
+      nav a { display: block; margin: 8px 0; }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="contact.html">📧 Contact</a>
+    <a href="privacy.html">🔒 Privacy</a>
+    <a href="about.html">ℹ️ About</a>
+  </nav>
 
-  <!-- Header -->
-  <header>
-    <h1>Unique Collection4u</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="anime.html">Anime</a>
-      <a href="electronics.html">Electronics</a>
-      <a href="fashion.html">Fashion</a>
-      <a href="books.html">Books</a>
-      <a href="beauty.html">Beauty</a>
-      <a href="kitchenware.html">Kitchenware</a>
-      <a href="jewellery.html">Jewellery</a>
-      <a href="home-decor.html">Home Décor</a>
-      <a href="toys.html">Toys & Kids</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
+  <div class="container">
+    <h1>About Us</h1>
 
-  <!-- Hero -->
-  <section class="about-hero">
-    <h2>About Unique Collection4u</h2>
-    <p>Bringing you the best products from Amazon through Affiliate Marketing</p>
-  </section>
+    <h2>Welcome to Unique Collection4u</h2>
+    <p>At <strong>Unique Collection4u</strong>, our mission is to bring you a curated collection of toys, collectibles, home & kitchenware, beauty products, and more — all in one place. We aim to provide our visitors with a fun and seamless shopping experience by linking directly to Amazon for safe and reliable purchases.</p>
 
-  <!-- About Section -->
-  <section class="about-section">
-    <h3>Who We Are</h3>
-    <p>
-      Welcome to <strong>Unique Collection4u</strong> — your trusted hub for discovering the latest and trending products across multiple categories like 
-      <em>Anime, Fashion, Electronics, Books, Beauty, Kitchenware, Jewellery, Home Décor, and Toys</em>.
-    </p>
+    <h2>Disclaimer</h2>
+    <p>All products featured on this website are available through Amazon. We do not hold inventory and do not sell products directly. Prices and availability are determined by Amazon and may change at any time. We try to keep the information accurate, but we cannot guarantee all details are always up-to-date.</p>
 
-    <p>
-      Our goal is simple: to make shopping easier and smarter for you. We carefully select popular and top-rated items on Amazon and bring them to one place for your convenience.
-    </p>
+    <h2>Affiliate Disclosure</h2>
+    <p>Some of the links on Unique Collection4u are affiliate links, which means we may earn a small commission if you purchase a product through these links at no additional cost to you. This helps us maintain the website and provide fresh content. We only recommend products we truly believe in.</p>
 
-    <h3>What We Do</h3>
-    <p>
-      We are part of the <strong>Amazon Affiliate Marketing Program</strong>. That means whenever you click on a product link on our site and make a purchase on Amazon, 
-      we may earn a small commission — at <em>no extra cost to you</em>. This helps us keep our website running, improve our platform, and bring more valuable recommendations for you.
-    </p>
+    <h2>Contact Us</h2>
+    <p>If you have any questions or suggestions about our site, feel free to reach out via our <a href="contact.html">Contact Page</a> or email us at <strong>uniquecollection4u.contact@gmail.com</strong>.</p>
 
-    <div class="highlight">
-      <p><strong>Affiliate Disclaimer:</strong> Unique Collection4u is a participant in the Amazon Services LLC Associates Program. 
-      As an Amazon Associate, we earn from qualifying purchases. This does not affect the price you pay. Our recommendations are based on popularity, usefulness, and customer reviews.</p>
+    <div class="info">
+      <p>📧 Email: uniquecollection4u.contact@gmail.com</p>
+      <p>🌐 Website: www.uniquecollection4u.com</p>
     </div>
-
-    <h3>Why Choose Us?</h3>
-    <p>
-      ✅ Wide variety of categories  
-      ✅ Easy navigation and user-friendly design  
-      ✅ Updated with the latest and trending products  
-      ✅ Trusted Amazon Affiliate Marketing links  
-    </p>
-
-    <h3>Our Vision</h3>
-    <p>
-      We want Unique Collection4u to be more than just a website. We aim to build a community where people can explore products, discover new trends, and shop smartly — 
-      all while knowing that the links provided are safe, secure, and backed by Amazon.
-    </p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Unique Collection4u. All rights reserved.</p>
-    <p><small>As an Amazon Associate, we earn from qualifying purchases.</small></p>
-  </footer>
-
+  </div>
 </body>
 </html>
