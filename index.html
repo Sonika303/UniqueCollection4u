@@ -22,7 +22,7 @@ gtag('config', 'G-4VZECMXF80');
 <style>
 body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f7fc;}
 header { background:#007bff; color:#fff; padding:15px 20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;}
-header h1 { margin:0; font-size:1.5rem;}
+header h1 { margin:0; font-size:1.5rem; cursor:pointer;}
 nav { display:flex; flex-wrap:wrap; gap:10px;}
 nav a { color:#fff; text-decoration:none; font-weight:bold; padding:5px 10px; border-radius:5px; transition:0.3s;}
 nav a:hover { background: rgba(255,255,255,0.2);}
@@ -43,7 +43,7 @@ h2 { color:#007bff; margin-bottom:10px;}
 <body>
 
 <header>
-  <h1>Unique Collection4u</h1>
+  <h1 id="logo">Unique Collection4u</h1>
   <nav>
     <a href="index.html">Home</a>
     <a href="signup.html">Sign Up</a>
@@ -54,14 +54,12 @@ h2 { color:#007bff; margin-bottom:10px;}
 </header>
 
 <div class="container">
-    <!-- Total Users -->
     <div class="card animate__animated animate__fadeIn" data-aos="fade-up">
         <h2>Join Our Community!</h2>
         <p>Total Users Signed Up:</p>
         <p class="user-counter" id="userCount">0</p>
     </div>
 
-    <!-- Shop By Category -->
     <div class="card animate__animated animate__fadeIn" data-aos="fade-up" data-aos-delay="100">
         <h2>Shop By Category</h2>
         <a href="fashion.html" class="category-btn">Fashion</a>
@@ -75,7 +73,6 @@ h2 { color:#007bff; margin-bottom:10px;}
         <a href="jewellery.html" class="category-btn">Jewellery</a>
     </div>
 
-    <!-- Why Choose Us -->
     <div class="card animate__animated animate__fadeIn" data-aos="fade-up" data-aos-delay="200">
         <h2>Why Choose Us?</h2>
         <p>Trusted products, fast shipping, amazing variety, and unbeatable deals!</p>
@@ -84,6 +81,7 @@ h2 { color:#007bff; margin-bottom:10px;}
 
 <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
 <script>
@@ -94,17 +92,29 @@ const firebaseConfig = {
    projectId: "unique-collection4u",
    storageBucket: "unique-collection4u.firebasestorage.app",
    messagingSenderId: "168622998067",
-   appId: "1:168622998067:web:813ace3181cc3de16d1946",
+   appId: "1:168622998067:web:813ace3183de16d1946",
    measurementId: "G-EFFHZMZR6N"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-const userCountRef = db.ref('stats/totalUsers');
+const auth = firebase.auth();
 
+// Update total users counter live
+const userCountRef = db.ref('stats/totalUsers');
 const userCountSpan = document.getElementById('userCount');
 userCountRef.on('value', snapshot => {
     userCountSpan.textContent = snapshot.val() || 0;
 });
+
+// Keep user logged in
+auth.onAuthStateChanged(user => {
+  if(user){
+    console.log('Logged in as:', user.email);
+  }
+});
+
+// Logo click returns home
+document.getElementById('logo').addEventListener('click', ()=> window.location.href='index.html');
 </script>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
