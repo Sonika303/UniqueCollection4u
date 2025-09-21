@@ -31,6 +31,24 @@ a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
+  <script>
+const signupForm = document.querySelector('form');
+signupForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const email = signupForm.querySelector('input[type="email"]').value;
+  const password = signupForm.querySelector('input[type="password"]').value;
+
+  auth.createUserWithEmailAndPassword(email, password)
+      .then(userCredential=>{
+        alert('Account created successfully!');
+        signupForm.reset();
+        window.location.href='login.html';
+      })
+      .catch(error=>{
+        alert(error.message);
+      });
+});
+</script>
   <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
