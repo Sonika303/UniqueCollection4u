@@ -5,32 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy - Unique Collection4u</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
-    h1 { color: #333; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #007bff, #66b3ff);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    /* Navigation Bar */
+    nav {
+      background:#007bff;
+      padding:15px;
+      text-align:center;
+      border-radius:0 0 12px 12px;
+    }
+    nav a {
+      color:white;
+      font-weight:bold;
+      margin:0 15px;
+      text-decoration:none;
+      transition: 0.3s ease;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color:#ffeb3b;
+    }
+
+    .container {
+      background: #fff;
+      width: 90%;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    h1 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: #007bff;
+      margin-top: 20px;
+    }
+    p {
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+    .info {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 25px; margin: 20px auto; }
+      nav a { display: block; margin: 8px 0; }
+    }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p>At Unique Collection4u, accessible from www.uniquecollection4u.com, we respect your privacy and are committed to protecting the personal information you share with us.</p>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="contact.html">📧 Contact</a>
+    <a href="privacy.html">🔒 Privacy</a>
+  </nav>
 
-  <h2>Information We Collect</h2>
-  <p>We may collect non-personal information such as browser type, device, and pages visited. We do not collect sensitive personal information.</p>
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p>At <strong>Unique Collection4u</strong>, accessible from <a href="https://www.uniquecollection4u.com">www.uniquecollection4u.com</a>, we respect your privacy and are committed to protecting any personal information you provide.</p>
 
-  <h2>Use of Information</h2>
-  <p>We use the information to improve user experience, show relevant products, and enhance website performance.</p>
+    <h2>Information We Collect</h2>
+    <p>We may collect non-personal information such as browser type, device, and pages visited. Personal information such as your email is only collected if you submit it voluntarily via our contact form.</p>
 
-  <h2>Cookies</h2>
-  <p>We use cookies to improve functionality and provide a better browsing experience. You may disable cookies in your browser settings.</p>
+    <h2>Use of Information</h2>
+    <p>Information collected is used to improve user experience, provide customer support, and enhance website performance.</p>
 
-  <h2>Third-Party Links</h2>
-  <p>Our website contains links to Amazon and other third-party sites. We are not responsible for their privacy practices.</p>
+    <h2>Cookies</h2>
+    <p>We use cookies to improve functionality and browsing experience. You may disable cookies in your browser settings, but some features may not function properly.</p>
 
-  <h2>Google AdSense</h2>
-  <p>We use Google AdSense to display ads. Google may use cookies to serve ads based on your prior visits to this or other websites.</p>
+    <h2>Third-Party Links</h2>
+    <p>Our website contains links to Amazon and other third-party websites. We are not responsible for the privacy practices of these external sites.</p>
 
-  <h2>Contact Us</h2>
-  <p>If you have any questions about this Privacy Policy, please contact us via our <a href="contact.html">Contact Page</a>.</p>
+    <h2>Google AdSense</h2>
+    <p>We use Google AdSense to display ads. Google may use cookies to serve ads based on your prior visits to this or other websites.</p>
 
-  <p><em>Last updated: September 2025</em></p>
+    <h2>Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, please reach out via our <a href="contact.html">Contact Page</a> or email <strong>uniquecollection4u.contact@gmail.com</strong>.</p>
+
+    <div class="info">
+      <p>📧 Email: uniquecollection4u.contact@gmail.com</p>
+      <p>🌐 Website: www.uniquecollection4u.com</p>
+    </div>
+  </div>
 </body>
 </html>
