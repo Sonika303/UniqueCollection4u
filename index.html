@@ -5,140 +5,106 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
 <title>Unique Collection4u - Home</title>
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="shortcut icon" type="image/png" href="favicon.png">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="shortcut icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<!-- Google tag (gtag.js) -->
+
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VZECMXF80"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4VZECMXF80');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-4VZECMXF80');
 </script>
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f7fc;
-    }
-    header {
-        background: #007bff;
-        color: #fff;
-        padding: 20px 0;
-        text-align: center;
-    }
-    header h1 {
-        margin: 0;
-        font-size: 2.2rem;
-    }
-    nav.main-nav {
-        background: #0056b3;
-        padding: 10px 0;
-        text-align: center;
-    }
-    nav.main-nav a {
-        display: inline-block;
-        margin: 0 15px;
-        padding: 10px 20px;
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 8px;
-        transition: 0.3s;
-    }
-    nav.main-nav a:hover {
-        background: #007bff;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    section {
-        max-width: 1200px;
-        margin: 40px auto;
-        text-align: center;
-    }
-    section h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
-        color: #007bff;
-    }
-    .categories a {
-        display: inline-block;
-        margin: 10px;
-        padding: 15px 25px;
-        background: #007bff;
-        color: #fff;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-    .categories a:hover {
-        background: #0056b3;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    footer {
-        background: #007bff;
-        color: #fff;
-        text-align: center;
-        padding: 20px 0;
-        margin-top: 50px;
-    }
-    footer a {
-        color: #fff;
-        text-decoration: underline;
-    }
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f7fc;}
+header { background:#007bff; color:#fff; padding:20px; text-align:center;}
+nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold;}
+nav a:hover { text-decoration:underline;}
+.container { max-width:1200px; margin:20px auto; padding:20px; display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+.card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); text-align:center; flex:1 1 250px; transition:0.3s;}
+.card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+h1 { color:#fff; margin-bottom:10px;}
+h2 { color:#007bff; margin-bottom:10px;}
+.user-counter { font-size:2rem; color:#007bff; font-weight:bold;}
+.category-btn { display:inline-block; margin:5px; padding:10px 15px; border:none; border-radius:8px; background:#007bff; color:#fff; cursor:pointer; transition:0.3s; text-decoration:none;}
+.category-btn:hover { background:#0056b3; transform:translateY(-2px);}
 </style>
 </head>
 <body>
 
-<header data-aos="fade-down">
-    <h1>Welcome to Unique Collection4u</h1>
-</header>
-
-<!-- Main Navigation -->
-<nav class="main-nav" data-aos="fade-down">
+<header>
+  <h1>Unique Collection4u</h1>
+  <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
     <a href="signup.html">Sign Up</a>
     <a href="login.html">Login</a>
-</nav>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
 
-<!-- Welcome Section -->
-<section>
-    <h2 data-aos="fade-up">Welcome!</h2>
-    <p data-aos="fade-up" data-aos-delay="100">Explore Unique Collection4u for a wide range of amazing products. Use the navigation above or click a category below to start shopping.</p>
-</section>
-
-<!-- Shop by Category -->
-<section>
-    <h2 data-aos="fade-up">Shop by Category</h2>
-    <div class="categories" data-aos="fade-up" data-aos-delay="100">
-        <a href="fashion.html" data-aos="zoom-in">Fashion</a>
-        <a href="books.html" data-aos="zoom-in" data-aos-delay="100">Books</a>
-        <a href="beauty.html" data-aos="zoom-in" data-aos-delay="200">Beauty</a>
-        <a href="toys.html" data-aos="zoom-in" data-aos-delay="300">Toys</a>
-        <a href="homedecor.html" data-aos="zoom-in" data-aos-delay="400">Home Decor</a>
-        <a href="fitness.html" data-aos="zoom-in" data-aos-delay="500">Fitness</a>
-        <a href="kitchenware.html" data-aos="zoom-in" data-aos-delay="600">Kitchenware</a>
-        <a href="anime.html" data-aos="zoom-in" data-aos-delay="700">Anime</a>
+<div class="container">
+    <!-- Total Users -->
+    <div class="card animate__animated animate__fadeIn" data-aos="fade-up">
+        <h2>Join Our Community!</h2>
+        <p>Total Users Signed Up:</p>
+        <p class="user-counter" id="userCount">0</p>
     </div>
-</section>
 
-<footer data-aos="fade-up">
-    <p>© 2025 Unique Collection4u | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
-</footer>
+    <!-- Shop By Category -->
+    <div class="card animate__animated animate__fadeIn" data-aos="fade-up" data-aos-delay="100">
+        <h2>Shop By Category</h2>
+        <a href="fashion.html" class="category-btn">Fashion</a>
+        <a href="books.html" class="category-btn">Books</a>
+        <a href="beauty.html" class="category-btn">Beauty</a>
+        <a href="toys.html" class="category-btn">Toys</a>
+        <a href="homedecor.html" class="category-btn">Home Decor</a>
+        <a href="fitness.html" class="category-btn">Fitness</a>
+        <a href="kitchenware.html" class="category-btn">Kitchenware</a>
+        <a href="anime.html" class="category-btn">Anime</a>
+        <a href="jewellery.html" class="category-btn">Jewellery</a>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="card animate__animated animate__fadeIn" data-aos="fade-up" data-aos-delay="200">
+        <h2>Why Choose Us?</h2>
+        <p>Trusted products, fast shipping, amazing variety, and unbeatable deals!</p>
+    </div>
+</div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+// Firebase config
+const firebaseConfig = {
+   apiKey: "AIzaSyDoQIc5-ZmWBWE6ZZPjYh5VgTtPwOqAQF4",
+   authDomain: "unique-collection4u.firebaseapp.com",
+   projectId: "unique-collection4u",
+   storageBucket: "unique-collection4u.firebasestorage.app",
+   messagingSenderId: "168622998067",
+   appId: "1:168622998067:web:813ace3181cc3de16d1946",
+   measurementId: "G-EFFHZMZR6N"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const userCountRef = db.ref('stats/totalUsers');
+
+const userCountSpan = document.getElementById('userCount');
+userCountRef.on('value', snapshot => {
+    userCountSpan.textContent = snapshot.val() || 0;
+});
+</script>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({
-        duration: 1000,
-        once: true
-    });
+AOS.init({duration:800, once:true});
 </script>
+
 </body>
 </html>
