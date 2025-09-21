@@ -5,87 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
 <title>Unique Collection4u - Home</title>
-<link rel="icon" href="favicon.png" type="image/png">
-<link rel="shortcut icon" href="favicon.png" type="image/png">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4VZECMXF80"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-4VZECMXF80');
-</script>
-
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f7fc;}
-header { background:#007bff; color:#fff; padding:15px 20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;}
-header h1 { margin:0; font-size:1.5rem; cursor:pointer;}
-nav { display:flex; flex-wrap:wrap; gap:10px;}
-nav a { color:#fff; text-decoration:none; font-weight:bold; padding:5px 10px; border-radius:5px; transition:0.3s;}
-nav a:hover { background: rgba(255,255,255,0.2);}
-.container { max-width:1200px; margin:20px auto; padding:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
-.card { background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); text-align:center; flex:1 1 250px; transition:0.3s;}
-.card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
-h2 { color:#007bff; margin-bottom:10px;}
-.user-counter { font-size:2rem; color:#007bff; font-weight:bold;}
-.category-btn { display:inline-block; margin:5px; padding:10px 15px; border:none; border-radius:8px; background:#007bff; color:#fff; cursor:pointer; transition:0.3s; text-decoration:none; font-size:0.9rem;}
-.category-btn:hover { background:#0056b3; transform:translateY(-2px);}
-@media (max-width:768px) {
-  header { flex-direction: column; align-items:flex-start; gap:10px;}
-  .container { flex-direction: column; align-items:center;}
-  .category-btn { font-size:0.8rem; padding:8px 12px;}
-}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f4f4f4;}
+header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; }
+header a { color:#fff; text-decoration:none; font-weight:bold; margin:0 10px; }
+header a:hover { text-decoration:underline; }
+section { padding:40px 20px; text-align:center; }
+.category-btn { display:inline-block; margin:10px; padding:15px 25px; background:#66b3ff; color:#fff; border:none; border-radius:10px; cursor:pointer; transition:0.3s; }
+.category-btn:hover { background:#0056b3; }
+#totalUsers { font-size:24px; color:#007bff; margin-top:20px; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1 id="logo">Unique Collection4u</h1>
-  <nav>
+  <div>
     <a href="index.html">Home</a>
     <a href="signup.html">Sign Up</a>
     <a href="login.html">Login</a>
-    <a href="contact.html">Contact</a>
-    <a href="about.html">About</a>
-  </nav>
+  </div>
 </header>
 
-<div class="container">
-    <div class="card animate__animated animate__fadeIn" data-aos="fade-up">
-        <h2>Join Our Community!</h2>
-        <p>Total Users Signed Up:</p>
-        <p class="user-counter" id="userCount">0</p>
-    </div>
+<section>
+  <h1 class="animate__animated animate__fadeIn">Welcome to Unique Collection4u</h1>
+  <div>
+    <button class="category-btn" onclick="window.location.href='#'">Fashion</button>
+    <button class="category-btn" onclick="window.location.href='#'">Books</button>
+    <button class="category-btn" onclick="window.location.href='#'">Beauty</button>
+    <button class="category-btn" onclick="window.location.href='#'">Toys</button>
+    <button class="category-btn" onclick="window.location.href='#'">Home Decor</button>
+    <button class="category-btn" onclick="window.location.href='#'">Fitness</button>
+    <button class="category-btn" onclick="window.location.href='#'">Kitchenware</button>
+    <button class="category-btn" onclick="window.location.href='#'">Anime</button>
+    <button class="category-btn" onclick="window.location.href='#'">Jewellery</button>
+  </div>
 
-    <div class="card animate__animated animate__fadeIn" data-aos="fade-up" data-aos-delay="100">
-        <h2>Shop By Category</h2>
-        <a href="fashion.html" class="category-btn">Fashion</a>
-        <a href="books.html" class="category-btn">Books</a>
-        <a href="beauty.html" class="category-btn">Beauty</a>
-        <a href="toys.html" class="category-btn">Toys</a>
-        <a href="homedecor.html" class="category-btn">Home Decor</a>
-        <a href="fitness.html" class="category-btn">Fitness</a>
-        <a href="kitchenware.html" class="category-btn">Kitchenware</a>
-        <a href="anime.html" class="category-btn">Anime</a>
-        <a href="jewellery.html" class="category-btn">Jewellery</a>
-    </div>
+  <div id="totalUsers" class="animate__animated animate__fadeInUp">
+    Total Users Signed Up: 0
+  </div>
+</section>
 
-    <div class="card animate__animated animate__fadeIn" data-aos="fade-up" data-aos-delay="200">
-        <h2>Why Choose Us?</h2>
-        <p>Trusted products, fast shipping, amazing variety, and unbeatable deals!</p>
-    </div>
-</div>
-
-<!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
 <script>
-// Firebase config
 const firebaseConfig = {
    apiKey: "AIzaSyDoQIc5-ZmWBWE6ZZPjYh5VgTtPwOqAQF4",
    authDomain: "unique-collection4u.firebaseapp.com",
@@ -97,29 +63,12 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-const auth = firebase.auth();
 
-// Update total users counter live
-const userCountRef = db.ref('stats/totalUsers');
-const userCountSpan = document.getElementById('userCount');
-userCountRef.on('value', snapshot => {
-    userCountSpan.textContent = snapshot.val() || 0;
+// Load totalUsers dynamically
+const totalUsersDiv = document.getElementById('totalUsers');
+db.ref('stats/totalUsers').on('value', snapshot=>{
+    totalUsersDiv.textContent = 'Total Users Signed Up: ' + (snapshot.val() || 0);
 });
-
-// Keep user logged in
-auth.onAuthStateChanged(user => {
-  if(user){
-    console.log('Logged in as:', user.email);
-  }
-});
-
-// Logo click returns home
-document.getElementById('logo').addEventListener('click', ()=> window.location.href='index.html');
-</script>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({duration:800, once:true});
 </script>
 
 </body>
