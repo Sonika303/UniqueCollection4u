@@ -3,88 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-adsense-account" content="ca-pub-9860497702017992">
 <title>Sign Up - Unique Collection4u</title>
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f7fc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-    .container {
-        background: #fff;
-        padding: 40px 30px;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        width: 100%;
-        max-width: 400px;
-        text-align: center;
-    }
-    .container h2 {
-        color: #007bff;
-        margin-bottom: 25px;
-    }
-    .container input {
-        width: 100%;
-        padding: 12px 15px;
-        margin: 10px 0;
-        border-radius: 10px;
-        border: 1px solid #ccc;
-        outline: none;
-        transition: 0.3s;
-    }
-    .container input:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 8px rgba(0,123,255,0.5);
-    }
-    .container button {
-        width: 100%;
-        padding: 12px;
-        margin-top: 15px;
-        background: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    .container button:hover {
-        background: #0056b3;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    .google-btn {
-        background: #db4437;
-        margin-top: 10px;
-    }
-    .google-btn:hover {
-        background: #c1351d;
-    }
-    .bottom-text {
-        margin-top: 15px;
-        font-size: 0.9rem;
-    }
-    .bottom-text a {
-        color: #007bff;
-        text-decoration: none;
-    }
-    .bottom-text a:hover {
-        text-decoration: underline;
-    }
+body {
+    margin:0; padding:0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fc;
+    display: flex; justify-content:center; align-items:center; min-height:100vh;
+}
+.container {
+    background:#fff; padding:40px; border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    width:100%; max-width:400px; text-align:center;
+}
+h2 { color:#007bff; margin-bottom:25px; }
+input {
+    width:100%; padding:12px 15px; margin:10px 0;
+    border-radius:10px; border:1px solid #ccc; outline:none;
+    transition:0.3s;
+}
+input:focus { border-color:#007bff; box-shadow:0 0 8px rgba(0,123,255,0.5); }
+button {
+    width:100%; padding:12px; margin-top:15px;
+    background:#007bff; color:#fff; border:none; border-radius:10px;
+    font-weight:bold; cursor:pointer; transition:0.3s;
+}
+button:hover { background:#0056b3; transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+.google-btn { background:#db4437; margin-top:10px; }
+.google-btn:hover { background:#c1351d; }
+.bottom-text { margin-top:15px; font-size:0.9rem; }
+.bottom-text a { color:#007bff; text-decoration:none; }
+.bottom-text a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
 
-<div class="container animate__animated animate__fadeIn" data-aos="fade-up">
-    <h2>Sign Up</h2>
+<div class="container animate__animated animate__fadeIn">
+    <h2>Create Account</h2>
     <form id="signupForm">
         <input type="text" placeholder="Full Name" required>
         <input type="email" placeholder="Email" required>
@@ -100,19 +57,23 @@
 <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
 <script>
+// Firebase config
 const firebaseConfig = {
    apiKey: "AIzaSyDoQIc5-ZmWBWE6ZZPjYh5VgTtPwOqAQF4",
-  authDomain: "unique-collection4u.firebaseapp.com",
-  projectId: "unique-collection4u",
-  storageBucket: "unique-collection4u.firebasestorage.app",
-  messagingSenderId: "168622998067",
-  appId: "1:168622998067:web:813ace3181cc3de16d1946",
-  measurementId: "G-EFFHZMZR6N"
+   authDomain: "unique-collection4u.firebaseapp.com",
+   projectId: "unique-collection4u",
+   storageBucket: "unique-collection4u.firebasestorage.app",
+   messagingSenderId: "168622998067",
+   appId: "1:168622998067:web:813ace3181cc3de16d1946",
+   measurementId: "G-EFFHZMZR6N"
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+const db = firebase.database();
+const userCountRef = db.ref('stats/totalUsers');
 
 // Email/Password signup
 const signupForm = document.getElementById('signupForm');
@@ -125,6 +86,10 @@ signupForm.addEventListener('submit', (e)=>{
       .then(userCredential=>{
         alert('Account created successfully!');
         signupForm.reset();
+
+        // Increment total users in Realtime Database
+        userCountRef.transaction(currentCount => (currentCount || 0) + 1);
+
         window.location.href='login.html';
       })
       .catch(error=>{
@@ -145,11 +110,6 @@ googleBtn.addEventListener('click', ()=>{
         alert(error.message);
       });
 });
-</script>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({duration:1000, once:true});
 </script>
 
 </body>
