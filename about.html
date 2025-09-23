@@ -1,108 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Unique Collection4u</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #007bff, #66b3ff);
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-    }
-    /* Navigation Bar */
-    nav {
-      background:#007bff;
-      padding:15px;
-      text-align:center;
-      border-radius:0 0 12px 12px;
-    }
-    nav a {
-      color:white;
-      font-weight:bold;
-      margin:0 15px;
-      text-decoration:none;
-      transition: 0.3s ease;
-    }
-    nav a:hover {
-      text-decoration: underline;
-      color:#ffeb3b;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Unique Collection4u</title>
+<link rel="icon" type="image/png" href="favicon.png">
 
-    .container {
-      background: #fff;
-      width: 90%;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 35px;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    h1 {
-      text-align: center;
-      color: #007bff;
-      margin-bottom: 20px;
-    }
-    h2 {
-      color: #007bff;
-      margin-top: 20px;
-    }
-    p {
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 15px;
-    }
-    .info {
-      margin-top: 25px;
-      font-size: 14px;
-      color: #555;
-      text-align: center;
-    }
-    @media (max-width: 600px) {
-      .container { padding: 25px; margin: 20px auto; }
-      nav a { display: block; margin: 8px 0; }
-    }
-  </style>
+<!-- Animate.css & AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f9f9f9; }
+a {text-decoration:none; color:inherit;}
+header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000;}
+header a { color:#fff; font-weight:bold; margin:0 10px; transition:0.3s; }
+header a:hover { text-decoration:underline; color:#ffeb3b; }
+.hero { background:linear-gradient(135deg, #66b3ff, #007bff); color:#fff; padding:70px 20px; text-align:center; }
+.hero h1 { font-size:2.5rem; margin-bottom:15px; }
+.hero p { font-size:1.2rem; }
+.content { padding:40px 20px; max-width:900px; margin:auto; background:#fff; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+.content h2 { color:#007bff; margin-bottom:15px; }
+.content p { margin-bottom:20px; line-height:1.6; }
+footer { background:#007bff; color:#fff; text-align:center; padding:15px 0; margin-top:40px; }
+.social-icons { margin-top:15px; }
+.social-icons a { color:#fff; margin:0 10px; font-size:1.5rem; transition:0.3s; }
+.social-icons a:hover { color:#ffeb3b; }
+</style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-  <a href="index.html">🏠 Home</a>
-  <a href="contact.html">📧 Contact</a>
-  <a href="privacy.html">🔒 Privacy</a>
-  <a href="about.html">ℹ️ About</a>
-  <a href="signup.html">📝 Sign Up</a>
-  <a href="login.html">🔑 Login</a>
-</nav>
 
-  </nav>
-
-  <div class="container">
-    <h1>About Us</h1>
-
-    <h2>Welcome to Unique Collection4u</h2>
-    <p>At <strong>Unique Collection4u</strong>, our mission is to bring you a curated collection of toys, collectibles, home & kitchenware, beauty products, and more — all in one place. We aim to provide our visitors with a fun and seamless shopping experience by linking directly to Amazon for safe and reliable purchases.</p>
-
-    <h2>Disclaimer</h2>
-    <p>All products featured on this website are available through Amazon. We do not hold inventory and do not sell products directly. Prices and availability are determined by Amazon and may change at any time. We try to keep the information accurate, but we cannot guarantee all details are always up-to-date.</p>
-
-    <h2>Affiliate Disclosure</h2>
-    <p>Some of the links on Unique Collection4u are affiliate links, which means we may earn a small commission if you purchase a product through these links at no additional cost to you. This helps us maintain the website and provide fresh content. We only recommend products we truly believe in.</p>
-
-    <h2>Contact Us</h2>
-    <p>If you have any questions or suggestions about our site, feel free to reach out via our <a href="contact.html">Contact Page</a> or email us at <strong>uniquecollection4u.contact@gmail.com</strong>.</p>
-
-    <div class="info">
-      <p>📧 Email: uniquecollection4u.contact@gmail.com</p>
-      <p>🌐 Website: www.uniquecollection4u.com</p>
-    </div>
+<header>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Login</a>
+    <a href="contact.html">Contact</a>
   </div>
+</header>
+
+<section class="hero" data-aos="fade-down">
+  <h1>About Unique Collection4u</h1>
+  <p>Your trusted online destination for amazing products</p>
+</section>
+
+<div class="content" data-aos="fade-up">
+  <h2>Who We Are</h2>
+  <p>At <b>Unique Collection4u</b>, we bring together fashion, beauty, electronics, home decor, and much more into one platform. Our mission is to provide the best shopping experience with quality products and unbeatable deals.</p>
+
+  <h2>Our Mission</h2>
+  <p>We strive to deliver products that inspire confidence and style while making your shopping simple, safe, and enjoyable.</p>
+
+  <h2>Why Choose Us?</h2>
+  <p>✔ Wide range of categories<br>
+     ✔ User-friendly design<br>
+     ✔ Regular deals and offers<br>
+     ✔ Reliable customer support</p>
+</div>
+
+<footer data-aos="fade-up">
+  © 2025 Unique Collection4u | All rights reserved
+  <div class="social-icons">
+    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+
 </body>
 </html>
