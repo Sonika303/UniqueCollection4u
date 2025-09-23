@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f4f4f4; }
 a {text-decoration:none; color:inherit;}
@@ -22,11 +25,14 @@ header a:hover { text-decoration:underline; color:#ffeb3b; }
 .hero p { font-size:1.2rem; margin-bottom:40px; }
 .hero button { padding:12px 25px; background:#ffeb3b; color:#007bff; border:none; border-radius:8px; font-weight:bold; cursor:pointer; transition:0.3s; }
 .hero button:hover { background:#ffd700; transform:translateY(-3px); }
-.categories { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-bottom:40px; }
+.categories { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-bottom:40px; padding:20px; }
 .category-btn { padding:15px 25px; background:#66b3ff; color:#fff; border:none; border-radius:10px; cursor:pointer; font-size:1rem; transition:0.3s; }
 .category-btn:hover { background:#0056b3; transform:translateY(-3px); box-shadow:0 5px 15px rgba(0,0,0,0.2);}
-#totalUsers { font-size:1.5rem; color:#007bff; margin-top:20px; text-align:center; }
+#totalUsers { font-size:1.5rem; color:#007bff; margin-top:20px; text-align:center; font-weight:bold; }
 footer { background:#007bff; color:#fff; text-align:center; padding:15px 0; margin-top:40px; }
+.social-icons { margin-top:15px; }
+.social-icons a { color:#fff; margin:0 10px; font-size:1.5rem; transition:0.3s; }
+.social-icons a:hover { color:#ffeb3b; }
 @media(max-width:768px){ .hero h1{font-size:2rem;} .category-btn{font-size:0.9rem; padding:12px 20px;} }
 </style>
 </head>
@@ -35,8 +41,7 @@ footer { background:#007bff; color:#fff; text-align:center; padding:15px 0; marg
 <header>
   <div>
     <a href="index.html">Home</a>
-    <a href="signup.html">Sign Up</a>
-    <a href="login.html">Login</a>
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
 </header>
@@ -44,15 +49,15 @@ footer { background:#007bff; color:#fff; text-align:center; padding:15px 0; marg
 <section class="hero" data-aos="fade-down">
   <h1 class="animate__animated animate__fadeInDown">Welcome to Unique Collection4u</h1>
   <p class="animate__animated animate__fadeIn">Your one-stop shop for amazing products!</p>
-  <button onclick="window.location.href='shop.html'">Shop Now</button>
+  <button onclick="window.location.href='fashion.html'">Shop Now</button>
 </section>
 
 <section class="categories" data-aos="fade-up">
-  <button class="category-btn" onclick="window.location.href='fashion.html">Fashion</button>
+  <button class="category-btn" onclick="window.location.href='fashion.html'">Fashion</button>
   <button class="category-btn" onclick="window.location.href='books.html'">Books</button>
   <button class="category-btn" onclick="window.location.href='beauty.html'">Beauty</button>
   <button class="category-btn" onclick="window.location.href='toys.html'">Toys</button>
-  <button class="category-btn" onclick="window.location.href='decord.html'">Home Decor</button>
+  <button class="category-btn" onclick="window.location.href='decor.html'">Home Decor</button>
   <button class="category-btn" onclick="window.location.href='fitness.html'">Fitness</button>
   <button class="category-btn" onclick="window.location.href='kitchenware.html'">Kitchenware</button>
   <button class="category-btn" onclick="window.location.href='anime.html'">Anime</button>
@@ -62,39 +67,28 @@ footer { background:#007bff; color:#fff; text-align:center; padding:15px 0; marg
 
 <div id="totalUsers" data-aos="fade-up">Total Users Signed Up: 0</div>
 
-<footer data-aos="fade-up">© 2025 Unique Collection4u | All rights reserved</footer>
+<footer data-aos="fade-up">
+  © 2025 Unique Collection4u | All rights reserved
+  <div class="social-icons">
+    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
 
-<!-- Firebase & AOS Scripts -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<!-- AOS Script -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 <script>
 AOS.init();
-const firebaseConfig = {
-   apiKey: "AIzaSyDoQIc5-ZmWBWE6ZZPjYh5VgTtPwOqAQF4",
-   authDomain: "unique-collection4u.firebaseapp.com",
-   projectId: "unique-collection4u",
-   storageBucket: "unique-collection4u.firebasestorage.app",
-   messagingSenderId: "168622998067",
-   appId: "1:168622998067:web:813ace3183de16d1946",
-   measurementId: "G-EFFHZMZR6N"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-const totalUsersDiv = document.getElementById('totalUsers');
 
-// Animate count up
-db.ref('stats/totalUsers').on('value', snapshot=>{
-  let count = snapshot.val() || 0;
-  let current = 0;
-  const interval = setInterval(()=>{
-    if(current > count) clearInterval(interval);
-    totalUsersDiv.textContent = 'Total Users Signed Up: ' + current;
-    current++;
-  }, 50);
-});
+// Fake animated counter (since Firebase removed)
+let count = 0, max = 500; // you can set any number here
+const totalUsersDiv = document.getElementById('totalUsers');
+const interval = setInterval(()=>{
+  if(count >= max) clearInterval(interval);
+  totalUsersDiv.textContent = 'Total Users Signed Up: ' + count;
+  count++;
+}, 30);
 </script>
 
 </body>
