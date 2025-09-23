@@ -1,180 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Unique Collection4u</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #007bff, #66b3ff);
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-    }
-    /* Navigation Bar */
-    nav {
-      background:#007bff;
-      padding:15px;
-      text-align:center;
-      border-radius:0 0 12px 12px;
-    }
-    nav a {
-      color:white;
-      font-weight:bold;
-      margin:0 15px;
-      text-decoration:none;
-      transition: 0.3s ease;
-    }
-    nav a:hover {
-      text-decoration: underline;
-      color:#ffeb3b;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Unique Collection4u</title>
+<link rel="icon" type="image/png" href="favicon.png">
 
-    .container {
-      background: #fff;
-      width: 90%;
-      max-width: 650px;
-      margin: 40px auto;
-      padding: 35px;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    h1 {
-      text-align: center;
-      color: #007bff;
-      margin-bottom: 15px;
-    }
-    p {
-      text-align: center;
-      color: #555;
-      margin-bottom: 25px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      margin: 10px 0 5px;
-      font-weight: 600;
-      color: #333;
-    }
-    input, textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      transition: 0.3s ease;
-    }
-    input:focus, textarea:focus {
-      border-color: #007bff;
-      outline: none;
-      box-shadow: 0 0 8px rgba(0,123,255,0.3);
-    }
-    textarea { resize: none; }
-    button {
-      margin-top: 20px;
-      padding: 14px;
-      background: #007bff;
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    button:hover {
-      background: #0056b3;
-      transform: scale(1.05);
-    }
-    .info {
-      margin-top: 25px;
-      font-size: 14px;
-      color: #555;
-      text-align: center;
-    }
-    .success-message {
-      display: none;
-      margin-top: 20px;
-      padding: 12px;
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-      border-radius: 8px;
-      text-align: center;
-      animation: fadeIn 0.8s ease-in-out;
-    }
-    @media (max-width: 600px) {
-      .container { padding: 25px; margin: 20px auto; }
-      nav a { display: block; margin: 8px 0; }
-    }
-  </style>
+<!-- Animate.css & AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+a {text-decoration:none; color:inherit;}
+header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:center; gap:20px; position:sticky; top:0; z-index:1000;}
+header a { color:#fff; font-weight:bold; transition:0.3s; }
+header a:hover { color:#ffeb3b; text-decoration:underline; }
+.hero { background:linear-gradient(135deg, #66b3ff, #007bff); color:#fff; text-align:center; padding:60px 20px; }
+.hero h1 { font-size:2.5rem; margin-bottom:15px; }
+.hero p { font-size:1.2rem; margin-bottom:40px; }
+.container {
+  background:#fff; max-width:650px; margin:40px auto; padding:35px;
+  border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+form { display:flex; flex-direction:column; }
+label { margin:10px 0 5px; font-weight:600; color:#333; }
+input, textarea { padding:12px; border:1px solid #ccc; border-radius:8px; font-size:15px; transition:0.3s; }
+input:focus, textarea:focus { border-color:#007bff; outline:none; box-shadow:0 0 8px rgba(0,123,255,0.3);}
+textarea { resize:none; }
+button { margin-top:20px; padding:14px; background:#007bff; color:#fff; font-size:16px; font-weight:bold; border:none; border-radius:8px; cursor:pointer; transition:all 0.3s ease; }
+button:hover { background:#0056b3; transform:scale(1.05); }
+.success-message { display:none; margin-top:20px; padding:12px; background:#d4edda; color:#155724; border:1px solid #c3e6cb; border-radius:8px; text-align:center; animation: fadeIn 0.8s ease-in-out; }
+.info { margin-top:25px; font-size:14px; color:#555; text-align:center; }
+footer { background:#007bff; color:#fff; text-align:center; padding:20px 0; margin-top:40px; }
+footer .social-icons a { color:#fff; margin:0 10px; font-size:1.5rem; transition:0.3s; }
+footer .social-icons a:hover { color:#ffeb3b; }
+@media(max-width:600px){ .container { padding:25px; margin:20px auto; } header a { display:block; margin:8px 0; } }
+</style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <a href="index.html">🏠 Home</a>
-    <a href="contact.html">📧 Contact</a>
-    <a href="privacy.html">🔒 Privacy</a>
-    <a href="about.html">About</a>
-  </nav>
 
-  <div class="container">
-    <h1>Contact Us</h1>
-    <p>We’d love to hear from you! Fill out the form below and we’ll reply as soon as possible.</p>
+<header>
+  <a href="index.html">🏠 Home</a>
+  <a href="about.html">About</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="contact.html">📧 Contact</a>
+</header>
 
-    <form id="contactForm" action="https://formspree.io/f/mwprepkv" method="POST">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" required>
+<section class="hero" data-aos="fade-down">
+  <h1>Contact Us</h1>
+  <p>We’d love to hear from you! Fill out the form below and we’ll reply as soon as possible.</p>
+</section>
 
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="_replyto" required>
+<div class="container" data-aos="fade-up">
+  <form id="contactForm" action="https://formspree.io/f/mwprepkv" method="POST">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required>
 
-      <label for="message">Your Message</label>
-      <textarea id="message" name="message" rows="6" required></textarea>
+    <label for="email">Your Email</label>
+    <input type="email" id="email" name="_replyto" required>
 
-      <button type="submit">Send Message</button>
-    </form>
+    <label for="message">Your Message</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
 
-    <div class="success-message" id="successMessage">
-      ✅ Thank you! Your message has been sent successfully.
-    </div>
+    <button type="submit">Send Message</button>
+  </form>
 
-    <div class="info">
-      <p>📧 Email: uniquecollection4u.contact@gmail.com</p>
-      <p>🌐 Website: www.uniquecollection4u.com</p>
-    </div>
+  <div class="success-message" id="successMessage">
+    ✅ Thank you! Your message has been sent successfully.
   </div>
 
-  <script>
-    const form = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
+  <div class="info">
+    <p>📧 Email: uniquecollection4u.contact@gmail.com</p>
+    <p>🌐 Website: www.uniquecollection4u.com</p>
+  </div>
+</div>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          form.reset();
-          successMessage.style.display = 'block';
-          setTimeout(() => { successMessage.style.display = 'none'; }, 4000);
-        } else {
-          alert('❌ Oops! Something went wrong. Please try again.');
-        }
-      }).catch(() => {
-        alert('❌ Error: Unable to send message.');
-      });
-    });
-  </script>
+<footer data-aos="fade-up">
+  © 2025 Unique Collection4u | All rights reserved
+  <div class="social-icons">
+    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init();
+
+const form = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if (response.ok) {
+      form.reset();
+      successMessage.style.display = 'block';
+      setTimeout(() => { successMessage.style.display = 'none'; }, 4000);
+    } else {
+      alert('❌ Oops! Something went wrong. Please try again.');
+    }
+  }).catch(() => { alert('❌ Error: Unable to send message.'); });
+});
+</script>
+
 </body>
 </html>
