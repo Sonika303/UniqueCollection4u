@@ -11,41 +11,43 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f9f9f9; }
+body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f4f4f4; min-height:100vh; }
 a {text-decoration:none; color:inherit;}
-header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000;}
-header a { color:#fff; font-weight:bold; margin:0 10px; transition:0.3s; }
-header a:hover { text-decoration:underline; color:#ffeb3b; }
-.hero { background:linear-gradient(135deg, #66b3ff, #007bff); color:#fff; padding:70px 20px; text-align:center; }
-.hero h1 { font-size:2.5rem; margin-bottom:15px; }
-.hero p { font-size:1.2rem; }
-.content { padding:40px 20px; max-width:900px; margin:auto; background:#fff; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:center; gap:20px; position:sticky; top:0; z-index:1000; }
+header a { color:#fff; font-weight:bold; transition:0.3s; }
+header a:hover { color:#ffeb3b; text-decoration:underline; }
+
+.hero { background:linear-gradient(135deg, #66b3ff, #007bff); color:#fff; text-align:center; padding:100px 20px; }
+.hero h1 { font-size:3rem; margin-bottom:20px; }
+.hero p { font-size:1.3rem; }
+
+.content { max-width:900px; margin:40px auto; background:#fff; padding:35px; border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,0.1); }
 .content h2 { color:#007bff; margin-bottom:15px; }
 .content p { margin-bottom:20px; line-height:1.6; }
-footer { background:#007bff; color:#fff; text-align:center; padding:15px 0; margin-top:40px; }
-.social-icons { margin-top:15px; }
-.social-icons a { color:#fff; margin:0 10px; font-size:1.5rem; transition:0.3s; }
-.social-icons a:hover { color:#ffeb3b; }
-@media(max-width:768px){ .hero h1{font-size:2rem;} .hero p{font-size:1rem;} }
+
+footer { background:#007bff; color:#fff; text-align:center; padding:25px 10px; margin-top:40px; }
+footer .social-icons { margin-top:15px; }
+footer .social-icons a { color:#fff; margin:0 10px; font-size:1.8rem; transition:0.3s; }
+footer .social-icons a:hover { color:#ffeb3b; }
+
+@media(max-width:768px){ .hero h1{font-size:2.2rem;} .hero p{font-size:1rem;} }
 </style>
 </head>
 <body>
 
 <header>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-  </div>
+  <a href="index.html">🏠 Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="privacy.html">Privacy</a>
 </header>
 
 <section class="hero" data-aos="fade-down">
-  <h1>Privacy Policy</h1>
-  <p>We respect your privacy and are committed to protecting your personal information.</p>
+  <h1 class="animate__animated animate__fadeInDown">Privacy Policy</h1>
+  <p class="animate__animated animate__fadeIn">We respect your privacy and are committed to protecting your information.</p>
 </section>
 
 <div class="content" data-aos="fade-up">
@@ -56,7 +58,7 @@ footer { background:#007bff; color:#fff; text-align:center; padding:15px 0; marg
   <p>The information we collect is used to provide you with a smooth browsing experience, deliver relevant updates, and improve our services. We may use cookies or similar technologies to enhance user experience.</p>
 
   <h2>Affiliate Links</h2>
-  <p>Some links on our website are affiliate links. We may earn a small commission if you make a purchase through these links, at no extra cost to you. This helps us maintain and improve the website.</p>
+  <p>Some links on our website are affiliate links. We may earn a small commission if you make a purchase through these links at no extra cost to you. This helps us maintain and improve the website.</p>
 
   <h2>Third-Party Services</h2>
   <p>We may use third-party services such as Google Ads and analytics to track website performance. These services have their own privacy policies which you should review.</p>
