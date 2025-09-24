@@ -14,35 +14,59 @@
 body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f4f4f4; scroll-behavior:smooth; }
 a {text-decoration:none; color:inherit;}
 
+/* Header navigation */
 header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap; position:sticky; top:0; z-index:1000; }
 header a { color:#fff; font-weight:bold; transition:0.3s; }
 header a:hover { color:#ffeb3b; text-decoration:underline; }
 
-.search-bar { width:90%; max-width:500px; margin:20px auto; display:flex; }
-.search-bar input { flex:1; padding:12px 15px; border-radius:8px 0 0 8px; border:1px solid #ccc; font-size:1rem; outline:none; }
-.search-bar button { padding:12px 20px; border:none; background:#007bff; color:#fff; font-weight:bold; border-radius:0 8px 8px 0; cursor:pointer; transition:0.3s; }
-.search-bar button:hover { background:#0056b3; }
+/* Sticky search bar */
+.search-bar {
+  background:#fff;
+  padding:10px;
+  text-align:center;
+  position:sticky;
+  top:60px;
+  z-index:999;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+.search-bar input {
+  width:90%;
+  max-width:500px;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:20px;
+  font-size:15px;
+  transition:0.3s;
+}
+.search-bar input:focus {
+  border-color:#007bff;
+  box-shadow:0 0 6px rgba(0,123,255,0.3);
+  outline:none;
+}
 
-.hero { background:linear-gradient(135deg, #66b3ff, #007bff); color:#fff; text-align:center; padding:80px 20px; }
-.hero h1 { font-size:2.8rem; margin-bottom:15px; }
-.hero p { font-size:1.2rem; }
+/* Hero section */
+.hero { background:linear-gradient(135deg, #66b3ff, #007bff); color:#fff; text-align:center; padding:50px 20px; }
+.hero h1 { font-size:2rem; margin-bottom:10px; }  /* smaller now */
+.hero p { font-size:1rem; }
 
-.subcategory { max-width:1000px; margin:40px auto; }
-.subcategory h2 { color:#007bff; margin-bottom:20px; }
-.products { display:flex; flex-wrap:wrap; gap:15px; }
-.product-card { background:#fff; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:15px; text-align:center; flex:1 1 calc(20% - 15px); min-width:150px; transition:0.3s; }
+/* Products grid */
+.products-container { max-width:1200px; margin:40px auto; display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
+.product-card { background:#fff; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:15px; text-align:center; flex:1 1 calc(10% - 15px); min-width:120px; transition:0.3s; }
 .product-card img { width:100%; border-radius:8px; margin-bottom:10px; background:#eee; }
 .product-card button { padding:8px 12px; background:#007bff; color:#fff; border:none; border-radius:8px; cursor:pointer; transition:0.3s; }
 .product-card button:hover { background:#0056b3; transform:scale(1.05); }
 
+/* Footer */
 footer { background:#007bff; color:#fff; text-align:center; padding:20px 10px; margin-top:40px; }
 footer .social-icons { margin-top:10px; }
 footer .social-icons a { color:#fff; margin:0 10px; font-size:1.5rem; transition:0.3s; }
 footer .social-icons a:hover { color:#ffeb3b; }
 
-@media(max-width:992px){ .product-card { flex:1 1 calc(33% - 15px); } }
-@media(max-width:768px){ .product-card { flex:1 1 calc(50% - 15px); } .hero h1{font-size:2rem;} .hero p{font-size:1rem;} }
-@media(max-width:500px){ .product-card { flex:1 1 100%; } .search-bar{flex-direction:column;} .search-bar input, .search-bar button{width:100%; margin:5px 0;} }
+/* Responsive */
+@media(max-width:1200px){ .product-card { flex:1 1 calc(14% - 15px); } }
+@media(max-width:992px){ .product-card { flex:1 1 calc(20% - 15px); } }
+@media(max-width:768px){ .product-card { flex:1 1 calc(33% - 15px); } .hero h1{font-size:1.5rem;} .hero p{font-size:0.9rem;} }
+@media(max-width:500px){ .product-card { flex:1 1 100%; } }
 </style>
 </head>
 <body>
@@ -52,7 +76,7 @@ footer .social-icons a:hover { color:#ffeb3b; }
   <a href="books.html">Books</a>
   <a href="beauty.html">Beauty</a>
   <a href="toys.html">Toys</a>
-  <a href="decor.html">Home Decor</a>
+  <a href="homedecor.html">Home Decor</a>
   <a href="fitness.html">Fitness</a>
   <a href="kitchenware.html">Kitchenware</a>
   <a href="anime.html">Anime</a>
@@ -60,83 +84,96 @@ footer .social-icons a:hover { color:#ffeb3b; }
   <a href="electronics.html">Electronics</a>
 </header>
 
-<div class="search-bar" data-aos="fade-down">
-  <input type="text" placeholder="Search Home Decor...">
-  <button>Search</button>
+<div class="search-bar">
+  <input type="text" placeholder="🔍 Search home decor...">
 </div>
 
 <section class="hero" data-aos="fade-up">
   <h1>Home Decor</h1>
-  <p>Explore beautiful items to enhance your home.</p>
+  <p>Discover furniture, lighting, and decor ideas to beautify your home.</p>
 </section>
 
-<!-- Subcategories -->
-<div class="subcategory" data-aos="fade-up">
-  <h2>Paintings</h2>
-  <div class="products">
-    <!-- 10 empty placeholders -->
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-  </div>
-</div>
-
-<div class="subcategory" data-aos="fade-up">
-  <h2>Lighting</h2>
-  <div class="products">
-    <!-- 10 empty placeholders -->
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-  </div>
-</div>
-
-<div class="subcategory" data-aos="fade-up">
-  <h2>Furniture</h2>
-  <div class="products">
-    <!-- 10 empty placeholders -->
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-  </div>
-</div>
-
-<div class="subcategory" data-aos="fade-up">
-  <h2>Rugs</h2>
-  <div class="products">
-    <!-- 10 empty placeholders -->
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-    <div class="product-card"><img src="" alt=""><p></p><button></button></div>
-  </div>
+<div class="products-container" data-aos="fade-up">
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
+  <div class="product-card"><img src="" alt=""><p></p><button></button></div>
 </div>
 
 <footer data-aos="fade-up">
@@ -150,9 +187,7 @@ footer .social-icons a:hover { color:#ffeb3b; }
 
 <!-- AOS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init();
-</script>
+<script>AOS.init();</script>
 
 <!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
