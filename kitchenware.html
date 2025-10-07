@@ -1,242 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kitchenware | Unique Collection 4U</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-      color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchenware - Unique Collection4u</title>
+<link rel="icon" type="image/png" href="favicon.png">
 
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 25px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 999;
-    }
+<!-- Animate.css & AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: #222;
-      text-decoration: none;
-    }
+<style>
+body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f3f3f3; scroll-behavior:smooth; }
+a {text-decoration:none; color:inherit;}
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+/* Header navigation */
+header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap; position:sticky; top:0; z-index:1000; }
+header a { color:#fff; font-weight:bold; transition:0.3s; }
+header a:hover { color:#ffeb3b; text-decoration:underline; }
 
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+/* Search bar */
+.search-bar {
+  background:#fff;
+  padding:10px;
+  text-align:center;
+  position:sticky;
+  top:60px;
+  z-index:999;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+.search-bar input {
+  width:90%;
+  max-width:500px;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:20px;
+  font-size:15px;
+  transition:0.3s;
+}
+.search-bar input:focus {
+  border-color:#007bff;
+  box-shadow:0 0 6px rgba(0,123,255,0.3);
+  outline:none;
+}
 
-    nav ul li a:hover {
-      color: #ff9900;
-    }
+/* Hero section */
+.hero { background:linear-gradient(135deg, #f8f9fa, #e9ecef); color:#333; text-align:center; padding:50px 20px; }
+.hero h1 { font-size:2rem; margin-bottom:10px; }
+.hero p { font-size:1rem; }
 
-    /* Search Bar */
-    .search-bar {
-      text-align: center;
-      margin: 25px auto;
-    }
+/* Sub-category heading */
+.sub-category { max-width:1200px; margin:40px auto 20px; font-size:1.5rem; font-weight:bold; color:#007bff; }
 
-    .search-bar input {
-      padding: 10px 15px;
-      border-radius: 25px;
-      border: 1px solid #ccc;
-      width: 300px;
-      outline: none;
-    }
+/* Products grid */
+.products-container { max-width:1200px; margin:0 auto 40px; display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
+.product-card { background:#fff; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:15px; text-align:center; flex:1 1 calc(20% - 15px); min-width:150px; transition:0.3s; }
+.product-card img { width:100%; border-radius:8px; margin-bottom:10px; background:#eee; }
+.product-card h3 { font-size:1rem; margin-bottom:5px; }
+.product-card .cta-btn { display:inline-block; padding:8px 12px; background:#007bff; color:#fff; border-radius:8px; margin-top:5px; transition:0.3s; }
+.product-card .cta-btn:hover { background:#0056b3; transform:scale(1.05); }
 
-    .search-bar button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 25px;
-      background-color: #ff9900;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* Footer */
+footer { background:#007bff; color:#fff; text-align:center; padding:20px 10px; margin-top:40px; }
+footer .social-icons { margin-top:10px; }
+footer .social-icons a { color:#fff; margin:0 10px; font-size:1.5rem; transition:0.3s; }
+footer .social-icons a:hover { color:#ffeb3b; }
 
-    .search-bar button:hover {
-      background-color: #e68a00;
-    }
-
-    /* Section Headings */
-    h2.category-title {
-      max-width: 1200px;
-      margin: 40px auto 10px;
-      padding-left: 20px;
-      font-size: 1.5rem;
-      color: #222;
-    }
-
-    /* Product Grid */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .product {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-    }
-
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .product h3 {
-      font-size: 1.1rem;
-      padding: 10px;
-    }
-
-    .product p {
-      padding: 0 10px 10px;
-      color: #555;
-    }
-
-    .product a {
-      display: block;
-      background: #ff9900;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .product a:hover {
-      background: #e68a00;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #222;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+/* Responsive */
+@media(max-width:1200px){ .product-card { flex:1 1 calc(25% - 15px); } }
+@media(max-width:992px){ .product-card { flex:1 1 calc(33% - 15px); } }
+@media(max-width:768px){ .product-card { flex:1 1 calc(50% - 15px); } .hero h1{font-size:1.5rem;} .hero p{font-size:0.9rem;} }
+@media(max-width:500px){ .product-card { flex:1 1 100%; } }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="logo">Unique Collection 4U</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="fashion.html">Fashion</a></li>
-      <li><a href="books.html">Books</a></li>
-      <li><a href="beauty.html">Beauty</a></li>
-      <li><a href="toys.html">Toys</a></li>
-      <li><a href="homedecor.html">Home Decor</a></li>
-      <li><a href="fitness.html">Fitness</a></li>
-      <li><a href="kitchenware.html" style="color:#ff9900;">Kitchenware</a></li>
-      <li><a href="anime.html">Anime</a></li>
-      <li><a href="jewellery.html">Jewellery</a></li>
-      <li><a href="electronics.html">Electronics</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
-    </ul>
-  </nav>
+<header>
+  <a href="index.html">Home</a>
+  <a href="fashion.html">Fashion</a>
+  <a href="books.html">Books</a>
+  <a href="beauty.html">Beauty</a>
+  <a href="toys.html">Toys</a>
+  <a href="homedecor.html">Home Decor</a>
+  <a href="fitness.html">Fitness</a>
+  <a href="kitchenware.html">Kitchenware</a>
+  <a href="anime.html">Anime</a>
+  <a href="jewellery.html">Jewellery</a>
+  <a href="electronics.html">Electronics</a>
+</header>
 
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search kitchenware...">
-    <button onclick="searchProducts()">Search</button>
+<div class="search-bar">
+  <input type="text" id="search-input" placeholder="🔍 Search kitchenware...">
+</div>
+
+<section class="hero" data-aos="fade-up">
+  <h1>Kitchenware</h1>
+  <p>Discover top kitchen tools and essentials for your home.</p>
+</section>
+
+<!-- Sub-categories -->
+<div id="categories-container">
+  <!-- Example sub-categories -->
+  <div class="sub-category">Cookware</div>
+  <div class="products-container">
+    <!-- 10 placeholders -->
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
   </div>
 
-  <!-- Cookware -->
-  <h2 class="category-title">🍳 Cookware</h2>
-  <div class="product-grid">
-    <div class="product" data-name="Non-stick Frying Pan"><img src="https://via.placeholder.com/230x200?text=Frying+Pan"><h3>Non-stick Frying Pan</h3><p>Perfect for everyday cooking.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Saucepan"><img src="https://via.placeholder.com/230x200?text=Saucepan"><h3>Saucepan</h3><p>Ideal for soups and sauces.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Pressure Cooker"><img src="https://via.placeholder.com/230x200?text=Pressure+Cooker"><h3>Pressure Cooker</h3><p>Quick and efficient cooking.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Tawa"><img src="https://via.placeholder.com/230x200?text=Tawa"><h3>Tawa</h3><p>For crispy dosas and chapatis.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Kadhai"><img src="https://via.placeholder.com/230x200?text=Kadhai"><h3>Kadhai</h3><p>Deep frying made easy.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Grill Pan"><img src="https://via.placeholder.com/230x200?text=Grill+Pan"><h3>Grill Pan</h3><p>Healthy grilled recipes.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Stock Pot"><img src="https://via.placeholder.com/230x200?text=Stock+Pot"><h3>Stock Pot</h3><p>For stews and large meals.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Wok"><img src="https://via.placeholder.com/230x200?text=Wok"><h3>Wok</h3><p>Perfect for stir frying.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Casserole Dish"><img src="https://via.placeholder.com/230x200?text=Casserole"><h3>Casserole Dish</h3><p>Retains heat for long hours.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Omelette Pan"><img src="https://via.placeholder.com/230x200?text=Omelette+Pan"><h3>Omelette Pan</h3><p>Fluffy omelettes every time.</p><a href="#">View on Amazon</a></div>
+  <div class="sub-category">Bakeware</div>
+  <div class="products-container">
+    <!-- 10 placeholders -->
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
   </div>
 
-  <!-- Kitchen Appliances -->
-  <h2 class="category-title">⚡ Appliances</h2>
-  <div class="product-grid">
-    <div class="product" data-name="Blender"><img src="https://via.placeholder.com/230x200?text=Blender"><h3>Blender</h3><p>For smoothies and shakes.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Mixer Grinder"><img src="https://via.placeholder.com/230x200?text=Mixer+Grinder"><h3>Mixer Grinder</h3><p>All-in-one kitchen helper.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Electric Kettle"><img src="https://via.placeholder.com/230x200?text=Electric+Kettle"><h3>Electric Kettle</h3><p>Boil water instantly.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Toaster"><img src="https://via.placeholder.com/230x200?text=Toaster"><h3>Toaster</h3><p>Crispy bread every morning.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Microwave Oven"><img src="https://via.placeholder.com/230x200?text=Microwave"><h3>Microwave Oven</h3><p>Quick heating made easy.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Air Fryer"><img src="https://via.placeholder.com/230x200?text=Air+Fryer"><h3>Air Fryer</h3><p>Healthy oil-free cooking.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Coffee Maker"><img src="https://via.placeholder.com/230x200?text=Coffee+Maker"><h3>Coffee Maker</h3><p>Brew café-style coffee.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Hand Blender"><img src="https://via.placeholder.com/230x200?text=Hand+Blender"><h3>Hand Blender</h3><p>Compact and efficient tool.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Juicer"><img src="https://via.placeholder.com/230x200?text=Juicer"><h3>Juicer</h3><p>Fresh juices anytime.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Sandwich Maker"><img src="https://via.placeholder.com/230x200?text=Sandwich+Maker"><h3>Sandwich Maker</h3><p>Easy and tasty snacks.</p><a href="#">View on Amazon</a></div>
+  <div class="sub-category">Cutlery</div>
+  <div class="products-container">
+    <!-- 10 placeholders -->
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <!-- repeat 9 more -->
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
+    <div class="product-card"><img src="" alt=""><h3></h3><a href="#" class="cta-btn">Buy Now</a></div>
   </div>
 
-  <!-- Storage & Containers -->
-  <h2 class="category-title">🫙 Storage & Containers</h2>
-  <div class="product-grid">
-    <div class="product" data-name="Glass Jars"><img src="https://via.placeholder.com/230x200?text=Glass+Jars"><h3>Glass Jars</h3><p>Perfect for dry storage.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Lunch Boxes"><img src="https://via.placeholder.com/230x200?text=Lunch+Box"><h3>Lunch Boxes</h3><p>Leak-proof and stylish.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Plastic Containers"><img src="https://via.placeholder.com/230x200?text=Plastic+Containers"><h3>Plastic Containers</h3><p>Everyday kitchen helpers.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Spice Rack"><img src="https://via.placeholder.com/230x200?text=Spice+Rack"><h3>Spice Rack</h3><p>Organize your spices neatly.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Oil Dispenser"><img src="https://via.placeholder.com/230x200?text=Oil+Dispenser"><h3>Oil Dispenser</h3><p>Mess-free pouring.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Grain Storage"><img src="https://via.placeholder.com/230x200?text=Grain+Storage"><h3>Grain Storage</h3><p>Keep grains fresh.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Cookie Jar"><img src="https://via.placeholder.com/230x200?text=Cookie+Jar"><h3>Cookie Jar</h3><p>Keep cookies crunchy.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Bottle Organizer"><img src="https://via.placeholder.com/230x200?text=Bottle+Organizer"><h3>Bottle Organizer</h3><p>Store bottles neatly.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Cereal Dispenser"><img src="https://via.placeholder.com/230x200?text=Cereal+Dispenser"><h3>Cereal Dispenser</h3><p>Easy breakfast access.</p><a href="#">View on Amazon</a></div>
-    <div class="product" data-name="Container Set"><img src="https://via.placeholder.com/230x200?text=Container+Set"><h3>Container Set</h3><p>Full kitchen solution.</p><a href="#">View on Amazon</a></div>
+  <!-- Repeat same structure for 7 more sub-categories: Storage, Appliances, Tableware, Glassware, Coffee & Tea, Utensils, Cleaning -->
+</div>
+
+<footer data-aos="fade-up">
+  © 2025 Unique Collection4u | All rights reserved
+  <div class="social-icons">
+    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
+</footer>
 
-  <footer>
-    <p>© 2025 Unique Collection 4U. All Rights Reserved.</p>
-  </footer>
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
 
-  <script>
-    function searchProducts() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const products = document.querySelectorAll('.product');
-      products.forEach(p => {
-        const name = p.getAttribute('data-name').toLowerCase();
-        p.style.display = name.includes(input) ? 'block' : 'none';
-      });
-    }
-  </script>
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Search script -->
+<script>
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('keyup', function() {
+  const filter = searchInput.value.toLowerCase();
+  const products = document.querySelectorAll('.product-card');
+  products.forEach(product => {
+    const title = product.querySelector('h3').textContent.toLowerCase();
+    product.style.display = title.includes(filter) ? '' : 'none';
+  });
+});
+</script>
 
 </body>
 </html>
