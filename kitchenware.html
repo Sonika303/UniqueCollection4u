@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kitchenware | Unique Collection 4U</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -16,17 +15,17 @@
       color: #333;
     }
 
-    /* Navigation Bar */
+    /* Navigation */
     nav {
       position: sticky;
       top: 0;
-      background: white;
+      background: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 25px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
+      z-index: 999;
     }
 
     nav .logo {
@@ -40,13 +39,14 @@
       display: flex;
       list-style: none;
       gap: 18px;
+      flex-wrap: wrap;
     }
 
     nav ul li a {
       text-decoration: none;
       color: #333;
-      transition: color 0.3s;
       font-weight: 500;
+      transition: color 0.3s;
     }
 
     nav ul li a:hover {
@@ -55,11 +55,8 @@
 
     /* Search Bar */
     .search-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px auto;
-      gap: 10px;
+      text-align: center;
+      margin: 25px auto;
     }
 
     .search-bar input {
@@ -84,14 +81,23 @@
       background-color: #e68a00;
     }
 
+    /* Section Headings */
+    h2.category-title {
+      max-width: 1200px;
+      margin: 40px auto 10px;
+      padding-left: 20px;
+      font-size: 1.5rem;
+      color: #222;
+    }
+
     /* Product Grid */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 20px;
-      padding: 30px;
       max-width: 1200px;
       margin: auto;
+      padding: 20px;
     }
 
     .product {
@@ -141,14 +147,7 @@
       padding: 20px;
       background: #222;
       color: white;
-      margin-top: 30px;
-    }
-
-    @media(max-width:768px) {
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -174,165 +173,61 @@
     </ul>
   </nav>
 
-  <div class="search-bar" data-aos="fade-down">
-    <input type="text" id="searchInput" placeholder="Search kitchenware..." />
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search kitchenware...">
     <button onclick="searchProducts()">Search</button>
   </div>
 
-  <div class="product-grid" id="productGrid">
-<!-- ===== CATEGORY: Cookware (10 placeholders) ===== -->
-  <div class="category-wrapper">
-    <div class="category-title" data-aos="fade-up">🍳 Cookware</div>
-    <section class="products-container" data-aos="fade-up">
-      <!-- 10 placeholders -->
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-    </section>
+  <!-- Cookware -->
+  <h2 class="category-title">🍳 Cookware</h2>
+  <div class="product-grid">
+    <div class="product" data-name="Non-stick Frying Pan"><img src="https://via.placeholder.com/230x200?text=Frying+Pan"><h3>Non-stick Frying Pan</h3><p>Perfect for everyday cooking.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Saucepan"><img src="https://via.placeholder.com/230x200?text=Saucepan"><h3>Saucepan</h3><p>Ideal for soups and sauces.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Pressure Cooker"><img src="https://via.placeholder.com/230x200?text=Pressure+Cooker"><h3>Pressure Cooker</h3><p>Quick and efficient cooking.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Tawa"><img src="https://via.placeholder.com/230x200?text=Tawa"><h3>Tawa</h3><p>For crispy dosas and chapatis.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Kadhai"><img src="https://via.placeholder.com/230x200?text=Kadhai"><h3>Kadhai</h3><p>Deep frying made easy.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Grill Pan"><img src="https://via.placeholder.com/230x200?text=Grill+Pan"><h3>Grill Pan</h3><p>Healthy grilled recipes.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Stock Pot"><img src="https://via.placeholder.com/230x200?text=Stock+Pot"><h3>Stock Pot</h3><p>For stews and large meals.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Wok"><img src="https://via.placeholder.com/230x200?text=Wok"><h3>Wok</h3><p>Perfect for stir frying.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Casserole Dish"><img src="https://via.placeholder.com/230x200?text=Casserole"><h3>Casserole Dish</h3><p>Retains heat for long hours.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Omelette Pan"><img src="https://via.placeholder.com/230x200?text=Omelette+Pan"><h3>Omelette Pan</h3><p>Fluffy omelettes every time.</p><a href="#">View on Amazon</a></div>
   </div>
 
-  <!-- ===== CATEGORY: Dinnerware (10 placeholders) ===== -->
-  <div class="category-wrapper">
-    <div class="category-title" data-aos="fade-up">🍽️ Dinnerware</div>
-    <section class="products-container" data-aos="fade-up">
-      <!-- 10 placeholders -->
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-    </section>
+  <!-- Kitchen Appliances -->
+  <h2 class="category-title">⚡ Appliances</h2>
+  <div class="product-grid">
+    <div class="product" data-name="Blender"><img src="https://via.placeholder.com/230x200?text=Blender"><h3>Blender</h3><p>For smoothies and shakes.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Mixer Grinder"><img src="https://via.placeholder.com/230x200?text=Mixer+Grinder"><h3>Mixer Grinder</h3><p>All-in-one kitchen helper.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Electric Kettle"><img src="https://via.placeholder.com/230x200?text=Electric+Kettle"><h3>Electric Kettle</h3><p>Boil water instantly.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Toaster"><img src="https://via.placeholder.com/230x200?text=Toaster"><h3>Toaster</h3><p>Crispy bread every morning.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Microwave Oven"><img src="https://via.placeholder.com/230x200?text=Microwave"><h3>Microwave Oven</h3><p>Quick heating made easy.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Air Fryer"><img src="https://via.placeholder.com/230x200?text=Air+Fryer"><h3>Air Fryer</h3><p>Healthy oil-free cooking.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Coffee Maker"><img src="https://via.placeholder.com/230x200?text=Coffee+Maker"><h3>Coffee Maker</h3><p>Brew café-style coffee.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Hand Blender"><img src="https://via.placeholder.com/230x200?text=Hand+Blender"><h3>Hand Blender</h3><p>Compact and efficient tool.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Juicer"><img src="https://via.placeholder.com/230x200?text=Juicer"><h3>Juicer</h3><p>Fresh juices anytime.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Sandwich Maker"><img src="https://via.placeholder.com/230x200?text=Sandwich+Maker"><h3>Sandwich Maker</h3><p>Easy and tasty snacks.</p><a href="#">View on Amazon</a></div>
   </div>
 
-  <!-- ===== CATEGORY: Storage & Containers (10) ===== -->
-  <div class="category-wrapper">
-    <div class="category-title" data-aos="fade-up">🫙 Storage & Containers</div>
-    <section class="products-container" data-aos="fade-up">
-      <!-- 10 placeholders -->
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-    </section>
-  </div>
-
-  <!-- ===== CATEGORY: Kitchen Tools (10) ===== -->
-  <div class="category-wrapper">
-    <div class="category-title" data-aos="fade-up">🔪 Kitchen Tools & Utensils</div>
-    <section class="products-container" data-aos="fade-up">
-      <!-- 10 placeholders -->
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-    </section>
-  </div>
-
-  <!-- ===== CATEGORY: Appliances (10) ===== -->
-  <div class="category-wrapper">
-    <div class="category-title" data-aos="fade-up">⚡ Appliances</div>
-    <section class="products-container" data-aos="fade-up">
-      <!-- 10 placeholders -->
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-    </section>
-  </div>
-
-  <!-- ===== CATEGORY: Bakeware (10) ===== -->
-  <div class="category-wrapper">
-    <div class="category-title" data-aos="fade-up">🍰 Bakeware</div>
-    <section class="products-container" data-aos="fade-up">
-      <!-- 10 placeholders -->
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-    </section>
-  </div>
-
-  <!-- ===== CATEGORY: Drinkware (10) ===== -->
-  <div class="category-wrapper">
-    <div class="category-title" data-aos="fade-up">🥤 Drinkware</div>
-    <section class="products-container" data-aos="fade-up">
-      <!-- 10 placeholders -->
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-    </section>
-  </div>
-
-  <!-- ===== CATEGORY: Table Accessories (10) ===== -->
-  <div class="category-wrapper">
-    <div class="category-title" data-aos="fade-up">🍽️ Table Accessories</div>
-    <section class="products-container" data-aos="fade-up">
-      <!-- 10 placeholders -->
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-      <div class="product-card"><a href="" target="_blank"><img class="product-image" src="" alt=""><div class="product-body"><div class="product-title"></div><div class="product-cta"><a href="" target="_blank">Buy Now</a></div></div></a></div>
-    </section>
+  <!-- Storage & Containers -->
+  <h2 class="category-title">🫙 Storage & Containers</h2>
+  <div class="product-grid">
+    <div class="product" data-name="Glass Jars"><img src="https://via.placeholder.com/230x200?text=Glass+Jars"><h3>Glass Jars</h3><p>Perfect for dry storage.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Lunch Boxes"><img src="https://via.placeholder.com/230x200?text=Lunch+Box"><h3>Lunch Boxes</h3><p>Leak-proof and stylish.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Plastic Containers"><img src="https://via.placeholder.com/230x200?text=Plastic+Containers"><h3>Plastic Containers</h3><p>Everyday kitchen helpers.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Spice Rack"><img src="https://via.placeholder.com/230x200?text=Spice+Rack"><h3>Spice Rack</h3><p>Organize your spices neatly.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Oil Dispenser"><img src="https://via.placeholder.com/230x200?text=Oil+Dispenser"><h3>Oil Dispenser</h3><p>Mess-free pouring.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Grain Storage"><img src="https://via.placeholder.com/230x200?text=Grain+Storage"><h3>Grain Storage</h3><p>Keep grains fresh.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Cookie Jar"><img src="https://via.placeholder.com/230x200?text=Cookie+Jar"><h3>Cookie Jar</h3><p>Keep cookies crunchy.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Bottle Organizer"><img src="https://via.placeholder.com/230x200?text=Bottle+Organizer"><h3>Bottle Organizer</h3><p>Store bottles neatly.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Cereal Dispenser"><img src="https://via.placeholder.com/230x200?text=Cereal+Dispenser"><h3>Cereal Dispenser</h3><p>Easy breakfast access.</p><a href="#">View on Amazon</a></div>
+    <div class="product" data-name="Container Set"><img src="https://via.placeholder.com/230x200?text=Container+Set"><h3>Container Set</h3><p>Full kitchen solution.</p><a href="#">View on Amazon</a></div>
   </div>
 
   <footer>
-    <p>&copy; 2025 Unique Collection 4U. All Rights Reserved.</p>
+    <p>© 2025 Unique Collection 4U. All Rights Reserved.</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-
     function searchProducts() {
       const input = document.getElementById('searchInput').value.toLowerCase();
       const products = document.querySelectorAll('.product');
