@@ -1,110 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unique Collection4u - Explore Fashion, Beauty, Fitness & More</title>
-<meta name="description" content="Unique Collection4u offers trending products in fashion, beauty, fitness, home decor, and more. Shop with confidence and discover what makes you unique!">
-<link rel="icon" type="image/png" href="favicon.png">
-
-<!-- Animate.css & AOS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-<!-- SEO -->
-<link rel="canonical" href="https://www.uniquecollection4u.com/">
-<meta property="og:title" content="Unique Collection4u - Shop the Latest Trends">
-<meta property="og:description" content="Explore trending collections across Fashion, Beauty, Fitness, and more at Unique Collection4u.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.uniquecollection4u.com/">
-<meta property="og:image" content="https://www.uniquecollection4u.com/cover.jpg">
-
-<style>
-body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f4f4f4; overflow-x:hidden; }
-a {text-decoration:none; color:inherit;}
-header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:center; gap:20px; position:sticky; top:0; z-index:1000; }
-header a { color:#fff; font-weight:bold; transition:0.3s; }
-header a:hover { color:#ffeb3b; text-decoration:underline; }
-
-.hero { background:linear-gradient(135deg,#66b3ff,#007bff); color:#fff; text-align:center; padding:100px 20px; }
-.hero h1 { font-size:3rem; margin-bottom:20px; }
-.hero p { font-size:1.2rem; margin-bottom:30px; }
-.hero .btn { background:#fff; color:#007bff; padding:12px 25px; border-radius:25px; font-weight:bold; transition:0.3s; }
-.hero .btn:hover { background:#ffeb3b; color:#000; }
-
-.section { max-width:1100px; margin:60px auto; padding:20px; background:#fff; border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,0.1); }
-.section h2 { color:#007bff; text-align:center; margin-bottom:25px; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-.card { background:#fafafa; border-radius:12px; overflow:hidden; text-align:center; padding:20px; transition:0.4s; }
-.card:hover { transform:translateY(-8px); box-shadow:0 6px 20px rgba(0,0,0,0.1); }
-.card img { width:100%; height:220px; object-fit:cover; border-radius:12px; }
-.card h3 { color:#007bff; margin:15px 0 10px; }
-.card p { font-size:0.95rem; color:#555; }
-.card .btn { background:#007bff; color:#fff; padding:10px 20px; border-radius:25px; display:inline-block; margin-top:10px; transition:0.3s; }
-.card .btn:hover { background:#ffeb3b; color:#000; }
-
-.trust { display:flex; justify-content:space-around; align-items:center; flex-wrap:wrap; padding:40px 20px; background:#e9f2ff; }
-.trust div { text-align:center; margin:15px; font-size:1.1rem; color:#007bff; }
-
-footer { background:#007bff; color:#fff; text-align:center; padding:25px 10px; margin-top:40px; }
-footer .social-icons { margin-top:15px; }
-footer .social-icons a { color:#fff; margin:0 10px; font-size:1.8rem; transition:0.3s; }
-footer .social-icons a:hover { color:#ffeb3b; }
-
-@media(max-width:768px){
-.hero h1{font-size:2.3rem;} .hero p{font-size:1rem;}
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-9860497702017992">
+  <title>Unique Collection4u — Curated Deals & Expert Picks</title>
+  <!-- Primary SEO -->
+  <meta name="description" content="Unique Collection4u curates trusted affiliate deals across Fashion, Books, Beauty, Home Decor, Electronics and more. Handpicked, reviewed and organized so you find the best value without the noise." />
+  <meta name="keywords" content="affiliate deals, product recommendations, curated shopping, fashion deals, books recommendations, home decor, electronics deals, kitchenware, anime merch, jewellery" />
+  <meta name="author" content="Unique Collection4u" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.uniquecollection4u.com/">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Unique Collection4u — Curated Deals & Expert Picks" />
+  <meta property="og:description" content="Handpicked affiliate recommendations across multiple categories — trusted picks, price pointers, and short reviews to help you decide quickly." />
+  <meta property="og:image" content="https://www.uniquecollection4u.com/og-image.png" />
+  <meta property="og:url" content="https://www.uniquecollection4u.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Structured Data: Organization, Website, Breadcrumbs, FAQ -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Unique Collection4u",
+          "url": "https://www.uniquecollection4u.com",
+          "logo": "https://www.uniquecollection4u.com/favicon.png",
+          "sameAs": [
+            "https://www.youtube.com/@uniquecollection01",
+            "https://www.facebook.com/UniqueCollection0555",
+            "https://www.instagram.com/uniquecollection0555",
+            "https://discord.gg/Aa9a6XHwZz"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "url": "https://www.uniquecollection4u.com",
+          "name": "Unique Collection4u",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.uniquecollection4u.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.uniquecollection4u.com"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Unique Collection4u?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Unique Collection4u curates top affiliate products across categories, focusing on quality, value and verified ratings so you can make faster buying decisions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are these products sold by Unique Collection4u?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No — we link to verified merchant listings (affiliate links). We recommend and review; purchases complete on merchant sites."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+  <style>
+  :root{
+    --primary: #0066cc;
+    --primary-600: #0055aa;
+    --primary-200: #66b3ff;
+    --accent: #ffb400;
+    --accent-600: #ffd24d;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --text: #0f1724;
+    --radius: 12px;
+    --glass: rgba(255,255,255,0.7);
+  }
+  *{box-sizing:border-box}
+  html,body{
+    height:100%;
+    margin:0;
+    font-family:"Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%;height:auto;display:block}
+  /* ---------- Header with fade ---------- */
+  header{ background: linear-gradient(90deg,var(--primary),var(--primary-600));
+    color:#fff; padding:12px 18px; display:flex; justify-content:center; gap:26px; position:sticky; top:0; z-index:1500;
+    box-shadow:0 6px 24px rgba(4,10,23,0.12); transform:translateZ(0);}
+  .nav-inner{ max-width:1200px; width:100%; display:flex; align-items:center; justify-content:center; gap:24px; }
+  header a{ color:#fff; font-weight:600; letter-spacing:0.3px; transition:color .18s, transform .18s; }
+  header a:hover{ color:var(--accent); transform:translateY(-2px) }
+  /* ---------- Hero with parallax, split text ---------- */
+  .hero{
+    background: linear-gradient(135deg,var(--primary-200),var(--primary));
+    color:#fff; text-align:center; padding:110px 18px 80px; position:relative;
+    overflow:hidden; perspective:1000px;
+  }
+  .hero .hero-bg {
+    position:absolute; left:0;top:0;width:100%;height:100%;
+    background: linear-gradient(135deg,#b3e0ff 0%,#ffd24d 100%);
+    z-index:0;
+    animation: bgFloat 16s infinite alternate ease-in-out;
+  }
+  @keyframes bgFloat {0%{transform:translateY(-8px) scale(1.04);}100%{transform:translateY(18px) scale(1.08);}}
+  .hero h1 {
+    font-size:2.6rem; margin:10px 0; line-height:1.05; font-weight:800;
+    display:flex; gap:12px; align-items:center; justify-content:center;
+    animation: textPop 1.4s cubic-bezier(.68,-0.6,.32,1.6) forwards;
+  }
+  @keyframes textPop {0%{opacity:0;transform:scale(.88) translateY(-10px);}60%{opacity:.7;}100%{opacity:1;transform:scale(1);}}
+  /* ---------- Editor's Picks badge ---------- */
+  .hero .badge{
+    display:inline-flex; gap:8px; align-items:center;
+    background:rgba(255,255,255,0.12); padding:8px 14px;
+    border-radius:999px; font-weight:700; color:#fff; margin-bottom:14px;
+    animation:fadeIn 1s;
+  }
+  /* ---------- Hero paragraph ---------- */
+  .hero p{ font-size:1.04rem; max-width:1000px; margin:12px auto 22px; color:rgba(255,255,255,0.95); line-height:1.6;
+    animation: fadeInUp 1.4s cubic-bezier(.68,-0.6,.32,1.6) .7s forwards; opacity:0;}
+  @keyframes fadeInUp {0%{opacity:0;transform:translateY(16px);}100%{opacity:1;transform:none;}}
+  /* ---------- Hero actions ---------- */
+  .hero .actions{ display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; }
+  .btn-cta, .btn-ghost {
+    transition: transform .22s cubic-bezier(.68,-0.6,.32,1.6), box-shadow .18s;
+  }
+  .btn-cta{ background:var(--accent); color:var(--primary); padding:14px 28px; border-radius:14px; font-weight:800; border:none;
+    cursor:pointer; box-shadow:0 10px 32px rgba(0,0,0,0.14); transition: transform .18s, box-shadow .18s;}
+  .btn-ghost{ background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.18); padding:12px 20px; border-radius:12px; font-weight:700;}
+  .btn-cta:hover, .btn-ghost:hover {
+    transform:scale(1.07) translateY(-3px); box-shadow:0 16px 44px rgba(0,0,0,0.12);
+  }
+  /* ---------- Decorative shapes ---------- */
+  .shape{
+    position:absolute; border-radius:20px; filter:blur(30px); opacity:0.12; pointer-events:none;
+    transition:transform 1.2s cubic-bezier(.68,-0.6,.32,1.6);
+  }
+  .shape.s1{ width:260px; height:260px; left:-40px; top:20px; background:linear-gradient(180deg,#ffffff,#ffe4b0);}
+  .shape.s2{ width:300px; height:300px; right:-80px; bottom:-40px; background:linear-gradient(180deg,#ffffff,#d0e9ff); opacity:0.08;}
+  /* ---------- Categories with staggered fadeIn ---------- */
+  .categories{ display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin:48px auto; padding:0 18px; max-width:1100px;}
+  .category-btn{
+    background:var(--card); color:var(--primary-600); border-radius:14px; padding:14px 22px; font-weight:700;
+    font-size:0.98rem; border:none; box-shadow:0 10px 30px rgba(4,10,23,0.05); cursor:pointer;
+    transition: transform .18s, box-shadow .18s, background .18s;
+    display:inline-flex; gap:10px; align-items:center; animation:fadeInUp 1.2s;
+  }
+  .category-btn i{ font-size:1.05rem; color:var(--primary-600);}
+  .category-btn:hover {
+    transform:scale(1.04) translateY(-8px);
+    background:linear-gradient(90deg,var(--primary-200),#eaf6ff); color:#04365f;
+  }
+  /* ---------- Trust strip ---------- */
+  .trust-strip{ max-width:1200px; margin:24px auto; padding:14px 18px; background:linear-gradient(90deg,#fff,#f7fbff);
+    border-radius:12px; display:flex; gap:20px; align-items:center; justify-content:center;
+    box-shadow:0 10px 40px rgba(4,10,23,0.04); animation:fadeInUp 1.1s .4s forwards; opacity:0;}
+  .trust-item{ display:flex; gap:10px; align-items:center; color:var(--muted); font-weight:700; font-size:0.95rem; }
+  .trust-item i{ color:var(--primary) }
+  /* ---------- SEO content section ---------- */
+  main.container{ max-width:1100px; margin:36px auto; padding:0 18px; }
+  .seo-card{ background:var(--card); padding:20px; border-radius:12px; box-shadow:0 12px 40px rgba(4,10,23,0.04); color:var(--text); line-height:1.7;
+    animation:fadeInUp 1.4s .7s forwards; opacity:0;}
+  .seo-card h2{ margin-top:0; font-size:1.25rem; display:flex; gap:10px; align-items:center; }
+  .seo-card p{ margin:12px 0; color:var(--muted); }
+  .seo-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px; }
+  .seo-box{ background:linear-gradient(180deg,#fbfdff,#fff); border-radius:10px; padding:12px; box-shadow:0 8px 28px rgba(4,10,23,0.04);}
+  /* ---------- Footer ---------- */
+  footer{ background: linear-gradient(90deg,var(--primary-600),var(--primary));
+    color:#fff; padding:28px 18px; margin-top:40px; border-radius:6px 6px 0 0; animation:fadeInUp 1s .8s forwards; opacity:0;}
+  .footer-inner{ max-width:1100px; margin:0 auto; text-align:center; }
+  .social-icons{ margin-top:12px; display:flex; gap:16px; justify-content:center; align-items:center; }
+  .social-icons a{ color:#fff; font-size:1.5rem; transition: transform .18s, color .18s; }
+  .social-icons a:hover{ color:var(--accent); transform:scale(1.08) }
+  /* ---------- Floating Discord Bubble & Top button ---------- */
+  .discord-bubble{
+    position:fixed; right:18px; bottom:92px; z-index:1600; display:flex; align-items:center; gap:10px;
+    background:linear-gradient(90deg,#5865f2,#4b6ef5); color:#fff; padding:10px 14px; border-radius:999px;
+    box-shadow:0 20px 50px rgba(27,46,87,0.18); cursor:pointer;
+    transition: transform .16s, box-shadow .16s, opacity .18s; animation:pulse 1.8s infinite alternate;}
+  @keyframes pulse{0%{transform:scale(1);}100%{transform:scale(1.06);}}
+  .discord-bubble:hover{ transform:translateY(-6px); box-shadow:0 28px 70px rgba(27,46,87,0.26); }
+  .to-top{
+    position:fixed; right:18px; bottom:18px; background:var(--primary); color:#fff;
+    width:48px; height:48px; border-radius:999px; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.12); cursor:pointer; transition: transform .14s; z-index:1500;}
+  .to-top:hover{ transform:translateY(-6px) }
+  /* ---------- Loader ---------- */
+  .site-loader{
+    position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,0.86); z-index:9999; transition:opacity .3s;
+    animation:fadeIn .9s;
+  }
+  .loader-inner{
+    width:86px; height:86px; border-radius:50%; border:6px solid rgba(0,0,0,0.06);
+    border-top-color:var(--primary); animation:spin 1.2s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+  @keyframes fadeIn {0%{opacity:0;}100%{opacity:1;}}
+  /* ---------- small responsiveness ---------- */
+  @media(max-width:900px){
+    .hero{ padding:72px 16px 48px; }
+    .hero h1{ font-size:1.85rem; }
+    .categories{ gap:12px }
+    .seo-grid{ grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+  }
+  </style>
 </head>
 <body>
-
-<header>
-  <a href="index.html">🏠 Home</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="privacy.html">Privacy</a>
-</header>
-
-<section class="hero" data-aos="fade-down">
-  <h1 class="animate__animated animate__fadeInDown">Welcome to Unique Collection4u 💎</h1>
-  <p class="animate__animated animate__fadeIn">Your one-stop destination for Fashion, Beauty, Fitness, and Lifestyle products.</p>
-  <a href="#categories" class="btn animate__animated animate__pulse animate__infinite">Explore Now</a>
-</section>
-
-<section id="categories" class="section" data-aos="fade-up">
-  <h2>✨ Popular Categories</h2>
-  <div class="grid">
-    <div class="card" data-aos="zoom-in"><img src="images/fashion.jpg" alt="Fashion"><h3>Fashion</h3><p>Stay trendy with the latest fashion finds.</p><a href="fashion.html" class="btn">Shop Now</a></div>
-    <div class="card" data-aos="zoom-in"><img src="images/beauty.jpg" alt="Beauty"><h3>Beauty</h3><p>Discover skincare and beauty essentials.</p><a href="beauty.html" class="btn">Explore</a></div>
-    <div class="card" data-aos="zoom-in"><img src="images/fitness.jpg" alt="Fitness"><h3>Fitness</h3><p>Gear up with fitness accessories and apparel.</p><a href="fitness.html" class="btn">View More</a></div>
-    <div class="card" data-aos="zoom-in"><img src="images/home.jpg" alt="Home Decor"><h3>Home Decor</h3><p>Style your home with our decor collection.</p><a href="home-decor.html" class="btn">See Collection</a></div>
+  <!-- Loader -->
+  <div id="siteLoader" class="site-loader" aria-hidden="false" role="status">
+    <div class="loader-inner" aria-hidden="true"></div>
   </div>
-</section>
-
-<section class="trust" data-aos="fade-up">
-  <div><i class="fa-solid fa-shield-halved fa-2x"></i><br>Secure & Trusted</div>
-  <div><i class="fa-solid fa-truck-fast fa-2x"></i><br>Fast Delivery</div>
-  <div><i class="fa-solid fa-star fa-2x"></i><br>Top Rated Products</div>
-  <div><i class="fa-solid fa-headset fa-2x"></i><br>24/7 Support</div>
-</section>
-
-<footer data-aos="fade-up">
-  © 2025 Unique Collection4u | All rights reserved
-  <div class="social-icons">
-    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
+  <!-- Header -->
+  <header class="animate__animated animate__fadeInDown">
+    <div class="nav-inner" role="navigation" aria-label="Main navigation">
+      <a href="index.html">🏠 Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </header>
+  <!-- Hero -->
+  <section class="hero" data-aos="fade-down" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="shape s1" aria-hidden="true"></div>
+    <div class="shape s2" aria-hidden="true"></div>
+    <div class="container">
+      <div class="badge animate__animated animate__fadeIn">✨ Editor's Picks</div>
+      <h1 id="hero-heading" class="animate__animated animate__zoomIn">Unique Collection4u — Curated finds for better shopping 🛍️</h1>
+      <p class="animate__animated animate__fadeInUp"> Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics and more. We evaluate value, verified ratings and trending demand so you spend less time searching and more time buying confidently. </p>
+      <div class="actions" aria-hidden="false">
+        <button class="btn-cta animate__animated animate__fadeInUp" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})" aria-label="Shop now">Shop Now 🛒</button>
+        <a class="btn-ghost animate__animated animate__fadeInUp" href="https://www.youtube.com/@uniquecollection01" target="_blank" rel="noopener" aria-label="Watch our videos"><i class="fab fa-youtube"></i> Watch Videos</a>
+      </div>
+    </div>
+  </section>
+  <!-- Categories -->
+  <section class="categories" id="categories" data-aos="fade-up" aria-label="Browse categories">
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="60" onclick="location.href='fashion.html'"><i class="fa-solid fa-shirt"></i> Fashion</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="100" onclick="location.href='books.html'"><i class="fa-solid fa-book"></i> Books</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="140" onclick="location.href='beauty.html'"><i class="fa-solid fa-magic-wand-sparkles"></i> Beauty</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="180" onclick="location.href='toys.html'"><i class="fa-solid fa-puzzle-piece"></i> Toys</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="220" onclick="location.href='homedecor.html'"><i class="fa-solid fa-couch"></i> Home Decor</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="260" onclick="location.href='fitness.html'"><i class="fa-solid fa-dumbbell"></i> Fitness</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="300" onclick="location.href='kitchenware.html'"><i class="fa-solid fa-utensils"></i> Kitchenware</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="340" onclick="location.href='anime.html'"><i class="fa-solid fa-face-smile"></i> Anime</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="380" onclick="location.href='jewellery.html'"><i class="fa-solid fa-gem"></i> Jewellery</button>
+    <button class="category-btn animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-delay="420" onclick="location.href='electronics.html'"><i class="fa-solid fa-tv"></i> Electronics</button>
+  </section>
+  <!-- Trust strip -->
+  <div class="trust-strip" data-aos="fade-up" role="region" aria-label="Trust badges">
+    <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Curated, quality picks</div>
+    <div class="trust-item"><i class="fa-solid fa-handshake"></i> Trusted affiliate partners</div>
+    <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Transparent reviews & links</div>
   </div>
-</footer>
+  <!-- SEO content area -->
+  <main class="container" aria-labelledby="why-heading">
+    <section class="seo-card" data-aos="fade-up">
+      <h2 id="why-heading">Why choose Unique Collection4u? ✅</h2>
+      <p> Unique Collection4u sources, tests and curates products across categories to deliver practical, value-driven recommendations. Our selection process prioritizes verified ratings, price-performance balance and trending consumer demand. Each recommendation links to verified merchant listings so you can review specs, read full user reviews, and purchase securely. </p>
+      <div class="seo-grid" aria-hidden="false">
+        <div class="seo-box" data-aos="fade-up" data-aos-delay="80">
+          <strong>Curated Selection</strong>
+          <p style="margin:6px 0 0; color:var(--muted)">Handpicked items from real reviews — no noisy auto-feeds.</p>
+        </div>
+        <div class="seo-box" data-aos="fade-up" data-aos-delay="140">
+          <strong>Trusted Partners</strong>
+          <p style="margin:6px 0 0; color:var(--muted)">Affiliate links to verified merchants for secure checkout.</p>
+        </div>
+        <div class="seo-box" data-aos="fade-up" data-aos-delay="200">
+          <strong>Quick Decision Aid</strong>
+          <p style="margin:6px 0 0; color:var(--muted)">Concise product notes and badges (Top Rated, Editor’s Pick) to speed choices.</p>
+        </div>
+      </div>
+      <h3 style="margin-top:18px">Content & SEO notes</h3>
+      <p style="color:var(--muted)"> This page includes structured data, clear on-page headings, descriptive alt attributes for images (add real images with descriptive alt text), a canonical URL and social preview metadata (Open Graph / Twitter). Keep product pages focused with unique titles, clear meta descriptions and 150–300 word summaries for each product to maximize search relevance. </p>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer data-aos="fade-up" role="contentinfo">
+    <div class="footer-inner">
+      <div style="font-weight:800; font-size:0.98rem;">© 2025 Unique Collection4u | Curated affiliate recommendations</div>
+      <div class="social-icons" role="navigation" aria-label="Social links">
+        <a href="https://www.youtube.com/@uniquecollection01" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/UniqueCollection0555" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/uniquecollection0555" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.gg/Aa9a6XHwZz" target="_blank" rel="noopener" title="Join our Discord"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- Floating Discord Bubble & Top button -->
+  <div class="discord-bubble animate__animated animate__pulse"
+    onclick="window.open('https://discord.gg/Aa9a6XHwZz','_blank')" role="button"
+    title="Join our Discord" tabindex="0" aria-label="Join our Discord">
+    <i class="fab fa-discord" aria-hidden="true"></i>
+    <span style="font-weight:800; color:#fff; font-size:0.95rem;">Join Community</span>
+  </div>
+  <div class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    title="Back to top" role="button" tabindex="0" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up-long" style="color:#fff;"></i>
+  </div>
+  <!-- AOS & Scripted animations -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS with subtle animation settings
+    AOS.init({ duration: 700, once: true, offset: 100 });
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({ duration: 1000, once: true });
-</script>
+    // Parallax effect for hero background
+    window.addEventListener('scroll', function() {
+      const heroBg = document.querySelector('.hero-bg');
+      if(heroBg) {
+        heroBg.style.transform = 'translateY(' + (window.scrollY * 0.15) + 'px)';
+      }
+    });
 
+    // Loader fade out when content is ready
+    window.addEventListener('load', function(){
+      const loader = document.getElementById('siteLoader');
+      if(loader){
+        loader.style.opacity = '0';
+        loader.style.pointerEvents = 'none';
+        setTimeout(()=> loader.remove(), 420);
+      }
+      // Discord bubble entrance animation
+      const bubble = document.querySelector('.discord-bubble');
+      if(bubble){
+        setTimeout(()=> {
+          bubble.classList.remove('animate__pulse');
+          bubble.classList.add('animate__fadeInUp','animate__animated');
+        }, 800);
+      }
+    });
+
+    // CTA button micro-interactions
+    document.querySelectorAll('.btn-cta, .btn-ghost').forEach(btn=>{
+      btn.addEventListener('mouseenter', ()=>{
+        btn.classList.add('animate__animated','animate__tada');
+      });
+      btn.addEventListener('animationend', ()=>{
+        btn.classList.remove('animate__animated','animate__tada');
+      });
+    });
+    // Keyboard accessibility for interactive elements
+    document.querySelectorAll('.discord-bubble, .to-top').forEach(el => {
+      el.setAttribute('tabindex','0');
+      el.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+      });
+    });
+  </script>
+  <!-- Noscript fallback -->
+  <noscript>
+    <style>
+      .animate__animated{ opacity:1 !important; transform:none !important; }
+    </style>
+  </noscript>
 </body>
 </html>
