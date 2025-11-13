@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us - Unique Collection4u</title>
+<title>About Us | Unique Collection4u - Discover Quality Products</title>
+<meta name="description" content="Learn about Unique Collection4u — your trusted affiliate source for fashion, books, electronics, toys, and more. Explore our mission and values today!">
 <link rel="icon" type="image/png" href="favicon.png">
 
 <!-- Animate.css & AOS -->
@@ -14,60 +15,188 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-html, body { margin:0; padding:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; min-height:100%; scroll-behavior:smooth; }
-body { display:flex; flex-direction:column; background:#f4f4f4; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+  background: #f8f9fc;
+  color: #333;
+}
 
-a {text-decoration:none; color:inherit;}
-header { background:#007bff; color:#fff; padding:15px 20px; display:flex; justify-content:center; gap:20px; position:sticky; top:0; z-index:1000; }
-header a { color:#fff; font-weight:bold; transition:0.3s; }
-header a:hover { color:#ffeb3b; text-decoration:underline; }
+/* Header */
+header {
+  background: linear-gradient(90deg, #007bff, #00aaff);
+  color: #fff;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+header a {
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+header a:hover {
+  color: #ffeb3b;
+  transform: scale(1.1);
+}
 
-.hero { background:linear-gradient(135deg, #66b3ff, #007bff); color:#fff; text-align:center; padding:100px 20px; flex-shrink:0; }
-.hero h1 { font-size:3rem; margin-bottom:20px; }
-.hero p { font-size:1.3rem; }
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #4da3ff, #007bff);
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: rgba(255,255,255,0.05);
+  top: -50%;
+  left: -50%;
+  transform: rotate(25deg);
+  animation: shimmer 6s infinite linear;
+}
+@keyframes shimmer {
+  0% {transform: rotate(25deg) translateX(-30%);}
+  100% {transform: rotate(25deg) translateX(30%);}
+}
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.hero p {
+  font-size: 1.3rem;
+}
 
-.content { max-width:900px; margin:40px auto 80px; background:#fff; padding:35px; border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,0.1); flex-grow:1; }
-.content h2 { color:#007bff; margin-bottom:15px; }
-.content p { margin-bottom:20px; line-height:1.6; }
+/* Content Section */
+.content {
+  max-width: 950px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+.content h2 {
+  color: #007bff;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.6rem;
+}
+.content p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
 
-footer { background:#007bff; color:#fff; text-align:center; padding:25px 10px; margin-top:auto; }
-footer .social-icons { margin-top:15px; }
-footer .social-icons a { color:#fff; margin:0 10px; font-size:1.8rem; transition:0.3s; }
-footer .social-icons a:hover { color:#ffeb3b; }
+/* Animated icons for each section */
+.content h2::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #00aaff;
+}
+.content h2:nth-of-type(1)::before { content: "\f135"; } /* Rocket */
+.content h2:nth-of-type(2)::before { content: "\f005"; } /* Star */
+.content h2:nth-of-type(3)::before { content: "\f02d"; } /* Book */
+.content h2:nth-of-type(4)::before { content: "\f0e0"; } /* Envelope */
 
-@media(max-width:768px){ .hero h1{font-size:2.2rem;} .hero p{font-size:1rem;} }
+/* Footer */
+footer {
+  background: linear-gradient(90deg, #007bff, #00aaff);
+  color: #fff;
+  text-align: center;
+  padding: 35px 10px;
+  margin-top: 80px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+footer .social-icons {
+  margin-top: 18px;
+}
+footer .social-icons a {
+  color: #fff;
+  margin: 0 12px;
+  font-size: 1.9rem;
+  transition: 0.3s;
+}
+footer .social-icons a:hover {
+  color: #ffeb3b;
+  transform: scale(1.2);
+}
+
+/* Back to top button */
+#backToTop {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 14px 17px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: none;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+#backToTop:hover {
+  background: #005ecb;
+  transform: scale(1.1);
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+  .hero p{font-size:1rem;}
+  .content{margin:40px 15px; padding:30px 25px;}
+}
 </style>
 </head>
 <body>
 
 <header>
   <a href="index.html">🏠 Home</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="privacy.html">Privacy</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="contact.html">📩 Contact</a>
+  <a href="privacy.html">🔒 Privacy</a>
 </header>
 
-<section class="hero" data-aos="fade-down">
-  <h1 class="animate__animated animate__fadeInDown">About Us</h1>
-  <p class="animate__animated animate__fadeIn">Learn more about Unique Collection4u and our mission.</p>
+<section class="hero" data-aos="zoom-in">
+  <h1 class="animate__animated animate__fadeInDown">About Unique Collection4u</h1>
+  <p class="animate__animated animate__fadeInUp">Discover our story, mission, and commitment to quality 🌟</p>
 </section>
 
-<div class="content" data-aos="fade-up">
+<div class="content" data-aos="fade-up" data-aos-delay="100">
   <h2>Our Mission</h2>
-  <p>At Unique Collection4u, our goal is to provide a curated selection of high-quality products across multiple categories including fashion, books, electronics, toys, and more. We aim to make your shopping experience simple, enjoyable, and rewarding.</p>
+  <p>At <strong>Unique Collection4u</strong>, our mission is to bring you a curated selection of products that combine quality, style, and affordability. Whether it’s <em>fashion, books, beauty, electronics, toys</em>, or home essentials — we ensure every product meets our standards of excellence.</p>
 
   <h2>Why Choose Us?</h2>
-  <p>We carefully select products that offer both quality and value. Our platform is user-friendly, with clear navigation and categories designed to help you find exactly what you need quickly. Transparency, trust, and customer satisfaction are our top priorities.</p>
+  <p>💎 We value <strong>trust, transparency, and customer satisfaction</strong>. Our website offers an intuitive layout, smooth navigation, and engaging visuals designed to make shopping effortless. Every product we promote is carefully chosen to ensure genuine value and satisfaction.</p>
 
   <h2>Affiliate Disclaimer</h2>
-  <p>Some links on our site are affiliate links. This means we may earn a small commission if you make a purchase through these links at no extra cost to you. This helps us maintain and improve the website to serve you better.</p>
+  <p>🛍️ Some of our links are affiliate links, meaning we may earn a small commission when you make a purchase through them — at no extra cost to you. This supports our platform and helps us keep offering valuable product recommendations.</p>
 
   <h2>Get in Touch</h2>
-  <p>If you have questions, feedback, or suggestions, feel free to <a href="contact.html">contact us</a>. We love hearing from our visitors and are committed to continuous improvement.</p>
+  <p>📬 Have feedback, suggestions, or collaboration ideas? <a href="contact.html" style="color:#007bff; font-weight:600;">Contact us</a> anytime. We appreciate your input and strive to grow with our community.</p>
 </div>
 
 <footer data-aos="fade-up">
-  © 2025 Unique Collection4u | All rights reserved
+  <div>© 2025 Unique Collection4u | All rights reserved</div>
   <div class="social-icons">
     <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -75,8 +204,22 @@ footer .social-icons a:hover { color:#ffeb3b; }
   </div>
 </footer>
 
+<!-- Back to Top Button -->
+<button id="backToTop" title="Go to top">⬆️</button>
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
+<script>
+AOS.init({ duration: 1000, once: true });
+const btn = document.getElementById('backToTop');
+window.onscroll = function() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
 
 </body>
 </html>
