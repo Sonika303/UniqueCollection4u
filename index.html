@@ -26,10 +26,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:#f0f4f8;color:#0f1724;overflow-x:hidden;perspective:1500px;}
+body{font-family:'Poppins',sans-serif;background:#f0f4f8;color:#0f1724;overflow-x:hidden;perspective:2000px;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 
@@ -46,12 +45,12 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 
 /* Hero */
 .hero{text-align:center;padding:100px 20px 80px;position:relative;overflow:hidden;}
-.hero h1{font-size:2.5rem;font-weight:800;color:#fff;margin:12px 0;}
+.hero h1{font-size:2.5rem;font-weight:800;color:#fff;margin:12px 0;transform-style:preserve-3d;}
 .hero p{color:rgba(255,255,255,0.9);max-width:900px;margin:12px auto 22px;line-height:1.6;font-size:1.05rem;}
 .hero .badge{display:inline-block;background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:30px;font-weight:700;color:#fff;margin-bottom:12px;}
 
 /* Semicircles */
-.semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
+.semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;transform-style:preserve-3d;}
 .sc1{width:180px;height:180px;top:30px;left:20px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
 .sc2{width:240px;height:240px;top:150px;right:40px;background:linear-gradient(180deg,#ffffff,#0055aa);}
 .sc3{width:120px;height:120px;top:300px;left:200px;background:linear-gradient(180deg,#66b3ff,#ffffff);}
@@ -68,13 +67,13 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 
 /* Categories */
 .categories{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;padding:40px 20px;position:relative;z-index:10;}
-.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:220px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;perspective:800px;transform-style:preserve-3d;}
-.category-card:hover{transform: translateY(-10px) rotateX(3deg) rotateY(3deg);}
+.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:220px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s, box-shadow 0.3s;perspective:1000px;transform-style:preserve-3d;}
+.category-card:hover{transform: translateY(-10px) rotateX(3deg) rotateY(3deg);box-shadow:0 30px 80px rgba(0,0,0,0.15);}
 .category-card i{font-size:1.6rem;color:#0066cc;margin-bottom:10px;display:block;}
 .category-card h3{font-size:1.2rem;font-weight:700;margin-bottom:6px;}
 .category-card p{font-size:0.95rem;color:#555;margin-bottom:12px;}
-.category-card button{background:#0066cc;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;}
-.category-card button:hover{background:#0055aa;}
+.category-card button{background:#0066cc;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s, transform 0.3s;}
+.category-card button:hover{background:#0055aa;transform:translateY(-3px);}
 
 /* Footer */
 footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px 18px;border-radius:6px 6px 0 0;margin-top:40px;}
@@ -138,61 +137,61 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
 
 <!-- Categories -->
 <section class="categories">
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up">
     <i class="fa-solid fa-shirt"></i>
     <h3>Fashion</h3>
     <p>Trending outfits and accessories handpicked for style and value.</p>
     <button onclick="location.href='fashion.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="50">
     <i class="fa-solid fa-book"></i>
     <h3>Books</h3>
     <p>Bestsellers and classics for every reader.</p>
     <button onclick="location.href='books.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="100">
     <i class="fa-solid fa-magic-wand-sparkles"></i>
     <h3>Beauty</h3>
     <p>Skincare, cosmetics, and self-care must-haves.</p>
     <button onclick="location.href='beauty.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="150">
     <i class="fa-solid fa-puzzle-piece"></i>
     <h3>Toys</h3>
     <p>Fun and educational toys for all ages.</p>
     <button onclick="location.href='toys.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="200">
     <i class="fa-solid fa-couch"></i>
     <h3>Home Decor</h3>
     <p>Stylish and functional items to beautify your home.</p>
     <button onclick="location.href='homedecor.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="250">
     <i class="fa-solid fa-dumbbell"></i>
     <h3>Fitness</h3>
     <p>Gear and accessories to stay healthy and active.</p>
     <button onclick="location.href='fitness.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="300">
     <i class="fa-solid fa-utensils"></i>
     <h3>Kitchenware</h3>
     <p>Quality utensils, gadgets and cookware for your kitchen.</p>
     <button onclick="location.href='kitchenware.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="350">
     <i class="fa-solid fa-face-smile"></i>
     <h3>Anime</h3>
     <p>Merch and collectibles from popular anime series.</p>
     <button onclick="location.href='anime.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="400">
     <i class="fa-solid fa-gem"></i>
     <h3>Jewellery</h3>
     <p>Stylish and affordable jewellery pieces.</p>
     <button onclick="location.href='jewellery.html'">Shop</button>
   </div>
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up" data-aos-delay="450">
     <i class="fa-solid fa-tv"></i>
     <h3>Electronics</h3>
     <p>Gadgets, devices, and tech essentials.</p>
@@ -217,25 +216,24 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-AOS.init();
+AOS.init({duration:800,easing:'ease-out'});
 
 // Loader
 window.addEventListener("load", function(){
   document.getElementById('loader').style.display="none";
 });
 
-// Semicircles animation
+// Semicircles animation with depth
 const semicircles = document.querySelectorAll('.semicircle');
 const speeds = [0.3,0.2,0.25,0.18,0.22,0.28,0.2,0.15,0.3,0.18];
 let t = 0;
-
 function animateSemicircles(){
   semicircles.forEach((sc,i)=>{
-    const x = Math.sin(t * speeds[i] + i) * 50;
-    const y = Math.cos(t * speeds[i] + i) * 30;
-    sc.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    const x = Math.sin(t*speeds[i]+i)*60;
+    const y = Math.cos(t*speeds[i]+i)*40;
+    sc.style.transform = `translate3d(${x}px,${y}px,0)`;
   });
-  t += 0.02;
+  t+=0.02;
   requestAnimationFrame(animateSemicircles);
 }
 animateSemicircles();
@@ -243,13 +241,13 @@ animateSemicircles();
 // Particles
 const particlesContainer = document.getElementById('particles');
 const particles = [];
-for(let i=0;i<60;i++){
+for(let i=0;i<80;i++){
   const p = document.createElement('div');
   p.className='particle';
-  p.style.left = Math.random()*window.innerWidth+'px';
-  p.style.top = Math.random()*window.innerHeight+'px';
+  p.style.left=Math.random()*window.innerWidth+'px';
+  p.style.top=Math.random()*window.innerHeight+'px';
   particlesContainer.appendChild(p);
-  particles.push({el:p,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-0.5)*0.6,dy:(Math.random()-0.5)*0.6});
+  particles.push({el:p,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-0.5)*0.8,dy:(Math.random()-0.5)*0.8});
 }
 function animateParticles(){
   particles.forEach(p=>{
@@ -265,13 +263,15 @@ function animateParticles(){
 }
 animateParticles();
 
-// Mouse parallax
+// Mouse parallax for semicircles
 document.addEventListener("mousemove", function(e){
   const cx = e.clientX - window.innerWidth/2;
   const cy = e.clientY - window.innerHeight/2;
   semicircles.forEach((sc,i)=>{
     const depth = (i+1)/10;
-    sc.style.transform += ` translate3d(${cx*depth*0.02}px, ${-cy*depth*0.02}px, 0)`;
+    const x = Math.sin(t*speeds[i]+i)*60 + cx*depth*0.02;
+    const y = Math.cos(t*speeds[i]+i)*40 - cy*depth*0.02;
+    sc.style.transform = `translate3d(${x}px,${y}px,0)`;
   });
 });
 </script>
