@@ -49,29 +49,26 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 .social-top a{color:#fff;font-size:1.3rem;transition:0.2s;}
 .social-top a:hover{color:#ffb400;}
 
-/* Hero */
+/* Hero Section */
 .hero{position:relative;width:100%;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;text-align:center;}
 .hero h1{font-size:2.5rem;font-weight:800;color:#0066cc;margin:12px 0;}
 .hero p{color:#004080;max-width:800px;margin:12px auto 22px;line-height:1.6;font-size:1.05rem;}
 .hero .badge{display:inline-block;background:rgba(0,102,204,0.15);padding:6px 14px;border-radius:30px;font-weight:700;color:#0066cc;margin-bottom:12px;}
 
-/* Semicircles */
+/* Semicircles & Particles */
 .semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
 .sc-large{width:400px;height:400px;}
 .sc-medium{width:250px;height:250px;}
 .sc-small{width:120px;height:120px;}
-
-/* Particles */
 .particle{position:absolute;width:4px;height:4px;background:#66b3ff;border-radius:50%;opacity:0.7;pointer-events:none;}
 
-/* Categories container */
+/* Categories carousel */
 .categories{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;display:flex;justify-content:center;align-items:center;perspective:1200px;}
-.category-card{position:absolute;background:#fff;border-radius:18px;padding:14px;width:150px;box-shadow:0 25px 60px rgba(0,0,0,0.18);text-align:center;cursor:pointer;transition:transform 0.5s, box-shadow 0.5s;transform-style:preserve-3d;}
-.category-card i{font-size:1.5rem;color:#0066cc;margin-bottom:8px;display:block;}
-.category-card h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;}
-.category-card button{background:#0066cc;color:#fff;border:none;padding:4px 10px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;margin-top:4px;font-size:0.85rem;}
+.category-card{position:absolute;background:#fff;border-radius:16px;padding:12px;width:140px;box-shadow:0 20px 50px rgba(0,0,0,0.15);text-align:center;cursor:pointer;transition:transform 0.5s,box-shadow 0.5s;transform-style:preserve-3d;opacity:0;}
+.category-card i{font-size:1.5rem;color:#0066cc;margin-bottom:6px;display:block;}
+.category-card h3{font-size:1rem;font-weight:700;margin-bottom:4px;}
+.category-card button{background:#0066cc;color:#fff;border:none;padding:4px 10px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;margin-top:4px;font-size:0.8rem;}
 .category-card button:hover{background:#0055aa;}
-.category-card:hover{transform:translateY(-12px) scale(1.05);box-shadow:0 35px 80px rgba(0,0,0,0.28);}
 
 /* Side Panel */
 #category-panel{position:fixed;top:0;right:-380px;width:380px;height:100vh;background:linear-gradient(160deg,#0055aa,#66b3ff);color:#fff;padding:28px;box-shadow:-4px 0 35px rgba(0,0,0,0.3);transition:right 0.5s;z-index:2000;overflow-y:auto;}
@@ -83,7 +80,7 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 #category-panel .close-panel{position:absolute;top:18px;right:18px;font-size:1.5rem;background:transparent;border:none;color:#fff;cursor:pointer;transition:0.2s;}
 #category-panel .close-panel:hover{color:#ffb400;}
 
-/* Discord button */
+/* Discord Button */
 .discord-btn{position:fixed;bottom:30px;right:30px;background:#7289da;color:#fff;padding:14px 22px;border-radius:14px;font-weight:700;box-shadow:0 10px 25px rgba(0,0,0,0.25);transition:0.3s;z-index:1500;}
 .discord-btn:hover{background:#5b6eae;}
 
@@ -227,12 +224,10 @@ for(let i=0;i<80;i++){
   particles.push({el:p,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-0.5)*0.7,dy:(Math.random()-0.5)*0.7});
 }
 function animateParticles(){
-  particles.forEach(p=>{
-    p.x+=p.dx; p.y+=p.dy;
-    if(p.x<0)p.x=window.innerWidth; if(p.x>window.innerWidth)p.x=0;
-    if(p.y<0)p.y=window.innerHeight; if(p.y>window.innerHeight)p.y=0;
-    p.el.style.transform=`translate3d(${p.x}px,${p.y}px,0)`;
-  });
+  particles.forEach(p=>{p.x+=p.dx;p.y+=p.dy;
+    if(p.x<0)p.x=window.innerWidth;if(p.x>window.innerWidth)p.x=0;
+    if(p.y<0)p.y=window.innerHeight;if(p.y>window.innerHeight)p.y=0;
+    p.el.style.transform=`translate3d(${p.x}px,${p.y}px,0)`;});
   requestAnimationFrame(animateParticles);
 }
 animateParticles();
@@ -240,19 +235,19 @@ animateParticles();
 // Semicircle animation
 const semicircles=document.querySelectorAll('.semicircle');
 let t=0;
-function animateSemis(){
-  semicircles.forEach((sc,i)=>{
-    const x=Math.sin(t*0.2+i)*20;
-    const y=Math.cos(t*0.2+i)*15;
-    sc.style.transform=`translate3d(${x}px,${y}px,0)`;
-  });
-  t+=0.01;
-  requestAnimationFrame(animateSemis);
-}
+function animateSemis(){semicircles.forEach((sc,i)=>{
+  const x=Math.sin(t*0.2+i)*20; const y=Math.cos(t*0.2+i)*15;
+  sc.style.transform=`translate3d(${x}px,${y}px,0)`;});
+  t+=0.01; requestAnimationFrame(animateSemis);}
 animateSemis();
 
-// Carousel rotation
+// Sequential category animation
 const categories=document.querySelectorAll('.category-card');
+categories.forEach((cat,i)=>{
+  setTimeout(()=>{cat.style.opacity=1;cat.style.transform='translateY(0)';},i*200);
+});
+
+// Carousel rotation
 let angle=0;
 function rotateCarousel(){
   const radius=250;
@@ -260,9 +255,9 @@ function rotateCarousel(){
   const centerY=window.innerHeight/2;
   const step=(2*Math.PI)/categories.length;
   categories.forEach((cat,i)=>{
-    const a=angle + i*step;
-    cat.style.left=centerX + radius*Math.cos(a) - cat.offsetWidth/2 + 'px';
-    cat.style.top=centerY + radius*Math.sin(a) - cat.offsetHeight/2 + 'px';
+    const a=angle+i*step;
+    cat.style.left=centerX+radius*Math.cos(a)-cat.offsetWidth/2+'px';
+    cat.style.top=centerY+radius*Math.sin(a)-cat.offsetHeight/2+'px';
   });
   angle+=0.002;
   requestAnimationFrame(rotateCarousel);
@@ -286,11 +281,9 @@ categories.forEach(cat=>{
 });
 
 closePanel.addEventListener('click',()=>panel.classList.remove('active'));
-
-// Close panel on outside click
 document.addEventListener('click',e=>{
-  if(!panel.contains(e.target) && ![...categories].some(c=>c.contains(e.target))){
-    panel.classList.remove('active');
-  }
+  if(!panel.contains(e.target) && ![...categories].some(c=>c.contains(e.target))){panel.classList.remove('active');}
 });
 </script>
+</body>
+</html>
