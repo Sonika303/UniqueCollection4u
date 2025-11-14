@@ -28,12 +28,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<!-- Fonts -->
+<!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<!-- JSON-LD Schema -->
+<!-- Structured Data: Organization, Website, Breadcrumbs, FAQ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -97,20 +97,378 @@
 </script>
 
 <style>
-/* your full CSS kept exactly as you pasted (not repeated for space) */
-</style>
+/* ---------- Colors & base ---------- */
+:root{
+  --primary: #0066cc;
+  --primary-600: #0055aa;
+  --primary-200: #66b3ff;
+  --accent: #ffb400;
+  --accent-600: #ffd24d;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --text: #0f1724;
+  --radius: 12px;
+  --glass: rgba(255,255,255,0.7);
+}
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family:"Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  scroll-behavior:smooth;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit; text-decoration:none}
+img{max-width:100%;height:auto;display:block}
 
+/* ---------- Header ---------- */
+header{
+  background: linear-gradient(90deg,var(--primary),var(--primary-600));
+  color:#fff;
+  padding:12px 18px;
+  display:flex;
+  justify-content:center;
+  gap:26px;
+  position:sticky;
+  top:0;
+  z-index:1500;
+  box-shadow:0 6px 24px rgba(4,10,23,0.12);
+  transform:translateZ(0);
+}
+.nav-inner{
+  max-width:1200px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+}
+header a{
+  color:#fff;
+  font-weight:600;
+  letter-spacing:0.3px;
+  transition:color .18s, transform .18s;
+}
+header a:hover{
+  color:var(--accent);
+  transform:translateY(-2px)
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  background: linear-gradient(135deg,var(--primary-200),var(--primary));
+  color:#fff;
+  text-align:center;
+  padding:110px 18px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero .badge{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  background:rgba(255,255,255,0.12);
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:2.6rem;
+  margin:10px 0;
+  line-height:1.05;
+  letter-spacing:0.3px;
+  font-weight:800;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.hero p{
+  font-size:1.04rem;
+  max-width:1000px;
+  margin:12px auto 22px;
+  color:rgba(255,255,255,0.95);
+  line-height:1.6;
+}
+.hero .actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.btn-cta{
+  background:var(--accent);
+  color:var(--primary);
+  padding:14px 28px;
+  border-radius:14px;
+  font-weight:800;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 10px 32px rgba(0,0,0,0.14);
+  transition: transform .18s, box-shadow .18s;
+}
+.btn-ghost{
+  background:transparent;
+  color:#fff;
+  border:2px solid rgba(255,255,255,0.18);
+  padding:12px 20px;
+  border-radius:12px;
+  font-weight:700;
+}
+.btn-cta:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.18);
+}
+.btn-ghost:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,0.32)
+}
+
+/* decorative shapes */
+.shape{
+  position:absolute;
+  border-radius:20px;
+  filter:blur(30px);
+  opacity:0.12;
+  pointer-events:none;
+}
+.shape.s1{
+  width:260px;
+  height:260px;
+  left:-40px;
+  top:20px;
+  background:linear-gradient(180deg,#ffffff,#ffe4b0);
+}
+.shape.s2{
+  width:300px;
+  height:300px;
+  right:-80px;
+  bottom:-40px;
+  background:linear-gradient(180deg,#ffffff,#d0e9ff);
+  opacity:0.08;
+}
+
+/* ---------- Categories ---------- */
+.categories{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  justify-content:center;
+  margin:48px auto;
+  padding:0 18px;
+  max-width:1100px;
+}
+.category-btn{
+  background:var(--card);
+  color:var(--primary-600);
+  border-radius:14px;
+  padding:14px 22px;
+  font-weight:700;
+  font-size:0.98rem;
+  border:none;
+  box-shadow: 0 10px 30px rgba(4,10,23,0.05);
+  cursor:pointer;
+  transition: transform .18s, box-shadow .18s, background .18s;
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+}
+.category-btn i{
+  font-size:1.05rem;
+  color:var(--primary-600);
+}
+.category-btn:hover{
+  transform:translateY(-8px);
+  box-shadow:0 22px 60px rgba(4,10,23,0.08);
+  background:linear-gradient(90deg,var(--primary-200),#eaf6ff);
+  color:#04365f;
+}
+
+/* ---------- Trust strip ---------- */
+.trust-strip{
+  max-width:1200px;
+  margin:24px auto;
+  padding:14px 18px;
+  background:linear-gradient(90deg,#fff,#f7fbff);
+  border-radius:12px;
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 40px rgba(4,10,23,0.04);
+}
+.trust-item{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  color:var(--muted);
+  font-weight:700;
+  font-size:0.95rem;
+}
+.trust-item i{
+  color:var(--primary)
+}
+
+/* ---------- SEO content section ---------- */
+main.container{
+  max-width:1100px;
+  margin:36px auto;
+  padding:0 18px;
+}
+.seo-card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 12px 40px rgba(4,10,23,0.04);
+  color:var(--text);
+  line-height:1.7;
+}
+.seo-card h2{
+  margin-top:0;
+  font-size:1.25rem;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.seo-card p{
+  margin:12px 0;
+  color:var(--muted);
+}
+.seo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin-top:18px;
+}
+.seo-box{
+  background:linear-gradient(180deg,#fbfdff,#fff);
+  border-radius:10px;
+  padding:12px;
+  box-shadow:0 8px 28px rgba(4,10,23,0.04);
+}
+
+/* ---------- Footer ---------- */
+footer{
+  background: linear-gradient(90deg,var(--primary-600),var(--primary));
+  color:#fff;
+  padding:28px 18px;
+  margin-top:40px;
+  border-radius:6px 6px 0 0;
+}
+.footer-inner{
+  max-width:1100px;
+  margin:0 auto;
+  text-align:center;
+}
+.social-icons{
+  margin-top:12px;
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  align-items:center;
+}
+.social-icons a{
+  color:#fff;
+  font-size:1.5rem;
+  transition: transform .18s, color .18s;
+}
+.social-icons a:hover{
+  color:var(--accent);
+  transform:scale(1.08)
+}
+
+/* ---------- Floating Discord Bubble & Top button ---------- */
+.discord-bubble{
+  position:fixed;
+  right:18px;
+  bottom:92px;
+  z-index:1600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(90deg,#5865f2,#4b6ef5);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  box-shadow: 0 20px 50px rgba(27,46,87,0.18);
+  cursor:pointer;
+  transition: transform .16s, box-shadow .16s, opacity .18s;
+}
+.discord-bubble:hover{
+  transform:translateY(-6px);
+  box-shadow:0 28px 70px rgba(27,46,87,0.26);
+}
+.to-top{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:var(--primary);
+  color:#fff;
+  width:48px;
+  height:48px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+  cursor:pointer;
+  transition: transform .14s;
+  z-index:1500;
+}
+.to-top:hover{
+  transform:translateY(-6px)
+}
+
+/* ---------- Loader ---------- */
+.site-loader{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.86);
+  z-index:9999;
+  transition:opacity .3s;
+}
+.loader-inner{
+  width:86px;
+  height:86px;
+  border-radius:50%;
+  border:6px solid rgba(0,0,0,0.06);
+  border-top-color:var(--primary);
+  animation:spin 1.2s linear infinite;
+}
+@keyframes spin{
+  to{ transform:rotate(360deg);}
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:900px){
+  .hero{ padding:72px 16px 48px; }
+  .hero h1{ font-size:1.85rem; }
+  .categories{ gap:12px }
+  .seo-grid{ grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+}
+</style>
 </head>
+
 <body>
 
 <!-- Loader -->
-<div id="siteLoader" class="site-loader">
-  <div class="loader-inner"></div>
+<div id="siteLoader" class="site-loader" aria-hidden="false" role="status">
+  <div class="loader-inner" aria-hidden="true"></div>
 </div>
 
-<!-- Header -->
+<!-- Header (preserved links) -->
 <header class="animate__animated animate__fadeInDown">
-  <div class="nav-inner">
+  <div class="nav-inner" role="navigation" aria-label="Main navigation">
     <a href="index.html">🏠 Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -119,32 +477,29 @@
 </header>
 
 <!-- Hero -->
-<section class="hero" data-aos="fade-down">
-  <div class="shape s1"></div>
-  <div class="shape s2"></div>
-
+<section class="hero" data-aos="fade-down" aria-labelledby="hero-heading">
+  <div class="shape s1" aria-hidden="true"></div>
+  <div class="shape s2" aria-hidden="true"></div>
   <div class="container">
     <div class="badge animate__animated animate__fadeIn">✨ Editor's Picks</div>
 
-    <h1 class="animate__animated animate__zoomIn">
+    <h1 id="hero-heading" class="animate__animated animate__zoomIn">
       Unique Collection4u — Curated finds for better shopping 🛍️
     </h1>
 
     <p class="animate__animated animate__fadeInUp">
-      Handpicked affiliate recommendations across Fashion, Books, Beauty,
-      Home Decor, Electronics and more. We evaluate value, verified ratings
-      and trending demand so you spend less time searching and more time buying confidently.
+      Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics and more.
+      We evaluate value, verified ratings and trending demand so you spend less time searching and more time buying confidently.
     </p>
 
     <div class="actions">
       <button class="btn-cta animate__animated animate__fadeInUp"
-              onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
+        onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
         Shop Now 🛒
       </button>
 
       <a class="btn-ghost animate__animated animate__fadeInUp"
-         href="https://www.youtube.com/@uniquecollection01"
-         target="_blank">
+        href="https://www.youtube.com/@uniquecollection01" target="_blank" rel="noopener">
         <i class="fab fa-youtube"></i> Watch Videos
       </a>
     </div>
@@ -153,98 +508,21 @@
 
 <!-- Categories -->
 <section class="categories" id="categories" data-aos="fade-up">
-  <button class="category-btn" onclick="location.href='fashion.html'"><i class="fa-solid fa-shirt"></i> Fashion</button>
-  <button class="category-btn" onclick="location.href='books.html'"><i class="fa-solid fa-book"></i> Books</button>
-  <button class="category-btn" onclick="location.href='beauty.html'"><i class="fa-solid fa-magic-wand-sparkles"></i> Beauty</button>
-  <button class="category-btn" onclick="location.href='toys.html'"><i class="fa-solid fa-puzzle-piece"></i> Toys</button>
-  <button class="category-btn" onclick="location.href='homedecor.html'"><i class="fa-solid fa-couch"></i> Home Decor</button>
-  <button class="category-btn" onclick="location.href='fitness.html'"><i class="fa-solid fa-dumbbell"></i> Fitness</button>
-  <button class="category-btn" onclick="location.href='kitchenware.html'"><i class="fa-solid fa-utensils"></i> Kitchenware</button>
-  <button class="category-btn" onclick="location.href='anime.html'"><i class="fa-solid fa-face-smile"></i> Anime</button>
-  <button class="category-btn" onclick="location.href='jewellery.html'"><i class="fa-solid fa-gem"></i> Jewellery</button>
-  <button class="category-btn" onclick="location.href='electronics.html'"><i class="fa-solid fa-tv"></i> Electronics</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='fashion.html'"><i class="fa-solid fa-shirt"></i> Fashion</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='books.html'"><i class="fa-solid fa-book"></i> Books</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='beauty.html'"><i class="fa-solid fa-magic-wand-sparkles"></i> Beauty</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='toys.html'"><i class="fa-solid fa-puzzle-piece"></i> Toys</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='homedecor.html'"><i class="fa-solid fa-couch"></i> Home Decor</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='fitness.html'"><i class="fa-solid fa-dumbbell"></i> Fitness</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='kitchenware.html'"><i class="fa-solid fa-utensils"></i> Kitchenware</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='anime.html'"><i class="fa-solid fa-face-smile"></i> Anime</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='jewellery.html'"><i class="fa-solid fa-gem"></i> Jewellery</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='electronics.html'"><i class="fa-solid fa-tv"></i> Electronics</button>
 </section>
 
-<!-- Trust Strip -->
+<!-- Trust strip -->
 <div class="trust-strip" data-aos="fade-up">
   <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Curated, quality picks</div>
   <div class="trust-item"><i class="fa-solid fa-handshake"></i> Trusted affiliate partners</div>
   <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Transparent reviews & links</div>
 </div>
-
-<!-- SEO Section -->
-<main class="container">
-  <section class="seo-card" data-aos="fade-up">
-
-    <h2>Why choose Unique Collection4u? ✅</h2>
-    <p>
-      Unique Collection4u sources, tests and curates products across categories
-      to deliver practical, value-driven recommendations. Our selection prioritizes
-      verified ratings, price-performance balance and trending consumer demand.
-    </p>
-
-    <div class="seo-grid">
-
-      <div class="seo-box">
-        <strong>Verified Ratings</strong>
-        <p>We consider 100% real buyer feedback before recommending any item.</p>
-      </div>
-
-      <div class="seo-box">
-        <strong>Value for Money</strong>
-        <p>We highlight products that deliver maximum quality for their price.</p>
-      </div>
-
-      <div class="seo-box">
-        <strong>Trend Tracking</strong>
-        <p>Items are updated frequently based on popularity and demand.</p>
-      </div>
-
-      <div class="seo-box">
-        <strong>Secure Shopping</strong>
-        <p>All links redirect to trusted verified merchant platforms.</p>
-      </div>
-
-    </div>
-
-  </section>
-</main>
-
-<!-- Floating Discord -->
-<div class="discord-bubble" onclick="window.open('https://discord.gg/Aa9a6XHwZz','_blank')">
-  <i class="fab fa-discord"></i> Join Discord
-</div>
-
-<!-- Back To Top -->
-<div class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <i class="fa-solid fa-arrow-up"></i>
-</div>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-inner">
-    <p>© 2025 Unique Collection4u. All Rights Reserved.</p>
-
-    <div class="social-icons">
-      <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>
-  </div>
-</footer>
-
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init();
-
-window.addEventListener("load", () => {
-  document.getElementById("siteLoader").style.opacity = "0";
-  setTimeout(() => {
-    document.getElementById("siteLoader").style.display = "none";
-  }, 300);
-});
-</script>
-
-</body>
-</html>
