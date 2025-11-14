@@ -4,89 +4,107 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
-<title>Unique Collection4u — 3D Interactive Experience</title>
+
+<title>Unique Collection4u — Premium Interactive 3D Homepage</title>
+
+<!-- SEO -->
+<meta name="description" content="Unique Collection4u curates top affiliate deals across Fashion, Books, Beauty, Home Decor, Electronics, and more. Handpicked, reviewed, organized for best value.">
+<meta name="keywords" content="affiliate deals, fashion, books, beauty, home decor, electronics, kitchenware, anime, jewellery, toys">
+<meta name="author" content="Unique Collection4u">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Unique Collection4u — Curated Deals & Expert Picks">
+<meta property="og:description" content="Handpicked affiliate recommendations across multiple categories — trusted picks, price pointers, and short reviews.">
+<meta property="og:image" content="https://www.uniquecollection4u.com/og-image.png">
+<meta property="og:url" content="https://www.uniquecollection4u.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 
 <!-- Fonts & Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
 <style>
-/* ================== Reset & Base ================== */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:#0f1724;color:#fff;overflow-x:hidden;perspective:2000px;}
+body{font-family:'Poppins',sans-serif;background:#f0f4f8;color:#0f1724;overflow-x:hidden;perspective:1500px;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
-button{cursor:pointer;outline:none;border:none;}
-/* ================== Loader ================== */
-#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,36,0.95);display:flex;justify-content:center;align-items:center;z-index:9999;}
-.loader-inner{width:60px;height:60px;border:6px solid rgba(255,255,255,0.2);border-top-color:#ffb400;border-radius:50%;animation:spin 1s linear infinite;}
+
+/* Loader */
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.95);display:flex;justify-content:center;align-items:center;z-index:9999;}
+.loader-inner{width:50px;height:50px;border:5px solid rgba(0,102,204,0.2);border-top-color:#0066cc;border-radius:50%;animation:spin 1s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
-/* ================== Header ================== */
-header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;background:linear-gradient(90deg,#0066cc,#0055aa);padding:14px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.3);}
-.nav-inner{display:flex;gap:22px;}
+/* Header */
+header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;background:linear-gradient(90deg,#0066cc,#0055aa);padding:14px 20px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+.nav-inner{display:flex;gap:22px;align-items:center;}
 .nav-inner a{color:#fff;font-weight:600;transition:0.2s;}
 .nav-inner a:hover{color:#ffb400;transform:translateY(-2px);}
-
-/* ================== Hero Section ================== */
-.hero{position:relative;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;perspective:1500px;}
-.hero h1{font-size:2.5rem;font-weight:800;text-align:center;color:#fff;text-shadow:0 5px 20px rgba(0,0,0,0.6);margin-bottom:10px;}
-.hero p{max-width:800px;margin:0 auto 20px;text-align:center;font-size:1.05rem;color:rgba(255,255,255,0.9);line-height:1.6;}
-.hero .badge{padding:6px 16px;background:rgba(255,255,255,0.15);border-radius:30px;font-weight:700;margin-bottom:20px;}
-
-/* ================== Parallax Layers ================== */
-.layer{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;transform-style:preserve-3d;}
-.layer.bg{z-index:1;}
-.layer.mid{z-index:2;}
-.layer.fg{z-index:3;}
-
-/* ================== Floating Semicircles ================== */
-.semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;transform-style:preserve-3d;}
-
-/* ================== Categories Carousel ================== */
-.categories{position:absolute;top:50%;left:50%;transform-style:preserve-3d;transform:translate(-50%,-50%) rotateY(0deg);display:flex;gap:40px;z-index:10;transition:transform 1s ease;}
-.category-card{width:140px;background:#1f2937;border-radius:14px;padding:16px 14px;box-shadow:0 15px 40px rgba(0,0,0,0.4);text-align:center;color:#fff;transition:transform 0.5s, box-shadow 0.5s, filter 0.5s;transform-style:preserve-3d;}
-.category-card i{font-size:1.7rem;margin-bottom:8px;display:block;color:#ffb400;}
-.category-card h3{margin:8px 0;font-weight:700;}
-.category-card button{margin-top:8px;background:#ffb400;color:#0f1724;padding:6px 14px;border-radius:8px;font-weight:700;transition:0.3s;}
-.category-card button:hover{background:#e6a400;}
-.category-card:hover{transform:translateY(-15px) scale(1.1) rotateX(8deg) rotateY(8deg);box-shadow:0 25px 60px rgba(0,0,0,0.6);filter:brightness(1.2);}
-
-/* ================== Floating 3D Particles ================== */
-.particle{position:absolute;width:12px;height:12px;background:rgba(255,255,255,0.4);border-radius:50%;box-shadow:0 0 10px rgba(255,255,255,0.5);pointer-events:none;transform-style:preserve-3d;}
-
-/* ================== Side Panel ================== */
-.side-panel{position:fixed;top:50%;right:-400px;transform:translateY(-50%) perspective(800px);width:360px;background:#1f2937;border-radius:12px;box-shadow:0 15px 40px rgba(0,0,0,0.6);padding:24px;transition:0.5s;z-index:2000;transform-style:preserve-3d;}
-.side-panel.active{right:20px;transform:translateY(-50%) rotateY(0deg);}
-.side-panel h2{color:#ffb400;margin-bottom:10px;}
-.side-panel p{color:#ddd;margin-bottom:15px;}
-.side-panel button{background:#ffb400;color:#0f1724;padding:8px 18px;border-radius:8px;font-weight:700;transition:0.3s;}
-.side-panel button:hover{background:#e6a400;}
-
-/* ================== Social Links ================== */
-.social-top{position:fixed;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:16px;z-index:1500;}
-.social-top a{color:#fff;font-size:1.5rem;transition:0.3s;}
+.social-top{margin-left:40px;display:flex;gap:12px;}
+.social-top a{color:#fff;font-size:1.3rem;transition:0.2s;}
 .social-top a:hover{color:#ffb400;}
 
-/* ================== Discord ================== */
-.discord-btn{position:fixed;bottom:30px;right:30px;background:#7289da;color:#fff;padding:12px 20px;border-radius:12px;font-weight:700;box-shadow:0 10px 20px rgba(0,0,0,0.2);transition:0.3s;z-index:2000;}
+/* Hero */
+.hero{text-align:center;padding:80px 20px 80px;position:relative;overflow:hidden;min-height:90vh;}
+.hero h1{font-size:2.5rem;font-weight:800;color:#fff;margin:12px 0;}
+.hero p{color:rgba(255,255,255,0.9);max-width:900px;margin:12px auto 22px;line-height:1.6;font-size:1.05rem;}
+.hero .badge{display:inline-block;background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:30px;font-weight:700;color:#fff;margin-bottom:12px;}
+
+/* Semicircles background */
+.semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
+.sc-large{width:400px;height:400px;}
+.sc-medium{width:250px;height:250px;}
+.sc-small{width:120px;height:120px;}
+
+/* Particles */
+.particle{position:absolute;width:4px;height:4px;background:#66b3ff;border-radius:50%;opacity:0.7;pointer-events:none;}
+
+/* Categories container */
+.categories{position:relative;width:100%;height:400px;margin-top:40px;display:flex;justify-content:center;align-items:center;perspective:1200px;}
+.category-card{position:absolute;background:#fff;border-radius:14px;padding:12px 16px;width:140px;box-shadow:0 15px 40px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.4s;perspective:800px;transform-style:preserve-3d;}
+.category-card i{font-size:1.4rem;color:#0066cc;margin-bottom:8px;display:block;}
+.category-card h3{font-size:1rem;font-weight:700;margin-bottom:4px;}
+.category-card p{font-size:0.85rem;color:#555;margin-bottom:8px;}
+.category-card button{background:#0066cc;color:#fff;border:none;padding:6px 12px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;}
+.category-card button:hover{background:#0055aa;}
+
+/* Side Panel */
+#category-panel{position:fixed;top:0;right:-350px;width:350px;height:100vh;background:linear-gradient(160deg,#0055aa,#66b3ff);color:#fff;padding:24px;box-shadow:-4px 0 25px rgba(0,0,0,0.25);transition:right 0.5s;z-index:2000;overflow-y:auto;}
+#category-panel.active{right:0;}
+#category-panel h2{font-size:1.6rem;margin-bottom:12px;}
+#category-panel p{line-height:1.5;margin-bottom:16px;font-size:0.95rem;}
+#category-panel button{background:#ffb400;color:#0f1724;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer;transition:0.3s;}
+#category-panel button:hover{background:#e6a600;}
+
+/* Discord button */
+.discord-btn{position:fixed;bottom:30px;right:30px;background:#7289da;color:#fff;padding:12px 20px;border-radius:12px;font-weight:700;box-shadow:0 10px 20px rgba(0,0,0,0.2);transition:0.3s;z-index:1500;}
 .discord-btn:hover{background:#5b6eae;}
 
-/* ================== Footer ================== */
-footer{padding:20px;text-align:center;color:#fff;z-index:1000;background:linear-gradient(90deg,#0066cc,#0055aa);}
+/* Footer */
+footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px 18px;border-radius:6px 6px 0 0;margin-top:60px;}
+.footer-inner{text-align:center;max-width:1100px;margin:auto;display:flex;flex-direction:column;align-items:center;}
+.social-icons{display:flex;justify-content:center;gap:16px;margin-top:12px;}
+.social-icons a{color:#fff;font-size:1.5rem;transition:0.2s;}
+.social-icons a:hover{color:#ffb400;}
 
-/* ================== Responsive ================== */
+/* Responsive */
 @media(max-width:900px){
+.hero{padding:60px 16px 60px;}
 .hero h1{font-size:1.85rem;}
-.category-card{width:120px;padding:12px 10px;}
-.side-panel{width:280px;}
+.categories{height:350px;}
+#category-panel{width:90%;}
 }
 </style>
 </head>
 <body>
 
 <!-- Loader -->
-<div id="loader"><div class="loader-inner"></div></div>
+<div id="loader">
+  <div class="loader-inner"></div>
+</div>
 
 <!-- Header -->
 <header>
@@ -95,146 +113,184 @@ footer{padding:20px;text-align:center;color:#fff;z-index:1000;background:linear-
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <a href="privacy.html">Privacy</a>
+    <div class="social-top">
+      <a href="https://www.youtube.com/@uniquecollection01"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com/UniqueCollection0555"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/uniquecollection0555"><i class="fab fa-instagram"></i></a>
+    </div>
   </div>
 </header>
 
-<!-- Social Links -->
-<div class="social-top">
-  <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
-  <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
-  <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
-</div>
-
 <!-- Hero -->
 <section class="hero">
-  <div class="badge">✨ Editor's Picks</div>
-  <h1>Unique Collection4u — 3D Interactive Experience 🛍️</h1>
-  <p>Handpicked recommendations across Fashion, Books, Beauty, Home Decor, Electronics and more.</p>
+  <div class="badge animate__animated animate__fadeIn">✨ Editor's Picks</div>
+  <h1 class="animate__animated animate__zoomIn">Unique Collection4u — Curated Premium Finds 🛍️</h1>
+  <p class="animate__animated animate__fadeInUp">
+    Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics and more.
+  </p>
 
-  <!-- Parallax Layers -->
-  <div class="layer bg">
-    <div class="semicircle" style="width:250px;height:250px;top:50px;left:100px;background:linear-gradient(180deg,#ffffff,#66b3ff);"></div>
-    <div class="semicircle" style="width:220px;height:220px;top:200px;right:60px;background:linear-gradient(180deg,#0055aa,#66b3ff);"></div>
+  <!-- Semicircle Backgrounds -->
+  <div class="semicircle sc-large" style="top:20px;left:50px;background:linear-gradient(180deg,#ffffff,#66b3ff);"></div>
+  <div class="semicircle sc-medium" style="top:150px;right:50px;background:linear-gradient(180deg,#0055aa,#66b3ff);"></div>
+  <div class="semicircle sc-small" style="top:300px;left:200px;background:linear-gradient(180deg,#66b3ff,#ffffff);"></div>
+  <div class="semicircle sc-medium" style="top:400px;right:200px;background:linear-gradient(180deg,#0055aa,#ffffff);"></div>
+
+  <!-- Particles -->
+  <div id="particles"></div>
+</section>
+
+<!-- Categories -->
+<section class="categories">
+  <div class="category-card" data-name="Fashion" data-desc="Trending outfits and accessories handpicked for style and value." data-link="fashion.html" style="top:50px;left:150px;">
+    <i class="fa-solid fa-shirt"></i>
+    <h3>Fashion</h3>
   </div>
-  <div class="layer mid">
-    <div class="semicircle" style="width:180px;height:180px;top:400px;left:200px;background:linear-gradient(180deg,#66b3ff,#ffffff);"></div>
-    <div class="semicircle" style="width:220px;height:220px;top:350px;right:250px;background:linear-gradient(180deg,#0055aa,#66b3ff);"></div>
+  <div class="category-card" data-name="Books" data-desc="Bestsellers and classics for every reader." data-link="books.html" style="top:120px;left:350px;">
+    <i class="fa-solid fa-book"></i>
+    <h3>Books</h3>
   </div>
-  <div class="layer fg">
-    <!-- Categories Carousel -->
-    <div class="categories" id="carousel">
-      <div class="category-card" data-title="Fashion" data-desc="Trending outfits and accessories." data-link="fashion.html"><i class="fa-solid fa-shirt"></i><h3>Fashion</h3><button>View</button></div>
-      <div class="category-card" data-title="Books" data-desc="Bestsellers and classics." data-link="books.html"><i class="fa-solid fa-book"></i><h3>Books</h3><button>View</button></div>
-      <div class="category-card" data-title="Beauty" data-desc="Skincare and cosmetics." data-link="beauty.html"><i class="fa-solid fa-magic-wand-sparkles"></i><h3>Beauty</h3><button>View</button></div>
-      <div class="category-card" data-title="Toys" data-desc="Fun and educational toys." data-link="toys.html"><i class="fa-solid fa-puzzle-piece"></i><h3>Toys</h3><button>View</button></div>
-      <div class="category-card" data-title="Home Decor" data-desc="Stylish home items." data-link="home-decor.html"><i class="fa-solid fa-couch"></i><h3>Home Decor</h3><button>View</button></div>
-      <div class="category-card" data-title="Fitness" data-desc="Gear to stay active." data-link="fitness.html"><i class="fa-solid fa-dumbbell"></i><h3>Fitness</h3><button>View</button></div>
-      <div class="category-card" data-title="Kitchenware" data-desc="Utensils and gadgets." data-link="kitchenware.html"><i class="fa-solid fa-utensils"></i><h3>Kitchenware</h3><button>View</button></div>
-      <div class="category-card" data-title="Anime" data-desc="Merch and collectibles." data-link="anime.html"><i class="fa-solid fa-face-smile"></i><h3>Anime</h3><button>View</button></div>
-      <div class="category-card" data-title="Jewellery" data-desc="Stylish jewellery pieces." data-link="jewellery.html"><i class="fa-solid fa-gem"></i><h3>Jewellery</h3><button>View</button></div>
-      <div class="category-card" data-title="Electronics" data-desc="Gadgets and tech essentials." data-link="electronics.html"><i class="fa-solid fa-tv"></i><h3>Electronics</h3><button>View</button></div>
-    </div>
+  <div class="category-card" data-name="Beauty" data-desc="Skincare, cosmetics, and self-care must-haves." data-link="beauty.html" style="top:200px;left:550px;">
+    <i class="fa-solid fa-magic-wand-sparkles"></i>
+    <h3>Beauty</h3>
+  </div>
+  <div class="category-card" data-name="Toys" data-desc="Fun and educational toys for all ages." data-link="toys.html" style="top:80px;left:700px;">
+    <i class="fa-solid fa-puzzle-piece"></i>
+    <h3>Toys</h3>
+  </div>
+  <div class="category-card" data-name="Home Decor" data-desc="Stylish and functional items to beautify your home." data-link="homedecor.html" style="top:300px;left:150px;">
+    <i class="fa-solid fa-couch"></i>
+    <h3>Home Decor</h3>
+  </div>
+  <div class="category-card" data-name="Fitness" data-desc="Gear and accessories to stay healthy and active." data-link="fitness.html" style="top:250px;left:400px;">
+    <i class="fa-solid fa-dumbbell"></i>
+    <h3>Fitness</h3>
+  </div>
+  <div class="category-card" data-name="Kitchenware" data-desc="Quality utensils, gadgets and cookware for your kitchen." data-link="kitchenware.html" style="top:180px;left:600px;">
+    <i class="fa-solid fa-utensils"></i>
+    <h3>Kitchenware</h3>
+  </div>
+  <div class="category-card" data-name="Anime" data-desc="Merch and collectibles from popular anime series." data-link="anime.html" style="top:320px;left:500px;">
+    <i class="fa-solid fa-face-smile"></i>
+    <h3>Anime</h3>
+  </div>
+  <div class="category-card" data-name="Jewellery" data-desc="Stylish and affordable jewellery pieces." data-link="jewellery.html" style="top:100px;left:850px;">
+    <i class="fa-solid fa-gem"></i>
+    <h3>Jewellery</h3>
+  </div>
+  <div class="category-card" data-name="Electronics" data-desc="Gadgets, devices, and tech essentials." data-link="electronics.html" style="top:220px;left:750px;">
+    <i class="fa-solid fa-tv"></i>
+    <h3>Electronics</h3>
   </div>
 </section>
 
-<!-- Side Panel -->
-<div class="side-panel" id="sidePanel">
-  <h2 id="panelTitle"></h2>
-  <p id="panelDesc"></p>
-  <button id="visitBtn">Visit</button>
+<!-- Category Side Panel -->
+<div id="category-panel">
+  <h2 id="panel-title"></h2>
+  <p id="panel-desc"></p>
+  <button id="panel-btn">Visit</button>
 </div>
 
-<!-- Discord -->
+<!-- Discord Button -->
 <a class="discord-btn" href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i> Join Discord</a>
 
 <!-- Footer -->
 <footer>
-  <div>&copy; 2025 Unique Collection4u</div>
+  <div class="footer-inner">
+    &copy; 2025 Unique Collection4u
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@uniquecollection01"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com/UniqueCollection0555"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/uniquecollection0555"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
 </footer>
 
-<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+AOS.init();
+
 // Loader
-window.addEventListener("load",()=>{document.getElementById('loader').style.display="none";});
-
-// Side Panel + Visit Button
-const sidePanel=document.getElementById('sidePanel');
-const panelTitle=document.getElementById('panelTitle');
-const panelDesc=document.getElementById('panelDesc');
-const visitBtn=document.getElementById('visitBtn');
-
-document.querySelectorAll('.category-card').forEach(card=>{
-  card.addEventListener('click',()=>{
-    panelTitle.textContent=card.dataset.title;
-    panelDesc.textContent=card.dataset.desc;
-    visitBtn.onclick=()=>{window.location.href=card.dataset.link};
-    sidePanel.classList.add('active');
-  });
+window.addEventListener("load", function(){
+  document.getElementById('loader').style.display="none";
 });
 
-document.addEventListener('click',e=>{
-  if(!e.target.closest('.category-card') && !e.target.closest('.side-panel')){
-    sidePanel.classList.remove('active');
-  }
-});
-
-// 3D Carousel
-const carousel=document.getElementById('carousel');
-let angle=0;
-const cards=[...carousel.children];
-const radius=250;
-const total=cards.length;
-
-function updateCarousel(){
-  cards.forEach((card,i)=>{
-    const a=(360/total)*i + angle;
-    card.style.transform=`rotateY(${a}deg) translateZ(${radius}px)`;
-  });
-}
-updateCarousel();
-setInterval(()=>{angle+=1;updateCarousel()},40);
-
-// Floating Particles
-const particleCount=50;
-const particles=[];
-for(let i=0;i<particleCount;i++){
-  const p=document.createElement('div');
-  p.classList.add('particle');
-  document.body.appendChild(p);
-  p.style.transform=`translate3d(${Math.random()*window.innerWidth}px,${Math.random()*window.innerHeight}px,${Math.random()*500-250}px)`;
-  particles.push({el:p,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,z:Math.random()*500-250,speed:Math.random()*0.3+0.1});
+// Particles
+const particlesContainer = document.getElementById('particles');
+const particles = [];
+for(let i=0;i<80;i++){
+  const p = document.createElement('div');
+  p.className='particle';
+  p.style.left = Math.random()*window.innerWidth+'px';
+  p.style.top = Math.random()*window.innerHeight+'px';
+  particlesContainer.appendChild(p);
+  particles.push({el:p,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-0.5)*0.7,dy:(Math.random()-0.5)*0.7});
 }
 function animateParticles(){
   particles.forEach(p=>{
-    p.z+=p.speed;
-    if(p.z>300)p.z=-300;
-    p.el.style.transform=`translate3d(${p.x}px,${p.y}px,${p.z}px)`;
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0)p.x=window.innerWidth;
+    if(p.x>window.innerWidth)p.x=0;
+    if(p.y<0)p.y=window.innerHeight;
+    if(p.y>window.innerHeight)p.y=0;
+    p.el.style.transform=`translate3d(${p.x}px,${p.y}px,0)`;
   });
   requestAnimationFrame(animateParticles);
 }
 animateParticles();
 
-// Semicircle Animation
-const semicircles=document.querySelectorAll('.semicircle');
+// Semicircle float animation
+const semicircles = document.querySelectorAll('.semicircle');
 let t=0;
 function animateSemis(){
   semicircles.forEach((sc,i)=>{
-    const x=Math.sin(t*0.15+i)*30;
-    const y=Math.cos(t*0.1+i)*20;
+    const x = Math.sin(t*0.2+i)*20;
+    const y = Math.cos(t*0.2+i)*15;
     sc.style.transform=`translate3d(${x}px,${y}px,0)`;
   });
-  t+=0.02;
+  t+=0.01;
   requestAnimationFrame(animateSemis);
 }
 animateSemis();
 
-// Parallax Mouse Movement
-document.addEventListener('mousemove',e=>{
-  const mx=(e.clientX/window.innerWidth-0.5)*30;
-  const my=(e.clientY/window.innerHeight-0.5)*30;
-  document.querySelectorAll('.layer.bg').forEach(l=>l.style.transform=`translate3d(${mx*0.2}px,${my*0.2}px,0)`);
-  document.querySelectorAll('.layer.mid').forEach(l=>l.style.transform=`translate3d(${mx*0.5}px,${my*0.5}px,0)`);
-  document.querySelectorAll('.layer.fg').forEach(l=>l.style.transform=`translate3d(${mx}px,${my}px,0)`);
+// Category rotation around center
+const categories = document.querySelectorAll('.category-card');
+let angle=0;
+function rotateCategories(){
+  const radius=180;
+  const centerX = window.innerWidth/2;
+  const centerY = 300;
+  const step = (2*Math.PI)/categories.length;
+  categories.forEach((cat,i)=>{
+    const a = angle + i*step;
+    cat.style.left = centerX + radius*Math.cos(a) - cat.offsetWidth/2 + 'px';
+    cat.style.top = centerY + radius*Math.sin(a) - cat.offsetHeight/2 + 'px';
+  });
+  angle += 0.002;
+  requestAnimationFrame(rotateCategories);
+}
+rotateCategories();
+
+// Category panel logic
+const panel = document.getElementById('category-panel');
+const panelTitle = document.getElementById('panel-title');
+const panelDesc = document.getElementById('panel-desc');
+const panelBtn = document.getElementById('panel-btn');
+
+categories.forEach(cat=>{
+  cat.addEventListener('click',()=>{
+    panelTitle.textContent = cat.dataset.name;
+    panelDesc.textContent = cat.dataset.desc;
+    panelBtn.onclick = ()=>{window.location.href = cat.dataset.link;}
+    panel.classList.add('active');
+  });
+});
+
+// Close panel on click outside
+document.addEventListener('click',(e)=>{
+  if(!panel.contains(e.target) && ![...categories].includes(e.target.closest('.category-card'))){
+    panel.classList.remove('active');
+  }
 });
 </script>
 </body>
