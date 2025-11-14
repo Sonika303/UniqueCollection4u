@@ -52,19 +52,18 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 
 /* Semicircles */
 .semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
-.sc1{width:250px;height:250px;top:50px;left:50px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
-.sc2{width:280px;height:280px;top:150px;right:60px;background:linear-gradient(180deg,#ffffff,#0055aa);}
-.sc3{width:220px;height:220px;top:350px;left:200px;background:linear-gradient(180deg,#66b3ff,#ffffff);}
+.sc1{width:280px;height:280px;top:60px;left:50px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
+.sc2{width:300px;height:300px;top:150px;right:60px;background:linear-gradient(180deg,#ffffff,#0055aa);}
+.sc3{width:250px;height:250px;top:400px;left:150px;background:linear-gradient(180deg,#66b3ff,#ffffff);}
+.sc4{width:220px;height:220px;top:450px;right:200px;background:linear-gradient(180deg,#0055aa,#66b3ff);}
+.sc5{width:180px;height:180px;top:600px;left:300px;background:linear-gradient(180deg,#66b3ff,#0055aa);}
 
 /* Particles */
 .particle{position:absolute;width:4px;height:4px;background:#66b3ff;border-radius:50%;opacity:0.7;pointer-events:none;}
 
-/* Floating circles around semicircles */
-.floating-circle{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(0,102,204,0.6);opacity:0.8;pointer-events:none;}
-
 /* Categories */
 .categories{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
-.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:180px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;position:absolute;pointer-events:auto;}
+.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:200px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;position:absolute;pointer-events:auto;}
 .category-card i{font-size:1.6rem;color:#0066cc;margin-bottom:10px;display:block;}
 .category-card h3{font-size:1.2rem;font-weight:700;margin-bottom:6px;}
 .category-card p{font-size:0.95rem;color:#555;margin-bottom:12px;}
@@ -106,6 +105,8 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
   <div class="semicircle sc1"></div>
   <div class="semicircle sc2"></div>
   <div class="semicircle sc3"></div>
+  <div class="semicircle sc4"></div>
+  <div class="semicircle sc5"></div>
 
   <!-- Particles -->
   <div id="particles"></div>
@@ -113,28 +114,71 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 
 <!-- Categories -->
 <section class="categories">
-  <div class="category-card" data-center-x="175" data-center-y="175" data-range="20">
+  <!-- All 10 categories -->
+  <div class="category-card" data-center-x="150" data-center-y="150" data-range="20">
     <i class="fa-solid fa-shirt"></i>
     <h3>Fashion</h3>
-    <p>Trending outfits and accessories handpicked for style and value.</p>
+    <p>Trending outfits and accessories.</p>
     <button onclick="location.href='fashion.html'">Shop</button>
   </div>
-  <div class="category-card" data-center-x="420" data-center-y="190" data-range="20">
+  <div class="category-card" data-center-x="400" data-center-y="130" data-range="20">
     <i class="fa-solid fa-book"></i>
     <h3>Books</h3>
-    <p>Bestsellers and classics for every reader.</p>
+    <p>Bestsellers and classics.</p>
     <button onclick="location.href='books.html'">Shop</button>
   </div>
-  <div class="category-card" data-center-x="250" data-center-y="450" data-range="20">
+  <div class="category-card" data-center-x="250" data-center-y="350" data-range="20">
     <i class="fa-solid fa-magic-wand-sparkles"></i>
     <h3>Beauty</h3>
-    <p>Skincare, cosmetics, and self-care must-haves.</p>
+    <p>Skincare, cosmetics, must-haves.</p>
     <button onclick="location.href='beauty.html'">Shop</button>
+  </div>
+  <div class="category-card" data-center-x="550" data-center-y="250" data-range="20">
+    <i class="fa-solid fa-puzzle-piece"></i>
+    <h3>Toys</h3>
+    <p>Fun and educational toys.</p>
+    <button onclick="location.href='toys.html'">Shop</button>
+  </div>
+  <div class="category-card" data-center-x="180" data-center-y="500" data-range="20">
+    <i class="fa-solid fa-couch"></i>
+    <h3>Home Decor</h3>
+    <p>Stylish home items.</p>
+    <button onclick="location.href='homedecor.html'">Shop</button>
+  </div>
+  <div class="category-card" data-center-x="500" data-center-y="450" data-range="20">
+    <i class="fa-solid fa-dumbbell"></i>
+    <h3>Fitness</h3>
+    <p>Gear to stay active.</p>
+    <button onclick="location.href='fitness.html'">Shop</button>
+  </div>
+  <div class="category-card" data-center-x="300" data-center-y="600" data-range="20">
+    <i class="fa-solid fa-utensils"></i>
+    <h3>Kitchenware</h3>
+    <p>Utensils & cookware.</p>
+    <button onclick="location.href='kitchenware.html'">Shop</button>
+  </div>
+  <div class="category-card" data-center-x="600" data-center-y="100" data-range="20">
+    <i class="fa-solid fa-face-smile"></i>
+    <h3>Anime</h3>
+    <p>Anime merch & collectibles.</p>
+    <button onclick="location.href='anime.html'">Shop</button>
+  </div>
+  <div class="category-card" data-center-x="700" data-center-y="400" data-range="20">
+    <i class="fa-solid fa-gem"></i>
+    <h3>Jewellery</h3>
+    <p>Stylish pieces.</p>
+    <button onclick="location.href='jewellery.html'">Shop</button>
+  </div>
+  <div class="category-card" data-center-x="550" data-center-y="600" data-range="20">
+    <i class="fa-solid fa-tv"></i>
+    <h3>Electronics</h3>
+    <p>Gadgets & tech essentials.</p>
+    <button onclick="location.href='electronics.html'">Shop</button>
   </div>
 </section>
 
-<!-- Social Media Moving -->
-<div class="social-floating" data-center-x="420" data-center-y="190" data-range="15">
+<!-- Social Media Floating -->
+<div class="social-floating" data-center-x="750" data-center-y="50" data-range="15">
   <a href="https://www.youtube.com/@uniquecollection01"><i class="fab fa-youtube"></i></a>
   <a href="https://www.facebook.com/UniqueCollection0555"><i class="fab fa-facebook"></i></a>
   <a href="https://www.instagram.com/uniquecollection0555"><i class="fab fa-instagram"></i></a>
@@ -151,20 +195,18 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init();
-
-// Loader
 window.addEventListener("load", ()=>document.getElementById('loader').style.display="none");
 
-// Semicircle animation
+// Semicircles floating
 const semicircles = document.querySelectorAll('.semicircle');
-let t = 0;
+let t=0;
 function animateSemicircles(){
   semicircles.forEach((sc,i)=>{
-    const x = Math.sin(t*0.2 + i) * 40;
-    const y = Math.cos(t*0.2 + i) * 25;
-    sc.style.transform = `translate3d(${x}px,${y}px,0)`;
+    const x = Math.sin(t*0.2 + i)*40;
+    const y = Math.cos(t*0.2 + i)*25;
+    sc.style.transform=`translate3d(${x}px,${y}px,0)`;
   });
-  t += 0.02;
+  t+=0.02;
   requestAnimationFrame(animateSemicircles);
 }
 animateSemicircles();
@@ -173,17 +215,16 @@ animateSemicircles();
 const particlesContainer = document.getElementById('particles');
 const particles = [];
 for(let i=0;i<60;i++){
-  const p = document.createElement('div');
+  const p=document.createElement('div');
   p.className='particle';
-  p.style.left = Math.random()*window.innerWidth+'px';
-  p.style.top = Math.random()*window.innerHeight+'px';
+  p.style.left=Math.random()*window.innerWidth+'px';
+  p.style.top=Math.random()*window.innerHeight+'px';
   particlesContainer.appendChild(p);
   particles.push({el:p,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-0.5)*0.6,dy:(Math.random()-0.5)*0.6});
 }
 function animateParticles(){
   particles.forEach(p=>{
-    p.x+=p.dx;
-    p.y+=p.dy;
+    p.x+=p.dx;p.y+=p.dy;
     if(p.x<0)p.x=window.innerWidth;
     if(p.x>window.innerWidth)p.x=0;
     if(p.y<0)p.y=window.innerHeight;
@@ -194,24 +235,21 @@ function animateParticles(){
 }
 animateParticles();
 
-// Smooth floating categories & social
+// Floating categories & social
 const floatEls = [...document.querySelectorAll('.category-card, .social-floating')];
-floatEls.forEach(el=>{
-  el.offsetX = 0;
-  el.offsetY = 0;
-});
+floatEls.forEach(el=>{el.offsetX=0; el.offsetY=0;});
 function animateFloat(){
   floatEls.forEach(el=>{
-    const range = parseFloat(el.dataset.range);
-    el.offsetX = el.offsetX + (Math.random()-0.5)*0.5;
-    el.offsetY = el.offsetY + (Math.random()-0.5)*0.5;
-    if(el.offsetX>range) el.offsetX = range;
-    if(el.offsetX<-range) el.offsetX = -range;
-    if(el.offsetY>range) el.offsetY = range;
-    if(el.offsetY<-range) el.offsetY = -range;
-    const x = parseFloat(el.dataset.centerX) + el.offsetX;
-    const y = parseFloat(el.dataset.centerY) + el.offsetY;
-    el.style.transform = `translate3d(${x}px,${y}px,0)`;
+    const range=parseFloat(el.dataset.range);
+    el.offsetX += (Math.random()-0.5)*0.5;
+    el.offsetY += (Math.random()-0.5)*0.5;
+    if(el.offsetX>range) el.offsetX=range;
+    if(el.offsetX<-range) el.offsetX=-range;
+    if(el.offsetY>range) el.offsetY=range;
+    if(el.offsetY<-range) el.offsetY=-range;
+    const x=parseFloat(el.dataset.centerX)+el.offsetX;
+    const y=parseFloat(el.dataset.centerY)+el.offsetY;
+    el.style.transform=`translate3d(${x}px,${y}px,0)`;
   });
   requestAnimationFrame(animateFloat);
 }
