@@ -51,19 +51,18 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 .hero .badge{display:inline-block;background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:30px;font-weight:700;color:#fff;margin-bottom:12px;}
 
 /* Semicircles */
-.semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;animation:float 20s linear infinite;}
-@keyframes float{
-    0%{transform:translateY(0) translateX(0);}
-    50%{transform:translateY(-40px) translateX(30px);}
-    100%{transform:translateY(0) translateX(0);}
-}
-
-/* Multiple semicircle sizes and positions */
+.semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
+/* multiple sizes and starting positions */
 .sc1{width:180px;height:180px;top:30px;left:20px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
 .sc2{width:240px;height:240px;top:150px;right:40px;background:linear-gradient(180deg,#ffffff,#0055aa);}
 .sc3{width:120px;height:120px;top:300px;left:200px;background:linear-gradient(180deg,#66b3ff,#ffffff);}
 .sc4{width:200px;height:200px;top:450px;right:150px;background:linear-gradient(180deg,#0055aa,#66b3ff);}
 .sc5{width:150px;height:150px;top:600px;left:100px;background:linear-gradient(180deg,#66b3ff,#0055aa);}
+.sc6{width:100px;height:100px;top:100px;left:300px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
+.sc7{width:130px;height:130px;top:400px;right:300px;background:linear-gradient(180deg,#0055aa,#ffffff);}
+.sc8{width:90px;height:90px;top:200px;left:500px;background:linear-gradient(180deg,#66b3ff,#0055aa);}
+.sc9{width:180px;height:180px;top:500px;right:50px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
+.sc10{width:70px;height:70px;top:600px;left:400px;background:linear-gradient(180deg,#0055aa,#66b3ff);}
 
 /* Categories */
 .categories{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;padding:40px 20px;position:relative;z-index:10;}
@@ -125,6 +124,11 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
   <div class="semicircle sc3"></div>
   <div class="semicircle sc4"></div>
   <div class="semicircle sc5"></div>
+  <div class="semicircle sc6"></div>
+  <div class="semicircle sc7"></div>
+  <div class="semicircle sc8"></div>
+  <div class="semicircle sc9"></div>
+  <div class="semicircle sc10"></div>
 </section>
 
 <!-- Categories -->
@@ -215,12 +219,29 @@ window.addEventListener("load", function(){
   document.getElementById('loader').style.display="none";
 });
 
-// Semicircle parallax with mouse move
+// Floating semicircle animation
+const semicircles = document.querySelectorAll('.semicircle');
+const speeds = [0.3,0.2,0.25,0.18,0.22,0.28,0.2,0.15,0.3,0.18];
+let t = 0;
+
+function animateSemicircles(){
+  semicircles.forEach((sc,i)=>{
+    const x = Math.sin(t * speeds[i] + i) * 50;
+    const y = Math.cos(t * speeds[i] + i) * 30;
+    sc.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  });
+  t += 0.02;
+  requestAnimationFrame(animateSemicircles);
+}
+animateSemicircles();
+
+// Mouse parallax for extra depth
 document.addEventListener("mousemove", function(e){
-  document.querySelectorAll('.semicircle').forEach((sc, i)=>{
-    const x = (e.clientX - window.innerWidth/2)/(50 + i*10);
-    const y = (e.clientY - window.innerHeight/2)/(50 + i*10);
-    sc.style.transform = `translate3d(${x*15}px, ${-y*10}px, 0)`;
+  const cx = e.clientX - window.innerWidth/2;
+  const cy = e.clientY - window.innerHeight/2;
+  semicircles.forEach((sc,i)=>{
+    const depth = (i+1)/10;
+    sc.style.transform += ` translate3d(${cx*depth*0.02}px, ${-cy*depth*0.02}px, 0)`;
   });
 });
 </script>
