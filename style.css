@@ -1,1 +1,155 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8f9fa;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+    width: 100%;
+    background: #ffffff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    border-bottom: 1px solid #eee;
+}
+
+nav .links a {
+    margin: 0 12px;
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+nav .links a:hover {
+    color: #007bff;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    text-align: center;
+    padding: 80px 15px 60px;
+    background: #ffffff;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-block;
+    background: #007bff;
+    color: #fff !important;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 10px 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* ===== CATEGORY TAGS ===== */
+.tags {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #e9ecef;
+    color: #222;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tag i {
+    margin-right: 6px;
+}
+
+/* ===== LISTS / FEATURES ===== */
+.features {
+    padding: 40px 20px;
+    background: #fff;
+}
+
+.features h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.features ul {
+    list-style: none;
+    margin-left: 10px;
+}
+
+.features ul li {
+    margin: 10px 0;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+}
+
+.features ul li i {
+    margin-right: 10px;
+    color: #28a745;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #111827;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav .links {
+        margin-top: 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+}
 
