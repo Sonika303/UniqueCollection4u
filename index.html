@@ -52,55 +52,36 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 
 /* Semicircles */
 .semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
-.sc1{width:180px;height:180px;top:30px;left:20px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
-.sc2{width:240px;height:240px;top:150px;right:40px;background:linear-gradient(180deg,#ffffff,#0055aa);}
-.sc3{width:120px;height:120px;top:300px;left:200px;background:linear-gradient(180deg,#66b3ff,#ffffff);}
-.sc4{width:200px;height:200px;top:450px;right:150px;background:linear-gradient(180deg,#0055aa,#66b3ff);}
-.sc5{width:150px;height:150px;top:600px;left:100px;background:linear-gradient(180deg,#66b3ff,#0055aa);}
-.sc6{width:100px;height:100px;top:100px;left:300px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
-.sc7{width:130px;height:130px;top:400px;right:300px;background:linear-gradient(180deg,#0055aa,#ffffff);}
-.sc8{width:90px;height:90px;top:200px;left:500px;background:linear-gradient(180deg,#66b3ff,#0055aa);}
-.sc9{width:180px;height:180px;top:500px;right:50px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
-.sc10{width:70px;height:70px;top:600px;left:400px;background:linear-gradient(180deg,#0055aa,#66b3ff);}
+.sc1{width:250px;height:250px;top:50px;left:50px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
+.sc2{width:280px;height:280px;top:150px;right:60px;background:linear-gradient(180deg,#ffffff,#0055aa);}
+.sc3{width:220px;height:220px;top:350px;left:200px;background:linear-gradient(180deg,#66b3ff,#ffffff);}
 
 /* Particles */
 .particle{position:absolute;width:4px;height:4px;background:#66b3ff;border-radius:50%;opacity:0.7;pointer-events:none;}
 
 /* Categories */
-.categories{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;padding:40px 20px;position:relative;z-index:10;}
-.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:220px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;perspective:800px;transform-style:preserve-3d;position:absolute;}
+.categories{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:180px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;perspective:800px;transform-style:preserve-3d;position:absolute;pointer-events:auto;}
 .category-card i{font-size:1.6rem;color:#0066cc;margin-bottom:10px;display:block;}
 .category-card h3{font-size:1.2rem;font-weight:700;margin-bottom:6px;}
 .category-card p{font-size:0.95rem;color:#555;margin-bottom:12px;}
 .category-card button{background:#0066cc;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;}
 .category-card button:hover{background:#0055aa;}
 
-/* Footer */
-footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px 18px;border-radius:6px 6px 0 0;margin-top:40px;}
-.footer-inner{text-align:center;max-width:1100px;margin:auto;}
-.social-icons{display:flex;justify-content:center;gap:16px;margin-top:12px;}
-.social-icons a{color:#fff;font-size:1.5rem;transition:0.2s;}
-.social-icons a:hover{color:#ffb400;}
+/* Social Media Moving */
+.social-floating{position:absolute;pointer-events:auto;display:flex;gap:12px;}
+.social-floating a{color:#fff;font-size:1.5rem;transition:0.2s;}
+.social-floating a:hover{color:#ffb400;}
 
 /* Discord button */
 .discord-btn{position:fixed;bottom:30px;right:30px;background:#7289da;color:#fff;padding:12px 20px;border-radius:12px;font-weight:700;box-shadow:0 10px 20px rgba(0,0,0,0.2);transition:0.3s;z-index:2000;}
 .discord-btn:hover{background:#5b6eae;}
-
-/* Responsive */
-@media(max-width:900px){
-.hero{padding:72px 16px 48px;}
-.hero h1{font-size:1.85rem;}
-.categories{gap:16px;}
-.category-card{width:160px;padding:12px;}
-}
 </style>
 </head>
 <body>
 
 <!-- Loader -->
-<div id="loader">
-  <div class="loader-inner"></div>
-</div>
+<div id="loader"><div class="loader-inner"></div></div>
 
 <!-- Header -->
 <header>
@@ -116,21 +97,12 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
 <section class="hero">
   <div class="badge animate__animated animate__fadeIn">✨ Editor's Picks</div>
   <h1 class="animate__animated animate__zoomIn">Unique Collection4u — Curated finds for better shopping 🛍️</h1>
-  <p class="animate__animated animate__fadeInUp">
-    Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics and more.
-  </p>
+  <p class="animate__animated animate__fadeInUp">Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics and more.</p>
 
   <!-- Semicircles -->
   <div class="semicircle sc1"></div>
   <div class="semicircle sc2"></div>
   <div class="semicircle sc3"></div>
-  <div class="semicircle sc4"></div>
-  <div class="semicircle sc5"></div>
-  <div class="semicircle sc6"></div>
-  <div class="semicircle sc7"></div>
-  <div class="semicircle sc8"></div>
-  <div class="semicircle sc9"></div>
-  <div class="semicircle sc10"></div>
 
   <!-- Particles -->
   <div id="particles"></div>
@@ -138,81 +110,39 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
 
 <!-- Categories -->
 <section class="categories">
-  <div class="category-card" data-radius="250" data-angle="0">
+  <div class="category-card" data-semicircle="sc1" data-speed="0.5">
     <i class="fa-solid fa-shirt"></i>
     <h3>Fashion</h3>
     <p>Trending outfits and accessories handpicked for style and value.</p>
     <button onclick="location.href='fashion.html'">Shop</button>
   </div>
-  <div class="category-card" data-radius="280" data-angle="36">
+  <div class="category-card" data-semicircle="sc2" data-speed="0.7">
     <i class="fa-solid fa-book"></i>
     <h3>Books</h3>
     <p>Bestsellers and classics for every reader.</p>
     <button onclick="location.href='books.html'">Shop</button>
   </div>
-  <div class="category-card" data-radius="300" data-angle="72">
+  <div class="category-card" data-semicircle="sc3" data-speed="0.6">
     <i class="fa-solid fa-magic-wand-sparkles"></i>
     <h3>Beauty</h3>
     <p>Skincare, cosmetics, and self-care must-haves.</p>
     <button onclick="location.href='beauty.html'">Shop</button>
   </div>
-  <div class="category-card" data-radius="320" data-angle="108">
-    <i class="fa-solid fa-puzzle-piece"></i>
-    <h3>Toys</h3>
-    <p>Fun and educational toys for all ages.</p>
-    <button onclick="location.href='toys.html'">Shop</button>
-  </div>
-  <div class="category-card" data-radius="350" data-angle="144">
-    <i class="fa-solid fa-couch"></i>
-    <h3>Home Decor</h3>
-    <p>Stylish and functional items to beautify your home.</p>
-    <button onclick="location.href='homedecor.html'">Shop</button>
-  </div>
-  <div class="category-card" data-radius="370" data-angle="180">
-    <i class="fa-solid fa-dumbbell"></i>
-    <h3>Fitness</h3>
-    <p>Gear and accessories to stay healthy and active.</p>
-    <button onclick="location.href='fitness.html'">Shop</button>
-  </div>
-  <div class="category-card" data-radius="390" data-angle="216">
-    <i class="fa-solid fa-utensils"></i>
-    <h3>Kitchenware</h3>
-    <p>Quality utensils, gadgets and cookware for your kitchen.</p>
-    <button onclick="location.href='kitchenware.html'">Shop</button>
-  </div>
-  <div class="category-card" data-radius="410" data-angle="252">
-    <i class="fa-solid fa-face-smile"></i>
-    <h3>Anime</h3>
-    <p>Merch and collectibles from popular anime series.</p>
-    <button onclick="location.href='anime.html'">Shop</button>
-  </div>
-  <div class="category-card" data-radius="430" data-angle="288">
-    <i class="fa-solid fa-gem"></i>
-    <h3>Jewellery</h3>
-    <p>Stylish and affordable jewellery pieces.</p>
-    <button onclick="location.href='jewellery.html'">Shop</button>
-  </div>
-  <div class="category-card" data-radius="450" data-angle="324">
-    <i class="fa-solid fa-tv"></i>
-    <h3>Electronics</h3>
-    <p>Gadgets, devices, and tech essentials.</p>
-    <button onclick="location.href='electronics.html'">Shop</button>
-  </div>
 </section>
+
+<!-- Social Media Moving -->
+<div class="social-floating" data-semicircle="sc2" data-speed="0.8">
+  <a href="https://www.youtube.com/@uniquecollection01"><i class="fab fa-youtube"></i></a>
+  <a href="https://www.facebook.com/UniqueCollection0555"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.instagram.com/uniquecollection0555"><i class="fab fa-instagram"></i></a>
+</div>
 
 <!-- Discord Invite -->
 <a class="discord-btn" href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i> Join Discord</a>
 
 <!-- Footer -->
 <footer>
-  <div class="footer-inner">
-    &copy; 2025 Unique Collection4u
-    <div class="social-icons">
-      <a href="https://www.youtube.com/@uniquecollection01"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.facebook.com/UniqueCollection0555"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/uniquecollection0555"><i class="fab fa-instagram"></i></a>
-    </div>
-  </div>
+  <div class="footer-inner">&copy; 2025 Unique Collection4u</div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -220,19 +150,17 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
 AOS.init();
 
 // Loader
-window.addEventListener("load", function(){
-  document.getElementById('loader').style.display="none";
-});
+window.addEventListener("load", ()=>document.getElementById('loader').style.display="none");
 
 // Semicircles animation
 const semicircles = document.querySelectorAll('.semicircle');
-const speeds = [0.3,0.2,0.25,0.18,0.22,0.28,0.2,0.15,0.3,0.18];
+const semiSpeeds = [0.3,0.2,0.25];
 let t = 0;
 function animateSemicircles(){
   semicircles.forEach((sc,i)=>{
-    const x = Math.sin(t * speeds[i] + i) * 50;
-    const y = Math.cos(t * speeds[i] + i) * 30;
-    sc.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    const x = Math.sin(t * semiSpeeds[i] + i) * 50;
+    const y = Math.cos(t * semiSpeeds[i] + i) * 30;
+    sc.style.transform = `translate3d(${x}px,${y}px,0)`;
   });
   t += 0.02;
   requestAnimationFrame(animateSemicircles);
@@ -264,26 +192,28 @@ function animateParticles(){
 }
 animateParticles();
 
-// Categories floating along semicircle paths
-const centerX = window.innerWidth/2;
-const centerY = window.innerHeight/2;
-const categories = document.querySelectorAll('.category-card');
-let angleOffset = 0;
-
-function animateCategories(){
-  categories.forEach(cat=>{
-    const radius = parseFloat(cat.dataset.radius);
-    let angle = parseFloat(cat.dataset.angle) + angleOffset;
-    const rad = angle * Math.PI / 180;
-    const x = centerX + radius * Math.cos(rad) - cat.offsetWidth/2;
-    const y = centerY + radius * Math.sin(rad)/2 - cat.offsetHeight/2; // slight elliptical path
-    cat.style.transform = `translate3d(${x}px,${y}px,0) rotateY(${angle}deg) rotateX(${angle/3}deg)`;
+// Categories & Social floating inside semicircle
+const floatingElements = [...document.querySelectorAll('.category-card, .social-floating')];
+function animateFloating(){
+  floatingElements.forEach(el=>{
+    const sc = document.querySelector(`.${el.dataset.semicircle}`);
+    if(!sc) return;
+    const rect = sc.getBoundingClientRect();
+    const centerX = rect.left + rect.width/2;
+    const centerY = rect.top + rect.height/2;
+    const radiusX = rect.width/2 - 50;
+    const radiusY = rect.height/2 - 50;
+    const speed = parseFloat(el.dataset.speed);
+    if(!el.angle) el.angle = Math.random()*360;
+    el.angle += speed;
+    const rad = el.angle * Math.PI/180;
+    const x = centerX + radiusX * Math.cos(rad) - el.offsetWidth/2;
+    const y = centerY + radiusY * Math.sin(rad)/2 - el.offsetHeight/2;
+    el.style.transform = `translate3d(${x}px,${y}px,0) rotateY(${el.angle}deg) rotateX(${el.angle/5}deg)`;
   });
-  angleOffset += 0.2; // slower float
-  requestAnimationFrame(animateCategories);
+  requestAnimationFrame(animateFloating);
 }
-animateCategories();
-
+animateFloating();
 </script>
 </body>
 </html>
