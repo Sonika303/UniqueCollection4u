@@ -50,25 +50,30 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 .hero p{color:rgba(255,255,255,0.9);max-width:900px;margin:12px auto 22px;line-height:1.6;font-size:1.05rem;}
 .hero .badge{display:inline-block;background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:30px;font-weight:700;color:#fff;margin-bottom:12px;}
 
-/* Floating Shapes */
-.shape{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
-.shape-small{width:40px;height:40px;}
-.shape-medium{width:80px;height:80px;}
-.shape-large{width:140px;height:140px;}
-.shape-blue{background:linear-gradient(180deg,#66b3ff,#0055aa);}
-.shape-white{background:linear-gradient(180deg,#ffffff,#66b3ff);}
+/* Semicircles */
+.semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;}
+.sc1{width:180px;height:180px;top:30px;left:20px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
+.sc2{width:240px;height:240px;top:150px;right:40px;background:linear-gradient(180deg,#ffffff,#0055aa);}
+.sc3{width:120px;height:120px;top:300px;left:200px;background:linear-gradient(180deg,#66b3ff,#ffffff);}
+.sc4{width:200px;height:200px;top:450px;right:150px;background:linear-gradient(180deg,#0055aa,#66b3ff);}
+.sc5{width:150px;height:150px;top:600px;left:100px;background:linear-gradient(180deg,#66b3ff,#0055aa);}
+.sc6{width:100px;height:100px;top:100px;left:300px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
+.sc7{width:130px;height:130px;top:400px;right:300px;background:linear-gradient(180deg,#0055aa,#ffffff);}
+.sc8{width:90px;height:90px;top:200px;left:500px;background:linear-gradient(180deg,#66b3ff,#0055aa);}
+.sc9{width:180px;height:180px;top:500px;right:50px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
+.sc10{width:70px;height:70px;top:600px;left:400px;background:linear-gradient(180deg,#0055aa,#66b3ff);}
 
 /* Particles */
 .particle{position:absolute;width:4px;height:4px;background:#66b3ff;border-radius:50%;opacity:0.7;pointer-events:none;}
 
-/* Categories Orbiting */
-.categories{position:relative;z-index:10;width:100%;height:600px;perspective:1200px;display:flex;justify-content:center;align-items:center;}
-.category-card{position:absolute;transform-style:preserve-3d;background:#fff;border-radius:14px;padding:18px 20px;width:220px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;}
+/* Categories */
+.categories{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;padding:40px 20px;position:relative;z-index:10;}
+.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:220px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;perspective:800px;transform-style:preserve-3d;position:absolute;}
 .category-card i{font-size:1.6rem;color:#0066cc;margin-bottom:10px;display:block;}
 .category-card h3{font-size:1.2rem;font-weight:700;margin-bottom:6px;}
 .category-card p{font-size:0.95rem;color:#555;margin-bottom:12px;}
 .category-card button{background:#0066cc;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;}
-.category-card button:hover{background:#0055aa;transform:translateY(-2px);}
+.category-card button:hover{background:#0055aa;}
 
 /* Footer */
 footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px 18px;border-radius:6px 6px 0 0;margin-top:40px;}
@@ -85,7 +90,8 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
 @media(max-width:900px){
 .hero{padding:72px 16px 48px;}
 .hero h1{font-size:1.85rem;}
-.categories{height:500px;}
+.categories{gap:16px;}
+.category-card{width:160px;padding:12px;}
 }
 </style>
 </head>
@@ -114,74 +120,83 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
     Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics and more.
   </p>
 
-  <!-- Floating Shapes -->
-  <div id="shapes-container"></div>
+  <!-- Semicircles -->
+  <div class="semicircle sc1"></div>
+  <div class="semicircle sc2"></div>
+  <div class="semicircle sc3"></div>
+  <div class="semicircle sc4"></div>
+  <div class="semicircle sc5"></div>
+  <div class="semicircle sc6"></div>
+  <div class="semicircle sc7"></div>
+  <div class="semicircle sc8"></div>
+  <div class="semicircle sc9"></div>
+  <div class="semicircle sc10"></div>
 
   <!-- Particles -->
   <div id="particles"></div>
 </section>
 
-<!-- Categories Orbiting -->
-<section class="categories" id="categories-container">
-  <div class="category-card" onclick="location.href='fashion.html'">
+<!-- Categories -->
+<section class="categories">
+  <div class="category-card" data-radius="250" data-angle="0">
     <i class="fa-solid fa-shirt"></i>
     <h3>Fashion</h3>
-    <p>Trending outfits & accessories handpicked for style.</p>
-    <button>Shop</button>
+    <p>Trending outfits and accessories handpicked for style and value.</p>
+    <button onclick="location.href='fashion.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='books.html'">
+  <div class="category-card" data-radius="280" data-angle="36">
     <i class="fa-solid fa-book"></i>
     <h3>Books</h3>
     <p>Bestsellers and classics for every reader.</p>
-    <button>Shop</button>
+    <button onclick="location.href='books.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='beauty.html'">
+  <div class="category-card" data-radius="300" data-angle="72">
     <i class="fa-solid fa-magic-wand-sparkles"></i>
     <h3>Beauty</h3>
-    <p>Skincare, cosmetics & self-care must-haves.</p>
-    <button>Shop</button>
+    <p>Skincare, cosmetics, and self-care must-haves.</p>
+    <button onclick="location.href='beauty.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='toys.html'">
+  <div class="category-card" data-radius="320" data-angle="108">
     <i class="fa-solid fa-puzzle-piece"></i>
     <h3>Toys</h3>
-    <p>Fun & educational toys for all ages.</p>
-    <button>Shop</button>
+    <p>Fun and educational toys for all ages.</p>
+    <button onclick="location.href='toys.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='homedecor.html'">
+  <div class="category-card" data-radius="350" data-angle="144">
     <i class="fa-solid fa-couch"></i>
     <h3>Home Decor</h3>
-    <p>Stylish & functional items to beautify your home.</p>
-    <button>Shop</button>
+    <p>Stylish and functional items to beautify your home.</p>
+    <button onclick="location.href='homedecor.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='fitness.html'">
+  <div class="category-card" data-radius="370" data-angle="180">
     <i class="fa-solid fa-dumbbell"></i>
     <h3>Fitness</h3>
-    <p>Gear & accessories to stay healthy & active.</p>
-    <button>Shop</button>
+    <p>Gear and accessories to stay healthy and active.</p>
+    <button onclick="location.href='fitness.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='kitchenware.html'">
+  <div class="category-card" data-radius="390" data-angle="216">
     <i class="fa-solid fa-utensils"></i>
     <h3>Kitchenware</h3>
-    <p>Utensils, gadgets & cookware for your kitchen.</p>
-    <button>Shop</button>
+    <p>Quality utensils, gadgets and cookware for your kitchen.</p>
+    <button onclick="location.href='kitchenware.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='anime.html'">
+  <div class="category-card" data-radius="410" data-angle="252">
     <i class="fa-solid fa-face-smile"></i>
     <h3>Anime</h3>
-    <p>Merch & collectibles from popular anime series.</p>
-    <button>Shop</button>
+    <p>Merch and collectibles from popular anime series.</p>
+    <button onclick="location.href='anime.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='jewellery.html'">
+  <div class="category-card" data-radius="430" data-angle="288">
     <i class="fa-solid fa-gem"></i>
     <h3>Jewellery</h3>
-    <p>Stylish & affordable jewellery pieces.</p>
-    <button>Shop</button>
+    <p>Stylish and affordable jewellery pieces.</p>
+    <button onclick="location.href='jewellery.html'">Shop</button>
   </div>
-  <div class="category-card" onclick="location.href='electronics.html'">
+  <div class="category-card" data-radius="450" data-angle="324">
     <i class="fa-solid fa-tv"></i>
     <h3>Electronics</h3>
-    <p>Gadgets, devices, & tech essentials.</p>
-    <button>Shop</button>
+    <p>Gadgets, devices, and tech essentials.</p>
+    <button onclick="location.href='electronics.html'">Shop</button>
   </div>
 </section>
 
@@ -205,70 +220,70 @@ footer{background:linear-gradient(90deg,#0055aa,#0066cc);color:#fff;padding:28px
 AOS.init();
 
 // Loader
-window.addEventListener("load", function(){ document.getElementById('loader').style.display="none"; });
+window.addEventListener("load", function(){
+  document.getElementById('loader').style.display="none";
+});
 
-// Floating Shapes
-const shapesContainer=document.getElementById('shapes-container');
-const shapes=[];
-for(let i=0;i<40;i++){
-  const div=document.createElement('div');
-  const size=Math.random()<0.5?'shape-small':(Math.random()<0.5?'shape-medium':'shape-large');
-  const color=Math.random()<0.5?'shape-blue':'shape-white';
-  div.className='shape '+size+' '+color;
-  div.style.left=Math.random()*window.innerWidth+'px';
-  div.style.top=Math.random()*window.innerHeight+'px';
-  div.speedX=(Math.random()-0.5)*0.2; div.speedY=(Math.random()-0.5)*0.2;
-  shapesContainer.appendChild(div); shapes.push(div);
-}
-function animateShapes(){
-  shapes.forEach(s=>{
-    let x=parseFloat(s.style.left), y=parseFloat(s.style.top);
-    x+=s.speedX; y+=s.speedY;
-    if(x>window.innerWidth)x=0; if(x<0)x=window.innerWidth;
-    if(y>window.innerHeight)y=0; if(y<0)y=window.innerHeight;
-    s.style.left=x+'px'; s.style.top=y+'px';
+// Semicircles animation
+const semicircles = document.querySelectorAll('.semicircle');
+const speeds = [0.3,0.2,0.25,0.18,0.22,0.28,0.2,0.15,0.3,0.18];
+let t = 0;
+function animateSemicircles(){
+  semicircles.forEach((sc,i)=>{
+    const x = Math.sin(t * speeds[i] + i) * 50;
+    const y = Math.cos(t * speeds[i] + i) * 30;
+    sc.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   });
-  requestAnimationFrame(animateShapes);
+  t += 0.02;
+  requestAnimationFrame(animateSemicircles);
 }
-animateShapes();
+animateSemicircles();
 
 // Particles
-const particlesContainer=document.getElementById('particles'); const particles=[];
+const particlesContainer = document.getElementById('particles');
+const particles = [];
 for(let i=0;i<60;i++){
-  const p=document.createElement('div'); p.className='particle';
-  p.style.left=Math.random()*window.innerWidth+'px'; p.style.top=Math.random()*window.innerHeight+'px';
+  const p = document.createElement('div');
+  p.className='particle';
+  p.style.left = Math.random()*window.innerWidth+'px';
+  p.style.top = Math.random()*window.innerHeight+'px';
   particlesContainer.appendChild(p);
   particles.push({el:p,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-0.5)*0.6,dy:(Math.random()-0.5)*0.6});
 }
 function animateParticles(){
   particles.forEach(p=>{
-    p.x+=p.dx; p.y+=p.dy;
-    if(p.x<0)p.x=window.innerWidth; if(p.x>window.innerWidth)p.x=0;
-    if(p.y<0)p.y=window.innerHeight; if(p.y>window.innerHeight)p.y=0;
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0)p.x=window.innerWidth;
+    if(p.x>window.innerWidth)p.x=0;
+    if(p.y<0)p.y=window.innerHeight;
+    if(p.y>window.innerHeight)p.y=0;
     p.el.style.transform=`translate3d(${p.x}px,${p.y}px,0)`;
   });
   requestAnimationFrame(animateParticles);
 }
 animateParticles();
 
-// Orbiting Categories in center
-const container=document.getElementById('categories-container');
-const cards=Array.from(container.children);
-let angleOffset=0;
-const radiusX=250, radiusY=150;
+// Categories floating along semicircle paths
+const centerX = window.innerWidth/2;
+const centerY = window.innerHeight/2;
+const categories = document.querySelectorAll('.category-card');
+let angleOffset = 0;
+
 function animateCategories(){
-  const centerX=container.offsetWidth/2; const centerY=container.offsetHeight/2;
-  cards.forEach((card,i)=>{
-    const angle=(i/cards.length)*Math.PI*2 + angleOffset;
-    const x=centerX+radiusX*Math.cos(angle)-card.offsetWidth/2;
-    const y=centerY+radiusY*Math.sin(angle)-card.offsetHeight/2;
-    const z=50*Math.sin(angle*3);
-    card.style.transform=`translate3d(${x}px,${y}px,${z}px) rotateY(${angleOffset*30}deg) rotateX(${angleOffset*15}deg)`;
+  categories.forEach(cat=>{
+    const radius = parseFloat(cat.dataset.radius);
+    let angle = parseFloat(cat.dataset.angle) + angleOffset;
+    const rad = angle * Math.PI / 180;
+    const x = centerX + radius * Math.cos(rad) - cat.offsetWidth/2;
+    const y = centerY + radius * Math.sin(rad)/2 - cat.offsetHeight/2; // slight elliptical path
+    cat.style.transform = `translate3d(${x}px,${y}px,0) rotateY(${angle}deg) rotateX(${angle/3}deg)`;
   });
-  angleOffset+=0.002;
+  angleOffset += 0.2; // slower float
   requestAnimationFrame(animateCategories);
 }
 animateCategories();
+
 </script>
 </body>
 </html>
