@@ -6,8 +6,10 @@
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
 
 <title>Unique Collection4u — Curated Deals & Expert Picks</title>
+
+<!-- Primary SEO -->
 <meta name="description" content="Unique Collection4u curates trusted affiliate deals across Fashion, Books, Beauty, Home Decor, Electronics and more. Handpicked, reviewed and organized so you find the best value without the noise." />
-<meta name="keywords" content="affiliate deals, product recommendations, curated shopping, fashion deals, books recommendations, home decor, electronics deals, kitchenware, anime merch, jewellery, Pixelvine, Lucid Weaver, Storyarc UX, Empathy Engine, North Star Digital, Mosaic Interactive, Tangent Creative, Color & Rhyme" />
+<meta name="keywords" content="affiliate deals, product recommendations, curated shopping, fashion deals, books recommendations, home decor, electronics deals, kitchenware, anime merch, jewellery" />
 <meta name="author" content="Unique Collection4u" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://www.uniquecollection4u.com/">
@@ -31,6 +33,69 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Unique Collection4u",
+      "url": "https://www.uniquecollection4u.com",
+      "logo": "https://www.uniquecollection4u.com/favicon.png",
+      "sameAs": [
+        "https://www.youtube.com/@uniquecollection01",
+        "https://www.facebook.com/UniqueCollection0555",
+        "https://www.instagram.com/uniquecollection0555",
+        "https://discord.gg/Aa9a6XHwZz"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://www.uniquecollection4u.com",
+      "name": "Unique Collection4u",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.uniquecollection4u.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.uniquecollection4u.com"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Unique Collection4u?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unique Collection4u curates top affiliate products across categories, focusing on quality, value and verified ratings so you can make faster buying decisions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are these products sold by Unique Collection4u?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — we link to verified merchant listings (affiliate links). We recommend and review; purchases complete on merchant sites."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <style>
 /* ---------- Colors & base ---------- */
 :root{
@@ -47,62 +112,208 @@
   --glass: rgba(255,255,255,0.7);
 }
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:"Poppins", sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-a{color:inherit; text-decoration:none}
+html,body{height:100%;margin:0;font-family:"Poppins",sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
 
 /* ---------- Header ---------- */
-header{background: linear-gradient(90deg,var(--primary),var(--primary-600)); color:#fff; padding:12px 18px; display:flex; justify-content:center; gap:26px; position:sticky; top:0; z-index:1500; box-shadow:0 6px 24px rgba(4,10,23,0.12); transform:translateZ(0);}
-.nav-inner{max-width:1200px; width:100%; display:flex; align-items:center; justify-content:center; gap:24px;}
-header a{color:#fff; font-weight:600; letter-spacing:0.3px; transition:color .18s, transform .18s;}
-header a:hover{color:var(--accent); transform:translateY(-2px)}
+header{
+  background: linear-gradient(90deg,var(--primary),var(--primary-600));
+  color:#fff;
+  padding:12px 18px;
+  display:flex;
+  justify-content:center;
+  gap:26px;
+  position:sticky;
+  top:0;
+  z-index:1500;
+  box-shadow:0 6px 24px rgba(4,10,23,0.12);
+  transform:translateZ(0);
+}
+.nav-inner{
+  max-width:1200px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+}
+header a{
+  color:#fff;
+  font-weight:600;
+  letter-spacing:0.3px;
+  transition:color .18s, transform .18s;
+}
+header a:hover{
+  color:var(--accent);
+  transform:translateY(-2px)
+}
 
 /* ---------- Hero ---------- */
-.hero{background: linear-gradient(135deg,var(--primary-200),var(--primary)); color:#fff; text-align:center; padding:110px 18px 80px; position:relative; overflow:hidden;}
-.hero .badge{display:inline-flex; gap:8px; align-items:center; background:rgba(255,255,255,0.12); padding:8px 14px; border-radius:999px; font-weight:700; color:#fff; margin-bottom:14px;}
-.hero h1{font-size:2.6rem; margin:10px 0; line-height:1.05; letter-spacing:0.3px; font-weight:800; display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap;}
-.hero p{font-size:1.04rem; max-width:1000px; margin:12px auto 22px; color:rgba(255,255,255,0.95); line-height:1.6;}
-.hero .actions{display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap;}
-.btn-cta{background:var(--accent); color:var(--primary); padding:14px 28px; border-radius:14px; font-weight:800; border:none; cursor:pointer; box-shadow:0 10px 32px rgba(0,0,0,0.14); transition: transform .18s, box-shadow .18s;}
-.btn-ghost{background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.18); padding:12px 20px; border-radius:12px; font-weight:700;}
-.btn-cta:hover{transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,0.18);}
-.btn-ghost:hover{transform:translateY(-3px); border-color:rgba(255,255,255,0.32)}
+.hero{
+  background: linear-gradient(135deg,var(--primary-200),var(--primary));
+  color:#fff;
+  text-align:center;
+  padding:110px 18px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero .badge{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  background:rgba(255,255,255,0.12);
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:2.6rem;
+  margin:10px 0;
+  line-height:1.05;
+  letter-spacing:0.3px;
+  font-weight:800;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.hero p{
+  font-size:1.04rem;
+  max-width:1000px;
+  margin:12px auto 22px;
+  color:rgba(255,255,255,0.95);
+  line-height:1.6;
+}
+.hero .actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.btn-cta{
+  background:var(--accent);
+  color:var(--primary);
+  padding:14px 28px;
+  border-radius:14px;
+  font-weight:800;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 10px 32px rgba(0,0,0,0.14);
+  transition: transform .18s, box-shadow .18s;
+}
+.btn-ghost{
+  background:transparent;
+  color:#fff;
+  border:2px solid rgba(255,255,255,0.18);
+  padding:12px 20px;
+  border-radius:12px;
+  font-weight:700;
+}
+.btn-cta:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.18);
+}
+.btn-ghost:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,0.32)
+}
 
-/* ---------- Semicircle background shapes ---------- */
-.shape{position:absolute; border-radius:50%; filter:blur(40px); opacity:0.15; pointer-events:none; animation: floatShape 20s linear infinite;}
-.shape.s1{width:200px; height:200px; left:-60px; top:50px; background:linear-gradient(180deg,#ffffff,#66b3ff);}
-.shape.s2{width:280px; height:280px; right:-80px; bottom:-40px; background:linear-gradient(180deg,#ffffff,#d0e9ff);}
-.shape.s3{width:180px; height:180px; left:30%; top:-50px; background:linear-gradient(180deg,#ffffff,#66b3ff);}
-.shape.s4{width:220px; height:220px; right:20%; top:10%; background:linear-gradient(180deg,#ffffff,#d0e9ff);}
-@keyframes floatShape{0%{transform:translateY(0px)}50%{transform:translateY(15px)}100%{transform:translateY(0px)}}
+/* decorative semicircles */
+.shape{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:0.12;
+  pointer-events:none;
+}
+.shape.s1{width:260px;height:260px;left:-40px;top:20px;background:linear-gradient(180deg,#ffffff,#66b3ff);}
+.shape.s2{width:300px;height:300px;right:-80px;bottom:-40px;background:linear-gradient(180deg,#ffffff,#0055aa);opacity:0.08;}
+.shape.s3{width:180px;height:180px;left:50%;top:-60px;margin-left:-90px;background:linear-gradient(180deg,#66b3ff,#ffffff);}
+.shape.s4{width:120px;height:120px;right:20%;bottom:10%;background:linear-gradient(180deg,#66b3ff,#ffffff);}
 
 /* ---------- Categories ---------- */
-.categories{display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin:48px auto; padding:0 18px; max-width:1100px; perspective:1000px;}
-.category-btn{background:var(--card); color:var(--primary-600); border-radius:14px; padding:14px 22px; font-weight:700; font-size:0.98rem; border:none; box-shadow: 0 10px 30px rgba(4,10,23,0.05); cursor:pointer; transition: transform .18s, box-shadow .18s, background .18s; display:inline-flex; gap:10px; align-items:center; position:relative; transform-style: preserve-3d;}
-.category-btn i{font-size:1.05rem; color:var(--primary-600);}
-.category-btn:hover{transform:translateY(-12px) rotateX(10deg) rotateY(5deg); box-shadow:0 22px 60px rgba(4,10,23,0.08); background:linear-gradient(90deg,var(--primary-200),#eaf6ff); color:#04365f;}
+.categories{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  justify-content:center;
+  margin:48px auto;
+  padding:0 18px;
+  max-width:1100px;
+  perspective:1200px;
+  position:relative;
+}
+.category-btn{
+  background:var(--card);
+  color:var(--primary-600);
+  border-radius:14px;
+  padding:14px 22px;
+  font-weight:700;
+  font-size:0.98rem;
+  border:none;
+  box-shadow: 0 10px 30px rgba(4,10,23,0.05);
+  cursor:pointer;
+  transition: transform .18s, box-shadow .18s, background .18s;
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  position:relative;
+}
+.category-btn i{font-size:1.05rem;color:var(--primary-600);}
+.category-btn:hover{
+  transform:translateY(-12px) rotateX(5deg);
+  box-shadow:0 22px 60px rgba(4,10,23,0.08);
+  background:linear-gradient(90deg,var(--primary-200),#eaf6ff);
+  color:#04365f;
+}
 
-/* Floating icons for 3D effect */
-.floating-icon{position:absolute;width:10px;height:10px;background:#66b3ff;border-radius:50%;opacity:0.7;pointer-events:none;transform-style:preserve-3d;box-shadow:0 0 5px rgba(0,102,204,0.7);}
-
-/* ---------- Trust strip ---------- */
-.trust-strip{max-width:1200px; margin:24px auto; padding:14px 18px; background:linear-gradient(90deg,#fff,#f7fbff); border-radius:12px; display:flex; gap:20px; align-items:center; justify-content:center; box-shadow:0 10px 40px rgba(4,10,23,0.04);}
-.trust-item{display:flex; gap:10px; align-items:center; color:var(--muted); font-weight:700;}
-.trust-item i{color:var(--primary)}
-
-/* ---------- Footer ---------- */
-footer{background: linear-gradient(90deg,var(--primary-600),var(--primary)); color:#fff; padding:28px 18px; margin-top:40px; border-radius:6px 6px 0 0;}
-.footer-inner{max-width:1100px; margin:0 auto; text-align:center;}
-.social-icons{margin-top:12px; display:flex; gap:16px; justify-content:center; align-items:center;}
-.social-icons a{color:#fff; font-size:1.5rem; transition: transform .18s, color .18s;}
-.social-icons a:hover{color:var(--accent); transform:scale(1.08)}
+/* ---------- Floating icons ---------- */
+.floating-icon{
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:#66b3ff;
+  border-radius:50%;
+  opacity:0.8;
+  pointer-events:none;
+  transform-style:preserve-3d;
+  box-shadow:0 0 6px rgba(0,102,204,0.7);
+}
 
 /* ---------- Loader ---------- */
-.site-loader{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.86); z-index:9999; transition:opacity .3s;}
-.loader-inner{width:86px; height:86px; border-radius:50%; border:6px solid rgba(0,0,0,0.06); border-top-color:var(--primary); animation:spin 1.2s linear infinite;}
-@keyframes spin{to{ transform:rotate(360deg);}}
+.site-loader{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.86);
+  z-index:9999;
+  transition:opacity .3s;
+}
+.loader-inner{
+  width:86px;
+  height:86px;
+  border-radius:50%;
+  border:6px solid rgba(0,0,0,0.06);
+  border-top-color:var(--primary);
+  animation:spin 1.2s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg);} }
+
+/* ---------- Responsive ---------- */
+@media(max-width:900px){
+  .hero{ padding:72px 16px 48px; }
+  .hero h1{ font-size:1.85rem; }
+}
 </style>
 </head>
+
 <body>
 
 <!-- Loader -->
@@ -141,8 +352,8 @@ footer{background: linear-gradient(90deg,var(--primary-600),var(--primary)); col
         Shop Now 🛒
       </button>
       <a class="btn-ghost animate__animated animate__fadeInUp"
-        href="https://www.youtube.com/@uniquecollection01" target="_blank" rel="noopener">
-        <i class="fab fa-youtube"></i> Watch Videos
+        href="https://discord.gg/Aa9a6XHwZz" target="_blank" rel="noopener">
+        <i class="fab fa-discord"></i> Join Discord
       </a>
     </div>
   </div>
@@ -150,75 +361,95 @@ footer{background: linear-gradient(90deg,var(--primary-600),var(--primary)); col
 
 <!-- Categories -->
 <section class="categories" id="categories" data-aos="fade-up">
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-shirt"></i> Fashion</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-book"></i> Books</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-magic-wand-sparkles"></i> Beauty</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-puzzle-piece"></i> Toys</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-couch"></i> Home Decor</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-dumbbell"></i> Fitness</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-utensils"></i> Kitchenware</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-face-smile"></i> Anime</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-gem"></i> Jewellery</button>
-  <button class="category-btn animate__animated animate__fadeInUp"><i class="fa-solid fa-tv"></i> Electronics</button>
-  <button class="category-btn animate__animated animate__fadeInUp">Pixelvine</button>
-  <button class="category-btn animate__animated animate__fadeInUp">Lucid Weaver</button>
-  <button class="category-btn animate__animated animate__fadeInUp">Storyarc UX</button>
-  <button class="category-btn animate__animated animate__fadeInUp">Empathy Engine</button>
-  <button class="category-btn animate__animated animate__fadeInUp">North Star Digital</button>
-  <button class="category-btn animate__animated animate__fadeInUp">Mosaic Interactive</button>
-  <button class="category-btn animate__animated animate__fadeInUp">Tangent Creative</button>
-  <button class="category-btn animate__animated animate__fadeInUp">Color & Rhyme</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='fashion.html'"><i class="fa-solid fa-shirt"></i> Fashion</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='books.html'"><i class="fa-solid fa-book"></i> Books</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='beauty.html'"><i class="fa-solid fa-magic-wand-sparkles"></i> Beauty</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='toys.html'"><i class="fa-solid fa-puzzle-piece"></i> Toys</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='homedecor.html'"><i class="fa-solid fa-couch"></i> Home Decor</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='fitness.html'"><i class="fa-solid fa-dumbbell"></i> Fitness</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='kitchenware.html'"><i class="fa-solid fa-utensils"></i> Kitchenware</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='anime.html'"><i class="fa-solid fa-face-smile"></i> Anime</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='jewellery.html'"><i class="fa-solid fa-gem"></i> Jewellery</button>
+  <button class="category-btn animate__animated animate__fadeInUp" onclick="location.href='electronics.html'"><i class="fa-solid fa-tv"></i> Electronics</button>
+  <div id="floating-icons"></div>
 </section>
-
-<!-- Trust strip -->
-<div class="trust-strip" data-aos="fade-up">
-  <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Curated, quality picks</div>
-  <div class="trust-item"><i class="fa-solid fa-handshake"></i> Trusted affiliate partners</div>
-  <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Transparent reviews & links</div>
-</div>
-
-<!-- Discord Floating Bubble -->
-<a href="https://discord.gg/Aa9a6XHwZz" target="_blank" class="discord-bubble">Join our Discord</a>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-inner">
-    &copy; 2025 Unique Collection4u. All rights reserved.
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
-  </div>
-</footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-AOS.init();
+AOS.init({duration:1200});
 
 // Loader fadeout
-window.addEventListener('load',()=>{document.getElementById('siteLoader').style.opacity=0; setTimeout(()=>{document.getElementById('siteLoader').style.display='none'},400)});
+window.addEventListener('load',()=>{document.getElementById('siteLoader').style.display='none'});
 
 // Floating semicircle animation
-const shapes = document.querySelectorAll('.shape');
-shapes.forEach(shape=>{
-  let pos = Math.random()*100;
-  let dir = Math.random()>0.5?1:-1;
-  function floatS(){ 
-    pos += dir*0.1; 
-    if(pos>100||pos<0) dir*=-1;
-    shape.style.transform=`translateY(${Math.sin(pos)*15}px)`;
-    requestAnimationFrame(floatS);
+const shapes=document.querySelectorAll('.shape');
+function animateShapes(){
+  shapes.forEach((s,i)=>{
+    const x=Math.sin(Date.now()*0.0005+i)*50;
+    const y=Math.cos(Date.now()*0.0003+i)*50;
+    s.style.transform=`translate(${x}px,${y}px)`;
+  });
+  requestAnimationFrame(animateShapes);
+}
+animateShapes();
+
+// Floating icons around categories
+const floatingContainer = document.getElementById('floating-icons');
+const floatingIcons = [];
+const categoryCards = document.querySelectorAll('.category-btn');
+
+categoryCards.forEach(card=>{
+  for(let i=0;i<5;i++){
+    const icon = document.createElement('div');
+    icon.className='floating-icon';
+    const rect = card.getBoundingClientRect();
+    icon.dataset.x = rect.left + Math.random()*rect.width;
+    icon.dataset.y = rect.top + Math.random()*rect.height;
+    icon.dataset.dx = (Math.random()-0.5)*0.4;
+    icon.dataset.dy = (Math.random()-0.5)*0.4;
+    floatingContainer.appendChild(icon);
+    floatingIcons.push(icon);
   }
-  floatS();
 });
 
-// 3D floating icons
-const floatingContainer=document.createElement('div');floatingContainer.id='floating-icons';document.body.appendChild(floatingContainer);
-const floatingIcons=[];const categoryCards=document.querySelectorAll('.category-btn');
-categoryCards.forEach(card=>{for(let i=0;i<6;i++){const icon=document.createElement('div');icon.className='floating-icon';const rect=card.getBoundingClientRect();icon.dataset.x=rect.left+Math.random()*rect.width;icon.dataset.y=rect.top+Math.random()*rect.height;icon.dataset.dx=(Math.random()-0.5)*0.4;icon.dataset.dy=(Math.random()-0.5)*0.4;floatingContainer.appendChild(icon);floatingIcons.push(icon);}});
-function animateFloatingIcons(){floatingIcons.forEach(icon=>{let x=parseFloat(icon.dataset.x)+parseFloat(icon.dataset.dx);let y=parseFloat(icon.dataset.y)+parseFloat(icon.dataset.dy);if(x<0)x=window.innerWidth;if(x>window.innerWidth)x=0;if(y<0)y=window.innerHeight;if(y>window.innerHeight)y=0;icon.dataset.x=x;icon.dataset.y=y;icon.style.transform=`translate3d(${x}px,${y}px,0) rotate(${x*0.1}deg)`;});requestAnimationFrame(animateFloatingIcons);}
+function animateFloatingIcons(){
+  floatingIcons.forEach(icon=>{
+    let x=parseFloat(icon.dataset.x)+parseFloat(icon.dataset.dx);
+    let y=parseFloat(icon.dataset.y)+parseFloat(icon.dataset.dy);
+    if(x<0)x=window.innerWidth;
+    if(x>window.innerWidth)x=0;
+    if(y<0)y=window.innerHeight;
+    if(y>window.innerHeight)y=0;
+    icon.dataset.x=x;
+    icon.dataset.y=y;
+    icon.style.transform=`translate3d(${x}px, ${y}px, 0) rotate(${x*0.2}deg)`;
+  });
+  requestAnimationFrame(animateFloatingIcons);
+}
 animateFloatingIcons();
+
+// 3D parallax category hover
+categoryCards.forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    card.style.transform = `translateY(-12px) rotateX(${ -y/20 }deg) rotateY(${ x/20 }deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='translateY(0) rotateX(0) rotateY(0)';
+  });
+});
+
+// Parallax scrolling effect for hero and categories
+window.addEventListener('scroll',()=>{
+  const scroll = window.scrollY;
+  shapes.forEach((s,i)=>{
+    const speed = 0.2 + i*0.05;
+    s.style.transform += ` translateY(${scroll*speed}px)`;
+  });
+});
 </script>
+
 </body>
 </html>
