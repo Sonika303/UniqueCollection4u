@@ -59,9 +59,12 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 /* Particles */
 .particle{position:absolute;width:4px;height:4px;background:#66b3ff;border-radius:50%;opacity:0.7;pointer-events:none;}
 
+/* Floating circles around semicircles */
+.floating-circle{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(0,102,204,0.6);opacity:0.8;pointer-events:none;}
+
 /* Categories */
 .categories{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
-.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:180px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;perspective:800px;transform-style:preserve-3d;position:absolute;pointer-events:auto;}
+.category-card{background:#fff;border-radius:14px;padding:18px 20px;width:180px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;position:absolute;pointer-events:auto;}
 .category-card i{font-size:1.6rem;color:#0066cc;margin-bottom:10px;display:block;}
 .category-card h3{font-size:1.2rem;font-weight:700;margin-bottom:6px;}
 .category-card p{font-size:0.95rem;color:#555;margin-bottom:12px;}
@@ -110,19 +113,19 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 
 <!-- Categories -->
 <section class="categories">
-  <div class="category-card" data-semicircle="sc1" data-speed="0.5">
+  <div class="category-card" data-center-x="175" data-center-y="175" data-range="20">
     <i class="fa-solid fa-shirt"></i>
     <h3>Fashion</h3>
     <p>Trending outfits and accessories handpicked for style and value.</p>
     <button onclick="location.href='fashion.html'">Shop</button>
   </div>
-  <div class="category-card" data-semicircle="sc2" data-speed="0.7">
+  <div class="category-card" data-center-x="420" data-center-y="190" data-range="20">
     <i class="fa-solid fa-book"></i>
     <h3>Books</h3>
     <p>Bestsellers and classics for every reader.</p>
     <button onclick="location.href='books.html'">Shop</button>
   </div>
-  <div class="category-card" data-semicircle="sc3" data-speed="0.6">
+  <div class="category-card" data-center-x="250" data-center-y="450" data-range="20">
     <i class="fa-solid fa-magic-wand-sparkles"></i>
     <h3>Beauty</h3>
     <p>Skincare, cosmetics, and self-care must-haves.</p>
@@ -131,7 +134,7 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 </section>
 
 <!-- Social Media Moving -->
-<div class="social-floating" data-semicircle="sc2" data-speed="0.8">
+<div class="social-floating" data-center-x="420" data-center-y="190" data-range="15">
   <a href="https://www.youtube.com/@uniquecollection01"><i class="fab fa-youtube"></i></a>
   <a href="https://www.facebook.com/UniqueCollection0555"><i class="fab fa-facebook"></i></a>
   <a href="https://www.instagram.com/uniquecollection0555"><i class="fab fa-instagram"></i></a>
@@ -152,14 +155,13 @@ AOS.init();
 // Loader
 window.addEventListener("load", ()=>document.getElementById('loader').style.display="none");
 
-// Semicircles animation
+// Semicircle animation
 const semicircles = document.querySelectorAll('.semicircle');
-const semiSpeeds = [0.3,0.2,0.25];
 let t = 0;
 function animateSemicircles(){
   semicircles.forEach((sc,i)=>{
-    const x = Math.sin(t * semiSpeeds[i] + i) * 50;
-    const y = Math.cos(t * semiSpeeds[i] + i) * 30;
+    const x = Math.sin(t*0.2 + i) * 40;
+    const y = Math.cos(t*0.2 + i) * 25;
     sc.style.transform = `translate3d(${x}px,${y}px,0)`;
   });
   t += 0.02;
@@ -192,28 +194,28 @@ function animateParticles(){
 }
 animateParticles();
 
-// Categories & Social floating inside semicircle
-const floatingElements = [...document.querySelectorAll('.category-card, .social-floating')];
-function animateFloating(){
-  floatingElements.forEach(el=>{
-    const sc = document.querySelector(`.${el.dataset.semicircle}`);
-    if(!sc) return;
-    const rect = sc.getBoundingClientRect();
-    const centerX = rect.left + rect.width/2;
-    const centerY = rect.top + rect.height/2;
-    const radiusX = rect.width/2 - 50;
-    const radiusY = rect.height/2 - 50;
-    const speed = parseFloat(el.dataset.speed);
-    if(!el.angle) el.angle = Math.random()*360;
-    el.angle += speed;
-    const rad = el.angle * Math.PI/180;
-    const x = centerX + radiusX * Math.cos(rad) - el.offsetWidth/2;
-    const y = centerY + radiusY * Math.sin(rad)/2 - el.offsetHeight/2;
-    el.style.transform = `translate3d(${x}px,${y}px,0) rotateY(${el.angle}deg) rotateX(${el.angle/5}deg)`;
+// Smooth floating categories & social
+const floatEls = [...document.querySelectorAll('.category-card, .social-floating')];
+floatEls.forEach(el=>{
+  el.offsetX = 0;
+  el.offsetY = 0;
+});
+function animateFloat(){
+  floatEls.forEach(el=>{
+    const range = parseFloat(el.dataset.range);
+    el.offsetX = el.offsetX + (Math.random()-0.5)*0.5;
+    el.offsetY = el.offsetY + (Math.random()-0.5)*0.5;
+    if(el.offsetX>range) el.offsetX = range;
+    if(el.offsetX<-range) el.offsetX = -range;
+    if(el.offsetY>range) el.offsetY = range;
+    if(el.offsetY<-range) el.offsetY = -range;
+    const x = parseFloat(el.dataset.centerX) + el.offsetX;
+    const y = parseFloat(el.dataset.centerY) + el.offsetY;
+    el.style.transform = `translate3d(${x}px,${y}px,0)`;
   });
-  requestAnimationFrame(animateFloating);
+  requestAnimationFrame(animateFloat);
 }
-animateFloating();
+animateFloat();
 </script>
 </body>
 </html>
