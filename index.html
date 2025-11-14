@@ -18,36 +18,14 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="favicon.png">
 
-  <!-- Preload critical font -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" as="style" onload="this.rel='stylesheet'">
   <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
   </noscript>
 
-  <!-- CSS Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- Structured data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Unique Collection4u",
-    "url": "https://www.uniquecollection4u.com",
-    "sameAs": [
-      "https://www.youtube.com/@uniquecollection01",
-      "https://www.facebook.com/UniqueCollection0555",
-      "https://www.instagram.com/uniquecollection0555"
-    ],
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.uniquecollection4u.com/?s={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
 
   <style>
     :root{
@@ -61,424 +39,202 @@
       --radius:12px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; scroll-behavior:smooth;}
+    html,body{height:100%;margin:0;font-family:"Poppins"; background:var(--bg); color:var(--text); scroll-behavior:smooth;}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
-    button{font-family:inherit}
 
-    /* Header */
     header{ position:sticky; top:0; z-index:1200; backdrop-filter: blur(6px); background:linear-gradient(90deg, rgba(22,112,255,0.95), rgba(21,94,220,0.95)); color:#fff; box-shadow:0 6px 22px rgba(10,40,90,0.12);}
-    .nav-inner{ max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 18px; gap:12px;}
+    .nav-inner{ max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 18px;}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800}
     .brand .logo{width:40px;height:40px;border-radius:8px;background:#fff;color:var(--primary);display:grid;place-items:center;font-weight:800}
     nav{display:flex;gap:16px;align-items:center}
-    nav a{color:#fff;font-weight:600;padding:8px 10px;border-radius:8px;transition:all .15s}
+    nav a{color:#fff;font-weight:600;padding:8px 10px;border-radius:8px;transition:.15s}
     nav a:hover{background:rgba(255,255,255,0.08); transform:translateY(-2px)}
     .header-actions{display:flex;gap:10px;align-items:center}
 
-    /* Search bar (smart, local) */
     .search-wrap{display:flex;align-items:center;background:rgba(255,255,255,0.12);padding:6px;border-radius:10px;min-width:240px}
     .search-wrap input{background:transparent;border:0;color:#fff;outline:none;padding:8px 10px;width:200px}
     .search-results{position:absolute;left:18px;right:18px;top:64px;max-width:1200px;margin:0 auto;background:var(--card);border-radius:10px;padding:8px;box-shadow:0 20px 40px rgba(7,27,84,0.12);display:none;z-index:1300}
     .search-results.visible{display:block}
 
-    /* Hero */
-    .hero{padding:84px 18px 60px; text-align:center; position:relative; overflow:hidden; min-height:56vh; background: linear-gradient(135deg,#e8f6ff 0%, #1670ff 100%); color:#fff;}
-    .hero .container{max-width:1100px;margin:0 auto;position:relative;z-index:2}
-    .hero h1{font-size:2.1rem;margin:8px 0;line-height:1.04; font-weight:800; display:inline-block}
+    .hero{padding:84px 18px 60px; text-align:center; min-height:56vh; background: linear-gradient(135deg,#e8f6ff 0%, #1670ff 100%); color:#fff;}
+    .hero h1{font-size:2.1rem;margin:8px 0;font-weight:800}
     .hero p{max-width:820px;margin:12px auto 20px;color:rgba(234,246,255,0.95)}
-    .hero .cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
-
-    .btn-primary{background:#fff;color:var(--primary-600);padding:14px 28px;border-radius:14px;border:0;font-weight:800;cursor:pointer;box-shadow:0 14px 38px rgba(22,96,255,0.12)}
+    .cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+    .btn-primary{background:#fff;color:var(--primary-600);padding:14px 28px;border-radius:14px;font-weight:800}
     .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.14);padding:10px 18px;border-radius:12px;font-weight:700}
 
-    /* Categories grid */
     .categories{max-width:1200px;margin:28px auto;padding:0 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px}
-    .cat-card{background:var(--card);border-radius:12px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(20,70,140,0.04); cursor:pointer; transition:transform .18s, box-shadow .18s}
+    .cat-card{background:var(--card);border-radius:12px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(20,70,140,0.04);transition:.18s}
     .cat-card:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(20,70,140,0.06)}
     .cat-card i{font-size:20px;color:var(--primary)}
     .cat-card span{font-weight:700;color:var(--muted)}
 
-    /* Trending slider */
-    .trending-wrap{max-width:1200px;margin:18px auto;padding:18px;overflow:visible}
-    .trending-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-    .slider{display:flex;gap:12px;overflow:auto;padding-bottom:8px;scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
+    .trending-wrap{max-width:1200px;margin:18px auto;padding:18px}
+    .trending-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .slider{display:flex;gap:12px;overflow:auto;scroll-snap-type:x mandatory}
     .slider::-webkit-scrollbar{display:none}
-    .product-card{min-width:220px;max-width:260px;background:var(--card);border-radius:14px;padding:12px;box-shadow:0 14px 40px rgba(20,70,140,0.04);scroll-snap-align:center;display:flex;flex-direction:column;gap:10px}
-    .product-image{height:160px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#f2f6ff,#fff);display:grid;place-items:center}
-    .product-title{font-weight:700;font-size:0.95rem}
-    .product-meta{display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--primary-600)}
-    .price{font-weight:800}
+    .product-card{min-width:220px;background:#fff;border-radius:14px;padding:12px;box-shadow:0 14px 40px rgba(20,70,140,0.04);display:flex;flex-direction:column;gap:10px}
+    .product-image{height:160px;border-radius:10px;overflow:hidden;display:grid;place-items:center}
 
-    /* Mini product grid for desktop */
     .mini-grid{max-width:1200px;margin:18px auto;padding:0 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
 
-    /* Trust strip & badges */
-    .trust-strip{max-width:1200px;margin:20px auto;padding:12px 18px;background:linear-gradient(90deg,#fff,#eaf6ff);border-radius:12px;display:flex;gap:12px;align-items:center;justify-content:center;box-shadow:0 10px 40px rgba(22,96,255,0.03)}
+    .trust-strip{max-width:1200px;margin:20px auto;padding:12px 18px;background:#fff;border-radius:12px;display:flex;gap:12px;justify-content:center;box-shadow:0 10px 40px rgba(22,96,255,0.03)}
     .trust-item{display:flex;gap:8px;align-items:center;font-weight:700;color:var(--muted)}
 
-    /* Floating discord + to-top */
-    .discord-bubble{position:fixed;right:18px;bottom:92px;border-radius:999px;background:linear-gradient(90deg,#5865f2,#1670ff);color:#fff;padding:10px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 20px 50px rgba(41,84,155,0.16);z-index:1600;cursor:pointer}
-    .to-top{position:fixed;right:18px;bottom:18px;background:var(--primary);color:#fff;width:48px;height:48px;border-radius:999px;display:grid;place-items:center;box-shadow:0 10px 30px rgba(22,96,255,0.12);cursor:pointer;z-index:1500}
-
-    /* Footer */
     footer{background:linear-gradient(90deg,var(--primary-600),var(--primary));color:#fff;padding:26px 18px;margin-top:28px;border-radius:8px 8px 0 0}
     .footer-inner{max-width:1200px;margin:0 auto;text-align:center}
 
-    /* Bottom nav for mobile */
-    .bottom-nav{display:none;position:fixed;left:0;right:0;bottom:0;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 -8px 30px rgba(15,40,90,0.06);padding:8px 12px;z-index:1600;justify-content:space-around;align-items:center}
-    .bottom-nav a{display:flex;flex-direction:column;align-items:center;font-weight:700;color:var(--muted);font-size:12px}
-
-    /* Loader */
-    .site-loader{position:fixed;inset:0;display:grid;place-items:center;background:rgba(244,250,255,0.95);z-index:9999}
-    .loader-inner{width:72px;height:72px;border-radius:50%;border:6px solid #d8eaff;border-top-color:var(--primary-600);animation:spin 1.2s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
-
-    /* Dark mode (prefers or toggle) */
-    .dark{--bg:#061126; --card:#07182b; --text:#e6f0ff; --muted:#9fb8ee; --glass: rgba(255,255,255,0.03); background:var(--bg); color:var(--text)}
-    .dark header{background:linear-gradient(90deg,#0f2b60,#0b2150)}
-    .dark .btn-primary{color:#06204a}
-    .dark .bottom-nav{background:#07182b}
-
-    /* Responsive */
     @media (max-width:900px){
-      .hero{padding:60px 14px 120px}
-      .hero h1{font-size:1.25rem}
-      .search-wrap input{width:120px}
       nav{display:none}
-      .header-actions{gap:6px}
       .bottom-nav{display:flex}
-      .categories{grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}
-      .product-card{min-width:200px}
     }
+
+    .bottom-nav{display:none;position:fixed;left:0;right:0;bottom:0;background:#fff;box-shadow:0 -8px 30px rgba(15,40,90,0.06);padding:8px 12px;z-index:1500;justify-content:space-around}
+    .bottom-nav a{display:flex;flex-direction:column;align-items:center;font-weight:700;font-size:12px;color:var(--muted)}
+
   </style>
 </head>
 <body>
+
   <!-- Loader -->
-  <div id="siteLoader" class="site-loader" role="status" aria-live="polite">
-    <div class="loader-inner" aria-hidden="true"></div>
+  <div id="siteLoader" class="site-loader">
+    <div class="loader-inner"></div>
   </div>
 
   <!-- Header -->
   <header>
-    <div class="nav-inner" role="navigation" aria-label="Main navigation">
-      <div style="display:flex;align-items:center;gap:14px">
-        <a class="brand" href="index.html" aria-label="Unique Collection4u Home">
-          <div class="logo" aria-hidden="true">UC</div>
-          <div style="line-height:1">
-            <div style="font-size:0.95rem">Unique Collection4u</div>
-            <div style="font-size:0.68rem;opacity:.9">Curated Deals & Expert Picks</div>
-          </div>
-        </a>
-      </div>
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <div class="logo">UC</div>
+        <div>
+          <div style="font-size:0.95rem">Unique Collection4u</div>
+          <div style="font-size:0.68rem;opacity:.9">Curated Deals & Expert Picks</div>
+        </div>
+      </a>
 
-      <nav aria-hidden="true">
+      <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="privacy.html">Privacy</a>
       </nav>
 
-      <div class="header-actions" role="region" aria-label="Header actions">
+      <div class="header-actions">
         <div style="position:relative">
-          <div class="search-wrap" role="search" aria-label="Search categories and products">
-            <i class="fa-solid fa-magnifying-glass" style="color:#fff;margin-left:8px"></i>
-            <input id="siteSearch" placeholder="Search categories or product..." aria-label="Search" />
-            <button id="clearSearch" title="Clear search" style="background:transparent;border:0;color:#fff;font-weight:700;display:none;padding:8px">×</button>
+          <div class="search-wrap">
+            <i class="fa-solid fa-magnifying-glass" style="color:#fff"></i>
+            <input id="siteSearch" placeholder="Search..." />
+            <button id="clearSearch" style="color:#fff;display:none;border:0;background:transparent;font-size:20px">×</button>
           </div>
-          <div id="searchResults" class="search-results" aria-hidden="true" role="listbox"></div>
+          <div id="searchResults" class="search-results"></div>
         </div>
 
-        <button id="darkToggle" aria-pressed="false" title="Toggle dark mode" style="background:transparent;border:0;color:#fff;font-weight:700">
+        <button id="darkToggle" style="background:transparent;border:0;color:#fff;font-size:18px">
           <i class="fa-solid fa-moon"></i>
         </button>
 
-        <a class="btn-outline" href="https://www.youtube.com/@uniquecollection01" target="_blank" rel="noopener" aria-label="YouTube channel"><i class="fab fa-youtube" style="margin-right:8px"></i>Videos</a>
+        <a class="btn-outline" href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i> Videos</a>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <main>
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="container">
-        <div class="badge animate__animated animate__fadeIn" style="display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,0.12);padding:8px 12px;border-radius:999px;font-weight:800">
-          ✨ Editor's Picks
-        </div>
+  <section class="hero">
+    <div class="container">
+      <div class="badge animate__animated animate__fadeIn" style="background:rgba(255,255,255,0.12);padding:8px 12px;border-radius:999px;font-weight:800;display:inline-flex">✨ Editor's Picks</div>
+      <h1 class="animate__animated animate__zoomIn">Curated finds for better shopping</h1>
+      <p class="animate__animated animate__fadeInUp">Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics, and more.</p>
 
-        <h1 id="hero-heading" class="animate__animated animate__zoomIn">Curated finds for better shopping</h1>
-        <p class="animate__animated animate__fadeInUp">Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics, and more — reviews, price pointers and short tips to help you decide fast.</p>
+      <div class="cta">
+        <button class="btn-primary" id="ctaShop">Shop Now</button>
+        <a class="btn-outline" href="#categories">Browse Categories</a>
+      </div>
+    </div>
+  </section>
 
-        <div class="cta">
-          <button class="btn-primary" id="ctaShop" aria-label="Shop now">Shop Now 🛒</button>
-          <a class="btn-outline" href="https://www.uniquecollection4u.com/category/fashion" aria-label="Browse categories">Browse Categories</a>
-        </div>
-      </div>
-    </section>
+  <!-- Categories -->
+  <section class="categories" id="categories">
+    <div class="cat-card" onclick="location.href='fashion.html'"><i class="fa-solid fa-shirt"></i><span>Fashion</span></div>
+    <div class="cat-card" onclick="location.href='books.html'"><i class="fa-solid fa-book"></i><span>Books</span></div>
+    <div class="cat-card" onclick="location.href='beauty.html'"><i class="fa-solid fa-magic-wand-sparkles"></i><span>Beauty</span></div>
+    <div class="cat-card" onclick="location.href='homedecor.html'"><i class="fa-solid fa-couch"></i><span>Home Decor</span></div>
+    <div class="cat-card" onclick="location.href='electronics.html'"><i class="fa-solid fa-tv"></i><span>Electronics</span></div>
+    <div class="cat-card" onclick="location.href='kitchenware.html'"><i class="fa-solid fa-utensils"></i><span>Kitchenware</span></div>
+    <div class="cat-card" onclick="location.href='fitness.html'"><i class="fa-solid fa-dumbbell"></i><span>Fitness</span></div>
+    <div class="cat-card" onclick="location.href='anime.html'"><i class="fa-solid fa-face-smile'></i><span>Anime</span></div>
+  </section>
 
-    <!-- Categories -->
-    <section class="categories" id="categories" aria-label="Categories">
-      <div class="cat-card" data-name="Fashion" tabindex="0" role="button" onclick="location.href='fashion.html'">
-        <i class="fa-solid fa-shirt"></i>
-        <span>Fashion</span>
-      </div>
-      <div class="cat-card" data-name="Books" tabindex="0" role="button" onclick="location.href='books.html'">
-        <i class="fa-solid fa-book"></i>
-        <span>Books</span>
-      </div>
-      <div class="cat-card" data-name="Beauty" tabindex="0" role="button" onclick="location.href='beauty.html'">
-        <i class="fa-solid fa-magic-wand-sparkles"></i>
-        <span>Beauty</span>
-      </div>
-      <div class="cat-card" data-name="Home Decor" tabindex="0" role="button" onclick="location.href='homedecor.html'">
-        <i class="fa-solid fa-couch"></i>
-        <span>Home Decor</span>
-      </div>
-      <div class="cat-card" data-name="Electronics" tabindex="0" role="button" onclick="location.href='electronics.html'">
-        <i class="fa-solid fa-tv"></i>
-        <span>Electronics</span>
-      </div>
-      <div class="cat-card" data-name="Kitchenware" tabindex="0" role="button" onclick="location.href='kitchenware.html'">
-        <i class="fa-solid fa-utensils"></i>
-        <span>Kitchenware</span>
-      </div>
-      <div class="cat-card" data-name="Fitness" tabindex="0" role="button" onclick="location.href='fitness.html'">
-        <i class="fa-solid fa-dumbbell"></i>
-        <span>Fitness</span>
-      </div>
-      <div class="cat-card" data-name="Anime" tabindex="0" role="button" onclick="location.href='anime.html'">
-        <i class="fa-solid fa-face-smile"></i>
-        <span>Anime</span>
-      </div>
-    </section>
-
-    <!-- Trust strip -->
-    <div class="trust-strip" aria-hidden="false">
-      <div class="trust-item"><i class="fa-solid fa-check-circle" style="color:var(--primary)"></i> Curated, quality picks</div>
-      <div class="trust-item"><i class="fa-solid fa-handshake" style="color:var(--primary)"></i> Trusted affiliate partners</div>
-      <div class="trust-item"><i class="fa-solid fa-shield-halved" style="color:var(--primary)"></i> Transparent reviews & links</div>
+  <!-- Trending -->
+  <section class="trending-wrap">
+    <div class="trending-title">
+      <h2>Trending Picks</h2>
     </div>
 
-    <!-- Trending slider -->
-    <section class="trending-wrap" aria-label="Trending deals">
-      <div class="trending-title">
-        <h3 style="margin:0;font-weight:800">🔥 Trending Deals</h3>
-        <div>
-          <button id="slidePrev" aria-label="Previous" style="border:0;background:transparent;font-size:18px;padding:8px;margin-right:6px"><i class="fa-solid fa-chevron-left"></i></button>
-          <button id="slideNext" aria-label="Next" style="border:0;background:transparent;font-size:18px;padding:8px"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
+    <div class="slider">
+      <div class="product-card">
+        <div class="product-image"><img src="product1.jpg"></div>
+        <div class="product-title">Product Title</div>
+        <div class="product-meta"><span class="price">₹999</span></div>
       </div>
 
-      <div id="trendingSlider" class="slider" role="list">
-        <!-- Product cards (example placeholders) -->
-        <article class="product-card" role="listitem" aria-label="Trending product 1">
-          <div class="product-image">
-            <img data-src="https://m.media-amazon.com/images/I/61s0vyQ+7KL._SY695_.jpg" alt="Cluster Embellished Earrings" loading="lazy" class="lazy">
-          </div>
-          <div class="product-title">Cluster Embellished Traditional Earrings</div>
-          <div class="product-meta"><span class="price">₹499</span><a href="#" aria-label="Buy now" class="buy-link" style="font-size:0.85rem">Buy</a></div>
-        </article>
-
-        <article class="product-card" role="listitem" aria-label="Trending product 2">
-          <div class="product-image">
-            <img data-src="https://m.media-amazon.com/images/I/71OomKSJjXL._SY695_.jpg" alt="Fashion Product 2" loading="lazy" class="lazy">
-          </div>
-          <div class="product-title">Stylish Sling Bag</div>
-          <div class="product-meta"><span class="price">₹799</span><a href="#" aria-label="Buy now" class="buy-link" style="font-size:0.85rem">Buy</a></div>
-        </article>
-
-        <!-- Repeat or generate dynamically -->
+      <div class="product-card">
+        <div class="product-image"><img src="product2.jpg"></div>
+        <div class="product-title">Product Title</div>
+        <div class="product-meta"><span class="price">₹1299</span></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Mini product grid -->
-    <section class="mini-grid" aria-label="Featured picks">
-      <article class="product-card" role="article" aria-label="Featured pick 1">
-        <div class="product-image">
-          <img data-src="https://via.placeholder.com/320x240?text=Product+1" alt="Featured product 1" loading="lazy" class="lazy">
-        </div>
-        <div class="product-title">Editor's Choice — Home Decor Accent</div>
-        <div class="product-meta"><span class="price">₹1,299</span><a href="#" class="buy-link">Get it</a></div>
-      </article>
+  <!-- Mini Grid -->
+  <section class="mini-grid">
+    <div class="product-card">
+      <div class="product-image"><img src="product3.jpg"></div>
+      <div class="product-title">Mini Product</div>
+      <div class="product-meta"><span class="price">₹799</span></div>
+    </div>
+  </section>
 
-      <article class="product-card" role="article" aria-label="Featured pick 2">
-        <div class="product-image">
-          <img data-src="https://via.placeholder.com/320x240?text=Product+2" alt="Featured product 2" loading="lazy" class="lazy">
-        </div>
-        <div class="product-title">Top Rated Kitchen Tool</div>
-        <div class="product-meta"><span class="price">₹899</span><a href="#" class="buy-link">Get it</a></div>
-      </article>
-
-      <article class="product-card" role="article" aria-label="Featured pick 3">
-        <div class="product-image">
-          <img data-src="https://via.placeholder.com/320x240?text=Product+3" alt="Featured product 3" loading="lazy" class="lazy">
-        </div>
-        <div class="product-title">Fitness Tracker — Value Pick</div>
-        <div class="product-meta"><span class="price">₹1,999</span><a href="#" class="buy-link">Get it</a></div>
-      </article>
-    </section>
-  </main>
+  <!-- Trust Strip -->
+  <div class="trust-strip">
+    <div class="trust-item"><i class="fa-solid fa-check-circle" style="color:var(--primary)"></i> Verified Products</div>
+    <div class="trust-item"><i class="fa-solid fa-bolt" style="color:var(--primary)"></i> Fast Updates</div>
+    <div class="trust-item"><i class="fa-solid fa-shield" style="color:var(--primary)"></i> Trusted Sources</div>
+  </div>
 
   <!-- Footer -->
-  <footer role="contentinfo">
+  <footer>
     <div class="footer-inner">
-      <div style="font-weight:800; font-size:0.95rem">© <span id="year">2025</span> Unique Collection4u</div>
-      <div style="margin-top:10px;display:flex;gap:12px;justify-content:center;align-items:center">
-        <a href="https://www.youtube.com/@uniquecollection01" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube"><i class="fab fa-youtube" style="font-size:20px;color:#fff"></i></a>
-        <a href="https://www.facebook.com/UniqueCollection0555" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook" style="font-size:20px;color:#fff"></i></a>
-        <a href="https://www.instagram.com/uniquecollection0555" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram" style="font-size:20px;color:#fff"></i></a>
-        <a href="https://discord.gg/Aa9a6XHwZz" target="_blank" rel="noopener" title="Discord" aria-label="Discord"><i class="fab fa-discord" style="font-size:20px;color:#fff"></i></a>
-      </div>
+      © 2025 UniqueCollection4u — All Rights Reserved
     </div>
   </footer>
 
-  <!-- Floating Discord + top -->
-  <div class="discord-bubble" id="discordBubble" role="button" tabindex="0" title="Join our Discord" aria-label="Join our Discord" onclick="window.open('https://discord.gg/Aa9a6XHwZz','_blank')">
-    <i class="fab fa-discord" aria-hidden="true"></i>
-    <span style="font-weight:800;color:#fff">Join Community</span>
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="#categories"><i class="fa-solid fa-grid-2"></i>Categories</a>
+    <a href="contact.html"><i class="fa-solid fa-headset"></i>Contact</a>
+    <a href="privacy.html"><i class="fa-solid fa-shield"></i>Privacy</a>
   </div>
 
-  <div class="to-top" id="toTop" role="button" tabindex="0" title="Back to top" aria-label="Back to top">
-    <i class="fa-solid fa-arrow-up-long" style="color:#fff"></i>
-  </div>
-
-  <!-- Bottom nav (mobile) -->
-  <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
-    <a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
-    <a href="#categories"><i class="fa-solid fa-list"></i><span>Categories</span></a>
-    <a href="#" id="mobileSearchBtn"><i class="fa-solid fa-magnifying-glass"></i><span>Search</span></a>
-    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fa-brands fa-youtube"></i><span>Videos</span></a>
-    <a href="contact.html"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
-  </nav>
-
-  <!-- Scripts (deferred, minimal dependencies) -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <!-- JS -->
   <script>
-    AOS.init({ duration: 650, once: true, offset: 100 });
-
-    // Remove loader
-    window.addEventListener('load', function(){
-      const loader = document.getElementById('siteLoader');
-      if(loader){ loader.style.display = 'none'; }
-      // set year
-      document.getElementById('year').textContent = new Date().getFullYear();
-      // lazy load first visible images
-      lazyLoadImages();
+    // Loader
+    window.addEventListener("load", () => {
+      document.getElementById("siteLoader").style.display = "none";
     });
 
-    // Simple lazy loader for data-src images
-    function lazyLoadImages(){
-      const imgs = document.querySelectorAll('img.lazy');
-      if('IntersectionObserver' in window){
-        const obs = new IntersectionObserver((entries, ob) => {
-          entries.forEach(e => {
-            if(e.isIntersecting){
-              const img = e.target;
-              if(img.dataset.src){ img.src = img.dataset.src; img.removeAttribute('data-src'); }
-              img.classList.remove('lazy');
-              ob.unobserve(img);
-            }
-          });
-        }, {rootMargin: '150px'});
-        imgs.forEach(i => obs.observe(i));
-      } else {
-        // fallback
-        imgs.forEach(img => { if(img.dataset.src) img.src = img.dataset.src; img.classList.remove('lazy'); });
-      }
-    }
+    // Dark mode
+    const toggle = document.getElementById("darkToggle");
+    toggle.onclick = () => {
+      document.body.classList.toggle("dark");
+    };
 
-    // Trending slider controls
-    (function(){
-      const slider = document.getElementById('trendingSlider');
-      const prev = document.getElementById('slidePrev');
-      const next = document.getElementById('slideNext');
-      if(!slider) return;
-      prev.addEventListener('click', () => { slider.scrollBy({ left: -260, behavior: 'smooth' }); });
-      next.addEventListener('click', () => { slider.scrollBy({ left: 260, behavior: 'smooth' }); });
-
-      // keyboard accessibility
-      slider.addEventListener('keydown', (e) => {
-        if(e.key === 'ArrowRight') slider.scrollBy({ left: 260, behavior: 'smooth' });
-        if(e.key === 'ArrowLeft') slider.scrollBy({ left: -260, behavior: 'smooth' });
-      });
-    })();
-
-    // Back-to-top & focusable keys
-    const toTop = document.getElementById('toTop');
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    toTop.addEventListener('keypress', e => { if(e.key === 'Enter') toTop.click(); });
-
-    // Discord bubble keyboard
-    const discord = document.getElementById('discordBubble');
-    discord.addEventListener('keypress', e => { if(e.key === 'Enter') discord.click(); });
-
-    // Dark mode toggle (persist)
-    (function(){
-      const toggle = document.getElementById('darkToggle');
-      const root = document.documentElement;
-      const saved = localStorage.getItem('uc4u_dark');
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if(saved === '1' || (saved === null && prefersDark)) document.documentElement.classList.add('dark');
-      toggle.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.toggle('dark');
-        toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        localStorage.setItem('uc4u_dark', isDark ? '1' : '0');
-      });
-    })();
-
-    // Smart local search (categories + visible product titles)
-    (function(){
-      const input = document.getElementById('siteSearch');
-      const resultsBox = document.getElementById('searchResults');
-      const clearBtn = document.getElementById('clearSearch');
-      const cNames = Array.from(document.querySelectorAll('.cat-card')).map(el => ({type:'category', name: el.dataset.name || el.innerText.trim(), href: el.getAttribute('onclick') ? el.getAttribute('onclick').match(/'([^']+)'/)?.[1] : null}));
-      const pCards = Array.from(document.querySelectorAll('.product-card')).map((el, idx) => ({type:'product', name: el.querySelector('.product-title')?.innerText.trim() || `Product ${idx+1}`, href: el.querySelector('.buy-link')?.href || '#'}));
-      const indexList = [...cNames, ...pCards];
-
-      function renderResults(list){
-        if(!list.length){ resultsBox.innerHTML = '<div style="padding:8px;color:#666">No results</div>'; resultsBox.classList.add('visible'); resultsBox.setAttribute('aria-hidden','false'); return; }
-        resultsBox.innerHTML = list.map(item => {
-          const icon = item.type === 'category' ? '<i class="fa-solid fa-list" style="margin-right:8px;color:var(--primary)"></i>' : '<i class="fa-solid fa-tag" style="margin-right:8px;color:var(--primary)"></i>';
-          const href = item.href || '#';
-          return `<a href="${href}" class="result-row" style="display:flex;gap:10px;padding:10px;border-radius:8px;align-items:center;color:var(--text);text-decoration:none">${icon}<div><div style="font-weight:800">${item.name}</div><div style="font-size:12px;color:#666">${item.type}</div></div></a>`;
-        }).join('');
-        resultsBox.classList.add('visible'); resultsBox.setAttribute('aria-hidden','false');
-      }
-
-      input.addEventListener('input', (e) => {
-        const q = e.target.value.trim().toLowerCase();
-        if(!q){ resultsBox.classList.remove('visible'); resultsBox.setAttribute('aria-hidden','true'); clearBtn.style.display='none'; return; }
-        clearBtn.style.display='inline';
-        const matches = indexList.filter(i => i.name.toLowerCase().includes(q)).slice(0,8);
-        renderResults(matches);
-      });
-
-      clearBtn.addEventListener('click', () => { input.value=''; resultsBox.classList.remove('visible'); resultsBox.setAttribute('aria-hidden','true'); clearBtn.style.display='none'; });
-
-      // close on outside click
-      document.addEventListener('click', (e) => {
-        if(!document.querySelector('.search-wrap').contains(e.target) && !resultsBox.contains(e.target)){
-          resultsBox.classList.remove('visible'); resultsBox.setAttribute('aria-hidden','true');
-        }
-      });
-
-      // mobile search button opens focus
-      document.getElementById('mobileSearchBtn').addEventListener('click', (e) => { e.preventDefault(); input.focus(); window.scrollTo({top:60,behavior:'smooth'}); });
-    })();
-
-    // Make category & product cards keyboard accessible
-    document.querySelectorAll('.cat-card, .product-card').forEach(el => {
-      el.addEventListener('keypress', (e) => { if(e.key === 'Enter') el.click(); });
-    });
-
-    // Accessibility: reduce motion respecting prefers-reduced-motion
-    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      document.documentElement.classList.add('reduce-motion');
-      // disable AOS animations
-      if(window.AOS) AOS.init({disable:true});
-    }
+    // Scroll to categories
+    document.getElementById("ctaShop").onclick = () => {
+      document.getElementById("categories").scrollIntoView({ behavior: "smooth" });
+    };
   </script>
 
-  <!-- Inline note for deploy: ensure ads.txt remains in root and AdSense code placed in appropriate pages -->
 </body>
 </html>
