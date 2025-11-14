@@ -21,7 +21,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:#f0f4f8;color:#0f1724;overflow:hidden;perspective:1800px;}
+body{font-family:'Poppins',sans-serif;background:#f0f4f8;color:#0f1724;overflow-x:hidden;perspective:1800px;min-height:100vh;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 
@@ -42,25 +42,22 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 .social-top a:hover{color:#ffb400;}
 
 /* Hero */
-.hero{text-align:center;padding:60px 20px;position:relative;overflow:hidden;}
-.hero h1{font-size:2rem;font-weight:800;color:#fff;margin:12px 0;}
-.hero p{color:rgba(255,255,255,0.9);max-width:700px;margin:12px auto 22px;line-height:1.6;font-size:1rem;}
+.hero{text-align:center;padding:80px 20px;position:relative;overflow:hidden;height:100vh;}
+.hero h1{font-size:2.2rem;font-weight:800;color:#fff;margin:12px 0;}
+.hero p{color:rgba(255,255,255,0.9);max-width:700px;margin:12px auto 22px;line-height:1.6;font-size:1.05rem;}
 .hero .badge{display:inline-block;background:rgba(255,255,255,0.15);padding:5px 12px;border-radius:30px;font-weight:700;color:#fff;margin-bottom:12px;}
 
-/* Semicircles */
+/* Semicircles & Mini circles */
 .semicircle{position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;transform-style:preserve-3d;}
-/* Dynamic semicircles sizes, positions, and gradients will be generated via JS */
-
-/* Mini Circles inside semicircles */
 .mini-circle{position:absolute;width:4px;height:4px;background:rgba(102,179,255,0.5);border-radius:50%;}
 
 /* Categories */
 .categories{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
-.category-card{background:#fff;border-radius:12px;padding:10px 14px;width:110px;box-shadow:0 10px 30px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.3s;position:absolute;pointer-events:auto;}
-.category-card i{font-size:1.1rem;color:#0066cc;margin-bottom:5px;display:block;}
-.category-card h3{font-size:0.85rem;font-weight:700;margin-bottom:3px;}
-.category-card p{font-size:0.7rem;color:#555;margin-bottom:8px;}
-.category-card button{background:#0066cc;color:#fff;border:none;padding:4px 10px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;}
+.category-card{background:#fff;border-radius:16px;padding:14px 18px;width:140px;box-shadow:0 12px 40px rgba(0,0,0,0.08);text-align:center;cursor:pointer;transition: transform 0.5s;position:absolute;pointer-events:auto;}
+.category-card i{font-size:1.3rem;color:#0066cc;margin-bottom:6px;display:block;}
+.category-card h3{font-size:1rem;font-weight:700;margin-bottom:4px;}
+.category-card p{font-size:0.75rem;color:#555;margin-bottom:10px;}
+.category-card button{background:#0066cc;color:#fff;border:none;padding:6px 14px;border-radius:10px;font-weight:600;cursor:pointer;transition:0.3s;}
 .category-card button:hover{background:#0055aa;}
 
 /* Discord button */
@@ -98,21 +95,20 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 
   <!-- Semicircles container -->
   <div id="semicircles-container"></div>
-  <div id="particles"></div>
 </section>
 
 <!-- Categories -->
 <section class="categories">
-  <div class="category-card" data-radius="100"><i class="fa-solid fa-shirt"></i><h3>Fashion</h3><p>Trending outfits.</p><button onclick="location.href='fashion.html'">Shop</button></div>
-  <div class="category-card" data-radius="110"><i class="fa-solid fa-book"></i><h3>Books</h3><p>Bestsellers.</p><button onclick="location.href='books.html'">Shop</button></div>
-  <div class="category-card" data-radius="90"><i class="fa-solid fa-magic-wand-sparkles"></i><h3>Beauty</h3><p>Skincare.</p><button onclick="location.href='beauty.html'">Shop</button></div>
-  <div class="category-card" data-radius="95"><i class="fa-solid fa-puzzle-piece"></i><h3>Toys</h3><p>Educational.</p><button onclick="location.href='toys.html'">Shop</button></div>
-  <div class="category-card" data-radius="100"><i class="fa-solid fa-couch"></i><h3>Home Decor</h3><p>Stylish items.</p><button onclick="location.href='homedecor.html'">Shop</button></div>
-  <div class="category-card" data-radius="95"><i class="fa-solid fa-dumbbell"></i><h3>Fitness</h3><p>Stay active.</p><button onclick="location.href='fitness.html'">Shop</button></div>
-  <div class="category-card" data-radius="100"><i class="fa-solid fa-utensils"></i><h3>Kitchenware</h3><p>Utensils.</p><button onclick="location.href='kitchenware.html'">Shop</button></div>
-  <div class="category-card" data-radius="110"><i class="fa-solid fa-face-smile"></i><h3>Anime</h3><p>Merch.</p><button onclick="location.href='anime.html'">Shop</button></div>
-  <div class="category-card" data-radius="95"><i class="fa-solid fa-gem"></i><h3>Jewellery</h3><p>Pieces.</p><button onclick="location.href='jewellery.html'">Shop</button></div>
-  <div class="category-card" data-radius="105"><i class="fa-solid fa-tv"></i><h3>Electronics</h3><p>Gadgets.</p><button onclick="location.href='electronics.html'">Shop</button></div>
+  <div class="category-card" data-radius="120"><i class="fa-solid fa-shirt"></i><h3>Fashion</h3><p>Trending outfits.</p><button onclick="location.href='fashion.html'">Shop</button></div>
+  <div class="category-card" data-radius="130"><i class="fa-solid fa-book"></i><h3>Books</h3><p>Bestsellers.</p><button onclick="location.href='books.html'">Shop</button></div>
+  <div class="category-card" data-radius="125"><i class="fa-solid fa-magic-wand-sparkles"></i><h3>Beauty</h3><p>Skincare.</p><button onclick="location.href='beauty.html'">Shop</button></div>
+  <div class="category-card" data-radius="120"><i class="fa-solid fa-puzzle-piece"></i><h3>Toys</h3><p>Educational.</p><button onclick="location.href='toys.html'">Shop</button></div>
+  <div class="category-card" data-radius="130"><i class="fa-solid fa-couch"></i><h3>Home Decor</h3><p>Stylish items.</p><button onclick="location.href='homedecor.html'">Shop</button></div>
+  <div class="category-card" data-radius="125"><i class="fa-solid fa-dumbbell"></i><h3>Fitness</h3><p>Stay active.</p><button onclick="location.href='fitness.html'">Shop</button></div>
+  <div class="category-card" data-radius="130"><i class="fa-solid fa-utensils"></i><h3>Kitchenware</h3><p>Utensils.</p><button onclick="location.href='kitchenware.html'">Shop</button></div>
+  <div class="category-card" data-radius="135"><i class="fa-solid fa-face-smile"></i><h3>Anime</h3><p>Merch.</p><button onclick="location.href='anime.html'">Shop</button></div>
+  <div class="category-card" data-radius="120"><i class="fa-solid fa-gem"></i><h3>Jewellery</h3><p>Pieces.</p><button onclick="location.href='jewellery.html'">Shop</button></div>
+  <div class="category-card" data-radius="130"><i class="fa-solid fa-tv"></i><h3>Electronics</h3><p>Gadgets.</p><button onclick="location.href='electronics.html'">Shop</button></div>
 </section>
 
 <!-- Discord Invite -->
@@ -128,81 +124,66 @@ header{position:sticky;top:0;z-index:1500;display:flex;justify-content:center;ba
 AOS.init();
 window.addEventListener("load", ()=>document.getElementById('loader').style.display="none");
 
-// Generate semicircles dynamically
-const semicircleContainer=document.getElementById('semicircles-container');
-const semicircles=[];
-for(let i=0;i<15;i++){
-  const sc=document.createElement('div');
+// Semicircles dynamic
+const semicircleContainer = document.getElementById('semicircles-container');
+const semicircles = [];
+
+function createSemicircle() {
+  const sc = document.createElement('div');
   sc.className='semicircle';
-  const size=80+Math.random()*160;
-  sc.style.width=size+'px';
-  sc.style.height=size+'px';
-  sc.style.top=Math.random()*window.innerHeight*0.6+'px';
-  sc.style.left=Math.random()*window.innerWidth*0.8+'px';
-  sc.style.background=`linear-gradient(180deg,#ffffff, #66b3ff)`;
+  const size = 100 + Math.random()*180;
+  sc.style.width = sc.style.height = size+'px';
+  sc.style.top = Math.random()*window.innerHeight*0.7+'px';
+  sc.style.left = Math.random()*window.innerWidth*0.7+'px';
+  sc.style.background = `linear-gradient(180deg,#ffffff,#66b3ff)`;
   semicircleContainer.appendChild(sc);
-  semicircles.push({el:sc,angle:Math.random()*Math.PI*2,speed:0.01+Math.random()*0.02,radius:Math.random()*20+30});
-  // Mini circles inside semicircle
-  for(let j=0;j<12;j++){
-    const mini=document.createElement('div');
+
+  // mini circles inside
+  for(let i=0;i<15;i++){
+    const mini = document.createElement('div');
     mini.className='mini-circle';
-    mini.style.left=Math.random()*size+'px';
-    mini.style.top=Math.random()*size+'px';
+    mini.style.left = Math.random()*size+'px';
+    mini.style.top = Math.random()*size+'px';
     sc.appendChild(mini);
   }
-}
 
-// Animate semicircles
+  semicircles.push({el:sc,angle:Math.random()*Math.PI*2,speed:0.002+Math.random()*0.001,radius:Math.random()*30+40,spawnTime:Date.now()});
+}
+for(let i=0;i<20;i++) createSemicircle();
+
+// Animate semicircles slowly & remove old semicircles for performance
 function animateSemicircles(){
-  semicircles.forEach(sc=>{
+  semicircles.forEach((sc,i)=>{
     sc.angle+=sc.speed;
-    const x=Math.cos(sc.angle)*sc.radius;
-    const y=Math.sin(sc.angle)*sc.radius;
-    sc.el.style.transform=`translate3d(${x}px,${y}px,0) rotate(${sc.angle*30}deg)`;
+    const x = Math.cos(sc.angle)*sc.radius;
+    const y = Math.sin(sc.angle)*sc.radius;
+    sc.el.style.transform = `translate3d(${x}px,${y}px,0) rotate(${sc.angle*20}deg)`;
+
+    if(Date.now() - sc.spawnTime > 15000){ // remove after 15s
+      sc.el.remove();
+      semicircles.splice(i,1);
+      createSemicircle();
+    }
   });
   requestAnimationFrame(animateSemicircles);
 }
 animateSemicircles();
 
-// Particles
-const particlesContainer=document.getElementById('particles');
-const particles=[];
-for(let i=0;i<60;i++){
-  const p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*window.innerWidth+'px';
-  p.style.top=Math.random()*window.innerHeight+'px';
-  particlesContainer.appendChild(p);
-  particles.push({el:p,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4});
-}
-function animateParticles(){
-  particles.forEach(p=>{
-    p.x+=p.dx;p.y+=p.dy;
-    if(p.x<0)p.x=window.innerWidth;
-    if(p.x>window.innerWidth)p.x=0;
-    if(p.y<0)p.y=window.innerHeight;
-    if(p.y>window.innerHeight)p.y=0;
-    p.el.style.transform=`translate3d(${p.x}px,${p.y}px,0)`;
-  });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-// Orbiting categories without collision
-const categories=[...document.querySelectorAll('.category-card')];
+// Floating categories
+const categories = [...document.querySelectorAll('.category-card')];
 categories.forEach((cat,i)=>{
   cat.angle=Math.random()*Math.PI*2;
-  cat.speed=0.002+Math.random()*0.001*i;
+  cat.speed=0.0015+Math.random()*0.001*i;
   cat.centerX=window.innerWidth/2;
   cat.centerY=window.innerHeight/2;
 });
 function animateCategories(){
   categories.forEach(cat=>{
-    cat.angle+=cat.speed;
-    const r=parseFloat(cat.dataset.radius);
-    const x=cat.centerX + Math.cos(cat.angle)*r - cat.offsetWidth/2;
-    const y=cat.centerY + Math.sin(cat.angle)*r - cat.offsetHeight/2;
-    cat.style.transform=`translate3d(${x}px,${y}px,0)`;
+    cat.angle += cat.speed;
+    const r = parseFloat(cat.dataset.radius);
+    const x = cat.centerX + Math.cos(cat.angle)*r - cat.offsetWidth/2;
+    const y = cat.centerY + Math.sin(cat.angle)*r - cat.offsetHeight/2;
+    cat.style.transform = `translate3d(${x}px,${y}px,0)`;
   });
   requestAnimationFrame(animateCategories);
 }
