@@ -36,6 +36,7 @@ main { margin-top:80px; text-align:center; width:100%; max-width:800px; }
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 .category-text { margin-top:12px; font-weight:700; font-size:1.3rem; transition: transform 0.5s, opacity 0.5s;}
+.category-text i { margin-right:8px; color:#007bff; }
 .shop-btn { margin-top:8px; padding:10px 18px; border:none; border-radius:10px; background:#007bff; color:#fff; font-weight:700; cursor:pointer; transition: transform 0.3s;}
 .shop-btn:hover { transform:scale(1.05);}
 .cooldown-bar { width:100%; height:6px; background:#e0e0e0; border-radius:3px; margin-top:6px; overflow:hidden; }
@@ -76,6 +77,20 @@ main { margin-top:80px; text-align:center; width:100%; max-width:800px; }
 </main>
 
 <script>
+const categoryIcons = {
+  "Fashion": "fa-shirt",
+  "Books": "fa-book",
+  "Beauty": "fa-magic-wand-sparkles",
+  "Toys": "fa-puzzle-piece",
+  "Home Decor": "fa-couch",
+  "Fitness": "fa-dumbbell",
+  "Kitchenware": "fa-utensils",
+  "Anime": "fa-face-smile",
+  "Jewellery": "fa-gem",
+  "Electronics": "fa-tv",
+  "Stationery": "fa-pencil-alt"
+};
+
 const categories = [
   {name:"Fashion", imgs:[
     "https://m.media-amazon.com/images/I/61VpjokqnVL._SY550_.jpg",
@@ -146,7 +161,14 @@ const categories = [
     "https://m.media-amazon.com/images/I/61wsvCGXqnL._SX679_.jpg",
     "https://m.media-amazon.com/images/I/71rw7cd14mL._SX679_.jpg",
     "https://m.media-amazon.com/images/I/717Q2swzhBL._SX569_.jpg"
-  ], link:"electronics.html"}
+  ], link:"electronics.html"},
+  {name:"Stationery", imgs:[
+    "https://m.media-amazon.com/images/I/51k1vQSYsDL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/41fDFFhzFqL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/41tYXvQOaPL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/61UyqzL65DL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/41FeHhSpDNL._SX679_.jpg"
+  ], link:"stationery.html"}
 ];
 
 let categoryIndex = 0;
@@ -158,25 +180,27 @@ const cooldownFill = document.querySelector(".cooldown-fill");
 
 function showCategory(index){
   const cat = categories[index];
+  const iconClass = categoryIcons[cat.name];
   imgIndex = 0;
-  imgEl.style.opacity=0;
-  textEl.style.opacity=0;
+  imgEl.style.opacity = 0;
+  textEl.style.opacity = 0;
   setTimeout(()=>{
     imgEl.src = cat.imgs[imgIndex];
-    textEl.textContent = cat.name;
+    textEl.innerHTML = `<i class="fa-solid ${iconClass}"></i> ${cat.name}`;
     shopBtn.onclick = ()=>{ window.location.href = cat.link; };
-    imgEl.style.opacity=1;
-    textEl.style.opacity=1;
+    imgEl.style.opacity = 1;
+    textEl.style.opacity = 1;
   },200);
-  cooldownFill.style.width="0%";
+  cooldownFill.style.width = "0%";
 }
 
 function nextCategory(){
   categoryIndex = (categoryIndex+1)%categories.length;
   showCategory(categoryIndex);
 }
+
 function prevCategory(){
-  categoryIndex = (categoryIndex-1 + categories.length)%categories.length;
+  categoryIndex = (categoryIndex-1+categories.length)%categories.length;
   showCategory(categoryIndex);
 }
 
