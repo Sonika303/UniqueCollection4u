@@ -1,578 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
-<title>Unique Collection4u — Interactive 3D/4D Homepage</title>
-
-<!-- SEO Meta Tags -->
-<meta name="description" content="Unique Collection4u curates top affiliate deals across Fashion, Books, Beauty, Home Decor, Electronics, and more. Handpicked, reviewed, organized for best value.">
-<meta name="keywords" content="affiliate deals, fashion, books, beauty, home decor, electronics, kitchenware, anime, jewellery, toys, online shopping, premium deals, curated products, top picks">
-<meta name="author" content="Unique Collection4u">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-
-<!-- Open Graph / Twitter -->
-<meta property="og:title" content="Unique Collection4u — Curated Deals & Expert Picks">
-<meta property="og:description" content="Handpicked affiliate recommendations across multiple categories — trusted picks, price pointers, and short reviews.">
-<meta property="og:image" content="https://www.uniquecollection4u.com/og-image.png">
-<meta property="og:url" content="https://www.uniquecollection4u.com">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.uniquecollection4u.com/og-image.png">
-
-<!-- Fonts & Icons -->
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+<title>Unique Collection4u — Premium Categories</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* -------------------- RESET & BASE -------------------- */
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;}
-body{
-  font-family:'Poppins',sans-serif;
-  background:#e9f6ff;
-  color:#072036;
-  overflow:hidden; /* full-screen hero, no vertical scroll */
-  perspective:1500px;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+body {
+  font-family: 'Poppins', sans-serif;
+  margin:0; padding:0;
+  background:#fff;
+  display:flex; flex-direction:column;
+  align-items:center;
 }
-
-/* links */
-a{color:inherit;text-decoration:none;}
-
-/* -------------------- LOADER -------------------- */
-#loader{
-  position:fixed;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,0.95);z-index:99999;
-}
-.loader-inner{
-  width:56px;height:56px;border-radius:50%;
-  border:6px solid rgba(0,115,255,0.18);
-  border-top-color:#007bff;
-  animation:spin 0.95s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg);}}
-
-/* -------------------- HEADER (reduced height) -------------------- */
-header{
-  position:fixed;top:0;left:0;right:0;height:46px;
-  display:flex;align-items:center;justify-content:center;
+header {
+  width:100%; padding:10px 20px;
   background:linear-gradient(90deg,#0066cc,#0055aa);
-  padding:6px 20px;z-index:2000;
-  box-shadow:0 4px 20px rgba(0,0,0,0.12);
+  display:flex; justify-content:space-between; align-items:center;
+  color:#fff; position:fixed; top:0; z-index:2000;
 }
-.nav-inner{display:flex;align-items:center;gap:18px;}
-.nav-inner a{color:#fff;font-weight:600;position:relative;padding:4px 6px;}
-.nav-inner a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#88c9ff;transition:0.25s;}
-.nav-inner a:hover::after{width:100%;}
-
-/* social cluster (small) */
-.social-top{margin-left:16px;display:flex;gap:10px;}
-.social-top a{color:#fff;font-size:1.05rem;opacity:0.95}
-
-/* -------------------- FOOTER (reduced) -------------------- */
-footer{
-  position:fixed;left:0;right:0;bottom:0;height:18px;background:#0055aa;z-index:1000;
+.nav-links a { margin-right:15px; color:#fff; text-decoration:none; font-weight:600;}
+.nav-links a i { margin-right:5px; }
+.social-links a { margin-left:10px; color:#fff; font-size:1.2rem; }
+main { margin-top:80px; text-align:center; width:100%; max-width:800px; }
+.category-display { position:relative; margin:30px auto; width:100%; max-width:500px; perspective:1000px; }
+.images-carousel { overflow:hidden; width:100%; border-radius:12px; }
+.images-carousel img { width:100%; height:300px; object-fit:contain; border-radius:12px;
+  transition: transform 0.5s, opacity 0.5s;
 }
-
-/* -------------------- HERO (full viewport) -------------------- */
-.hero{
-  position:relative; width:100%; height:100vh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:70px 20px 40px; /* leave space for header */
-  text-align:center; overflow:hidden;
+.images-carousel img:hover {
+  transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
-.hero .badge{
-  display:inline-block;padding:6px 14px;border-radius:999px;background:rgba(0,120,255,0.12);color:#0066cc;font-weight:700;margin-bottom:10px;
-}
-.hero h1{font-size:2.2rem;color:#0057b8;font-weight:800;line-height:1.05;margin-bottom:10px;transform-origin:center;}
-.hero p{color:#164a71;max-width:820px;margin:0 auto 16px;line-height:1.5;}
-
-/* -------------------- SEMI-CIRCLES (only these move on scroll) -------------------- */
-.semicircle{
-  position:absolute;border-radius:50%;opacity:0.14;pointer-events:none;
-  filter:blur(34px);
-  transition:transform 0.12s linear;
-}
-.sc-large{width:420px;height:420px;}
-.sc-medium{width:260px;height:260px;}
-.sc-small{width:140px;height:140px;}
-
-/* positions */
-.sc-1{top:8%;left:6%;background:linear-gradient(180deg,#ffffff,#66b3ff);}
-.sc-2{top:62%;right:8%;background:linear-gradient(180deg,#0055aa,#66b3ff);}
-.sc-3{top:38%;left:30%;background:linear-gradient(180deg,#66b3ff,#ffffff);}
-.sc-4{top:70%;right:28%;background:linear-gradient(180deg,#0055aa,#ffffff);}
-
-/* -------------------- CANVAS SPARKS (behind cards) -------------------- */
-#spark-canvas{
-  position:absolute;inset:0;z-index:5;pointer-events:none;
-  mix-blend-mode:screen;
-}
-
-/* -------------------- PARTICLES (static subtle dots for depth) -------------------- */
-.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(102,179,255,0.45);opacity:0.85;pointer-events:none;z-index:4;}
-
-/* -------------------- CATEGORIES / CAROUSEL -------------------- */
-.categories{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;z-index:10;pointer-events:none;}
-.category-card{
-  position:absolute;
-  width:150px; padding:12px;border-radius:14px;
-  background:linear-gradient(180deg,rgba(255,255,255,0.95),#ffffff);
-  box-shadow:0 18px 45px rgba(0,80,170,0.08);
-  border:1px solid rgba(0,110,255,0.06);
-  text-align:center;cursor:pointer;
-  transform-style:preserve-3d;
-  transition:transform 0.28s cubic-bezier(.2,.9,.2,1), box-shadow 0.28s;
-  pointer-events:auto;
-  opacity:0; /* animated-in */
-}
-.category-card .icon{font-size:1.45rem;color:#0077ff;margin-bottom:8px;display:block;}
-.category-card h3{font-size:1.02rem;color:#024b72;margin-bottom:6px;font-weight:700;}
-.category-card .small-btn{
-  display:inline-block;margin-top:6px;padding:6px 10px;border-radius:8px;background:#0077ff;color:#fff;font-weight:700;font-size:0.82rem;border:none;cursor:pointer;
-  transition:all 0.22s;position:relative;overflow:hidden;
-}
-.category-card .small-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,110,255,0.18);}
-.category-card:hover{
-  transform:translateY(-10px) scale(1.06) rotateX(4deg) rotateY(4deg);
-  box-shadow:0 30px 80px rgba(0,100,255,0.12);
-}
-
-/* shining animated border layer on card */
-.category-card::before{
-  content:"";position:absolute;inset:-2px;border-radius:16px;pointer-events:none;
-  background:linear-gradient(90deg,transparent, rgba(120,200,255,0.18), transparent);
-  mix-blend-mode:screen;opacity:0.9;transform-origin:center;animation:cardGlow 5s linear infinite;
-}
-@keyframes cardGlow{0%{transform:translateX(-120%)}50%{transform:translateX(120%)}100%{transform:translateX(-120%)}}
-
-/* small neon edge inside */
-.category-card::after{
-  content:"";position:absolute;inset:2px;border-radius:12px;border:1px solid rgba(0,130,255,0.06);pointer-events:none;
-}
-
-/* sequential fade-in helper */
-.visible{opacity:1;transform:translateY(0) !important;}
-
-/* -------------------- SIDE PANEL (3D tilt open) -------------------- */
-#category-panel{
-  position:fixed;top:0;right:-420px;width:380px;height:100vh;background:linear-gradient(160deg,#0055aa,#66b3ff);
-  color:#fff;padding:22px;box-shadow:-10px 0 40px rgba(0,0,0,0.34);
-  transition:transform 0.55s cubic-bezier(.2,1,.22,1), right 0.55s;
-  transform-origin:left center;transform:translateX(0) rotateY(-18deg);
-  z-index:3000;overflow:auto;
-}
-#category-panel.active{right:0;transform:translateX(0) rotateY(0deg);}
-#category-panel .close-panel{
-  position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#007bff;border:none;color:#fff;font-weight:700;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 6px 18px rgba(0,100,255,0.22);
-}
-#category-panel img{width:100%;height:240px;object-fit:contain;border-radius:12px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,100,255,0.12);}
-
-/* panel text */
-#category-panel h2{font-size:1.4rem;margin-bottom:10px;color:#fff;}
-#category-panel p{color:rgba(255,255,255,0.92);line-height:1.45;margin-bottom:12px;font-size:0.98rem;}
-#category-panel .visit-btn{display:inline-block;padding:10px 18px;border-radius:10px;background:#ffbf00;color:#072036;font-weight:800;border:none;cursor:pointer;}
-
-/* -------------------- RESPONSIVE -------------------- */
-@media(max-width:900px){
-  .category-card{width:130px;padding:10px;}
-  #category-panel{width:92%;right:-100%;}
-  #category-panel.active{right:4%;}
-  header{height:48px;padding:8px 12px;}
-}
+.category-text { margin-top:12px; font-weight:700; font-size:1.3rem; transition: transform 0.5s, opacity 0.5s;}
+.shop-btn { margin-top:8px; padding:10px 18px; border:none; border-radius:10px; background:#007bff; color:#fff; font-weight:700; cursor:pointer; transition: transform 0.3s;}
+.shop-btn:hover { transform:scale(1.05);}
+.cooldown-bar { width:100%; height:6px; background:#e0e0e0; border-radius:3px; margin-top:6px; overflow:hidden; }
+.cooldown-fill { width:0%; height:100%; background:#007bff; transition:width 0.1s linear; }
+.nav-buttons { position:absolute; top:45%; width:100%; display:flex; justify-content:space-between; pointer-events:none; }
+.nav-buttons button { pointer-events:auto; background:rgba(0,0,0,0.15); border:none; color:#fff; font-size:1.5rem; padding:8px 12px; border-radius:6px; cursor:pointer; transition:background 0.2s;}
+.nav-buttons button:hover { background:rgba(0,0,0,0.3);}
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
-<div id="loader"><div class="loader-inner" aria-hidden="true"></div></div>
-
-<!-- HEADER -->
 <header>
-  <nav class="nav-inner" aria-label="Main navigation">
-    <a href="index.html">🏠 Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <div class="social-top" aria-hidden="true">
-      <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>
-  </nav>
+  <div class="nav-links">
+    <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="about.html"><i class="fa-solid fa-circle-info"></i>About</a>
+    <a href="contact.html"><i class="fa-solid fa-envelope"></i>Contact</a>
+    <a href="privacy.html"><i class="fa-solid fa-shield"></i>Privacy</a>
+  </div>
+  <div class="social-links">
+    <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
+  </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" aria-label="Hero">
-  <div class="badge">✨ Editor's Picks</div>
-  <h1>Unique Collection4u — Curated Premium Finds</h1>
-  <p>Handpicked affiliate recommendations across Fashion, Books, Beauty, Home Decor, Electronics and more.</p>
-
-  <!-- semicircles (only these move on scroll) -->
-  <div class="semicircle sc-large sc-1" aria-hidden="true"></div>
-  <div class="semicircle sc-medium sc-2" aria-hidden="true"></div>
-  <div class="semicircle sc-medium sc-3" aria-hidden="true"></div>
-  <div class="semicircle sc-small sc-4" aria-hidden="true"></div>
-
-  <!-- particles static for depth (not moving with scroll per request) -->
-  <div id="particles" aria-hidden="true"></div>
-</section>
-
-<!-- spark canvas (behind cards) -->
-<canvas id="spark-canvas" aria-hidden="true"></canvas>
-
-<!-- CATEGORIES (3D rotating) -->
-<section class="categories" id="categories" aria-label="Categories">
-  <!-- Order corresponds to carousel positions -->
-  <div class="category-card" data-name="Fashion" data-desc="Trending outfits and accessories handpicked for style and value." data-link="fashion.html" data-img="https://m.media-amazon.com/images/I/61VpjokqnVL._SY550_.jpg" aria-label="Fashion">
-    <span class="icon"><i class="fa-solid fa-shirt"></i></span>
-    <h3>Fashion</h3>
-    <button class="small-btn">Visit</button>
+<main>
+  <div class="category-display">
+    <div class="images-carousel"><img src="" alt="Category Image"></div>
+    <div class="category-text"></div>
+    <button class="shop-btn">Shop Now</button>
+    <div class="cooldown-bar"><div class="cooldown-fill"></div></div>
+    <div class="nav-buttons">
+      <button id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+      <button id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
   </div>
+</main>
 
-  <div class="category-card" data-name="Books" data-desc="Bestsellers and classics for every reader." data-link="books.html" data-img="https://m.media-amazon.com/images/I/61+C5NBJCFL._SY466_.jpg" aria-label="Books">
-    <span class="icon"><i class="fa-solid fa-book"></i></span>
-    <h3>Books</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-
-  <div class="category-card" data-name="Beauty" data-desc="Skincare, cosmetics, and self-care must-haves." data-link="beauty.html" data-img="https://m.media-amazon.com/images/I/71bDtSXQd5L._SX522_PIbundle-9,TopRight,0,0_AA522SH20_.jpg" aria-label="Beauty">
-    <span class="icon"><i class="fa-solid fa-magic-wand-sparkles"></i></span>
-    <h3>Beauty</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-
-  <div class="category-card" data-name="Toys" data-desc="Fun and educational toys for all ages." data-link="toys.html" data-img="https://m.media-amazon.com/images/I/61NWxEEJzpL.jpg" aria-label="Toys">
-    <span class="icon"><i class="fa-solid fa-puzzle-piece"></i></span>
-    <h3>Toys</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-
-  <div class="category-card" data-name="Home Decor" data-desc="Stylish and functional items to beautify your home." data-link="homedecor.html" data-img="https://m.media-amazon.com/images/I/81mG4CroFKL._SY500_.jpg" aria-label="Home Decor">
-    <span class="icon"><i class="fa-solid fa-couch"></i></span>
-    <h3>Home Decor</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-
-  <div class="category-card" data-name="Fitness" data-desc="Gear and accessories to stay healthy and active." data-link="fitness.html" data-img="https://m.media-amazon.com/images/I/618Nlj8pN3L._SX679_.jpg" aria-label="Fitness">
-    <span class="icon"><i class="fa-solid fa-dumbbell"></i></span>
-    <h3>Fitness</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-
-  <div class="category-card" data-name="Kitchenware" data-desc="Quality utensils, gadgets and cookware for your kitchen." data-link="kitchenware.html" data-img="https://m.media-amazon.com/images/I/41OQctI4mpL._SY300_SX300_QL70_FMwebp_.jpg" aria-label="Kitchenware">
-    <span class="icon"><i class="fa-solid fa-utensils"></i></span>
-    <h3>Kitchenware</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-
-  <div class="category-card" data-name="Anime" data-desc="Merch and collectibles from popular anime series." data-link="anime.html" data-img="https://m.media-amazon.com/images/I/51HkRji2VAL._SX522_.jpg" aria-label="Anime">
-    <span class="icon"><i class="fa-solid fa-face-smile"></i></span>
-    <h3>Anime</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-
-  <div class="category-card" data-name="Jewellery" data-desc="Stylish and affordable jewellery pieces." data-link="jewellery.html" data-img="https://m.media-amazon.com/images/I/71DT8q5jSEL._SY625_.jpg" aria-label="Jewellery">
-    <span class="icon"><i class="fa-solid fa-gem"></i></span>
-    <h3>Jewellery</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-
-  <div class="category-card" data-name="Electronics" data-desc="Gadgets, devices, and tech essentials." data-link="electronics.html" data-img="https://m.media-amazon.com/images/I/812OvmyYPmL._SX679_.jpg" aria-label="Electronics">
-    <span class="icon"><i class="fa-solid fa-tv"></i></span>
-    <h3>Electronics</h3>
-    <button class="small-btn">Visit</button>
-  </div>
-</section>
-
-<!-- SIDE PANEL -->
-<div id="category-panel" role="dialog" aria-hidden="true" aria-labelledby="panel-title">
-  <button class="close-panel" aria-label="Close panel">&times;</button>
-  <img id="panel-img" src="" alt="Product preview">
-  <h2 id="panel-title"></h2>
-  <p id="panel-desc"></p>
-  <button id="panel-btn" class="visit-btn" aria-label="Visit category">Visit</button>
-</div>
-
-<!-- DISCORD CTA -->
-<a class="discord-btn" href="https://discord.gg/Aa9a6XHwZz" target="_blank" aria-label="Join Discord" style="position:fixed;right:18px;bottom:60px;z-index:2500;background:#3b6fb3;color:#fff;padding:12px 14px;border-radius:12px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,0.18);font-weight:700;">
-  <i class="fab fa-discord"></i>&nbsp;Join Discord
-</a>
-
-<!-- FOOTER -->
-<footer aria-hidden="true"></footer>
-
-<!-- SCRIPTS -->
 <script>
-/* -------------------- Utilities & DOM ready -------------------- */
-document.addEventListener('DOMContentLoaded',()=>{
+const categories = [
+  {name:"Fashion", imgs:[
+    "https://m.media-amazon.com/images/I/61VpjokqnVL._SY550_.jpg",
+    "https://m.media-amazon.com/images/I/61XlK1LJxkL._SY550_.jpg",
+    "https://m.media-amazon.com/images/I/71V0K6JtEJL._SY550_.jpg",
+    "https://m.media-amazon.com/images/I/61ZgL2YK5zL._SY550_.jpg",
+    "https://m.media-amazon.com/images/I/61gLw5Zl7DL._SY550_.jpg"
+  ], link:"fashion.html"},
+  {name:"Books", imgs:[
+    "https://m.media-amazon.com/images/I/61+C5NBJCFL._SY466_.jpg",
+    "https://m.media-amazon.com/images/I/51lV6aH3CgL._SY466_.jpg",
+    "https://m.media-amazon.com/images/I/61y1C1B1FAL._SY466_.jpg",
+    "https://m.media-amazon.com/images/I/71l9W7YYZ1L._SY466_.jpg",
+    "https://m.media-amazon.com/images/I/61+P7Bpl8XL._SY466_.jpg"
+  ], link:"books.html"},
+  {name:"Beauty", imgs:[
+    "https://m.media-amazon.com/images/I/71bDtSXQd5L._SX522_PIbundle-9,TopRight,0,0_AA522SH20_.jpg",
+    "https://m.media-amazon.com/images/I/61Bjqg6uJrL._SX522_.jpg",
+    "https://m.media-amazon.com/images/I/71Yt0hkU7ML._SX522_.jpg",
+    "https://m.media-amazon.com/images/I/61O7wP7H3xL._SX522_.jpg",
+    "https://m.media-amazon.com/images/I/71C7jSzQ6PL._SX522_.jpg"
+  ], link:"beauty.html"},
+  {name:"Toys", imgs:[
+    "https://m.media-amazon.com/images/I/61NWxEEJzpL.jpg",
+    "https://m.media-amazon.com/images/I/61KJ0LpEJRL.jpg",
+    "https://m.media-amazon.com/images/I/61C2K1DE4LL.jpg",
+    "https://m.media-amazon.com/images/I/61L1Y2JD8LL.jpg",
+    "https://m.media-amazon.com/images/I/61ZQG5lH5LL.jpg"
+  ], link:"toys.html"},
+  {name:"Home Decor", imgs:[
+    "https://m.media-amazon.com/images/I/81mG4CroFKL._SY500_.jpg",
+    "https://m.media-amazon.com/images/I/81L3T1x0vHL._SY500_.jpg",
+    "https://m.media-amazon.com/images/I/81N8T3XQFML._SY500_.jpg",
+    "https://m.media-amazon.com/images/I/81A7G4S7FML._SY500_.jpg",
+    "https://m.media-amazon.com/images/I/81P8T1G3FML._SY500_.jpg"
+  ], link:"homedecor.html"},
+  {name:"Fitness", imgs:[
+    "https://m.media-amazon.com/images/I/618Nlj8pN3L._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/61Z5aP9G6NL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/61X7aP8G6NL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/61L9aP7F6NL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/61C1aP6D6NL._SX679_.jpg"
+  ], link:"fitness.html"},
+  {name:"Kitchenware", imgs:[
+    "https://m.media-amazon.com/images/I/41OQctI4mpL._SY300_SX300_QL70_FMwebp_.jpg",
+    "https://m.media-amazon.com/images/I/41KQctJ4npL._SY300_SX300_QL70_FMwebp_.jpg",
+    "https://m.media-amazon.com/images/I/41LQctI4mpL._SY300_SX300_QL70_FMwebp_.jpg",
+    "https://m.media-amazon.com/images/I/41MQctK4npL._SY300_SX300_QL70_FMwebp_.jpg",
+    "https://m.media-amazon.com/images/I/41NQctI4mpL._SY300_SX300_QL70_FMwebp_.jpg"
+  ], link:"kitchenware.html"},
+  {name:"Anime", imgs:[
+    "https://m.media-amazon.com/images/I/51HkRji2VAL._SX522_.jpg",
+    "https://m.media-amazon.com/images/I/51MkRji2VAL._SX522_.jpg",
+    "https://m.media-amazon.com/images/I/51LkRji2VAL._SX522_.jpg",
+    "https://m.media-amazon.com/images/I/51NkRji2VAL._SX522_.jpg",
+    "https://m.media-amazon.com/images/I/51PkRji2VAL._SX522_.jpg"
+  ], link:"anime.html"},
+  {name:"Jewellery", imgs:[
+    "https://m.media-amazon.com/images/I/71DT8q5jSEL._SY625_.jpg",
+    "https://m.media-amazon.com/images/I/71ET8q5jSEL._SY625_.jpg",
+    "https://m.media-amazon.com/images/I/71FT8q5jSEL._SY625_.jpg",
+    "https://m.media-amazon.com/images/I/71GT8q5jSEL._SY625_.jpg",
+    "https://m.media-amazon.com/images/I/71HT8q5jSEL._SY625_.jpg"
+  ], link:"jewellery.html"},
+  {name:"Electronics", imgs:[
+    "https://m.media-amazon.com/images/I/812OvmyYPmL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/812PxmyYPmL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/812QxmyYPmL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/812RxmyYPmL._SX679_.jpg",
+    "https://m.media-amazon.com/images/I/812SxmyYPmL._SX679_.jpg"
+  ], link:"electronics.html"}
+];
 
-  // Hide loader
-  window.addEventListener('load', ()=> {
-    const ld = document.getElementById('loader');
-    if(ld) ld.style.display = 'none';
-  });
+let categoryIndex = 0;
+let imgIndex = 0;
+const imgEl = document.querySelector(".images-carousel img");
+const textEl = document.querySelector(".category-text");
+const shopBtn = document.querySelector(".shop-btn");
+const cooldownFill = document.querySelector(".cooldown-fill");
 
-  /* ============= Create subtle static particles for depth ============= */
-  const particlesRoot = document.getElementById('particles');
-  const smallCount = 22;
-  for(let i=0;i<smallCount;i++){
-    const d = document.createElement('div');
-    d.className = 'particle';
-    // spread across hero area
-    d.style.left = (10 + Math.random()*80) + '%';
-    d.style.top  = (10 + Math.random()*70) + '%';
-    d.style.opacity = 0.25 + Math.random()*0.7;
-    particlesRoot.appendChild(d);
-  }
+function showCategory(index){
+  const cat = categories[index];
+  imgIndex = 0;
+  imgEl.style.opacity=0;
+  textEl.style.opacity=0;
+  setTimeout(()=>{
+    imgEl.src = cat.imgs[imgIndex];
+    textEl.textContent = cat.name;
+    shopBtn.onclick = ()=>{ window.location.href = cat.link; };
+    imgEl.style.opacity=1;
+    textEl.style.opacity=1;
+  },200);
+  cooldownFill.style.width="0%";
+}
 
-  /* ============= Spark canvas (electric neon sparks) ============= */
-  const canvas = document.getElementById('spark-canvas');
-  const ctx = canvas.getContext('2d', { alpha: true });
-  let cw = canvas.width = window.innerWidth;
-  let ch = canvas.height = window.innerHeight;
-  const sparks = [];
-  const SPARK_COUNT = Math.min(48, Math.floor((cw*ch)/40000)); // scale with screen
-  const maxDist = 140;
+function nextCategory(){
+  categoryIndex = (categoryIndex+1)%categories.length;
+  showCategory(categoryIndex);
+}
+function prevCategory(){
+  categoryIndex = (categoryIndex-1 + categories.length)%categories.length;
+  showCategory(categoryIndex);
+}
 
-  function rand(min,max){ return min + Math.random()*(max-min); }
+document.getElementById("nextBtn").onclick = ()=>{ nextCategory(); cooldown=0; };
+document.getElementById("prevBtn").onclick = ()=>{ prevCategory(); cooldown=0; };
 
-  // init sparks with positions roughly around carousel center area
-  function initSparks(){
-    sparks.length = 0;
-    const cx = cw/2;
-    const cy = ch/2;
-    for(let i=0;i<SPARK_COUNT;i++){
-      const angle = Math.random()*Math.PI*2;
-      const r = rand(20, Math.min(cw,cw)/3);
-      const x = cx + Math.cos(angle)*r + rand(-40,40);
-      const y = cy + Math.sin(angle)*r + rand(-40,40);
-      sparks.push({
-        x, y,
-        vx: rand(-0.25,0.25),
-        vy: rand(-0.25,0.25),
-        size: rand(0.8,2.2),
-        life: rand(100,600),
-        hue: 205 + Math.random()*30
-      });
-    }
-  }
-  initSparks();
+// image rotation every 2s
+setInterval(()=>{
+  const cat = categories[categoryIndex];
+  imgIndex = (imgIndex+1)%cat.imgs.length;
+  imgEl.style.opacity=0;
+  setTimeout(()=>{ imgEl.src = cat.imgs[imgIndex]; imgEl.style.opacity=1; },200);
+},2000);
 
-  function resizeCanvas(){
-    cw = canvas.width = window.innerWidth;
-    ch = canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', ()=>{
-    resizeCanvas();
-  });
+// category rotation every 10s
+setInterval(()=>{ nextCategory(); cooldown=0; },10000);
 
-  // draw sparks and electric connections
-  function drawSparks(){
-    ctx.clearRect(0,0,cw,ch);
+// cooldown bar update every 100ms
+let cooldown = 0;
+setInterval(()=>{
+  cooldown += 0.1;
+  if(cooldown>10) cooldown=0;
+  cooldownFill.style.width = (cooldown/10*100)+"%";
+},100);
 
-    // glow background faint
-    // ctx.fillStyle = 'rgba(8,24,48,0.03)'; ctx.fillRect(0,0,cw,ch);
-
-    // update and draw sparks
-    for(let i=0;i<sparks.length;i++){
-      const s = sparks[i];
-      // subtle motion
-      s.vx += (Math.random()-0.5)*0.06;
-      s.vy += (Math.random()-0.5)*0.06;
-      s.x += s.vx;
-      s.y += s.vy;
-
-      // bounce inside viewport margins
-      if(s.x < 0 || s.x > cw) s.vx *= -1;
-      if(s.y < 0 || s.y > ch) s.vy *= -1;
-
-      // radial fade
-      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, 20 + s.size*6);
-      g.addColorStop(0, `rgba(120,200,255,0.95)`);
-      g.addColorStop(0.2, `rgba(120,200,255,0.55)`);
-      g.addColorStop(1, 'rgba(120,200,255,0)');
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, 6 + s.size*2, 0, Math.PI*2);
-      ctx.fill();
-    }
-
-    // draw electric connections between nearby sparks
-    for(let i=0;i<sparks.length;i++){
-      const a = sparks[i];
-      for(let j=i+1;j<sparks.length;j++){
-        const b = sparks[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < maxDist){
-          const alpha = (1 - dist / maxDist) * 0.5;
-          ctx.strokeStyle = `rgba(110,190,255,${alpha})`;
-          ctx.lineWidth = 1 * alpha + 0.2;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          // slight wobble to make it electric
-          ctx.bezierCurveTo((a.x + b.x)/2 + Math.sin((a.x+a.y + performance.now()*0.002))*6,
-                           (a.y + b.y)/2 + Math.cos((a.x+a.y + performance.now()*0.002))*6,
-                           (a.x + b.x)/2 - Math.sin((a.x+a.y + performance.now()*0.002))*6,
-                           (a.y + b.y)/2 - Math.cos((a.x+a.y + performance.now()*0.002))*6,
-                           b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  // small gentle drift toward center when mouse moves
-  let mouseX = cw/2, mouseY = ch/2;
-  window.addEventListener('mousemove',(e)=>{
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    // additionally apply small attraction
-    for(let s of sparks){
-      s.vx += (mouseX - s.x) * 0.00006;
-      s.vy += (mouseY - s.y) * 0.00006;
-    }
-  });
-
-  function sparkLoop(){
-    // tiny random jitter to keep electric lively
-    for(let s of sparks){
-      s.vx *= 0.995; s.vy *= 0.995;
-    }
-    drawSparks();
-    requestAnimationFrame(sparkLoop);
-  }
-  sparkLoop();
-
-  /* ============= CAROUSEL ROTATION + sequential reveal ============= */
-  const cards = Array.from(document.querySelectorAll('.category-card'));
-  let angle = 0;
-  const radius = Math.min(window.innerWidth, window.innerHeight) * 0.28; // responsive radius
-
-  // sequential fade-in
-  cards.forEach((c, idx)=>{
-    c.style.transform = 'translateY(18px)';
-    setTimeout(()=>{ c.classList.add('visible'); c.style.opacity = '1'; }, 180 + idx * 120);
-  });
-
-  function positionCards(){
-    const cx = window.innerWidth/2;
-    const cy = window.innerHeight/2 + 10; // slight lower center
-    const step = (Math.PI * 2) / cards.length;
-    for(let i=0;i<cards.length;i++){
-      const a = angle + i * step;
-      const x = cx + Math.cos(a) * radius - (cards[i].offsetWidth / 2);
-      const y = cy + Math.sin(a) * radius - (cards[i].offsetHeight / 2);
-      cards[i].style.left = `${x}px`;
-      cards[i].style.top  = `${y}px`;
-      // Z depth scaling
-      const depth = (Math.sin(a) + 1) / 2; // 0..1
-      const scale = 0.9 + depth * 0.18;
-      cards[i].style.zIndex = Math.round(depth * 100 + 1000);
-      // subtle 3d rotation facing center
-      const rotateY = Math.sin(a) * 18;
-      cards[i].style.transform = `translateZ(0px) rotateY(${rotateY}deg) scale(${scale})`;
-    }
-  }
-
-  function animateCarousel(){
-    angle += 0.003; // rotation speed
-    positionCards();
-    requestAnimationFrame(animateCarousel);
-  }
-  animateCarousel();
-
-  // keep radius responsive on resize
-  window.addEventListener('resize', ()=> {
-    // adjust canvas
-    const w = window.innerWidth, h = window.innerHeight;
-    canvas.width = w; canvas.height = h;
-    // reposition
-    // radius recalculated automatically next frame
-  });
-
-  /* ============= 4D Scroll (only semicircles move) ============= */
-  const semiCircles = Array.from(document.querySelectorAll('.semicircle'));
-  window.addEventListener('scroll', ()=>{
-    const y = window.scrollY;
-    semiCircles.forEach((sc, i)=>{
-      // small multiplier differences
-      const speed = 0.08 + i*0.04;
-      sc.style.transform = `translateY(${y * speed}px)`;
-    });
-  }, {passive:true});
-
-  /* ============= Hover 4D Parallax on cards ============= */
-  cards.forEach(card=>{
-    card.addEventListener('mousemove', (ev)=>{
-      const rect = card.getBoundingClientRect();
-      const dx = (ev.clientX - (rect.left + rect.width/2)) / rect.width;
-      const dy = (ev.clientY - (rect.top + rect.height/2)) / rect.height;
-      const rx = -dy * 8; // rotateX
-      const ry = dx * 12; // rotateY
-      card.style.transform = card.style.transform + ` rotateX(${rx}deg) rotateY(${ry}deg) scale(1.08)`;
-      // subtle glow by increasing box-shadow
-      card.style.boxShadow = '0 40px 100px rgba(0,110,255,0.16)';
-    });
-    card.addEventListener('mouseleave', ()=>{
-      // restore (positionCards will set base transform on next frame)
-      card.style.boxShadow = '';
-    });
-  });
-
-  /* ============= PANEL (image scaled, close button) ============= */
-  const panel = document.getElementById('category-panel');
-  const panelImg = document.getElementById('panel-img');
-  const panelTitle = document.getElementById('panel-title');
-  const panelDesc = document.getElementById('panel-desc');
-  const panelBtn = document.getElementById('panel-btn');
-  const closeBtn = document.querySelector('#category-panel .close-panel');
-
-  // open panel when inner button clicked
-  cards.forEach(card=>{
-    const btn = card.querySelector('.small-btn');
-    btn.addEventListener('click', (ev)=>{
-      ev.stopPropagation();
-      const name = card.dataset.name || '';
-      const desc = card.dataset.desc || '';
-      const link = card.dataset.link || '#';
-      const img = card.dataset.img || '';
-      panelImg.src = img;
-      panelTitle.textContent = name;
-      panelDesc.textContent = desc;
-      panelBtn.onclick = ()=>{ window.location.href = link; };
-      panel.classList.add('active');
-      panel.setAttribute('aria-hidden','false');
-    });
-  });
-
-  // close handlers
-  closeBtn.addEventListener('click', ()=> { panel.classList.remove('active'); panel.setAttribute('aria-hidden','true'); });
-  document.addEventListener('click', (ev)=>{
-    // if clicked outside panel and not on a card or its button -> close
-    const target = ev.target;
-    if(!panel.contains(target) && !cards.some(c=>c.contains(target))){
-      panel.classList.remove('active'); panel.setAttribute('aria-hidden','true');
-    }
-  });
-
-  /* ============= Accessibility: keyboard close ============= */
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape' && panel.classList.contains('active')) {
-      panel.classList.remove('active'); panel.setAttribute('aria-hidden','true');
-    }
-  });
-
-}); // DOMContentLoaded end
+showCategory(categoryIndex);
 </script>
+
 </body>
 </html>
