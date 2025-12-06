@@ -61,8 +61,8 @@ footer {background:#007BFF; color:#fff; text-align:center; padding:15px;}
 
 <footer>
   <div class="social-links">
-    <a href="facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
     <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
     <a href="https://whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2J" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
@@ -74,21 +74,31 @@ footer {background:#007BFF; color:#fff; text-align:center; padding:15px;}
 <script>
 AOS.init();
 
-// Load products.json dynamically
 let products = [];
 let currentPage = 1;
-const productsPerPage = 10; // adjust per page
+const productsPerPage = 10;
+let currentQuery = '';
 
 async function loadProducts() {
   const res = await fetch('products.json');
   products = await res.json();
-  renderProducts();
+
+  // Check if URL has /search/query/page
+  const path = window.location.pathname.split('/');
+  if(path[1] === 'search' && path[2]) {
+    currentQuery = decodeURIComponent(path[2]);
+    currentPage = parseInt(path[3]) || 1;
+    document.getElementById('searchInput').value = currentQuery;
+  }
+
+  renderProducts(currentQuery);
 }
 
 function renderProducts(searchQuery = '') {
   const container = document.getElementById('productsContainer');
   container.innerHTML = '';
 
+  currentQuery = searchQuery;
   let filtered = products.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
   const totalPages = Math.ceil(filtered.length / productsPerPage);
   currentPage = Math.min(currentPage, totalPages) || 1;
@@ -104,7 +114,7 @@ function renderProducts(searchQuery = '') {
       <img src="${p.img}" alt="${p.alt}">
       <p class="product-name" id="name${start+idx}">
         ${p.name || 'No name'}
-        <span class="expand" onclick="toggleName('name${start+idx}', this)">[more]</span>
+        ${p.name && p.name.length > 50 ? `<span class="expand" onclick="toggleName('name${start+idx}', this)">[more]</span>` : ''}
       </p>
       <a href="${p.link}" target="_blank" class="product-link">Shop Now</a>
     `;
@@ -112,6 +122,7 @@ function renderProducts(searchQuery = '') {
   });
 
   renderPagination(filtered.length, totalPages);
+  updateURL();
 }
 
 function renderPagination(totalProducts, totalPages) {
@@ -123,7 +134,7 @@ function renderPagination(totalProducts, totalPages) {
     const btn = document.createElement('button');
     btn.textContent = i;
     if(i === currentPage) btn.classList.add('disabled');
-    btn.onclick = () => { currentPage = i; renderProducts(document.getElementById('searchInput').value); };
+    btn.onclick = () => { currentPage = i; renderProducts(currentQuery); };
     pagContainer.appendChild(btn);
   }
 }
@@ -142,10 +153,14 @@ function toggleName(id, span) {
 }
 
 function performSearch() {
-  const query = document.getElementById('searchInput').value.trim();
   currentPage = 1;
-  renderProducts(query);
-  window.history.pushState({}, '', `/search/${encodeURIComponent(query)}/1`);
+  currentQuery = document.getElementById('searchInput').value.trim();
+  renderProducts(currentQuery);
+}
+
+function updateURL() {
+  const newURL = currentQuery ? `/search/${encodeURIComponent(currentQuery)}/${currentPage}` : '/';
+  window.history.replaceState({}, '', newURL);
 }
 
 window.onload = loadProducts;
