@@ -97,16 +97,24 @@ function getParams() {
     };
 }
 
-// Load products.json
+// Load products.json (FULLY FIXED)
 async function loadProducts() {  
     try {
-        const res = await fetch('products.json');
-        products = await res.json();
+        const res = await fetch('products.json?' + Date.now(), { cache: "no-store" });
 
-        // FIX: Ensure products.json is ALWAYS treated as array
-        if (!Array.isArray(products)) {
-            products = Object.values(products);
+        let data = await res.json();
+
+        // FIX 1: Force array even if JSON has BOM, extra commas, or Github converts it
+        if (Array.isArray(data)) {
+            products = data;
+        } else if (typeof data === "object") {
+            products = Object.values(data);
+        } else {
+            products = [];
         }
+
+        // FIX 2: Remove any null/empty entries created by trailing commas
+        products = products.filter(p => p && p.name);
 
         const params = getParams();
         document.getElementById("searchInput").value = params.search;
@@ -115,7 +123,7 @@ async function loadProducts() {
 
         renderProducts(params.search);
     } catch (e) {
-        console.error("JSON loading error:", e);
+        console.error("JSON LOAD ERROR:", e);
     }
 }
 
@@ -125,7 +133,7 @@ function renderProducts(searchQuery = "") {
     container.innerHTML = "";
 
     let filtered = products.filter(p =>
-        (p.name || "").toLowerCase().includes(searchQuery.toLowerCase())
+        p.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const totalPages = Math.ceil(filtered.length / productsPerPage);
@@ -169,7 +177,6 @@ function renderPagination(totalPages, searchQuery) {
         if (i === currentPage) btn.classList.add("disabled");
 
         btn.onclick = () => {
-            currentPage = i;
             window.location.href = `?search=${encodeURIComponent(searchQuery)}&page=${i}`;
         };
 
@@ -180,10 +187,9 @@ function renderPagination(totalPages, searchQuery) {
 // Expand / Collapse name
 function toggleName(id, span) {
     const para = document.getElementById(id);
-
     const expanded = para.style.webkitLineClamp === "unset";
-    para.style.webkitLineClamp = expanded ? "2" : "unset";
 
+    para.style.webkitLineClamp = expanded ? "2" : "unset";
     span.textContent = expanded ? "[more]" : "[less]";
 }
 
@@ -195,6 +201,7 @@ function performSearch() {
 
 window.onload = loadProducts;
 </script>
+
 
 
 </body>
