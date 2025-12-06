@@ -8,17 +8,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 <style>
-body {
-  font-family: 'Poppins', sans-serif;
-  margin:0; padding:0;
-  background:#fff;
-}
-header {
-  width:100%; padding:10px 20px;
-  background:linear-gradient(90deg,#0060ba,#004a8f);
-  display:flex; justify-content:space-between; align-items:center;
-  color:#fff; position:fixed; top:0; z-index:2000;
-}
+body { font-family: 'Poppins', sans-serif; margin:0; padding:0; background:#fff; }
+header { width:100%; padding:10px 20px; background:linear-gradient(90deg,#0060ba,#004a8f); display:flex; justify-content:space-between; align-items:center; color:#fff; position:fixed; top:0; z-index:2000; }
 .nav-links a { margin-right:15px; color:#fff; text-decoration:none; font-weight:600;}
 .nav-links a i { margin-right:5px; }
 .social-links a { margin-left:10px; color:#fff; font-size:1.2rem; }
@@ -67,45 +58,51 @@ main { margin-top:90px; padding:20px; max-width:1000px; margin-left:auto; margin
 </main>
 
 <script>
-// CONFIG
 const PRODUCTS_PER_PAGE = 20;
-let products = []; // load from JSON
-let currentPage = 1;
+let products = [];
 let filteredProducts = [];
+let currentPage = 1;
 
-// FETCH PRODUCTS JSON
-fetch('products.json')
-  .then(res => res.json())
-  .then(data => {
-    products = data;
-    filteredProducts = products; // initially show all
-    renderPage(1);
-  });
+// Load products
+fetch('products.json').then(res => res.json()).then(data => {
+  products = data;
+  // Check URL for query params
+  const urlParams = new URLSearchParams(window.location.search);
+  const q = urlParams.get('q') || '';
+  const page = parseInt(urlParams.get('page')) || 1;
+  document.getElementById('searchInput').value = q;
+  filteredProducts = q ? products.filter(p => p.name.toLowerCase().includes(q.toLowerCase())) : products;
+  renderPage(page);
+});
 
-// SEARCH
-document.getElementById('searchBtn').addEventListener('click', () => {
-  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+// Search function
+function performSearch(){
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
   filteredProducts = products.filter(p => p.name.toLowerCase().includes(query));
   currentPage = 1;
+  updateURL(query, currentPage);
   renderPage(currentPage);
-});
+}
 
-// ENTER KEY SEARCH
-document.getElementById('searchInput').addEventListener('keydown', (e) => {
-  if(e.key==='Enter'){ document.getElementById('searchBtn').click(); }
-});
+// Update URL query params without leaving page
+function updateURL(query, page){
+  history.pushState(null,'',`?q=${encodeURIComponent(query)}&page=${page}`);
+}
 
-// RENDER PAGE
+// Search events
+document.getElementById('searchBtn').addEventListener('click', performSearch);
+document.getElementById('searchInput').addEventListener('keydown', e => { if(e.key==='Enter') performSearch(); });
+
+// Render page
 function renderPage(page){
   currentPage = page;
   const container = document.getElementById('productContainer');
   const pagination = document.getElementById('pagination');
   const noResults = document.getElementById('noResults');
-
   container.innerHTML = '';
   pagination.innerHTML = '';
 
-  if(filteredProducts.length===0){
+  if(filteredProducts.length === 0){
     noResults.style.display='block';
     return;
   } else { noResults.style.display='none'; }
@@ -114,7 +111,7 @@ function renderPage(page){
   const end = start + PRODUCTS_PER_PAGE;
   const pageProducts = filteredProducts.slice(start,end);
 
-  pageProducts.forEach(p=>{
+  pageProducts.forEach(p => {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.innerHTML = `
@@ -125,16 +122,26 @@ function renderPage(page){
     container.appendChild(card);
   });
 
-  // PAGINATION
-  const totalPages = Math.ceil(filteredProducts.length/PRODUCTS_PER_PAGE);
+  // Pagination
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
   for(let i=1;i<=totalPages;i++){
     const btn = document.createElement('div');
     btn.className = 'page-btn'+(i===page?' active':'');
     btn.innerText = i;
-    btn.addEventListener('click', ()=>renderPage(i));
+    btn.addEventListener('click',()=>{ updateURL(document.getElementById('searchInput').value, i); renderPage(i); });
     pagination.appendChild(btn);
   }
 }
+
+// Handle back/forward navigation
+window.addEventListener('popstate', ()=>{
+  const urlParams = new URLSearchParams(window.location.search);
+  const q = urlParams.get('q') || '';
+  const page = parseInt(urlParams.get('page')) || 1;
+  document.getElementById('searchInput').value = q;
+  filteredProducts = q ? products.filter(p => p.name.toLowerCase().includes(q.toLowerCase())) : products;
+  renderPage(page);
+});
 </script>
 
 </body>
