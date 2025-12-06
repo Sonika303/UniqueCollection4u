@@ -56,27 +56,10 @@ main { margin-top:100px; text-align:center; width:100%; max-width:1000px; paddin
 
 <main>
   <h2 id="searchTitle">Search Results</h2>
-  <div class="products" id="productsContainer">
-    <!-- Dynamic products will appear here -->
-  </div>
+  <div class="products" id="productsContainer"></div>
 </main>
 
 <script>
-// Sample product data (expand later or load via JSON)
-const products = [
-  {name:"Red T-Shirt", category:"Fashion", img:"https://m.media-amazon.com/images/I/61VpjokqnVL._SY550_.jpg", link:"#"},
-  {name:"Blue Jeans", category:"Fashion", img:"https://m.media-amazon.com/images/I/517+8nArL8L._SX679_.jpg", link:"#"},
-  {name:"Mystery Novel", category:"Books", img:"https://m.media-amazon.com/images/I/61+C5NBJCFL._SY466_.jpg", link:"#"},
-  {name:"Beauty Cream", category:"Beauty", img:"https://m.media-amazon.com/images/I/71bDtSXQd5L._SX522_PIbundle-9,TopRight,0,0_AA522SH20_.jpg", link:"#"},
-  {name:"Puzzle Toy", category:"Toys", img:"https://m.media-amazon.com/images/I/61NWxEEJzpL.jpg", link:"#"},
-];
-
-// Get search query from URL
-function getQueryParam(param) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(param) || "";
-}
-
 // Render products
 function renderProducts(list){
   const container = document.getElementById("productsContainer");
@@ -97,11 +80,20 @@ function renderProducts(list){
   });
 }
 
-// Main search
-const query = getQueryParam("q").trim().toLowerCase();
+// Get search query from URL
+const query = new URLSearchParams(window.location.search).get("q")?.trim().toLowerCase() || "";
 document.getElementById("searchTitle").textContent = `Search Results for "${query}"`;
-const results = products.filter(p=>p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
-renderProducts(results);
+
+// Load products from JSON
+fetch('products.json')
+  .then(response => response.json())
+  .then(products => {
+    const results = products.filter(p =>
+      p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)
+    );
+    renderProducts(results);
+  })
+  .catch(err => console.error("Failed to load products", err));
 </script>
 
 </body>
