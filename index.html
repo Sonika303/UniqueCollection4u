@@ -98,16 +98,25 @@ function getParams() {
 }
 
 // Load products.json
-async function loadProducts() {
-    const res = await fetch('products.json');
-    products = await res.json();
+async function loadProducts() {  
+    try {
+        const res = await fetch('products.json');
+        products = await res.json();
 
-    const params = getParams();
-    document.getElementById("searchInput").value = params.search;
+        // FIX: Ensure products.json is ALWAYS treated as array
+        if (!Array.isArray(products)) {
+            products = Object.values(products);
+        }
 
-    currentPage = params.page;
+        const params = getParams();
+        document.getElementById("searchInput").value = params.search;
 
-    renderProducts(params.search);
+        currentPage = params.page;
+
+        renderProducts(params.search);
+    } catch (e) {
+        console.error("JSON loading error:", e);
+    }
 }
 
 // Render products
@@ -116,7 +125,7 @@ function renderProducts(searchQuery = "") {
     container.innerHTML = "";
 
     let filtered = products.filter(p =>
-        p.name.toLowerCase().includes(searchQuery.toLowerCase())
+        (p.name || "").toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const totalPages = Math.ceil(filtered.length / productsPerPage);
@@ -171,10 +180,11 @@ function renderPagination(totalPages, searchQuery) {
 // Expand / Collapse name
 function toggleName(id, span) {
     const para = document.getElementById(id);
-    const isExpanded = para.style.webkitLineClamp === "unset";
 
-    para.style.webkitLineClamp = isExpanded ? "2" : "unset";
-    span.textContent = isExpanded ? "[more]" : "[less]";
+    const expanded = para.style.webkitLineClamp === "unset";
+    para.style.webkitLineClamp = expanded ? "2" : "unset";
+
+    span.textContent = expanded ? "[more]" : "[less]";
 }
 
 // Search button
@@ -185,6 +195,7 @@ function performSearch() {
 
 window.onload = loadProducts;
 </script>
+
 
 </body>
 </html>
