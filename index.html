@@ -22,16 +22,29 @@ header nav a:hover {text-decoration:underline;}
 .search-bar input[type="text"] {padding:8px; width:300px; border-radius:4px; border:1px solid #ccc;}
 .search-bar button {padding:8px 12px; margin-left:5px; background:#fff; border:1px solid #007BFF; color:#007BFF; cursor:pointer; border-radius:4px;}
 .search-bar button:hover {background:#007BFF; color:#fff;}
+
 .products {display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:15px; padding:20px;}
-.product-card {background:#fff; padding:15px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); display:flex; flex-direction:column; justify-content:space-between;}
+.product-card {background:#fff; padding:15px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
 .product-card img {width:100%; height:200px; object-fit:contain; margin-bottom:10px;}
-.product-name {display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; cursor:pointer; margin-bottom:10px;}
+
+.product-name {
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  cursor:pointer;
+  margin-bottom:10px;
+}
 .expand {color:blue; font-weight:bold; margin-left:4px;}
-.product-link {text-align:center; padding:8px; background:#007BFF; color:#fff; text-decoration:none; border-radius:4px;}
+
+.product-link {text-align:center; padding:8px; background:#007BFF; color:#fff; text-decoration:none; border-radius:4px; display:block;}
 .product-link:hover {background:#0056b3;}
+
 .pagination {display:flex; justify-content:center; margin:20px 0;}
 .pagination button {padding:8px 12px; margin:0 4px; border:none; border-radius:4px; cursor:pointer; background:#007BFF; color:#fff;}
 .pagination button.disabled {background:#ccc; cursor:not-allowed;}
+
 footer {background:#007BFF; color:#fff; text-align:center; padding:15px;}
 .social-links a {color:#fff; margin:0 10px; text-decoration:none; font-size:20px;}
 </style>
@@ -45,19 +58,15 @@ footer {background:#007BFF; color:#fff; text-align:center; padding:15px;}
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
+
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search products...">
     <button onclick="performSearch()">Search</button>
   </div>
 </header>
 
-<div class="products" id="productsContainer">
-  <!-- Products will load here -->
-</div>
-
-<div class="pagination" id="paginationContainer">
-  <!-- Pagination buttons -->
-</div>
+<div class="products" id="productsContainer"></div>
+<div class="pagination" id="paginationContainer"></div>
 
 <footer>
   <div class="social-links">
@@ -70,6 +79,7 @@ footer {background:#007BFF; color:#fff; text-align:center; padding:15px;}
   <p>&copy; 2025 Unique Collection4u</p>
 </footer>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
 AOS.init();
@@ -77,90 +87,100 @@ AOS.init();
 let products = [];
 let currentPage = 1;
 const productsPerPage = 10;
-let currentQuery = '';
 
+// Read URL parameters
+function getParams() {
+    const url = new URL(window.location.href);
+    return {
+        search: url.searchParams.get("search") || "",
+        page: parseInt(url.searchParams.get("page")) || 1
+    };
+}
+
+// Load products.json
 async function loadProducts() {
-  const res = await fetch('products.json');
-  products = await res.json();
+    const res = await fetch('products.json');
+    products = await res.json();
 
-  // Check if URL has /search/query/page
-  const path = window.location.pathname.split('/');
-  if(path[1] === 'search' && path[2]) {
-    currentQuery = decodeURIComponent(path[2]);
-    currentPage = parseInt(path[3]) || 1;
-    document.getElementById('searchInput').value = currentQuery;
-  }
+    const params = getParams();
+    document.getElementById("searchInput").value = params.search;
 
-  renderProducts(currentQuery);
+    currentPage = params.page;
+
+    renderProducts(params.search);
 }
 
-function renderProducts(searchQuery = '') {
-  const container = document.getElementById('productsContainer');
-  container.innerHTML = '';
+// Render products
+function renderProducts(searchQuery = "") {
+    const container = document.getElementById("productsContainer");
+    container.innerHTML = "";
 
-  currentQuery = searchQuery;
-  let filtered = products.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-  const totalPages = Math.ceil(filtered.length / productsPerPage);
-  currentPage = Math.min(currentPage, totalPages) || 1;
+    let filtered = products.filter(p =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
-  const start = (currentPage - 1) * productsPerPage;
-  const end = start + productsPerPage;
-  const pageProducts = filtered.slice(start, end);
+    const totalPages = Math.ceil(filtered.length / productsPerPage);
+    currentPage = Math.min(currentPage, totalPages) || 1;
 
-  pageProducts.forEach((p, idx) => {
-    const card = document.createElement('div');
-    card.className = 'product-card animate__animated animate__fadeIn';
-    card.innerHTML = `
-      <img src="${p.img}" alt="${p.alt}">
-      <p class="product-name" id="name${start+idx}">
-        ${p.name || 'No name'}
-        ${p.name && p.name.length > 50 ? `<span class="expand" onclick="toggleName('name${start+idx}', this)">[more]</span>` : ''}
-      </p>
-      <a href="${p.link}" target="_blank" class="product-link">Shop Now</a>
-    `;
-    container.appendChild(card);
-  });
+    const start = (currentPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
 
-  renderPagination(filtered.length, totalPages);
-  updateURL();
+    const pageProducts = filtered.slice(start, end);
+
+    pageProducts.forEach((p, idx) => {
+        const card = document.createElement("div");
+        card.className = "product-card animate__animated animate__fadeIn";
+
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.alt}">
+          <p class="product-name" id="name${start+idx}">
+            ${p.name}
+            <span class="expand" onclick="toggleName('name${start+idx}', this)">[more]</span>
+          </p>
+          <a href="${p.link}" class="product-link" target="_blank">Shop Now</a>
+        `;
+
+        container.appendChild(card);
+    });
+
+    renderPagination(totalPages, searchQuery);
 }
 
-function renderPagination(totalProducts, totalPages) {
-  const pagContainer = document.getElementById('paginationContainer');
-  pagContainer.innerHTML = '';
-  if(totalPages <= 1) return;
+// Pagination
+function renderPagination(totalPages, searchQuery) {
+    const pagContainer = document.getElementById("paginationContainer");
+    pagContainer.innerHTML = "";
 
-  for(let i=1; i<=totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.textContent = i;
-    if(i === currentPage) btn.classList.add('disabled');
-    btn.onclick = () => { currentPage = i; renderProducts(currentQuery); };
-    pagContainer.appendChild(btn);
-  }
+    if (totalPages <= 1) return;
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+
+        if (i === currentPage) btn.classList.add("disabled");
+
+        btn.onclick = () => {
+            currentPage = i;
+            window.location.href = `?search=${encodeURIComponent(searchQuery)}&page=${i}`;
+        };
+
+        pagContainer.appendChild(btn);
+    }
 }
 
+// Expand / Collapse name
 function toggleName(id, span) {
-  const para = document.getElementById(id);
-  const isExpanded = para.style.webkitLineClamp === "unset";
+    const para = document.getElementById(id);
+    const isExpanded = para.style.webkitLineClamp === "unset";
 
-  if (isExpanded) {
-    para.style.webkitLineClamp = "2";
-    span.textContent = "[more]";
-  } else {
-    para.style.webkitLineClamp = "unset";
-    span.textContent = "[less]";
-  }
+    para.style.webkitLineClamp = isExpanded ? "2" : "unset";
+    span.textContent = isExpanded ? "[more]" : "[less]";
 }
 
+// Search button
 function performSearch() {
-  currentPage = 1;
-  currentQuery = document.getElementById('searchInput').value.trim();
-  renderProducts(currentQuery);
-}
-
-function updateURL() {
-  const newURL = currentQuery ? `/search/${encodeURIComponent(currentQuery)}/${currentPage}` : '/';
-  window.history.replaceState({}, '', newURL);
+    const query = document.getElementById("searchInput").value.trim();
+    window.location.href = `?search=${encodeURIComponent(query)}&page=1`;
 }
 
 window.onload = loadProducts;
