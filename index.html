@@ -2,145 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
-<title>Unique Collection4u — Search Products</title>
+<title>Unique Collection4u — Curated Deals & Expert Picks</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <style>
-body { font-family: 'Poppins', sans-serif; margin:0; padding:0; background:#fff; }
-header { width:100%; padding:10px 20px; background:linear-gradient(90deg,#0060ba,#004a8f); display:flex; justify-content:space-between; align-items:center; color:#fff; position:fixed; top:0; z-index:2000; }
-.nav-links a { margin-right:15px; color:#fff; text-decoration:none; font-weight:600;}
-.nav-links a i { margin-right:5px; }
-.social-links a { margin-left:10px; color:#fff; font-size:1.2rem; }
-main { margin-top:90px; padding:20px; max-width:1000px; margin-left:auto; margin-right:auto;}
-.search-bar { display:flex; margin-bottom:20px; }
-.search-bar input { flex:1; padding:10px 15px; border-radius:8px 0 0 8px; border:1px solid #ccc; font-size:1rem; outline:none; }
-.search-bar button { padding:10px 20px; border:none; border-radius:0 8px 8px 0; background:#0060ba; color:#fff; font-weight:700; cursor:pointer; }
-.product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:20px; }
-.product-card { border:1px solid #ddd; border-radius:10px; overflow:hidden; padding:10px; text-align:center; transition:0.3s; }
-.product-card:hover { box-shadow:0 8px 20px rgba(0,0,0,0.2); }
-.product-card img { width:100%; height:180px; object-fit:contain; }
-.product-card h3 { font-size:1rem; margin:10px 0; }
-.product-card a { display:inline-block; padding:8px 12px; background:#0060ba; color:#fff; border-radius:6px; text-decoration:none; font-weight:600; }
-.pagination { display:flex; justify-content:center; margin-top:20px; flex-wrap:wrap; gap:5px; }
-.page-btn { padding:8px 12px; border:1px solid #0060ba; color:#0060ba; cursor:pointer; border-radius:6px; font-weight:600; }
-.page-btn.active, .page-btn:hover { background:#0060ba; color:#fff; }
-.no-results { text-align:center; font-size:1.2rem; margin-top:30px; color:#555; }
+  body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9;}
+  nav {background:#0056b3; color:white; padding:10px; position:sticky; top:0; z-index:999;}
+  nav input[type="text"] {padding:5px; width:250px; border-radius:4px; border:none;}
+  nav button {padding:5px 10px; border:none; background:#ff9900; color:white; cursor:pointer; border-radius:4px;}
+  #product-container {display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:20px; padding:20px;}
+  .product-card {background:white; padding:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center; transition: transform 0.2s;}
+  .product-card:hover {transform:translateY(-5px);}
+  .product-card img {width:100%; height:200px; object-fit:contain; border-radius:4px;}
+  .product-card a {text-decoration:none; color:#0056b3; font-weight:bold; display:block; margin-top:10px;}
+  .no-products {text-align:center; color:#555; font-size:18px; margin-top:50px;}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="nav-links">
-    <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
-    <a href="about.html"><i class="fa-solid fa-circle-info"></i>About</a>
-    <a href="contact.html"><i class="fa-solid fa-envelope"></i>Contact</a>
-    <a href="privacy.html"><i class="fa-solid fa-shield"></i>Privacy</a>
-  </div>
-  <div class="social-links">
-    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://www.whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  </div>
-</header>
+<nav>
+  <input type="text" id="searchInput" placeholder="Search products...">
+  <button onclick="searchProducts()">Search</button>
+</nav>
 
-<main>
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search products...">
-    <button id="searchBtn">Search</button>
-  </div>
-  <div id="productContainer" class="product-grid"></div>
-  <div id="pagination" class="pagination"></div>
-  <div id="noResults" class="no-results" style="display:none;">No products found.</div>
-</main>
+<div id="product-container"></div>
+<div id="no-products" class="no-products" style="display:none;">No products found.</div>
 
 <script>
-const PRODUCTS_PER_PAGE = 20;
 let products = [];
-let filteredProducts = [];
-let currentPage = 1;
 
-// Load products
-fetch('products.json').then(res => res.json()).then(data => {
-  products = data;
-  // Check URL for query params
-  const urlParams = new URLSearchParams(window.location.search);
-  const q = urlParams.get('q') || '';
-  const page = parseInt(urlParams.get('page')) || 1;
-  document.getElementById('searchInput').value = q;
-  filteredProducts = q ? products.filter(p => p.name.toLowerCase().includes(q.toLowerCase())) : products;
-  renderPage(page);
-});
-
-// Search function
-function performSearch(){
-  const query = document.getElementById('searchInput').value.trim().toLowerCase();
-  filteredProducts = products.filter(p => p.name.toLowerCase().includes(query));
-  currentPage = 1;
-  updateURL(query, currentPage);
-  renderPage(currentPage);
-}
-
-// Update URL query params without leaving page
-function updateURL(query, page){
-  history.pushState(null,'',`?q=${encodeURIComponent(query)}&page=${page}`);
-}
-
-// Search events
-document.getElementById('searchBtn').addEventListener('click', performSearch);
-document.getElementById('searchInput').addEventListener('keydown', e => { if(e.key==='Enter') performSearch(); });
-
-// Render page
-function renderPage(page){
-  currentPage = page;
-  const container = document.getElementById('productContainer');
-  const pagination = document.getElementById('pagination');
-  const noResults = document.getElementById('noResults');
-  container.innerHTML = '';
-  pagination.innerHTML = '';
-
-  if(filteredProducts.length === 0){
-    noResults.style.display='block';
-    return;
-  } else { noResults.style.display='none'; }
-
-  const start = (page-1)*PRODUCTS_PER_PAGE;
-  const end = start + PRODUCTS_PER_PAGE;
-  const pageProducts = filteredProducts.slice(start,end);
-
-  pageProducts.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <img src="${p.img}" alt="${p.alt}">
-      <h3>${p.name}</h3>
-      <a href="${p.link}" target="_blank">Buy Now</a>
-    `;
-    container.appendChild(card);
+// Load products from JSON
+fetch('products.json')
+  .then(res => res.json())
+  .then(data => {
+    products = data;
+    displayProducts(products);
   });
 
-  // Pagination
-  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
-  for(let i=1;i<=totalPages;i++){
-    const btn = document.createElement('div');
-    btn.className = 'page-btn'+(i===page?' active':'');
-    btn.innerText = i;
-    btn.addEventListener('click',()=>{ updateURL(document.getElementById('searchInput').value, i); renderPage(i); });
-    pagination.appendChild(btn);
+// Display products
+function displayProducts(items) {
+  const container = document.getElementById('product-container');
+  const noProducts = document.getElementById('no-products');
+  container.innerHTML = '';
+  if(items.length === 0) {
+    noProducts.style.display = 'block';
+  } else {
+    noProducts.style.display = 'none';
+    items.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card animate__animated animate__fadeIn';
+      card.innerHTML = `
+        <img src="${p.img || 'https://via.placeholder.com/250x200?text=No+Image'}" alt="${p.alt || p.name}">
+        <div>${p.name || 'Product Name'}</div>
+        <a href="${p.link || '#'}" target="_blank">View Product</a>
+      `;
+      container.appendChild(card);
+    });
   }
 }
 
-// Handle back/forward navigation
-window.addEventListener('popstate', ()=>{
-  const urlParams = new URLSearchParams(window.location.search);
-  const q = urlParams.get('q') || '';
-  const page = parseInt(urlParams.get('page')) || 1;
-  document.getElementById('searchInput').value = q;
-  filteredProducts = q ? products.filter(p => p.name.toLowerCase().includes(q.toLowerCase())) : products;
-  renderPage(page);
+// Search function
+function searchProducts() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+  displayProducts(filtered);
+}
+
+// Optional: Search on Enter key
+document.getElementById('searchInput').addEventListener('keypress', function(e) {
+  if(e.key === 'Enter') searchProducts();
 });
 </script>
 
