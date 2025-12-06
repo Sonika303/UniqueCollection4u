@@ -2,116 +2,143 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
-<title>Unique Collection4u — Curated Deals & Expert Picks</title>
+<title>Unique Collection4u — Premium Categories</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <style>
-body {margin:0; font-family: Arial,sans-serif; background:#f9f9f9;}
-nav {background:#0056b3; color:white; padding:10px; position:sticky; top:0; z-index:999; display:flex; align-items:center; justify-content:space-between;}
-nav .logo {font-size:20px; font-weight:bold;}
-nav .social a {color:white; margin-left:10px; text-decoration:none;}
-nav .search-bar {display:flex;}
-nav .search-bar input[type="text"] {padding:5px; border-radius:4px; border:none;}
-nav .search-bar button {padding:5px 10px; margin-left:5px; border:none; background:#ff9900; color:white; cursor:pointer; border-radius:4px;}
-
-#product-container {display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:20px; padding:20px;}
-.product-card {background:white; padding:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center; transition: transform 0.2s;}
-.product-card:hover {transform:translateY(-5px);}
-.product-card img {width:100%; height:200px; object-fit:contain; border-radius:4px;}
-.product-card a {text-decoration:none; color:#0056b3; font-weight:bold; display:block; margin-top:10px;}
-.no-products {text-align:center; color:#555; font-size:18px; margin-top:50px;}
-.pagination {text-align:center; margin:20px;}
-.pagination button {padding:5px 10px; margin:2px; border:none; background:#0056b3; color:white; cursor:pointer; border-radius:4px;}
-.pagination button.active {background:#ff9900;}
+  body { font-family: Arial, sans-serif; margin:0; padding:0; }
+  header { background: #0e4c92; color: white; padding: 10px 20px; position: sticky; top:0; z-index: 999; display:flex; align-items:center; justify-content:space-between; }
+  nav a { color:white; margin:0 10px; text-decoration:none; font-weight:500; }
+  nav a:hover { text-decoration:underline; }
+  .social-links a { margin-left: 10px; color:white; font-size:18px; }
+  .search-container { margin: 20px auto; max-width:600px; display:flex; justify-content:center; }
+  .search-container input { padding:10px; width:70%; font-size:16px; border:1px solid #ccc; border-radius:5px 0 0 5px; outline:none; }
+  .search-container button { padding:10px; font-size:16px; border:none; background:#0e4c92; color:white; border-radius:0 5px 5px 0; cursor:pointer; }
+  .products { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:15px; padding:20px; }
+  .product-card { border:1px solid #ddd; padding:10px; border-radius:5px; transition:0.3s; }
+  .product-card:hover { box-shadow:0 0 10px rgba(0,0,0,0.2); }
+  .product-card img { width:100%; height:200px; object-fit:cover; }
+  .product-card h4 { font-size:16px; margin:10px 0; }
+  .product-card a { text-decoration:none; color:#0e4c92; font-weight:bold; }
+  .pagination { text-align:center; margin:20px 0; }
+  .pagination button { margin:0 5px; padding:8px 12px; border:none; background:#0e4c92; color:white; border-radius:4px; cursor:pointer; }
+  .pagination button.disabled { background:#ccc; cursor:not-allowed; }
+  .no-results { text-align:center; font-size:18px; margin:40px 0; }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">Unique Collection4u</div>
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search products...">
-    <button onclick="searchProducts()">Search</button>
+<header>
+  <div class="logo"><h2>Unique Collection4u</h2></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#fashion">Fashion</a>
+    <a href="#books">Books</a>
+    <a href="#beauty">Beauty</a>
+    <a href="#toys">Toys</a>
+    <a href="#electronics">Electronics</a>
+  </nav>
+  <div class="social-links">
+    <a href="https://discord.com/" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
   </div>
-  <div class="social">
-    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-  </div>
-</nav>
+</header>
 
-<div id="product-container"></div>
-<div id="no-products" class="no-products" style="display:none;">No products found.</div>
-<div class="pagination" id="pagination"></div>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search products...">
+  <button onclick="performSearch()">Search</button>
+</div>
+
+<div class="products" id="productContainer"></div>
+<div class="pagination" id="paginationContainer"></div>
+<div class="no-results" id="noResults" style="display:none;">No products found.</div>
 
 <script>
-let products = [];
+// ===== Sample Products JSON =====
+const products = [
+  {
+    "name": "CW Championship Cricket Kit for Men",
+    "img": "https://m.media-amazon.com/images/I/41XMN4owc4S.jpg",
+    "alt": "Cricket Kit",
+    "link": "https://www.amazon.in/dp/B092L7R4HF?tag=onlinemar0fad-21"
+  },
+  {
+    "name": "URBANMONK 1-Meter Self Adhesive Water Stopper",
+    "img": "https://m.media-amazon.com/images/I/61nWlr+gGLL._SX679_.jpg",
+    "alt": "Water Stopper",
+    "link": "https://www.amazon.in/dp/B0DD7JL52K?tag=onlinemar0fad-21"
+  },
+  // Add more products here
+];
+
+// ===== Pagination Settings =====
 let currentPage = 1;
-const itemsPerPage = 12;
+const productsPerPage = 4;
 
-// Load products from JSON
-fetch('products.json')
-  .then(res => res.json())
-  .then(data => {
-    products = data;
-    displayPage(currentPage, products);
-  });
+// ===== Filter out empty products =====
+const validProducts = products.filter(p => p.name && p.img && p.link);
 
-// Display products for a page
-function displayPage(page, items) {
-  const container = document.getElementById('product-container');
-  const noProducts = document.getElementById('no-products');
-  const paginationDiv = document.getElementById('pagination');
+// ===== Render Products Function =====
+function renderProducts(filteredProducts, page=1) {
+  const container = document.getElementById('productContainer');
+  const noResults = document.getElementById('noResults');
   container.innerHTML = '';
-  paginationDiv.innerHTML = '';
 
-  if(items.length === 0) {
-    noProducts.style.display = 'block';
+  if (filteredProducts.length === 0) {
+    noResults.style.display = 'block';
+    document.getElementById('paginationContainer').innerHTML = '';
     return;
   } else {
-    noProducts.style.display = 'none';
+    noResults.style.display = 'none';
   }
 
-  const start = (page - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  const pageItems = items.slice(start, end);
+  const start = (page-1) * productsPerPage;
+  const end = start + productsPerPage;
+  const paginatedItems = filteredProducts.slice(start, end);
 
-  pageItems.forEach(p => {
+  paginatedItems.forEach(product => {
     const card = document.createElement('div');
-    card.className = 'product-card animate__animated animate__fadeIn';
+    card.className = 'product-card';
     card.innerHTML = `
-      <img src="${p.img || 'https://via.placeholder.com/250x200?text=No+Image'}" alt="${p.alt || p.name}">
-      <div>${p.name || 'Product Name'}</div>
-      <a href="${p.link || '#'}" target="_blank">View Product</a>
+      <img src="${product.img}" alt="${product.alt || product.name}">
+      <h4>${product.name}</h4>
+      <a href="${product.link}" target="_blank">View Product</a>
     `;
     container.appendChild(card);
   });
 
-  // Pagination buttons
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  for(let i=1; i<=totalPages; i++){
+  renderPagination(filteredProducts.length, page);
+}
+
+// ===== Render Pagination Function =====
+function renderPagination(totalProducts, page) {
+  const totalPages = Math.ceil(totalProducts / productsPerPage);
+  const pagination = document.getElementById('paginationContainer');
+  pagination.innerHTML = '';
+
+  for (let i=1; i<=totalPages; i++) {
     const btn = document.createElement('button');
-    btn.textContent = i;
-    if(i===page) btn.classList.add('active');
-    btn.onclick = () => { currentPage = i; displayPage(i, items); };
-    paginationDiv.appendChild(btn);
+    btn.innerText = i;
+    if (i === page) btn.classList.add('disabled');
+    btn.onclick = () => { currentPage = i; renderProducts(filteredProducts, i); };
+    pagination.appendChild(btn);
   }
 }
 
-// Search function
-function searchProducts() {
-  const query = document.getElementById('searchInput').value.toLowerCase();
-  const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+// ===== Search Function =====
+let filteredProducts = [...validProducts];
+function performSearch() {
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  filteredProducts = validProducts.filter(p => p.name.toLowerCase().includes(query));
   currentPage = 1;
-  displayPage(currentPage, filtered);
+  renderProducts(filteredProducts, currentPage);
 }
 
-// Search on Enter key
-document.getElementById('searchInput').addEventListener('keypress', function(e) {
-  if(e.key === 'Enter') searchProducts();
-});
+// ===== Initial Render =====
+renderProducts(validProducts, currentPage);
 </script>
 
 </body>
