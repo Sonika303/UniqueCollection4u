@@ -14,7 +14,14 @@ header { width:100%; padding:10px 20px; background:linear-gradient(90deg,#0060ba
 .nav-links a { margin-right:15px; color:#fff; text-decoration:none; font-weight:600; } 
 .nav-links a i { margin-right:5px; } 
 .social-links a { margin-left:10px; color:#fff; font-size:1.2rem; } 
-main { margin-top:100px; text-align:center; width:100%; max-width:1000px; padding:0 20px; } 
+main { margin-top:120px; text-align:center; width:100%; max-width:1000px; padding:0 20px; } 
+
+/* Search bar */
+.search-container { margin:20px 0; text-align:center; }
+#searchInput { padding:8px 12px; width:250px; border-radius:6px; border:1px solid #ccc; font-size:1rem; }
+#searchForm button { padding:8px 12px; background:#0060ba; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+
+/* Products */
 .products { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
 .product-card { width:220px; border:1px solid #e0e0e0; border-radius:12px; padding:10px; text-align:center; transition:transform 0.3s, box-shadow 0.3s; }
 .product-card:hover { transform:scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
@@ -22,10 +29,13 @@ main { margin-top:100px; text-align:center; width:100%; max-width:1000px; paddin
 .product-card h3 { font-size:1rem; margin:10px 0 5px; font-weight:700; }
 .product-card a { display:inline-block; margin-top:5px; padding:8px 12px; background:#0060ba; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; transition:background 0.3s; }
 .product-card a:hover { background:#004a8f; }
+
+/* Pagination */
 .pagination { margin-top:30px; display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
 .pagination a { display:inline-block; padding:6px 12px; background:#e0e0e0; border-radius:6px; color:#000; text-decoration:none; font-weight:600; }
 .pagination a.active { background:#0060ba; color:#fff; }
 .pagination a:hover { background:#004a8f; color:#fff; }
+
 .no-results { font-size:1.2rem; color:#666; margin-top:30px; }
 </style>
 </head>
@@ -48,20 +58,41 @@ main { margin-top:100px; text-align:center; width:100%; max-width:1000px; paddin
 </header>
 
 <main>
-  <h2 id="searchTitle">Search Results</h2>
+  <div class="search-container">
+    <form id="searchForm">
+      <input type="text" id="searchInput" placeholder="Search products...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <h2 id="searchTitle"></h2>
   <div class="products" id="productsContainer"></div>
   <div class="pagination" id="paginationContainer"></div>
 </main>
 
 <script>
-// Config
 const PRODUCTS_PER_PAGE = 10;
 
-// Utilities
 function getQueryParam(name, defaultValue="") {
   const params = new URLSearchParams(window.location.search);
   return params.get(name) || defaultValue;
 }
+
+const query = getQueryParam("q").trim().toLowerCase();
+let page = parseInt(getQueryParam("page","1"));
+
+// Pre-fill search input
+const searchInput = document.getElementById("searchInput");
+searchInput.value = query;
+
+// Handle search form submission
+document.getElementById("searchForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const newQuery = searchInput.value.trim();
+  if(newQuery) {
+    window.location.href = `?q=${encodeURIComponent(newQuery)}&page=1`;
+  }
+});
 
 // Render products
 function renderProducts(list){
@@ -69,6 +100,7 @@ function renderProducts(list){
   container.innerHTML = "";
   if(list.length===0){
     container.innerHTML = "<p class='no-results'>No products found.</p>";
+    document.getElementById("paginationContainer").innerHTML = "";
     return;
   }
   list.forEach(p=>{
@@ -83,7 +115,7 @@ function renderProducts(list){
   });
 }
 
-// Render pagination links
+// Render pagination
 function renderPagination(totalItems, currentPage){
   const container = document.getElementById("paginationContainer");
   container.innerHTML = "";
@@ -99,20 +131,19 @@ function renderPagination(totalItems, currentPage){
   }
 }
 
-// Main
-const query = getQueryParam("q").trim().toLowerCase();
-let page = parseInt(getQueryParam("page","1"));
-document.getElementById("searchTitle").textContent=`Search Results for "${query}"`;
+// Main logic
+document.getElementById("searchTitle").textContent=query?`Search Results for "${query}"`:"All Products";
 
 fetch('products.json')
   .then(res=>res.json())
   .then(products=>{
-    // Filter products by query
-    const results = products.filter(p=>
+    const results = query ? products.filter(p=>
       p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)
-    );
+    ) : products;
+
     const startIdx = (page-1)*PRODUCTS_PER_PAGE;
     const pagedResults = results.slice(startIdx, startIdx + PRODUCTS_PER_PAGE);
+
     renderProducts(pagedResults);
     renderPagination(results.length, page);
   })
