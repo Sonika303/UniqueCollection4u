@@ -40,15 +40,16 @@
     <a href="#electronics">Electronics</a>
   </nav>
   <div class="social-links">
-    <a href="https://discord.com/" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://discord.gg/YOUR_SERVER" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://wa.me/YOUR_NUMBER" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.youtube.com/YOUR_CHANNEL" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/YOUR_PROFILE" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/YOUR_PAGE" target="_blank"><i class="fab fa-facebook"></i></a>
   </div>
 </header>
 
 <div class="search-container">
-  <input type="text" id="searchInput" placeholder="Search products...">
+  <input type="text" id="searchInput" placeholder="Search products..." value="">
   <button onclick="performSearch()">Search</button>
 </div>
 
@@ -123,22 +124,44 @@ function renderPagination(totalProducts, page) {
     const btn = document.createElement('button');
     btn.innerText = i;
     if (i === page) btn.classList.add('disabled');
-    btn.onclick = () => { currentPage = i; renderProducts(filteredProducts, i); };
+    btn.onclick = () => { currentPage = i; updateURLAndRender(); };
     pagination.appendChild(btn);
   }
+}
+
+// ===== Handle URL /search/query/page =====
+function getSearchFromURL() {
+  const path = window.location.pathname.split('/');
+  let query = '';
+  let page = 1;
+  if(path[1]==='search') {
+    query = decodeURIComponent(path[2] || '');
+    page = parseInt(path[3]) || 1;
+  }
+  document.getElementById('searchInput').value = query;
+  return {query, page};
+}
+
+function updateURLAndRender() {
+  const query = document.getElementById('searchInput').value.trim();
+  const url = query ? `/search/${encodeURIComponent(query)}/${currentPage}` : '/';
+  window.history.replaceState(null,null,url);
+  filteredProducts = validProducts.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
+  renderProducts(filteredProducts, currentPage);
 }
 
 // ===== Search Function =====
 let filteredProducts = [...validProducts];
 function performSearch() {
-  const query = document.getElementById('searchInput').value.trim().toLowerCase();
-  filteredProducts = validProducts.filter(p => p.name.toLowerCase().includes(query));
   currentPage = 1;
-  renderProducts(filteredProducts, currentPage);
+  updateURLAndRender();
 }
 
 // ===== Initial Render =====
-renderProducts(validProducts, currentPage);
+const initial = getSearchFromURL();
+currentPage = initial.page;
+filteredProducts = validProducts.filter(p => p.name.toLowerCase().includes(initial.query.toLowerCase()));
+renderProducts(filteredProducts, currentPage);
 </script>
 
 </body>
