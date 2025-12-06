@@ -4,164 +4,154 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
-<title>Unique Collection4u — Premium Categories</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Unique Collection4u — Curated Deals & Expert Picks</title>
+
+<!-- Animate.css & AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
 <style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; }
-  header { background: #0e4c92; color: white; padding: 10px 20px; position: sticky; top:0; z-index: 999; display:flex; align-items:center; justify-content:space-between; }
-  nav a { color:white; margin:0 10px; text-decoration:none; font-weight:500; }
-  nav a:hover { text-decoration:underline; }
-  .social-links a { margin-left: 10px; color:white; font-size:18px; }
-  .search-container { margin: 20px auto; max-width:600px; display:flex; justify-content:center; }
-  .search-container input { padding:10px; width:70%; font-size:16px; border:1px solid #ccc; border-radius:5px 0 0 5px; outline:none; }
-  .search-container button { padding:10px; font-size:16px; border:none; background:#0e4c92; color:white; border-radius:0 5px 5px 0; cursor:pointer; }
-  .products { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:15px; padding:20px; }
-  .product-card { border:1px solid #ddd; padding:10px; border-radius:5px; transition:0.3s; }
-  .product-card:hover { box-shadow:0 0 10px rgba(0,0,0,0.2); }
-  .product-card img { width:100%; height:200px; object-fit:cover; }
-  .product-card h4 { font-size:16px; margin:10px 0; }
-  .product-card a { text-decoration:none; color:#0e4c92; font-weight:bold; }
-  .pagination { text-align:center; margin:20px 0; }
-  .pagination button { margin:0 5px; padding:8px 12px; border:none; background:#0e4c92; color:white; border-radius:4px; cursor:pointer; }
-  .pagination button.disabled { background:#ccc; cursor:not-allowed; }
-  .no-results { text-align:center; font-size:18px; margin:40px 0; }
+body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f8f9fa; color:#333;}
+header {background:#007BFF; color:#fff; padding:10px 20px; position:sticky; top:0; z-index:1000;}
+header nav a {color:#fff; margin-right:15px; text-decoration:none; font-weight:bold;}
+header nav a:hover {text-decoration:underline;}
+.search-bar {margin-top:10px; display:flex; justify-content:center;}
+.search-bar input[type="text"] {padding:8px; width:300px; border-radius:4px; border:1px solid #ccc;}
+.search-bar button {padding:8px 12px; margin-left:5px; background:#fff; border:1px solid #007BFF; color:#007BFF; cursor:pointer; border-radius:4px;}
+.search-bar button:hover {background:#007BFF; color:#fff;}
+.products {display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:15px; padding:20px;}
+.product-card {background:#fff; padding:15px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); display:flex; flex-direction:column; justify-content:space-between;}
+.product-card img {width:100%; height:200px; object-fit:contain; margin-bottom:10px;}
+.product-name {display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; cursor:pointer; margin-bottom:10px;}
+.expand {color:blue; font-weight:bold; margin-left:4px;}
+.product-link {text-align:center; padding:8px; background:#007BFF; color:#fff; text-decoration:none; border-radius:4px;}
+.product-link:hover {background:#0056b3;}
+.pagination {display:flex; justify-content:center; margin:20px 0;}
+.pagination button {padding:8px 12px; margin:0 4px; border:none; border-radius:4px; cursor:pointer; background:#007BFF; color:#fff;}
+.pagination button.disabled {background:#ccc; cursor:not-allowed;}
+footer {background:#007BFF; color:#fff; text-align:center; padding:15px;}
+.social-links a {color:#fff; margin:0 10px; text-decoration:none; font-size:20px;}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo"><h2>Unique Collection4u</h2></div>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#fashion">Fashion</a>
-    <a href="#books">Books</a>
-    <a href="#beauty">Beauty</a>
-    <a href="#toys">Toys</a>
-    <a href="#electronics">Electronics</a>
+    <a href="index.html">Home</a>
+    <a href="#">Fashion</a>
+    <a href="#">Books</a>
+    <a href="#">Beauty</a>
+    <a href="#">Toys</a>
+    <a href="#">Electronics</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
   </nav>
-  <div class="social-links">
-    <a href="https://discord.gg/YOUR_SERVER" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://wa.me/YOUR_NUMBER" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.youtube.com/YOUR_CHANNEL" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.instagram.com/YOUR_PROFILE" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/YOUR_PAGE" target="_blank"><i class="fab fa-facebook"></i></a>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search products...">
+    <button onclick="performSearch()">Search</button>
   </div>
 </header>
 
-<div class="search-container">
-  <input type="text" id="searchInput" placeholder="Search products..." value="">
-  <button onclick="performSearch()">Search</button>
+<div class="products" id="productsContainer">
+  <!-- Products will load here -->
 </div>
 
-<div class="products" id="productContainer"></div>
-<div class="pagination" id="paginationContainer"></div>
-<div class="no-results" id="noResults" style="display:none;">No products found.</div>
+<div class="pagination" id="paginationContainer">
+  <!-- Pagination buttons -->
+</div>
 
+<footer>
+  <div class="social-links">
+    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.com/" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://wa.me/XXXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p>&copy; 2025 Unique Collection4u</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-// ===== Sample Products JSON =====
-const products = [
-  {
-    "name": "CW Championship Cricket Kit for Men",
-    "img": "https://m.media-amazon.com/images/I/41XMN4owc4S.jpg",
-    "alt": "Cricket Kit",
-    "link": "https://www.amazon.in/dp/B092L7R4HF?tag=onlinemar0fad-21"
-  },
-  {
-    "name": "URBANMONK 1-Meter Self Adhesive Water Stopper",
-    "img": "https://m.media-amazon.com/images/I/61nWlr+gGLL._SX679_.jpg",
-    "alt": "Water Stopper",
-    "link": "https://www.amazon.in/dp/B0DD7JL52K?tag=onlinemar0fad-21"
-  },
-  // Add more products here
-];
+AOS.init();
 
-// ===== Pagination Settings =====
+// Load products.json dynamically
+let products = [];
 let currentPage = 1;
-const productsPerPage = 4;
+const productsPerPage = 10; // adjust per page
 
-// ===== Filter out empty products =====
-const validProducts = products.filter(p => p.name && p.img && p.link);
+async function loadProducts() {
+  const res = await fetch('products.json');
+  products = await res.json();
+  renderProducts();
+}
 
-// ===== Render Products Function =====
-function renderProducts(filteredProducts, page=1) {
-  const container = document.getElementById('productContainer');
-  const noResults = document.getElementById('noResults');
+function renderProducts(searchQuery = '') {
+  const container = document.getElementById('productsContainer');
   container.innerHTML = '';
 
-  if (filteredProducts.length === 0) {
-    noResults.style.display = 'block';
-    document.getElementById('paginationContainer').innerHTML = '';
-    return;
-  } else {
-    noResults.style.display = 'none';
-  }
+  let filtered = products.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const totalPages = Math.ceil(filtered.length / productsPerPage);
+  currentPage = Math.min(currentPage, totalPages) || 1;
 
-  const start = (page-1) * productsPerPage;
+  const start = (currentPage - 1) * productsPerPage;
   const end = start + productsPerPage;
-  const paginatedItems = filteredProducts.slice(start, end);
+  const pageProducts = filtered.slice(start, end);
 
-  paginatedItems.forEach(product => {
+  pageProducts.forEach((p, idx) => {
     const card = document.createElement('div');
-    card.className = 'product-card';
+    card.className = 'product-card animate__animated animate__fadeIn';
     card.innerHTML = `
-      <img src="${product.img}" alt="${product.alt || product.name}">
-      <h4>${product.name}</h4>
-      <a href="${product.link}" target="_blank">View Product</a>
+      <img src="${p.img}" alt="${p.alt}">
+      <p class="product-name" id="name${start+idx}">
+        ${p.name || 'No name'}
+        <span class="expand" onclick="toggleName('name${start+idx}', this)">[more]</span>
+      </p>
+      <a href="${p.link}" target="_blank" class="product-link">Shop Now</a>
     `;
     container.appendChild(card);
   });
 
-  renderPagination(filteredProducts.length, page);
+  renderPagination(filtered.length, totalPages);
 }
 
-// ===== Render Pagination Function =====
-function renderPagination(totalProducts, page) {
-  const totalPages = Math.ceil(totalProducts / productsPerPage);
-  const pagination = document.getElementById('paginationContainer');
-  pagination.innerHTML = '';
+function renderPagination(totalProducts, totalPages) {
+  const pagContainer = document.getElementById('paginationContainer');
+  pagContainer.innerHTML = '';
+  if(totalPages <= 1) return;
 
-  for (let i=1; i<=totalPages; i++) {
+  for(let i=1; i<=totalPages; i++) {
     const btn = document.createElement('button');
-    btn.innerText = i;
-    if (i === page) btn.classList.add('disabled');
-    btn.onclick = () => { currentPage = i; updateURLAndRender(); };
-    pagination.appendChild(btn);
+    btn.textContent = i;
+    if(i === currentPage) btn.classList.add('disabled');
+    btn.onclick = () => { currentPage = i; renderProducts(document.getElementById('searchInput').value); };
+    pagContainer.appendChild(btn);
   }
 }
 
-// ===== Handle URL /search/query/page =====
-function getSearchFromURL() {
-  const path = window.location.pathname.split('/');
-  let query = '';
-  let page = 1;
-  if(path[1]==='search') {
-    query = decodeURIComponent(path[2] || '');
-    page = parseInt(path[3]) || 1;
+function toggleName(id, span) {
+  const para = document.getElementById(id);
+  const isExpanded = para.style.webkitLineClamp === "unset";
+
+  if (isExpanded) {
+    para.style.webkitLineClamp = "2";
+    span.textContent = "[more]";
+  } else {
+    para.style.webkitLineClamp = "unset";
+    span.textContent = "[less]";
   }
-  document.getElementById('searchInput').value = query;
-  return {query, page};
 }
 
-function updateURLAndRender() {
-  const query = document.getElementById('searchInput').value.trim();
-  const url = query ? `/search/${encodeURIComponent(query)}/${currentPage}` : '/';
-  window.history.replaceState(null,null,url);
-  filteredProducts = validProducts.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
-  renderProducts(filteredProducts, currentPage);
-}
-
-// ===== Search Function =====
-let filteredProducts = [...validProducts];
 function performSearch() {
+  const query = document.getElementById('searchInput').value.trim();
   currentPage = 1;
-  updateURLAndRender();
+  renderProducts(query);
+  window.history.pushState({}, '', `/search/${encodeURIComponent(query)}/1`);
 }
 
-// ===== Initial Render =====
-const initial = getSearchFromURL();
-currentPage = initial.page;
-filteredProducts = validProducts.filter(p => p.name.toLowerCase().includes(initial.query.toLowerCase()));
-renderProducts(filteredProducts, currentPage);
+window.onload = loadProducts;
 </script>
 
 </body>
