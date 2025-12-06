@@ -4,32 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
-<title>Unique Collection4u — Home</title>
+<title>Unique Collection4u — Premium Categories</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 
 <style>
-body {
-  font-family: 'Poppins', sans-serif;
-  margin:0; padding:0;
-  background:#fff;
-  display:flex; flex-direction:column;
-  align-items:center;
-}
-header {
-  width:100%; padding:10px 20px;
-  background:linear-gradient(90deg,#0060ba,#004a8f);
-  display:flex; justify-content:space-between; align-items:center;
-  color:#fff; position:fixed; top:0; z-index:2000;
-}
-.nav-links a { margin-right:15px; color:#fff; text-decoration:none; font-weight:600;}
-.nav-links a i { margin-right:5px; }
-.social-links a { margin-left:10px; color:#fff; font-size:1.2rem; }
-main { margin-top:100px; text-align:center; width:100%; max-width:800px; padding:0 20px; }
-.search-bar { display:flex; justify-content:center; margin-bottom:30px; }
-.search-bar input { width:70%; padding:10px 15px; border:2px solid #0060ba; border-radius:10px 0 0 10px; font-size:1rem; outline:none; }
-.search-bar button { padding:10px 20px; border:none; background:#0060ba; color:#fff; font-weight:700; border-radius:0 10px 10px 0; cursor:pointer; transition:background 0.3s; }
-.search-bar button:hover { background:#004a8f; }
+body { font-family:'Poppins',sans-serif; margin:0; padding:0; background:#fff; display:flex; flex-direction:column; align-items:center; }
+header { width:100%; padding:10px 20px; background:linear-gradient(90deg,#0060ba,#004a8f); display:flex; justify-content:space-between; align-items:center; color:#fff; position:fixed; top:0; z-index:2000; }
+.nav-links a { margin-right:15px; color:#fff; text-decoration:none; font-weight:600; } 
+.nav-links a i { margin-right:5px; } 
+.social-links a { margin-left:10px; color:#fff; font-size:1.2rem; } 
+main { margin-top:120px; text-align:center; width:100%; max-width:1000px; padding:0 20px; } 
+
+/* Search bar */
+.search-container { margin:20px 0; text-align:center; }
+#searchInput { padding:8px 12px; width:250px; border-radius:6px; border:1px solid #ccc; font-size:1rem; }
+#searchForm button { padding:8px 12px; background:#0060ba; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+
+/* Products */
+.products { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+.product-card { width:220px; border:1px solid #e0e0e0; border-radius:12px; padding:10px; text-align:center; transition:transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform:scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
+.product-card img { width:100%; height:200px; object-fit:contain; border-radius:10px; }
+.product-card h3 { font-size:1rem; margin:10px 0 5px; font-weight:700; }
+.product-card a { display:inline-block; margin-top:5px; padding:8px 12px; background:#0060ba; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; transition:background 0.3s; }
+.product-card a:hover { background:#004a8f; }
+
+/* Pagination */
+.pagination { margin-top:30px; display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
+.pagination a { display:inline-block; padding:6px 12px; background:#e0e0e0; border-radius:6px; color:#000; text-decoration:none; font-weight:600; }
+.pagination a.active { background:#0060ba; color:#fff; }
+.pagination a:hover { background:#004a8f; color:#fff; }
+
+.no-results { font-size:1.2rem; color:#666; margin-top:30px; }
 </style>
 </head>
 <body>
@@ -51,24 +58,98 @@ main { margin-top:100px; text-align:center; width:100%; max-width:800px; padding
 </header>
 
 <main>
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search for products...">
-    <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+  <div class="search-container">
+    <form id="searchForm">
+      <input type="text" id="searchInput" placeholder="Search products...">
+      <button type="submit">Search</button>
+    </form>
   </div>
-  <p>Welcome to Unique Collection4u! Use the search above to find products from multiple categories.</p>
+
+  <h2 id="searchTitle"></h2>
+  <div class="products" id="productsContainer"></div>
+  <div class="pagination" id="paginationContainer"></div>
 </main>
 
 <script>
-// Redirect to search.html with query
-document.getElementById("searchBtn").onclick = () => {
-  const keyword = document.getElementById("searchInput").value.trim();
-  if(keyword) window.location.href = `search.html?q=${encodeURIComponent(keyword)}`;
-};
+const PRODUCTS_PER_PAGE = 10;
 
-// Trigger search on Enter key
-document.getElementById("searchInput").addEventListener("keypress", e=>{
-  if(e.key === "Enter") document.getElementById("searchBtn").click();
+// Helper to get query params
+function getQueryParam(name, defaultValue="") {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name) || defaultValue;
+}
+
+let query = getQueryParam("q").trim().toLowerCase();
+let page = parseInt(getQueryParam("page","1"));
+
+// Pre-fill search input
+const searchInput = document.getElementById("searchInput");
+searchInput.value = query;
+
+// Handle search submission
+document.getElementById("searchForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const newQuery = searchInput.value.trim();
+  if(newQuery) {
+    window.location.href = `?q=${encodeURIComponent(newQuery)}&page=1`;
+  }
 });
+
+// Render products
+function renderProducts(list){
+  const container = document.getElementById("productsContainer");
+  container.innerHTML = "";
+  if(list.length===0){
+    container.innerHTML = "<p class='no-results'>No products found.</p>";
+    document.getElementById("paginationContainer").innerHTML = "";
+    return;
+  }
+  list.forEach(p=>{
+    const card = document.createElement("div");
+    card.className="product-card";
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <a href="${p.link}" target="_blank">Buy Now</a>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Render pagination
+function renderPagination(totalItems, currentPage){
+  const container = document.getElementById("paginationContainer");
+  container.innerHTML = "";
+  const totalPages = Math.ceil(totalItems / PRODUCTS_PER_PAGE);
+  if(totalPages<=1) return;
+
+  for(let i=1;i<=totalPages;i++){
+    const a = document.createElement("a");
+    a.textContent=i;
+    if(i==currentPage) a.className="active";
+    a.href=`?q=${encodeURIComponent(query)}&page=${i}`;
+    container.appendChild(a);
+  }
+}
+
+// Main logic
+document.getElementById("searchTitle").textContent=query?`Search Results for "${query}"`:"All Products";
+
+// Load products from JSON
+fetch('products.json')
+  .then(res=>res.json())
+  .then(products=>{
+    const results = query ? products.filter(p=>
+      p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)
+    ) : products;
+
+    const startIdx = (page-1)*PRODUCTS_PER_PAGE;
+    const pagedResults = results.slice(startIdx, startIdx + PRODUCTS_PER_PAGE);
+
+    renderProducts(pagedResults);
+    renderPagination(results.length, page);
+  })
+  .catch(err=>console.error("Failed to load products", err));
 </script>
 
 </body>
