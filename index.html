@@ -116,21 +116,22 @@ function renderProducts(list){
   });
 }
 
-// Render pagination
 function renderPagination(totalItems, currentPage){
   const container = document.getElementById("paginationContainer");
   container.innerHTML = "";
   const totalPages = Math.ceil(totalItems / PRODUCTS_PER_PAGE);
-  if(totalPages<=1) return;
+  if(totalPages <= 1) return;
 
-  for(let i=1;i<=totalPages;i++){
+  for(let i = 1; i <= totalPages; i++){
     const a = document.createElement("a");
-    a.textContent=i;
-    if(i==currentPage) a.className="active";
-    a.href=`?q=${encodeURIComponent(query)}&page=${i}`;
+    a.textContent = i;
+    if(i === currentPage) a.className = "active";
+    // Updated URL format like Walmart/Amazon
+    a.href = `?q=${encodeURIComponent(query)}&page=${i}&affinityOverride=default`;
     container.appendChild(a);
   }
 }
+
 
 // Main logic
 document.getElementById("searchTitle").textContent=query?`Search Results for "${query}"`:"All Products";
