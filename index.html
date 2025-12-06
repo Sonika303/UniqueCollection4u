@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
-<title>Unique Collection4u — Premium Categories</title>
+<title>Unique Collection4u — Home</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 
@@ -25,25 +25,11 @@ header {
 .nav-links a { margin-right:15px; color:#fff; text-decoration:none; font-weight:600;}
 .nav-links a i { margin-right:5px; }
 .social-links a { margin-left:10px; color:#fff; font-size:1.2rem; }
-main { margin-top:80px; text-align:center; width:100%; max-width:800px; }
-.category-display { position:relative; margin:30px auto; width:100%; max-width:500px; perspective:1000px; }
-.images-carousel { overflow:hidden; width:100%; border-radius:12px; }
-.images-carousel img { width:100%; height:300px; object-fit:contain; border-radius:12px;
-  transition: transform 0.5s, opacity 0.5s;
-}
-.images-carousel img:hover {
-  transform: rotateY(10deg) rotateX(5deg) scale(1.05);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-.category-text { margin-top:12px; font-weight:700; font-size:1.3rem; transition: transform 0.5s, opacity 0.5s;}
-.category-text i { margin-right:8px; color:#007bff; }
-.shop-btn { margin-top:8px; padding:10px 18px; border:none; border-radius:10px; background:#0060ba; color:#fff; font-weight:700; cursor:pointer; transition: transform 0.3s;}
-.shop-btn:hover { transform:scale(1.05);}
-.cooldown-bar { width:100%; height:6px; background:#e0e0e0; border-radius:3px; margin-top:6px; overflow:hidden; }
-.cooldown-fill { width:0%; height:100%; background:#0060ba; transition:width 0.1s linear; }
-.nav-buttons { position:absolute; top:45%; width:100%; display:flex; justify-content:space-between; pointer-events:none; }
-.nav-buttons button { pointer-events:auto; background:rgba(0,0,0,0.15); border:none; color:#fff; font-size:1.5rem; padding:8px 12px; border-radius:6px; cursor:pointer; transition:background 0.2s;}
-.nav-buttons button:hover { background:rgba(0,0,0,0.3);}
+main { margin-top:100px; text-align:center; width:100%; max-width:800px; padding:0 20px; }
+.search-bar { display:flex; justify-content:center; margin-bottom:30px; }
+.search-bar input { width:70%; padding:10px 15px; border:2px solid #0060ba; border-radius:10px 0 0 10px; font-size:1rem; outline:none; }
+.search-bar button { padding:10px 20px; border:none; background:#0060ba; color:#fff; font-weight:700; border-radius:0 10px 10px 0; cursor:pointer; transition:background 0.3s; }
+.search-bar button:hover { background:#004a8f; }
 </style>
 </head>
 <body>
@@ -65,169 +51,24 @@ main { margin-top:80px; text-align:center; width:100%; max-width:800px; }
 </header>
 
 <main>
-  <div class="category-display">
-    <div class="images-carousel"><img src="" alt="Category Image"></div>
-    <div class="category-text"></div>
-    <button class="shop-btn">Shop Now</button>
-    <div class="cooldown-bar"><div class="cooldown-fill"></div></div>
-    <div class="nav-buttons">
-      <button id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-      <button id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
-    </div>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for products...">
+    <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
   </div>
+  <p>Welcome to Unique Collection4u! Use the search above to find products from multiple categories.</p>
 </main>
 
 <script>
-const categoryIcons = {
-  "Fashion": "fa-shirt",
-  "Books": "fa-book",
-  "Beauty": "fa-magic-wand-sparkles",
-  "Toys": "fa-puzzle-piece",
-  "Home Decor": "fa-couch",
-  "Fitness": "fa-dumbbell",
-  "Kitchenware": "fa-utensils",
-  "Anime": "fa-face-smile",
-  "Jewellery": "fa-gem",
-  "Electronics": "fa-tv",
-  "Stationery": "fa-pencil-alt"
+// Redirect to search.html with query
+document.getElementById("searchBtn").onclick = () => {
+  const keyword = document.getElementById("searchInput").value.trim();
+  if(keyword) window.location.href = `search.html?q=${encodeURIComponent(keyword)}`;
 };
 
-const categories = [
-  {name:"Fashion", imgs:[
-    "https://m.media-amazon.com/images/I/61VpjokqnVL._SY550_.jpg",
-    "https://m.media-amazon.com/images/I/517+8nArL8L._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/51PK9VXVcUL.jpg",
-    "https://m.media-amazon.com/images/I/81M9+CD8xBL._SY741_.jpg",
-    "https://m.media-amazon.com/images/I/61YWLwh+G5L._SX679_.jpg"
-  ], link:"fashion.html"},
-  {name:"Books", imgs:[
-    "https://m.media-amazon.com/images/I/61+C5NBJCFL._SY466_.jpg",
-    "https://m.media-amazon.com/images/I/61dTv1V+ceL._SY342_.jpg",
-    "https://m.media-amazon.com/images/I/41F3jXs+uIL._SY445_SX342_ControlCacheEqualizer_.jpg",
-    "https://m.media-amazon.com/images/I/81IM+frfVSL._SY466_.jpg",
-    "https://m.media-amazon.com/images/I/41CV+aTeWWL._SY445_SX342_ControlCacheEqualizer_.jpg"
-  ], link:"books.html"},
-  {name:"Beauty", imgs:[
-    "https://m.media-amazon.com/images/I/71bDtSXQd5L._SX522_PIbundle-9,TopRight,0,0_AA522SH20_.jpg",
-    "https://m.media-amazon.com/images/I/61nOMPBrdTL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/61Hh+j-5GAL._SY879_PIbundle-2,TopRight,0,0_SX659SY879SH20_.jpg",
-    "https://m.media-amazon.com/images/I/51qPi0fTKDL._SX522_.jpg",
-    "https://m.media-amazon.com/images/I/61zh5b1GQjL._SX679_.jpg"
-  ], link:"beauty.html"},
-  {name:"Toys", imgs:[
-    "https://m.media-amazon.com/images/I/61NWxEEJzpL.jpg",
-    "https://m.media-amazon.com/images/I/51YTDczOenL._SX522_.jpg",
-    "https://m.media-amazon.com/images/I/31GPWTVyyLL._SY300_SX300_QL70_FMwebp_.jpg",
-    "https://m.media-amazon.com/images/I/41uUKkMukNL._SY300_SX300_QL70_FMwebp_.jpg",
-    "https://m.media-amazon.com/images/I/81y3Evg-6ML._SX679_.jpg"
-  ], link:"toys.html"},
-  {name:"Home Decor", imgs:[
-    "https://m.media-amazon.com/images/I/81mG4CroFKL._SY500_.jpg",
-    "https://m.media-amazon.com/images/I/41j7PUbRvAL./_SY300/_SX300/_QL70/_FMwebp/_.jpg",
-    "https://m.media-amazon.com/images/I/410te0ogLYL./_SY300/_SX300/_QL70/_FMwebp/_.jpg",
-    "https://m.media-amazon.com/images/I/71j84-mMZnL./_SX679/_.jpg",
-    "https://m.media-amazon.com/images/I/518XsQOTduL./_SX300/_SY300/_QL70/_FMwebp/_.jpg"
-  ], link:"homedecor.html"},
-  {name:"Fitness", imgs:[
-    "https://m.media-amazon.com/images/I/618Nlj8pN3L._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/71SRXUSkBeL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/41RKLJLtWXL._SY300_SX300_QL70_FMwebp_.jpg",
-    "https://m.media-amazon.com/images/I/41sArCTN1kL._SY300_SX300_QL70_FMwebp_.jpg",
-    "https://m.media-amazon.com/images/I/41hTQRYX6GL._SY300_SX300_QL70_FMwebp_.jpg"
-  ], link:"fitness.html"},
-  {name:"Kitchenware", imgs:[
-    "https://m.media-amazon.com/images/I/41OQctI4mpL._SY300_SX300_QL70_FMwebp_.jpg",
-    "https://m.media-amazon.com/images/I/51lsFs6d7eL._SY300_SX300_QL70_FMwebp_.jpg",
-    "https://m.media-amazon.com/images/I/51-lp-8v2FL._SY300_SX300_QL70_FMwebp_.jpg",
-    "https://m.media-amazon.com/images/I/61KerSmPiCL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/51u9-QMN2GL._SX679_.jpg"
-  ], link:"kitchenware.html"},
-  {name:"Anime", imgs:[
-    "https://m.media-amazon.com/images/I/51HkRji2VAL._SX522_.jpg",
-    "https://m.media-amazon.com/images/I/91Q0mztnT8L._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/51AUy9xig+L._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/61zQeF7rz8L._SX569_.jpg",
-    "https://m.media-amazon.com/images/I/61PvYx2hgpL._SX679_.jpg"
-  ], link:"anime.html"},
-  {name:"Jewellery", imgs:[
-    "https://m.media-amazon.com/images/I/71DT8q5jSEL._SY625_.jpg",
-    "https://m.media-amazon.com/images/I/71nifldYylL._SY625_.jpg",
-    "https://m.media-amazon.com/images/I/71iOoLgCrEL._SY695_.jpg",
-    "https://m.media-amazon.com/images/I/61R-S65z1QL._SY695_.jpg",
-    "https://m.media-amazon.com/images/I/61vzfFXbIzL._SY625_.jpg"
-  ], link:"jewellery.html"},
-  {name:"Electronics", imgs:[
-    "https://m.media-amazon.com/images/I/812OvmyYPmL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/41cJ--jeTVL._SY300_SX300_QL70_FMwebp_.jpg",
-    "https://m.media-amazon.com/images/I/61wsvCGXqnL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/71rw7cd14mL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/717Q2swzhBL._SX569_.jpg"
-  ], link:"electronics.html"},
-  {name:"Stationery", imgs:[
-    "https://m.media-amazon.com/images/I/51k1vQSYsDL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/41fDFFhzFqL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/41tYXvQOaPL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/61UyqzL65DL._SX679_.jpg",
-    "https://m.media-amazon.com/images/I/41FeHhSpDNL._SX679_.jpg"
-  ], link:"stationery.html"}
-];
-
-let categoryIndex = 0;
-let imgIndex = 0;
-const imgEl = document.querySelector(".images-carousel img");
-const textEl = document.querySelector(".category-text");
-const shopBtn = document.querySelector(".shop-btn");
-const cooldownFill = document.querySelector(".cooldown-fill");
-
-function showCategory(index){
-  const cat = categories[index];
-  const iconClass = categoryIcons[cat.name];
-  imgIndex = 0;
-  imgEl.style.opacity = 0;
-  textEl.style.opacity = 0;
-  setTimeout(()=>{
-    imgEl.src = cat.imgs[imgIndex];
-    textEl.innerHTML = `<i class="fa-solid ${iconClass}"></i> ${cat.name}`;
-    shopBtn.onclick = ()=>{ window.location.href = cat.link; };
-    imgEl.style.opacity = 1;
-    textEl.style.opacity = 1;
-  },200);
-  cooldownFill.style.width = "0%";
-}
-
-function nextCategory(){
-  categoryIndex = (categoryIndex+1)%categories.length;
-  showCategory(categoryIndex);
-}
-
-function prevCategory(){
-  categoryIndex = (categoryIndex-1+categories.length)%categories.length;
-  showCategory(categoryIndex);
-}
-
-document.getElementById("nextBtn").onclick = ()=>{ nextCategory(); cooldown=0; };
-document.getElementById("prevBtn").onclick = ()=>{ prevCategory(); cooldown=0; };
-
-// image rotation every 2s
-setInterval(()=>{
-  const cat = categories[categoryIndex];
-  imgIndex = (imgIndex+1)%cat.imgs.length;
-  imgEl.style.opacity=0;
-  setTimeout(()=>{ imgEl.src = cat.imgs[imgIndex]; imgEl.style.opacity=1; },200);
-},2000);
-
-// category rotation every 10s
-setInterval(()=>{ nextCategory(); cooldown=0; },10000);
-
-// cooldown bar update every 100ms
-let cooldown = 0;
-setInterval(()=>{
-  cooldown += 0.1;
-  if(cooldown>10) cooldown=0;
-  cooldownFill.style.width = (cooldown/10*100)+"%";
-},100);
-
-showCategory(categoryIndex);
+// Trigger search on Enter key
+document.getElementById("searchInput").addEventListener("keypress", e=>{
+  if(e.key === "Enter") document.getElementById("searchBtn").click();
+});
 </script>
 
 </body>
