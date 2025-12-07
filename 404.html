@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found</title>
+<link rel="icon" href="favicon.png">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #f5f7fb;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stickman-container {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 20px;
+        animation: float 2.5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    .stickman {
+        width: 120px;
+    }
+
+    h1 {
+        font-size: 60px;
+        margin: 0;
+        color: #1a73e8;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 18px;
+        margin: 10px 0 20px;
+        color: #333;
+    }
+
+    .suggestions {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    a.btn {
+        text-decoration: none;
+        padding: 12px 25px;
+        background: #1a73e8;
+        color: #fff;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    a.btn:hover {
+        background: #155abd;
+    }
+</style>
+</head>
+<body>
+
+<div class="stickman-container">
+    <!-- Stickman 1 -->
+    <svg class="stickman" viewBox="0 0 120 200">
+        <circle cx="60" cy="30" r="20" stroke="#000" stroke-width="4" fill="transparent"></circle>
+        <line x1="60" y1="50" x2="60" y2="120" stroke="#000" stroke-width="4"></line>
+        <line x1="60" y1="70" x2="20" y2="100" stroke="#000" stroke-width="4"></line>
+        <line x1="60" y1="70" x2="100" y2="100" stroke="#000" stroke-width="4"></line>
+        <line x1="60" y1="120" x2="30" y2="170" stroke="#000" stroke-width="4"></line>
+        <line x1="60" y1="120" x2="90" y2="170" stroke="#000" stroke-width="4"></line>
+    </svg>
+
+    <!-- Stickman 2 -->
+    <svg class="stickman" viewBox="0 0 120 200">
+        <circle cx="60" cy="30" r="20" stroke="#000" stroke-width="4" fill="transparent"></circle>
+        <line x1="60" y1="50" x2="60" y2="120" stroke="#000" stroke-width="4"></line>
+        <line x1="60" y1="70" x2="15" y2="95" stroke="#000" stroke-width="4"></line>
+        <line x1="60" y1="70" x2="105" y2="95" stroke="#000" stroke-width="4"></line>
+        <line x1="60" y1="120" x2="35" y2="170" stroke="#000" stroke-width="4"></line>
+        <line x1="60" y1="120" x2="85" y2="170" stroke="#000" stroke-width="4"></line>
+    </svg>
+</div>
+
+<h1>404</h1>
+<p>Page Not Found</p>
+
+<div class="suggestions">
+    Did you mean:<br>
+    • <a href="/">Go to Home Page</a><br>
+    • /fashion<br>
+    • /electronics<br>
+    • /beauty<br>
+    • /fitness<br>
+</div>
+
+<br>
+<a href="/" class="btn">Return Home</a>
+
+</body>
+</html>
