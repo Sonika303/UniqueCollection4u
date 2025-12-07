@@ -54,9 +54,15 @@
     "link": "https://www.amazon.in/example-product-9"
   },
   {
-    "name": "RGB Gaming Mousepad Extra Large 80cm",
-    "img": "https://via.placeholder.com/400x400?text=Product+10",
-    "alt": "RGB Gaming Mousepad",
-    "link": "https://www.amazon.in/example-product-10"
+    "name": "",
+    "img": "",
+    "alt": "",
+    "link": ""
+  },
+  {
+    "name": "",
+    "img": "",
+    "alt": "",
+    "link": ""
   }
 ]
