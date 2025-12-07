@@ -3,112 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — Page Not Found</title>
+<title>404 — Not Found</title>
 <link rel="icon" href="favicon.png">
 
 <style>
     body {
         margin: 0;
         padding: 0;
-        background: #f5f7fb;
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background: linear-gradient(#d9eaff, #ffffff);
         height: 100vh;
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
         text-align: center;
     }
 
-    .stickman-container {
-        display: flex;
-        gap: 40px;
-        margin-bottom: 20px;
-        animation: float 2.5s infinite ease-in-out;
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0); }
-    }
-
-    .stickman {
-        width: 120px;
-    }
-
     h1 {
-        font-size: 60px;
-        margin: 0;
+        font-size: 70px;
+        margin: 10px;
         color: #1a73e8;
         font-weight: bold;
     }
 
     p {
-        font-size: 18px;
-        margin: 10px 0 20px;
+        font-size: 20px;
+        margin: 0;
         color: #333;
     }
 
-    .suggestions {
-        margin-top: 10px;
-        font-size: 16px;
-        color: #555;
+    .ground {
+        width: 100%;
+        height: 120px;
+        background: #9bd36a;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-top: 4px solid #6fa94a;
     }
 
-    a.btn {
+    .stickman {
+        width: 150px;
+        animation: dance 1.4s infinite;
+    }
+
+    /* Dancing animation */
+    @keyframes dance {
+        0%   { transform: translateY(0) rotate(0deg); }
+        25%  { transform: translateY(-12px) rotate(4deg); }
+        50%  { transform: translateY(0) rotate(0deg); }
+        75%  { transform: translateY(-12px) rotate(-4deg); }
+        100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    .suggestion-box {
+        margin-top: 20px;
+        font-size: 18px;
+        background: #eef5ff;
+        padding: 12px 20px;
+        border-radius: 8px;
+        border: 1px solid #c8dfff;
+        display: inline-block;
+    }
+
+    .suggestion-box a {
+        color: #1a73e8;
+        font-weight: bold;
         text-decoration: none;
+    }
+
+    .suggestion-box a:hover {
+        text-decoration: underline;
+    }
+
+    .btn {
+        margin-top: 20px;
+        display: inline-block;
         padding: 12px 25px;
         background: #1a73e8;
-        color: #fff;
+        color: white;
+        text-decoration: none;
         border-radius: 6px;
-        font-size: 16px;
         transition: 0.3s;
+        font-size: 17px;
     }
 
-    a.btn:hover {
+    .btn:hover {
         background: #155abd;
     }
 </style>
 </head>
+
 <body>
 
-<div class="stickman-container">
-    <!-- Stickman 1 -->
-    <svg class="stickman" viewBox="0 0 120 200">
-        <circle cx="60" cy="30" r="20" stroke="#000" stroke-width="4" fill="transparent"></circle>
-        <line x1="60" y1="50" x2="60" y2="120" stroke="#000" stroke-width="4"></line>
-        <line x1="60" y1="70" x2="20" y2="100" stroke="#000" stroke-width="4"></line>
-        <line x1="60" y1="70" x2="100" y2="100" stroke="#000" stroke-width="4"></line>
-        <line x1="60" y1="120" x2="30" y2="170" stroke="#000" stroke-width="4"></line>
-        <line x1="60" y1="120" x2="90" y2="170" stroke="#000" stroke-width="4"></line>
-    </svg>
-
-    <!-- Stickman 2 -->
-    <svg class="stickman" viewBox="0 0 120 200">
-        <circle cx="60" cy="30" r="20" stroke="#000" stroke-width="4" fill="transparent"></circle>
-        <line x1="60" y1="50" x2="60" y2="120" stroke="#000" stroke-width="4"></line>
-        <line x1="60" y1="70" x2="15" y2="95" stroke="#000" stroke-width="4"></line>
-        <line x1="60" y1="70" x2="105" y2="95" stroke="#000" stroke-width="4"></line>
-        <line x1="60" y1="120" x2="35" y2="170" stroke="#000" stroke-width="4"></line>
-        <line x1="60" y1="120" x2="85" y2="170" stroke="#000" stroke-width="4"></line>
-    </svg>
-</div>
+<!-- Dancing Stickman -->
+<svg class="stickman" viewBox="0 0 120 200">
+    <circle cx="60" cy="30" r="22" stroke="#000" stroke-width="5" fill="transparent"></circle>
+    <line x1="60" y1="52" x2="60" y2="120" stroke="#000" stroke-width="5"></line>
+    <line x1="60" y1="75" x2="20" y2="100" stroke="#000" stroke-width="5"></line>
+    <line x1="60" y1="75" x2="100" y2="100" stroke="#000" stroke-width="5"></line>
+    <line x1="60" y1="120" x2="35" y2="170" stroke="#000" stroke-width="5"></line>
+    <line x1="60" y1="120" x2="85" y2="170" stroke="#000" stroke-width="5"></line>
+</svg>
 
 <h1>404</h1>
 <p>Page Not Found</p>
 
-<div class="suggestions">
-    Did you mean:<br>
-    • <a href="/">Go to Home Page</a><br>
-    • /fashion<br>
-    • /electronics<br>
-    • /beauty<br>
-    • /fitness<br>
+<div class="suggestion-box">
+    Did you mean  
+    <a href="https://www.uniquecollection4u.com">www.uniquecollection4u.com</a> ?
 </div>
 
-<br>
 <a href="/" class="btn">Return Home</a>
+
+<div class="ground"></div>
 
 </body>
 </html>
