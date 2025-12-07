@@ -29,6 +29,12 @@ header{
   top:0;
   z-index:1000;
   box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  animation: fadeDown 0.6s ease;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 nav a{
@@ -45,6 +51,12 @@ nav a:hover{ text-decoration:underline; }
   margin-top:10px;
   display:flex;
   justify-content:center;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .search-bar input{
@@ -75,6 +87,17 @@ nav a:hover{ text-decoration:underline; }
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(230px,1fr));
   gap:20px;
+}
+
+/* Animation */
+.product-card{
+  opacity:0;
+  transform:translateY(15px);
+  animation: cardFadeUp 0.5s ease forwards;
+}
+
+@keyframes cardFadeUp {
+  to { opacity:1; transform:translateY(0); }
 }
 
 .product-card{
@@ -160,6 +183,12 @@ footer{
   text-align:center;
   padding:18px;
   margin-top:30px;
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(15px); }
+  to { opacity:1; transform:translateY(0); }
 }
 
 .social-links a{
@@ -205,6 +234,29 @@ let products = [];
 let currentPage = 1;
 const productsPerPage = 10;
 
+/* Fetch CSV */
+async function loadProducts() {
+    try {
+        const res = await fetch("products.csv");
+        const text = await res.text();
+        const lines = text.trim().split("\n").slice(1);
+
+        products = lines.map(line => {
+            const [name, img, alt, link] = line.split(",");
+            return { name, img, alt, link };
+        });
+
+        const params = getParams();
+        document.getElementById("searchInput").value = params.search;
+        currentPage = params.page;
+
+        renderProducts(params.search);
+    } catch (err) {
+        document.getElementById("productsContainer").innerHTML =
+          "<p style='color:red; font-weight:bold;'>Failed to load products.csv</p>";
+    }
+}
+
 /* URL Params */
 function getParams() {
     const url = new URL(window.location.href);
@@ -214,31 +266,12 @@ function getParams() {
     };
 }
 
-/* Load JSON */
-async function loadProducts() {
-    try {
-        const res = await fetch("products.json");
-        if (!res.ok) throw new Error("File missing or invalid JSON");
-
-        products = await res.json();
-
-        const params = getParams();
-        document.getElementById("searchInput").value = params.search;
-        currentPage = params.page;
-
-        renderProducts(params.search);
-    } catch (e) {
-        document.getElementById("productsContainer").innerHTML =
-          "<p style='color:red; font-weight:bold;'>Failed to load products.json — check file and path.</p>";
-    }
-}
-
 /* Render Products */
 function renderProducts(searchQuery = "") {
     const container = document.getElementById("productsContainer");
     container.innerHTML = "";
 
-    let filtered = products.filter(p =>
+    const filtered = products.filter(p =>
         p.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -250,9 +283,10 @@ function renderProducts(searchQuery = "") {
 
     const pageProducts = filtered.slice(start, end);
 
-    pageProducts.forEach((p) => {
+    pageProducts.forEach((p, i) => {
         const card = document.createElement("div");
         card.className = "product-card";
+        card.style.animationDelay = `${i * 0.08}s`;
 
         card.innerHTML = `
           <img src="${p.img}" alt="${p.alt}">
@@ -268,7 +302,6 @@ function renderProducts(searchQuery = "") {
     renderPagination(totalPages, searchQuery);
 }
 
-/* Pagination */
 function renderPagination(totalPages, searchQuery) {
     const pag = document.getElementById("paginationContainer");
     pag.innerHTML = "";
