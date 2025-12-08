@@ -15,8 +15,11 @@
   --brand-dark:#084cb8;
   --bg:#f3f7ff;
   --card-pad:12px;
+  --header-h:56px;
+  --social-h:46px;
 }
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
   font-family:Arial, sans-serif;
@@ -27,112 +30,164 @@ body{
   scroll-behavior:smooth;
 }
 
-/* SOCIAL BAR ABOVE SEARCH */
+/* SOCIAL TOP BAR (above header) */
 .social-top-bar{
   position:sticky;
   top:0;
-  z-index:1500;
-  background:white;
-  padding:6px 0 4px;
+  z-index:1600;
+  background:#fff;
   display:flex;
   justify-content:center;
-  gap:18px;
-  border-bottom:1px solid #e3eaff;
+  gap:12px;
+  align-items:center;
+  height:var(--social-h);
+  border-bottom:1px solid #e9f0ff;
+  padding:6px 12px;
 }
-
 .social-top-bar a{
-  font-size:20px;
-  color:var(--brand);
-  transition:transform .4s ease;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:36px;
+  border-radius:8px;
+  font-size:18px;
+  color:var(--brand-dark);
+  text-decoration:none;
+  transition: transform .5s cubic-bezier(.2,.9,.3,1), box-shadow .24s ease;
+  background:linear-gradient(180deg,#fff,#fbfdff);
+  border:1px solid rgba(13,110,253,0.06);
 }
+.social-top-bar a:hover{ transform: rotate(360deg) scale(1.08); box-shadow:0 8px 22px rgba(13,110,253,0.06); }
 
-.social-top-bar a:hover{
-  transform:rotate(360deg) scale(1.2);
-}
-
-/* header / nav */
+/* HEADER / NAV (under social bar) */
 header{
-  background:rgba(13,110,253,0.95);
-  color:white;
-  padding:12px 16px;
   position:sticky;
-  top:0;
-  top:46px; 
-  z-index:1200;
+  top:var(--social-h);
+  z-index:1500;
+  background:rgba(13,110,253,0.95);
+  color:#fff;
   display:flex;
   justify-content:center;
   align-items:center;
+  height:var(--header-h);
+  padding:8px 16px;
+  box-shadow:0 6px 18px rgba(3,34,84,0.06);
 }
-header.shrink{ padding:8px 16px; }
+header.shrink{ height:44px; padding:6px 12px; }
 
 nav{
+  width:100%;
+  max-width:1200px;
   display:flex;
   gap:16px;
-@@ -49,14 +68,23 @@
-  max-width:1200px;
+  align-items:center;
   justify-content:center;
 }
 nav a{ color:white; text-decoration:none; font-weight:700; font-size:14px; }
-nav a{
-  color:white; 
-  text-decoration:none; 
-  font-weight:700; 
-  font-size:14px;
-}
 
-/* top controls (search + suggestions) */
-/* SEARCH BAR sticky */
+/* SEARCH (sticky under header) */
 .top-controls{
-  width:100%;
-  max-width:1200px;
-  margin:12px auto 0;
-  padding:0 12px;
-  margin:0 auto;
-  padding:12px 12px 0;
   position:sticky;
-  top:94px;
-  background:var(--bg);
-  z-index:1100;
+  top: calc(var(--social-h) + var(--header-h));
+  z-index:1400;
+  background: linear-gradient(180deg,var(--bg), rgba(243,247,255,0.75));
+  padding:12px;
+  border-bottom:1px solid rgba(13,110,253,0.03);
 }
 .search-bar{
   display:flex;
-@@ -88,6 +116,8 @@
+  justify-content:center;
+  width:100%;
+}
+.search-inner{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  width:100%;
+  max-width:920px;
+}
+.search-inner input{
+  flex:1;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #dbe8ff;
+  font-size:15px;
+  outline:none;
+  background:white;
+}
+.search-inner button{
+  padding:10px 14px;
+  border-radius:10px;
+  border:0;
+  background:var(--brand);
+  color:white;
   font-weight:700;
   cursor:pointer;
 }
 
 /* suggestions */
 #suggestions{
-  max-width:720px;
-  margin:8px auto 0;
-@@ -137,28 +167,31 @@
+  max-width:920px;
+  margin:10px auto 0;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  transition:opacity .22s ease, transform .22s ease;
+  opacity:0;
+  transform:translateY(-6px);
+}
+#suggestions.visible{ opacity:1; transform:translateY(0); }
+.sugg-pill{
+  background:white;
+  padding:6px 10px;
+  border-radius:14px;
+  border:1px solid rgba(13,110,253,0.06);
+  cursor:pointer;
+  font-weight:700;
+  color:var(--brand-dark);
+  font-size:13px;
+}
+
+/* results text */
+#resultsText{
+  text-align:center;
+  font-weight:700;
+  margin:14px 0 8px;
+  font-size:16px;
+}
+
+/* products grid */
+.products-wrap{
+  padding:20px 12px 64px;
+  max-width:1320px;
+  margin:0 auto;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  width:100%;
+  align-items:start;
+  min-height:120px;
+}
+
+/* product card */
+.product-card{
+  background:linear-gradient(180deg,#fff,#fbfdff);
   padding:var(--card-pad);
-  border-radius:10px;
+  border-radius:12px;
   box-shadow:0 6px 20px rgba(13,110,253,0.06);
-  position:relative;
-  overflow:visible;
   display:flex;
   flex-direction:column;
-  min-height:250px;
-  transform-origin:center;
-  transition:transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease, opacity .28s ease, filter .22s ease;
-  transition:transform .22s ease, box-shadow .22s ease;
+  min-height:260px;
   opacity:0;
-  filter:translateY(6px);
-  transform:translateY(6px);
+  transform:translateY(8px);
+  transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease, opacity .28s ease;
 }
-.product-card.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-.product-card:hover{
-  transform:scale(1.03);
-  box-shadow:0 20px 44px rgba(13,110,253,0.12);
-}
-.product-card.visible{ opacity:1; transform:translateY(0); filter:none; }
+.product-card.visible{ opacity:1; transform:translateY(0); }
 .product-card:hover{ transform:scale(1.03); box-shadow:0 20px 44px rgba(13,110,253,0.12); }
 
-/* image */
 .product-card img{
   width:100%;
   height:150px;
@@ -140,48 +195,79 @@ nav a{
   margin-bottom:8px;
 }
 
-/* product name (A: 2-line clamp + expand) */
-/* product name */
+/* product name clamp */
 .product-name{
   display:-webkit-box;
   -webkit-line-clamp:2;
-@@ -175,7 +208,7 @@
-  max-height:1000px;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  font-weight:700;
+  font-size:14px;
+  margin:6px 0;
 }
+.product-name.expanded{ -webkit-line-clamp:unset; }
 
 /* bottom row */
-/* bottom */
 .card-bottom{
   margin-top:auto;
   display:flex;
-@@ -201,7 +234,7 @@
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+}
+.product-link{
+  background:var(--brand);
+  color:white;
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:8px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.more-btn{
+  border:0;
+  background:none;
+  color:var(--brand);
+  font-weight:800;
+  cursor:pointer;
   font-size:13px;
 }
 
-/* pagination: Prev always present (option 1 style) */
 /* pagination */
 .pagination{
   display:flex;
   justify-content:center;
-@@ -218,7 +251,11 @@
+  gap:8px;
+  margin:18px 0 40px;
+  flex-wrap:wrap;
+}
+.pagination .btn{
+  padding:8px 12px;
+  border-radius:8px;
+  border:0;
+  background:var(--brand);
+  color:white;
   font-weight:700;
   cursor:pointer;
 }
 .pagination .btn.disabled{ background:#cfcfcf; color:#444; cursor:default; }
-.pagination .btn.disabled{
-  background:#cfcfcf;
-  color:#444;
-  cursor:default;
-}
 
 /* back to top */
 #backToTop{
-@@ -236,8 +273,18 @@
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:var(--brand);
+  color:white;
+  padding:12px;
+  border-radius:50%;
+  font-size:18px;
+  display:none;
+  box-shadow:0 10px 28px rgba(13,110,253,0.12);
+  cursor:pointer;
 }
 
 /* footer */
-footer{ background:var(--brand); color:white; text-align:center; padding:16px 12px; margin-top:24px; }
-footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 footer{
   background:var(--brand);
   color:white;
@@ -189,51 +275,113 @@ footer{
   padding:16px 12px;
   margin-top:24px;
 }
-footer .social-links a{
-  color:white;
-  margin:0 8px;
-  font-size:18px;
-}
+footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 
 /* responsive */
 @media (max-width:1100px){ .products{ grid-template-columns:repeat(4,1fr); } }
-@@ -248,6 +295,15 @@
+@media (max-width:880px){ .products{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:620px){ .products{ grid-template-columns:repeat(2,1fr); } .search-inner{ max-width:94%; } }
+@media (max-width:420px){ .products{ grid-template-columns:repeat(1,1fr); } .product-card{ min-height:220px; } }
+</style>
 </head>
 <body>
 
 <!-- SOCIAL TOP BAR -->
-<div class="social-top-bar">
-  <a href="https://facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
-  <a href="https://instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
-  <a href="https://whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2J" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+<div class="social-top-bar" aria-hidden="false">
+  <a href="https://facebook.com/UniqueCollection0555" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+  <a href="https://instagram.com/uniquecollection0555" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://discord.gg/Aa9a6XHwZz" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+  <a href="https://whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2J" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.youtube.com/@uniquecollection01" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
 </div>
 
 <header id="navbar">
   <nav>
     <a href="index.html"><i class="fas fa-house"></i> Home</a>
-@@ -260,7 +316,7 @@
-<div class="top-controls">
+    <a href="privacy.html"><i class="fas fa-shield-halved"></i> Privacy</a>
+    <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+  </nav>
+</header>
+
+<div class="top-controls" role="search" aria-label="Site search">
   <div class="search-bar">
     <div class="search-inner">
       <input id="searchInput" type="text" placeholder="Search products... (try: T-Shirt, Phone, Toy)">
-      <input id="searchInput" type="text" placeholder="Search products...">
-      <button id="searchBtn" onclick="performSearch()">Search</button>
+      <button id="searchBtn" type="button">Search</button>
     </div>
   </div>
-@@ -288,232 +344,158 @@
+  <div id="suggestions" aria-hidden="true"></div>
+</div>
+
+<p id="resultsText" aria-live="polite"></p>
+
+<div class="products-wrap">
+  <div class="products" id="productsContainer" aria-live="polite"></div>
+  <div class="pagination" id="paginationContainer" aria-label="Pagination"></div>
+</div>
+
+<i id="backToTop" class="fas fa-arrow-up" title="Back to top" role="button" aria-label="Back to top"></i>
+
+<footer>
+  <div class="social-links" aria-hidden="true">
+    <a href="https://facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2J" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p>&copy; 2025 Unique Collection4u</p>
 </footer>
 
 <script>
-/* State */
+/* ---------- State ---------- */
 let products = [];
 let currentPage = 1;
 const productsPerPage = 20;
 
-/* Helpers */
+/* ---------- Short helpers ---------- */
 const qs = s => document.querySelector(s);
 const qsa = s => Array.from(document.querySelectorAll(s));
+
+/* ---------- CSV loader (expects: name,image,alt,link) ---------- */
+async function loadProducts(){
+  try{
+    const res = await fetch('products.csv', {cache: "no-store"});
+    if(!res.ok) throw new Error('products.csv not found');
+    const text = await res.text();
+    const rows = text.split(/\r?\n/).filter(Boolean);
+    // If file has header, remove it if it contains 'name' in first row
+    if(rows.length && rows[0].toLowerCase().includes('name') && rows[0].toLowerCase().includes('image')) rows.shift();
+
+    products = rows.map(r => {
+      // split into 4 parts only - allow commas in link (everything after 3rd comma)
+      const parts = r.split(',');
+      const name = (parts[0] || '').trim();
+      const img  = (parts[1] || '').trim();
+      const alt  = (parts[2] || '').trim();
+      const link = (parts.slice(3).join(',') || '').trim();
+      return { name: name || 'Unnamed Product', img, alt, link };
+    });
+
+    // set initial search input from URL params if present
+    const params = getParams();
+    qs('#searchInput').value = params.search || '';
+    currentPage = params.page || 1;
+
+    // randomize only for homepage (no search && page==1)
+    if(!params.search && params.page === 1) products = products.sort(()=>Math.random()-0.5);
+
+    renderProducts(params.search || '');
+    initSearchSuggestions();
+  }catch(err){
+    console.error(err);
+    const container = qs('#productsContainer');
+    container.innerHTML = `<p style="color:red;font-weight:700">Failed to load products.csv — ${err.message}</p>`;
+  }
+}
+
+/* ---------- URL helpers ---------- */
 function getParams(){
   const u = new URL(window.location.href);
   return { search: u.searchParams.get('search') || '', page: parseInt(u.searchParams.get('page')) || 1 };
@@ -245,119 +393,59 @@ function navigateTo(search, page){
   window.location.href = url.pathname + '?' + url.searchParams.toString();
 }
 
-/* CSV loader */
-async function loadProducts(){
-  try{
-    const res = await fetch('products.csv');
-    const text = await res.text();
-    const rows = text.split('\n').slice(1).filter(Boolean);
-    products = rows.map(r=>{
-      // split into 4 parts only (name,img,alt,link) - allow commas in link
-      const parts = r.split(',');
-      const name = (parts[0]||'').trim();
-      const img = (parts[1]||'').trim();
-      const alt  = (parts[2]||'').trim();
-      const link = (parts.slice(3).join(',')||'').trim();
-      return { name: name||'Unnamed Product', img, alt, link };
-    });
-
-    // apply params
-    const params = getParams();
-    document.getElementById('searchInput').value = params.search;
-    currentPage = params.page;
-
-    // randomize only for homepage (no search && page==1)
-    if(!params.search && params.page === 1){
-      products = products.sort(()=>Math.random() - 0.5);
-    }
-
-    renderProducts(params.search);
-    initSearchSuggestions();
-  }catch(err){
-    console.error(err);
-    qs('#productsContainer').innerHTML = '<p style="color:red;font-weight:700">Failed to load products.csv</p>';
-  }
-}
-
-/* Render products + smooth fade-in */
+/* ---------- Render products ---------- */
 function renderProducts(searchQuery = ''){
   const container = qs('#productsContainer');
   const resultsText = qs('#resultsText');
   container.innerHTML = '';
 
-  if(searchQuery.trim()){
-    resultsText.textContent = `Showing results for: "${searchQuery}"`;
-  } else resultsText.textContent = '';
+  if(searchQuery && searchQuery.trim()) resultsText.textContent = `Showing results for: "${searchQuery}"`;
+  else resultsText.textContent = '';
 
-  const filtered = products.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filtered = products.filter(p => p.name.toLowerCase().includes((searchQuery||'').toLowerCase()));
   const totalPages = Math.max(1, Math.ceil(filtered.length / productsPerPage));
   currentPage = Math.min(currentPage, totalPages) || 1;
-// --- HELPER ---
-const qs = (sel)=>document.querySelector(sel);
-const qsa = (sel)=>document.querySelectorAll(sel);
-
-// --- SAMPLE PRODUCTS (Replace with real data or JSON) ---
-const products = [
-  {name:"Sample Product 1", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 2", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 3", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 4", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 5", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 6", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 7", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 8", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 9", image:"https://via.placeholder.com/200", link:"#"},
-  {name:"Sample Product 10", image:"https://via.placeholder.com/200", link:"#"}
-];
-
-// --- RENDER PRODUCTS ---
-function displayProducts(list, page=1){
-  const perPage = 20;
-  const start = (page-1)*perPage;
-  const end = start+perPage;
-  const sliced = list.slice(start, end);
-
-  const ct = qs("#productsContainer");
-  ct.innerHTML = "";
-
-  sliced.forEach((p,i)=>{
-    const card = document.createElement("div");
-    card.className = "product-card";
 
   const start = (currentPage - 1) * productsPerPage;
   const pageProducts = filtered.slice(start, start + productsPerPage);
 
+  // empty state
+  if(pageProducts.length === 0){
+    container.innerHTML = `<p style="text-align:center;font-weight:700;color:#666;padding:28px">No products found.</p>`;
+    renderPagination(totalPages, searchQuery);
+    return;
+  }
+
+  // build cards
   pageProducts.forEach((p, idx) => {
     const globalIndex = start + idx;
     const card = document.createElement('div');
     card.className = 'product-card';
     const imgSrc = p.img || 'https://via.placeholder.com/240x150?text=No+Image';
+    const safeName = escapeHtml(p.name);
+    const safeAlt = escapeHtml(p.alt || p.name);
+
     card.innerHTML = `
-      <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(p.alt || p.name)}">
-      <p class="product-name" id="name-${globalIndex}">${escapeHtml(p.name)}</p>
-      <img src="${p.image}">
-      <div class="product-name">${escapeHtml(p.name)}</div>
+      <img src="${escapeHtml(imgSrc)}" alt="${safeAlt}">
+      <p class="product-name" id="name-${globalIndex}">${safeName}</p>
       <div class="card-bottom">
-        <div>${p.link ? `<a class="product-link" href="${escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer">Check Price On Amazon</a>` : ''}</div>
-        <div>${p.name.length > 75 ? `<button class="more-btn" data-id="${globalIndex}">More</button>` : ''}</div>
-        <a class="product-link" href="${p.link}" target="_blank">Check Price on Amazon</a>
-        <button class="more-btn" onclick="toggleName(this)">More</button>
+        <div>${p.link ? `<a class="product-link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener noreferrer">Check Price On Amazon</a>` : ''}</div>
+        <div>${(p.name.length > 75) ? `<button class="more-btn" data-id="${globalIndex}">More</button>` : ''}</div>
       </div>
     `;
     container.appendChild(card);
 
-    // trigger fade-in per card for smooth appearance
+    // staggered appear
     requestAnimationFrame(()=> {
-      setTimeout(()=> card.classList.add('visible'), 20 + (idx * 20));
+      setTimeout(()=> card.classList.add('visible'), 20 + (idx * 18));
     });
   });
-    ct.appendChild(card);
 
   renderPagination(totalPages, searchQuery);
   attachMoreButtons();
 }
 
-/* More / Less (2-line clamp -> expand) */
+/* ---------- More / Less ---------- */
 function attachMoreButtons(){
   qsa('.more-btn').forEach(btn=>{
     btn.onclick = () => {
@@ -366,7 +454,6 @@ function attachMoreButtons(){
       if(!nameEl) return;
       const expanded = nameEl.classList.toggle('expanded');
       btn.textContent = expanded ? 'Less' : 'More';
-      // ensure card visible after expand
       if(expanded){
         const card = btn.closest('.product-card');
         const rect = card.getBoundingClientRect();
@@ -375,26 +462,13 @@ function attachMoreButtons(){
         }
       }
     };
-    setTimeout(()=> card.classList.add("visible"), 40*i);
   });
 }
 
-/* Pagination (Prev always present) */
+/* ---------- Pagination ---------- */
 function renderPagination(totalPages, searchQuery){
   const pag = qs('#paginationContainer');
   pag.innerHTML = '';
-function toggleName(btn){
-  const nameEl = btn.parentElement.parentElement.querySelector(".product-name");
-  nameEl.classList.toggle("expanded");
-  btn.textContent = nameEl.classList.contains("expanded") ? "Less" : "More";
-}
-
-// --- SEARCH ---
-function performSearch(){
-  const q = qs("#searchInput").value.trim().toLowerCase();
-  const results = products.filter(p => p.name.toLowerCase().includes(q));
-
-  qs("#resultsText").textContent = q ? `Showing results for "${q}"` : "";
 
   // Prev (always present)
   const prev = document.createElement('button');
@@ -402,24 +476,6 @@ function performSearch(){
   prev.textContent = 'Prev';
   if(currentPage === 1) prev.classList.add('disabled');
   else prev.onclick = () => navigateTo(searchQuery, currentPage - 1);
-  displayProducts(results, 1);
-  createPagination(results, 1, q);
-}
-
-// --- PAGINATION ---
-function createPagination(list, currentPage, searchQuery){
-  const perPage = 20;
-  const totalPages = Math.ceil(list.length / perPage);
-  const pag = qs("#paginationContainer");
-  pag.innerHTML = "";
-
-  if(totalPages <= 1) return;
-
-  const prev = document.createElement("button");
-  prev.className = "btn";
-  prev.textContent = "Prev";
-  if(currentPage === 1) prev.classList.add("disabled");
-  else prev.onclick = () => navigateTo(searchQuery, currentPage-1);
   pag.appendChild(prev);
 
   // numeric window
@@ -427,19 +483,12 @@ function createPagination(list, currentPage, searchQuery){
   let start = Math.max(1, currentPage - Math.floor(maxButtons/2));
   let end = Math.min(totalPages, start + maxButtons - 1);
   if(end - start < maxButtons - 1) start = Math.max(1, end - maxButtons + 1);
-  let start = Math.max(1, currentPage-2);
-  let end = Math.min(totalPages, currentPage+2);
 
   for(let i = start; i <= end; i++){
     const b = document.createElement('button');
     b.className = 'btn' + (i === currentPage ? ' disabled' : '');
-  for(let i=start; i<=end; i++){
-    const b = document.createElement("button");
-    b.className = "btn";
     b.textContent = i;
     if(i !== currentPage) b.onclick = () => navigateTo(searchQuery, i);
-    if(i === currentPage) b.style.background = "#084cb8";
-    b.onclick = () => navigateTo(searchQuery, i);
     pag.appendChild(b);
   }
 
@@ -449,27 +498,18 @@ function createPagination(list, currentPage, searchQuery){
   next.textContent = 'Next';
   if(currentPage === totalPages) next.classList.add('disabled');
   else next.onclick = () => navigateTo(searchQuery, currentPage + 1);
-  const next = document.createElement("button");
-  next.className = "btn";
-  next.textContent = "Next";
-  if(currentPage === totalPages) next.classList.add("disabled");
-  else next.onclick = () => navigateTo(searchQuery, currentPage+1);
   pag.appendChild(next);
 }
 
-/* Search */
+/* ---------- Search ---------- */
 function performSearch(){
   const q = qs('#searchInput').value.trim();
   navigateTo(q, 1);
-function navigateTo(query, page){
-  const results = products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
-  displayProducts(results, page);
-  createPagination(results, page, query);
-  window.scrollTo({top:0, behavior:"smooth"});
 }
+qs('#searchBtn').addEventListener('click', performSearch);
+qs('#searchInput').addEventListener('keydown', (e)=> { if(e.key === 'Enter') performSearch(); });
 
-/* Suggestions (smooth show/hide) */
-// --- SUGGESTIONS ---
+/* ---------- Suggestions (auto-complete pills) ---------- */
 function initSearchSuggestions(){
   const input = qs('#searchInput');
   const suggestions = qs('#suggestions');
@@ -479,6 +519,7 @@ function initSearchSuggestions(){
     if(!val){
       suggestions.classList.remove('visible');
       suggestions.innerHTML = '';
+      suggestions.setAttribute('aria-hidden','true');
       return;
     }
 
@@ -504,44 +545,26 @@ function initSearchSuggestions(){
     }
 
     suggestions.innerHTML = matches.map(m => `<div class="sugg-pill" data-val="${escapeAttr(m)}">${escapeHtml(m)}</div>`).join('');
-    if(matches.length) suggestions.classList.add('visible');
-    else suggestions.classList.remove('visible');
+    if(matches.length){
+      suggestions.classList.add('visible');
+      suggestions.setAttribute('aria-hidden','false');
+    } else {
+      suggestions.classList.remove('visible');
+      suggestions.setAttribute('aria-hidden','true');
+    }
 
     qsa('.sugg-pill').forEach(el=>{
       el.onclick = () => {
         const v = el.getAttribute('data-val');
         input.value = v;
-        // show smooth suggestions remain visible briefly
-        suggestions.classList.add('visible');
-        // optionally auto-search:
-        // performSearch();
+        suggestions.classList.remove('visible');
+        performSearch();
       };
-  const sugBox = qs("#suggestions");
-  const uniqueWords = new Set();
-
-  products.forEach(p=>{
-    p.name.split(" ").forEach(w=>{
-      if(w.length > 3) uniqueWords.add(w);
     });
-  });
-
-  input.addEventListener('keydown', (e) => { if(e.key === 'Enter') performSearch(); });
-  const arr = Array.from(uniqueWords).slice(0,20);
-  sugBox.innerHTML = arr.map(w => `<span class="sugg-pill">${w}</span>`).join("");
-
-  qsa(".sugg-pill").forEach(pill=>{
-    pill.onclick = () => {
-      qs("#searchInput").value = pill.textContent;
-      performSearch();
-    };
-  });
-
-  requestAnimationFrame(()=>{
-    setTimeout(()=> sugBox.classList.add("visible"), 60);
   });
 }
 
-/* UI: header shrink + backToTop */
+/* ---------- UI events: header shrink + backToTop ---------- */
 window.addEventListener('scroll', ()=>{
   const nav = qs('#navbar');
   if(window.scrollY > 40) nav.classList.add('shrink'); else nav.classList.remove('shrink');
@@ -549,29 +572,16 @@ window.addEventListener('scroll', ()=>{
   if(document.documentElement.scrollTop > 220) btn.style.display = 'block'; else btn.style.display = 'none';
 });
 qs('#backToTop').onclick = ()=> window.scrollTo({top:0, behavior:'smooth'});
-// --- ESCAPE HTML ---
-function escapeHtml(str){
-  return str.replace(/[&<>"']/g, m => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[m]));
-}
 
-/* Utils */
+/* ---------- Utils ---------- */
 function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-// --- BACK TO TOP ---
-const backToTop = qs("#backToTop");
-window.addEventListener("scroll", ()=>{
-  backToTop.style.display = window.scrollY > 500 ? "block" : "none";
-});
-backToTop.onclick = ()=> window.scrollTo({top:0, behavior:"smooth"});
 
-/* Init */
-window.onload = loadProducts;
-// INIT
-displayProducts(products,1);
-createPagination(products,1,"");
-initSearchSuggestions();
+/* ---------- Init ---------- */
+window.addEventListener('DOMContentLoaded', ()=>{
+  loadProducts();
+  // attach suggestions after load will call initSearchSuggestions internally
+});
 </script>
 
 </body>
