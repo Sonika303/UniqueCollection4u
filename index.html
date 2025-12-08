@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
 <title>Unique Collection4u — Curated Deals & Expert Picks</title>
 
@@ -10,235 +10,145 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-/* ---------- Base ---------- */
 :root{
   --brand:#0d6efd;
   --brand-dark:#084cb8;
+  --bg:#f3f7ff;
   --card-pad:12px;
 }
 *{box-sizing:border-box}
 body{
   margin:0;
-  padding:0;
   font-family:Arial, sans-serif;
-  background:#f3f7ff;
+  background:var(--bg);
   color:#222;
-  scroll-behavior:smooth;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  scroll-behavior:smooth;
 }
 
-/* ---------- NAV / SEARCH ---------- */
+/* header / nav */
 header{
   background:rgba(13,110,253,0.95);
-  backdrop-filter:blur(6px);
   color:white;
-  padding:14px 20px;
+  padding:12px 16px;
   position:sticky;
   top:0;
   z-index:1200;
   display:flex;
   justify-content:center;
   align-items:center;
-  transition:padding .25s ease, background .25s ease;
 }
-
-header.shrink{
-  padding:8px 20px;
-  background:rgba(13,110,253,0.95);
-}
+header.shrink{ padding:8px 16px; }
 
 nav{
   display:flex;
+  gap:16px;
   align-items:center;
-  gap:18px;
   width:100%;
   max-width:1200px;
   justify-content:center;
 }
+nav a{ color:white; text-decoration:none; font-weight:700; font-size:14px; }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  font-size:15px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  transition:opacity .18s ease;
-}
-
-nav a:hover{ opacity:.8; }
-
+/* top controls (search + suggestions) */
 .top-controls{
   width:100%;
   max-width:1200px;
   margin:12px auto 0;
-  padding:0 20px;
+  padding:0 12px;
 }
-
-/* Search + suggestions */
 .search-bar{
-  margin-top:10px;
   display:flex;
   justify-content:center;
   width:100%;
 }
-
 .search-inner{
   display:flex;
   gap:8px;
   align-items:center;
   width:100%;
-  max-width:680px;
-  margin:0 auto;
+  max-width:720px;
 }
-
 .search-bar input{
   flex:1;
   padding:10px 12px;
   border-radius:8px;
-  border:1px solid #d7def7;
+  border:1px solid #dbe8ff;
   font-size:15px;
   outline:none;
-  box-shadow:0 1px 0 rgba(13,110,253,0.05) inset;
-  transition:box-shadow .18s ease, transform .12s ease;
+  background:white;
 }
-
-.search-bar input:focus{
-  box-shadow:0 4px 18px rgba(13,110,253,0.12);
-  transform:translateY(-1px);
-}
-
 .search-bar button{
   padding:10px 14px;
   border-radius:8px;
   border:0;
-  background:white;
-  color:var(--brand);
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 2px 8px rgba(13,110,253,0.08);
-}
-.search-bar button:hover{
   background:var(--brand);
   color:white;
+  font-weight:700;
+  cursor:pointer;
 }
-
-/* suggestions */
 #suggestions{
-  max-width:680px;
+  max-width:720px;
   margin:8px auto 0;
-  text-align:left;
-  font-size:13px;
-  color:#223;
-  padding:6px 8px;
-  border-radius:8px;
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  justify-content:flex-start;
+  transition:opacity .28s ease, transform .28s ease;
+  opacity:0;
+  transform:translateY(-6px);
 }
-
-/* suggestion pill */
+#suggestions.visible{ opacity:1; transform:translateY(0); }
 .sugg-pill{
-  background:rgba(255,255,255,0.9);
+  background:white;
   padding:6px 10px;
   border-radius:14px;
   border:1px solid rgba(13,110,253,0.06);
   cursor:pointer;
-  font-weight:600;
+  font-weight:700;
   color:var(--brand-dark);
+  font-size:13px;
 }
 
 /* results text */
 #resultsText{
   text-align:center;
   font-weight:700;
-  margin:16px 0 6px;
+  margin:14px 0 8px;
   font-size:16px;
 }
 
-/* ---------- PRODUCTS GRID ---------- */
-/* leave left/right gap and smaller cards */
+/* products */
 .products-wrap{
-  position:relative;
-  padding:22px 36px 40px;
+  padding:18px 12px 48px;
   max-width:1320px;
   margin:0 auto;
 }
-
 .products{
   display:grid;
-  grid-template-columns:repeat(5, 1fr); /* 5 per row */
-  gap:18px;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  width:100%;
 }
 
-/* moving semicircle background container (behind content) */
+/* card */
 .product-card{
-  background:linear-gradient(180deg, #fff, #fbfdff);
+  background:linear-gradient(180deg,#fff,#fbfdff);
   padding:var(--card-pad);
-  border-radius:12px;
+  border-radius:10px;
   box-shadow:0 6px 20px rgba(13,110,253,0.06);
   position:relative;
   overflow:visible;
-  transform-origin:center;
-  transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s ease;
-  min-height:260px;
   display:flex;
   flex-direction:column;
-  align-items:stretch;
-}
-
-/* left/right subtle gap effect */
-.products-wrap::before,
-.products-wrap::after{
-  content:"";
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:18px;
-  pointer-events:none;
-  background:linear-gradient(90deg, rgba(243,247,255,1), rgba(243,247,255,0));
-  z-index:0;
-}
-.products-wrap::after{
-  right:0;
-  left:auto;
-  background:linear-gradient(270deg, rgba(243,247,255,1), rgba(243,247,255,0));
-}
-.products-wrap::before{ left:0; }
-
-/* hover scale */
-.product-card:hover{
-  transform:scale(1.03);
-  box-shadow:0 22px 48px rgba(13,110,253,0.12);
-}
-
-/* semicircle animated shapes */
-.card-bg{
-  position:absolute;
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, rgba(13,110,253,0.18), rgba(13,110,253,0.06));
-  top:-40px;
-  right:-28px;
-  z-index:0;
-  filter:blur(6px);
-  animation:float 6s ease-in-out infinite;
+  min-height:250px;
   transform-origin:center;
+  transition:transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease, opacity .28s ease, filter .22s ease;
+  opacity:0;
+  filter:translateY(6px);
 }
-.card-bg.alt{
-  width:120px;
-  height:120px;
-  left:-30px;
-  right:auto;
-  top:auto;
-  bottom:-30px;
-  animation-duration:8s;
-  opacity:0.75;
-}
+.product-card.visible{ opacity:1; transform:translateY(0); filter:none; }
+.product-card:hover{ transform:scale(1.03); box-shadow:0 20px 44px rgba(13,110,253,0.12); }
 
 /* image */
 .product-card img{
@@ -246,140 +156,94 @@ nav a:hover{ opacity:.8; }
   height:150px;
   object-fit:contain;
   margin-bottom:8px;
-  z-index:2;
 }
 
-/* product name: 2-line clamp style (A option). Smooth expand using max-height */
+/* product name (A: 2-line clamp + expand) */
 .product-name{
   display:-webkit-box;
   -webkit-line-clamp:2;
   -webkit-box-orient:vertical;
   overflow:hidden;
-  line-height:1.18;
   font-weight:700;
   font-size:14px;
   margin:6px 0;
-  z-index:2;
-  transition:max-height .28s ease;
-  max-height:2.6em; /* approx 2 lines */
+  transition:max-height .24s ease;
+  max-height:2.8em;
 }
-
-/* expanded class removes clamp: set large max-height to animate */
 .product-name.expanded{
   -webkit-line-clamp:unset;
-  max-height:500px;
+  max-height:1000px;
 }
 
-/* details area */
+/* bottom row */
 .card-bottom{
   margin-top:auto;
   display:flex;
-  gap:8px;
-  align-items:center;
   justify-content:space-between;
-  z-index:2;
+  align-items:center;
+  gap:8px;
 }
-
-/* CTA */
 .product-link{
-  margin-top:8px;
-  display:inline-block;
-  text-align:center;
   background:var(--brand);
+  color:white;
+  text-decoration:none;
   padding:8px 10px;
   border-radius:8px;
-  text-decoration:none;
-  color:white;
   font-weight:700;
-  transition:transform .12s ease;
   white-space:nowrap;
 }
-.product-link:hover{ background:var(--brand-dark); transform:translateY(-2px); }
-
-/* more/less button */
 .more-btn{
-  font-size:13px;
-  color:var(--brand);
-  background:none;
   border:0;
+  background:none;
+  color:var(--brand);
+  font-weight:800;
   cursor:pointer;
-  font-weight:700;
-  padding:4px 6px;
+  font-size:13px;
 }
 
-/* small text */
-.small-note{ font-size:13px; color:#4a5568; }
-
-/* pagination */
+/* pagination: Prev always present (option 1 style) */
 .pagination{
   display:flex;
   justify-content:center;
-  margin:22px 0 40px;
   gap:8px;
+  margin:18px 0 40px;
   flex-wrap:wrap;
 }
-
-.pagination button{
+.pagination .btn{
   padding:8px 12px;
   border-radius:8px;
   border:0;
   background:var(--brand);
-  color:#fff;
+  color:white;
   font-weight:700;
   cursor:pointer;
 }
-.pagination button.disabled{ background:#cfcfcf; cursor:default; color:#444; }
+.pagination .btn.disabled{ background:#cfcfcf; color:#444; cursor:default; }
 
 /* back to top */
 #backToTop{
   position:fixed;
-  bottom:22px;
-  right:22px;
+  right:18px;
+  bottom:18px;
   background:var(--brand);
   color:white;
-  padding:12px 14px;
+  padding:12px;
   border-radius:50%;
   font-size:18px;
-  cursor:pointer;
   display:none;
-  box-shadow:0 6px 18px rgba(13,110,253,0.14);
+  box-shadow:0 10px 28px rgba(13,110,253,0.12);
+  cursor:pointer;
 }
 
 /* footer */
-footer{
-  background:var(--brand);
-  color:white;
-  text-align:center;
-  padding:18px;
-  margin-top:30px;
-}
-.social-links a{ color:white; margin:0 10px; font-size:20px; }
-
-/* animations */
-@keyframes float{
-  0%{ transform:translateY(0) rotate(0deg); }
-  50%{ transform:translateY(14px) rotate(8deg); }
-  100%{ transform:translateY(0) rotate(0deg); }
-}
+footer{ background:var(--brand); color:white; text-align:center; padding:16px 12px; margin-top:24px; }
+footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 
 /* responsive */
-@media (max-width:1100px){
-  .products{ grid-template-columns:repeat(4,1fr); }
-}
-@media (max-width:880px){
-  .products{ grid-template-columns:repeat(3,1fr); }
-  .card-bg{ display:none; }
-}
-@media (max-width:620px){
-  nav{ gap:10px; font-size:14px; }
-  .products{ grid-template-columns:repeat(2,1fr); gap:14px; }
-  .products-wrap{ padding:18px; }
-  .search-inner{ max-width:92%; }
-}
-@media (max-width:420px){
-  .products{ grid-template-columns:repeat(1,1fr); }
-  .product-card{ min-height:220px; }
-}
+@media (max-width:1100px){ .products{ grid-template-columns:repeat(4,1fr); } }
+@media (max-width:880px){ .products{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:620px){ .products{ grid-template-columns:repeat(2,1fr); } .search-inner{ max-width:94%; } }
+@media (max-width:420px){ .products{ grid-template-columns:repeat(1,1fr); } .product-card{ min-height:220px; } }
 </style>
 </head>
 <body>
@@ -407,10 +271,10 @@ footer{
 
 <div class="products-wrap">
   <div class="products" id="productsContainer"></div>
-  <div class="pagination" id="paginationContainer"></div>
+  <div class="pagination" id="paginationContainer" aria-label="Pagination"></div>
 </div>
 
-<i id="backToTop" class="fas fa-arrow-up"></i>
+<i id="backToTop" class="fas fa-arrow-up" title="Back to top"></i>
 
 <footer>
   <div class="social-links">
@@ -424,48 +288,48 @@ footer{
 </footer>
 
 <script>
-/* ---------- State ---------- */
+/* State */
 let products = [];
 let currentPage = 1;
 const productsPerPage = 20;
 
-/* ---------- Helpers ---------- */
-function qs(sel){ return document.querySelector(sel); }
-function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
+/* Helpers */
+const qs = s => document.querySelector(s);
+const qsa = s => Array.from(document.querySelectorAll(s));
 function getParams(){
   const u = new URL(window.location.href);
-  return {
-    search: u.searchParams.get('search') || '',
-    page: parseInt(u.searchParams.get('page')) || 1
-  };
+  return { search: u.searchParams.get('search') || '', page: parseInt(u.searchParams.get('page')) || 1 };
+}
+function navigateTo(search, page){
+  const url = new URL(window.location.href);
+  url.searchParams.set('search', search || '');
+  url.searchParams.set('page', page || 1);
+  window.location.href = url.pathname + '?' + url.searchParams.toString();
 }
 
-/* ---------- CSV loader (simple) ---------- */
+/* CSV loader */
 async function loadProducts(){
   try{
     const res = await fetch('products.csv');
     const text = await res.text();
     const rows = text.split('\n').slice(1).filter(Boolean);
-
-    // parse - lightweight split at first 3 commas to allow commas in name if any
     products = rows.map(r=>{
-      // split into 4 parts only
+      // split into 4 parts only (name,img,alt,link) - allow commas in link
       const parts = r.split(',');
-      const name = parts[0]||'Unnamed Product';
-      const img = parts[1]||'';
-      const alt = parts[2]||'';
-      // join remaining as link in case link contains commas
-      const link = parts.slice(3).join(',') || '#';
-      return { name:name.trim(), img:img.trim(), alt:alt.trim(), link:link.trim() };
+      const name = (parts[0]||'').trim();
+      const img = (parts[1]||'').trim();
+      const alt  = (parts[2]||'').trim();
+      const link = (parts.slice(3).join(',')||'').trim();
+      return { name: name||'Unnamed Product', img, alt, link };
     });
 
-    // Show suggestions and handle params
+    // apply params
     const params = getParams();
     document.getElementById('searchInput').value = params.search;
     currentPage = params.page;
 
-    // Randomize on homepage (no search AND first page)
-    if(!params.search && currentPage === 1){
+    // randomize only for homepage (no search && page==1)
+    if(!params.search && params.page === 1){
       products = products.sort(()=>Math.random() - 0.5);
     }
 
@@ -473,24 +337,21 @@ async function loadProducts(){
     initSearchSuggestions();
   }catch(err){
     console.error(err);
-    document.getElementById('productsContainer').innerHTML = '<p style="color:red;font-weight:700">Failed to load products.csv</p>';
+    qs('#productsContainer').innerHTML = '<p style="color:red;font-weight:700">Failed to load products.csv</p>';
   }
 }
 
-/* ---------- Render ---------- */
+/* Render products + smooth fade-in */
 function renderProducts(searchQuery = ''){
-  const container = document.getElementById('productsContainer');
-  const resultsText = document.getElementById('resultsText');
+  const container = qs('#productsContainer');
+  const resultsText = qs('#resultsText');
   container.innerHTML = '';
 
   if(searchQuery.trim()){
     resultsText.textContent = `Showing results for: "${searchQuery}"`;
-  } else {
-    resultsText.textContent = '';
-  }
+  } else resultsText.textContent = '';
 
   const filtered = products.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-
   const totalPages = Math.max(1, Math.ceil(filtered.length / productsPerPage));
   currentPage = Math.min(currentPage, totalPages) || 1;
 
@@ -498,50 +359,42 @@ function renderProducts(searchQuery = ''){
   const pageProducts = filtered.slice(start, start + productsPerPage);
 
   pageProducts.forEach((p, idx) => {
-    const globalIndex = start + idx; // unique id across pages
+    const globalIndex = start + idx;
     const card = document.createElement('div');
     card.className = 'product-card';
-
-    // create inner HTML
-    // use small alt-safe fallback for image
     const imgSrc = p.img || 'https://via.placeholder.com/240x150?text=No+Image';
     card.innerHTML = `
-      <div class="card-bg"></div>
-      <div class="card-bg alt" aria-hidden="true"></div>
-      <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(p.alt||p.name)}">
-      <div class="meta">
-        <p class="product-name" id="name-${globalIndex}">${escapeHtml(p.name)}</p>
-      </div>
+      <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(p.alt || p.name)}">
+      <p class="product-name" id="name-${globalIndex}">${escapeHtml(p.name)}</p>
       <div class="card-bottom">
-        <div>
-          ${p.link ? `<a class="product-link" href="${escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer">Check Price On Amazon</a>` : ''}
-        </div>
-        <div>
-          ${p.name.length > 75 ? `<button class="more-btn" data-id="${globalIndex}">More</button>` : ''}
-        </div>
+        <div>${p.link ? `<a class="product-link" href="${escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer">Check Price On Amazon</a>` : ''}</div>
+        <div>${p.name.length > 75 ? `<button class="more-btn" data-id="${globalIndex}">More</button>` : ''}</div>
       </div>
     `;
-
     container.appendChild(card);
+
+    // trigger fade-in per card for smooth appearance
+    requestAnimationFrame(()=> {
+      setTimeout(()=> card.classList.add('visible'), 20 + (idx * 20));
+    });
   });
 
   renderPagination(totalPages, searchQuery);
   attachMoreButtons();
 }
 
-/* ---------- More / Less handling (A: 2-line clamp -> expand) ---------- */
+/* More / Less (2-line clamp -> expand) */
 function attachMoreButtons(){
   qsa('.more-btn').forEach(btn=>{
-    btn.onclick = (e)=>{
+    btn.onclick = () => {
       const id = btn.getAttribute('data-id');
       const nameEl = qs('#name-' + id);
       if(!nameEl) return;
       const expanded = nameEl.classList.toggle('expanded');
       btn.textContent = expanded ? 'Less' : 'More';
-      // ensure scroll won't jump: keep card in view slightly
-      const card = btn.closest('.product-card');
+      // ensure card visible after expand
       if(expanded){
-        // optional: scroll into view if truncated partly
+        const card = btn.closest('.product-card');
         const rect = card.getBoundingClientRect();
         if(rect.top < 80 || rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
           card.scrollIntoView({behavior:'smooth', block:'nearest'});
@@ -551,66 +404,61 @@ function attachMoreButtons(){
   });
 }
 
-/* ---------- Pagination ---------- */
+/* Pagination (Prev always present) */
 function renderPagination(totalPages, searchQuery){
-  const pag = document.getElementById('paginationContainer');
+  const pag = qs('#paginationContainer');
   pag.innerHTML = '';
 
-  if(totalPages <= 1) return;
+  // Prev (always present)
+  const prev = document.createElement('button');
+  prev.className = 'btn';
+  prev.textContent = 'Prev';
+  if(currentPage === 1) prev.classList.add('disabled');
+  else prev.onclick = () => navigateTo(searchQuery, currentPage - 1);
+  pag.appendChild(prev);
 
-  const createBtn = (txt, page, disabled=false) => {
-    const b = document.createElement('button');
-    b.textContent = txt;
-    if(disabled) b.classList.add('disabled');
-    else b.onclick = ()=> navigateTo(searchQuery, page);
-    return b;
-  };
-
-  // Prev
-  pag.appendChild(createBtn('Prev', Math.max(1, currentPage - 1), currentPage === 1));
-
-  // numeric (limit to window)
+  // numeric window
   const maxButtons = 7;
   let start = Math.max(1, currentPage - Math.floor(maxButtons/2));
   let end = Math.min(totalPages, start + maxButtons - 1);
   if(end - start < maxButtons - 1) start = Math.max(1, end - maxButtons + 1);
 
   for(let i = start; i <= end; i++){
-    const b = createBtn(i, i, false);
-    if(i === currentPage) b.classList.add('disabled');
+    const b = document.createElement('button');
+    b.className = 'btn' + (i === currentPage ? ' disabled' : '');
+    b.textContent = i;
+    if(i !== currentPage) b.onclick = () => navigateTo(searchQuery, i);
     pag.appendChild(b);
   }
 
-  // Next
-  pag.appendChild(createBtn('Next', Math.min(totalPages, currentPage + 1), currentPage === totalPages));
+  // Next (always present)
+  const next = document.createElement('button');
+  next.className = 'btn';
+  next.textContent = 'Next';
+  if(currentPage === totalPages) next.classList.add('disabled');
+  else next.onclick = () => navigateTo(searchQuery, currentPage + 1);
+  pag.appendChild(next);
 }
 
-function navigateTo(search, page){
-  const url = new URL(window.location.href);
-  url.searchParams.set('search', search || '');
-  url.searchParams.set('page', page || 1);
-  window.location.href = url.pathname + '?' + url.searchParams.toString();
-}
-
-/* ---------- Search ---------- */
+/* Search */
 function performSearch(){
-  const q = document.getElementById('searchInput').value.trim();
+  const q = qs('#searchInput').value.trim();
   navigateTo(q, 1);
 }
 
-/* ---------- Suggestions (live) ---------- */
+/* Suggestions (smooth show/hide) */
 function initSearchSuggestions(){
-  const input = document.getElementById('searchInput');
-  const suggestions = document.getElementById('suggestions');
+  const input = qs('#searchInput');
+  const suggestions = qs('#suggestions');
 
   input.addEventListener('input', function(){
     const val = this.value.trim().toLowerCase();
     if(!val){
+      suggestions.classList.remove('visible');
       suggestions.innerHTML = '';
       return;
     }
 
-    // find startsWith matches (unique)
     const matches = [];
     const seen = new Set();
     for(const p of products){
@@ -621,8 +469,6 @@ function initSearchSuggestions(){
       }
       if(matches.length >= 8) break;
     }
-
-    // if none, try includes
     if(matches.length === 0){
       for(const p of products){
         const nameLower = p.name.toLowerCase();
@@ -634,44 +480,39 @@ function initSearchSuggestions(){
       }
     }
 
-    suggestions.innerHTML = matches.map(m => `<div class="sugg-pill" role="button" tabindex="0" data-val="${escapeHtmlAttr(m)}">${escapeHtml(m)}</div>`).join('');
+    suggestions.innerHTML = matches.map(m => `<div class="sugg-pill" data-val="${escapeAttr(m)}">${escapeHtml(m)}</div>`).join('');
+    if(matches.length) suggestions.classList.add('visible');
+    else suggestions.classList.remove('visible');
 
-    // attach click handlers
     qsa('.sugg-pill').forEach(el=>{
-      el.onclick = ()=> {
+      el.onclick = () => {
         const v = el.getAttribute('data-val');
         input.value = v;
-        // optionally run search automatically:
+        // show smooth suggestions remain visible briefly
+        suggestions.classList.add('visible');
+        // optionally auto-search:
         // performSearch();
       };
-      el.onkeypress = (e) => { if(e.key === 'Enter') el.onclick(); };
     });
   });
 
-  // submit on Enter
-  input.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter') performSearch();
-  });
+  input.addEventListener('keydown', (e) => { if(e.key === 'Enter') performSearch(); });
 }
 
-/* ---------- Misc UI ---------- */
+/* UI: header shrink + backToTop */
 window.addEventListener('scroll', ()=>{
-  const nav = document.getElementById('navbar');
-  if(window.scrollY > 40) nav.classList.add('shrink');
-  else nav.classList.remove('shrink');
-
-  const btn = document.getElementById('backToTop');
-  if(document.documentElement.scrollTop > 220) btn.style.display = 'block';
-  else btn.style.display = 'none';
+  const nav = qs('#navbar');
+  if(window.scrollY > 40) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+  const btn = qs('#backToTop');
+  if(document.documentElement.scrollTop > 220) btn.style.display = 'block'; else btn.style.display = 'none';
 });
+qs('#backToTop').onclick = ()=> window.scrollTo({top:0, behavior:'smooth'});
 
-document.getElementById('backToTop').onclick = ()=> window.scrollTo({top:0, behavior:'smooth'});
+/* Utils */
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
-/* ---------- Utilities ---------- */
-function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function escapeHtmlAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-
-/* ---------- Init ---------- */
+/* Init */
 window.onload = loadProducts;
 </script>
 </body>
