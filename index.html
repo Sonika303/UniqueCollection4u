@@ -29,7 +29,7 @@ header{
   top:0;
   z-index:1000;
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
   transition:padding .25s ease, background .25s ease;
 }
@@ -104,18 +104,11 @@ nav a:hover{
 .products{
   padding:20px;
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(230px,1fr));
+  grid-template-columns:repeat(5,1fr); /* FIXED 5 PER ROW */
   gap:20px;
 }
 
-.fade-in{
-  animation:fade .6s ease;
-}
-@keyframes fade{
-  from{opacity:0; transform:translateY(10px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
+/* CARD */
 .product-card{
   background:white;
   padding:15px;
@@ -138,18 +131,20 @@ nav a:hover{
 
 /* PRODUCT NAME */
 .product-name{
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
+  max-height:42px;
   overflow:hidden;
+  transition:.25s ease;
+}
+
+.more-btn{
+  margin-top:6px;
+  font-size:13px;
+  color:#0d6efd;
   cursor:pointer;
+  background:none;
+  border:none;
 }
 
-.product-name:hover{
-  -webkit-line-clamp:unset;
-}
-
-/* BUTTON */
 .product-link{
   margin-top:10px;
   display:block;
@@ -219,6 +214,7 @@ footer{
   margin:0 10px;
   font-size:24px;
 }
+
 </style>
 </head>
 
@@ -259,16 +255,16 @@ footer{
 <script>
 let products = [];
 let currentPage = 1;
-const productsPerPage = 10;
+const productsPerPage = 20; /* UPDATED */
 
-/* Sticky Shrink Navbar */
+/* Sticky Navbar */
 window.addEventListener("scroll", () => {
   const nav = document.getElementById("navbar");
   if (window.scrollY > 40) nav.classList.add("shrink");
   else nav.classList.remove("shrink");
 });
 
-/* URL Params */
+/* Params */
 function getParams() {
     const url = new URL(window.location.href);
     return {
@@ -311,9 +307,7 @@ function renderProducts(searchQuery = "") {
 
     if (searchQuery.trim().length > 0) {
         resultsText.textContent = `Showing results for: "${searchQuery}"`;
-    } else {
-        resultsText.textContent = "";
-    }
+    } else resultsText.textContent = "";
 
     let filtered = products.filter(p =>
         p.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -323,20 +317,20 @@ function renderProducts(searchQuery = "") {
     currentPage = Math.min(currentPage, totalPages) || 1;
 
     const start = (currentPage - 1) * productsPerPage;
-    const end = start + productsPerPage;
+    const pageProducts = filtered.slice(start, start + productsPerPage);
 
-    const pageProducts = filtered.slice(start, end);
-
-    pageProducts.forEach((p) => {
+    pageProducts.forEach((p, index) => {
         const card = document.createElement("div");
         card.className = "product-card fade-in";
 
+        const shortText = p.name.slice(0, 60);
+        const isLong = p.name.length > 60;
+
         card.innerHTML = `
           <img src="${p.img}" alt="${p.alt}">
-          <p class="product-name">${p.name}</p>
-          <a href="${p.link}" class="product-link" target="_blank">
-            Check Price On Amazon
-          </a>
+          <p class="product-name" id="name-${index}">${shortText}${isLong ? "..." : ""}</p>
+          ${isLong ? `<button class="more-btn" onclick="toggleName(${index}, '${p.name.replace(/'/g,"")}')">More</button>` : ""}
+          <a href="${p.link}" class="product-link" target="_blank">Check Price On Amazon</a>
         `;
 
         container.appendChild(card);
@@ -345,43 +339,51 @@ function renderProducts(searchQuery = "") {
     renderPagination(totalPages, searchQuery);
 }
 
+/* More/Less Toggle */
+function toggleName(id, fullText){
+    const el = document.getElementById("name-" + id);
+    const btn = event.target;
+
+    if(btn.textContent === "More"){
+        el.textContent = fullText;
+        btn.textContent = "Less";
+    } else {
+        el.textContent = fullText.slice(0,60) + "...";
+        btn.textContent = "More";
+    }
+}
+
 /* Pagination */
 function renderPagination(totalPages, searchQuery) {
     const pag = document.getElementById("paginationContainer");
     pag.innerHTML = "";
     if (totalPages <= 1) return;
 
-    for (let i = 1; i <= totalPages; i++) {
+    for(let i=1;i<=totalPages;i++){
         const btn = document.createElement("button");
         btn.textContent = i;
-
-        if (i === currentPage) btn.classList.add("disabled");
-
+        if(i === currentPage) btn.classList.add("disabled");
         btn.onclick = () =>
             window.location.href = `?search=${encodeURIComponent(searchQuery)}&page=${i}`;
-
         pag.appendChild(btn);
     }
 }
 
 /* Search */
 function performSearch() {
-    const query = document.getElementById("searchInput").value.trim();
-    window.location.href = `?search=${encodeURIComponent(query)}&page=1`;
+    const q = document.getElementById("searchInput").value.trim();
+    window.location.href = `?search=${encodeURIComponent(q)}&page=1`;
 }
 
 /* Back To Top */
 window.onscroll = function(){
     const btn = document.getElementById("backToTop");
-    if (document.documentElement.scrollTop > 200) {
-        btn.style.display = "block";
-    } else {
-        btn.style.display = "none";
-    }
+    if (document.documentElement.scrollTop > 200) btn.style.display = "block";
+    else btn.style.display = "none";
 };
 
 document.getElementById("backToTop").onclick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior:"smooth" });
 };
 
 window.onload = loadProducts;
