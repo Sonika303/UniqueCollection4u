@@ -9,6 +9,10 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
+<!-- Google AdSense Auto Ads -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9860497702017992"
+     crossorigin="anonymous"></script>
+
 <style>
 :root{
   --brand:#0d6efd;
@@ -279,7 +283,7 @@ footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 
 /* responsive */
 @media (max-width:1100px){ .products{ grid-template-columns:repeat(4,1fr); } }
-@media (max-width:880px){ .products{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:880px){ .products{ grid-template-columns:repeat(3,1fr); } .search-inner{ max-width:94%; } }
 @media (max-width:620px){ .products{ grid-template-columns:repeat(2,1fr); } .search-inner{ max-width:94%; } }
 @media (max-width:420px){ .products{ grid-template-columns:repeat(1,1fr); } .product-card{ min-height:220px; } }
 </style>
@@ -351,11 +355,9 @@ async function loadProducts(){
     if(!res.ok) throw new Error('products.csv not found');
     const text = await res.text();
     const rows = text.split(/\r?\n/).filter(Boolean);
-    // If file has header, remove it if it contains 'name' in first row
     if(rows.length && rows[0].toLowerCase().includes('name') && rows[0].toLowerCase().includes('image')) rows.shift();
 
     products = rows.map(r => {
-      // split into 4 parts only - allow commas in link (everything after 3rd comma)
       const parts = r.split(',');
       const name = (parts[0] || '').trim();
       const img  = (parts[1] || '').trim();
@@ -364,12 +366,10 @@ async function loadProducts(){
       return { name: name || 'Unnamed Product', img, alt, link };
     });
 
-    // set initial search input from URL params if present
     const params = getParams();
     qs('#searchInput').value = params.search || '';
     currentPage = params.page || 1;
 
-    // randomize only for homepage (no search && page==1)
     if(!params.search && params.page === 1) products = products.sort(()=>Math.random()-0.5);
 
     renderProducts(params.search || '');
@@ -409,14 +409,12 @@ function renderProducts(searchQuery = ''){
   const start = (currentPage - 1) * productsPerPage;
   const pageProducts = filtered.slice(start, start + productsPerPage);
 
-  // empty state
   if(pageProducts.length === 0){
     container.innerHTML = `<p style="text-align:center;font-weight:700;color:#666;padding:28px">No products found.</p>`;
     renderPagination(totalPages, searchQuery);
     return;
   }
 
-  // build cards
   pageProducts.forEach((p, idx) => {
     const globalIndex = start + idx;
     const card = document.createElement('div');
@@ -435,7 +433,6 @@ function renderProducts(searchQuery = ''){
     `;
     container.appendChild(card);
 
-    // staggered appear
     requestAnimationFrame(()=> {
       setTimeout(()=> card.classList.add('visible'), 20 + (idx * 18));
     });
@@ -470,7 +467,6 @@ function renderPagination(totalPages, searchQuery){
   const pag = qs('#paginationContainer');
   pag.innerHTML = '';
 
-  // Prev (always present)
   const prev = document.createElement('button');
   prev.className = 'btn';
   prev.textContent = 'Prev';
@@ -478,7 +474,6 @@ function renderPagination(totalPages, searchQuery){
   else prev.onclick = () => navigateTo(searchQuery, currentPage - 1);
   pag.appendChild(prev);
 
-  // numeric window
   const maxButtons = 7;
   let start = Math.max(1, currentPage - Math.floor(maxButtons/2));
   let end = Math.min(totalPages, start + maxButtons - 1);
@@ -492,7 +487,6 @@ function renderPagination(totalPages, searchQuery){
     pag.appendChild(b);
   }
 
-  // Next (always present)
   const next = document.createElement('button');
   next.className = 'btn';
   next.textContent = 'Next';
@@ -580,7 +574,6 @@ function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/'/g
 /* ---------- Init ---------- */
 window.addEventListener('DOMContentLoaded', ()=>{
   loadProducts();
-  // attach suggestions after load will call initSearchSuggestions internally
 });
 </script>
 
