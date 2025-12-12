@@ -286,21 +286,32 @@ footer{
 }
 footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 
+/* SEO Content Section */
+.seo-content{
+  max-width:1200px;
+  margin:24px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+}
+.seo-content h2{
+  font-size:20px;
+  color:var(--brand-dark);
+  margin-bottom:12px;
+}
+.seo-content p{
+  font-size:14px;
+  line-height:1.7;
+  color:#333;
+  margin-bottom:12px;
+}
+
 /* responsive */
 @media (max-width:1100px){ .products{ grid-template-columns:repeat(4,1fr); } }
 @media (max-width:880px){ .products{ grid-template-columns:repeat(3,1fr); } .search-inner{ max-width:94%; } }
 @media (max-width:620px){ .products{ grid-template-columns:repeat(2,1fr); } .search-inner{ max-width:94%; } }
 @media (max-width:420px){ .products{ grid-template-columns:repeat(1,1fr); } .product-card{ min-height:220px; } }
-
-/* HIDDEN SEO SECTION */
-.seo-hidden{
-  position:absolute;
-  left:-9999px;
-  width:1px;
-  height:1px;
-  overflow:hidden;
-  aria-hidden:true;
-}
 </style>
 </head>
 <body>
@@ -335,48 +346,25 @@ footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 
 <p id="resultsText" aria-live="polite"></p>
 
-<!-- HIDDEN SEO CONTENT -->
-<div class="seo-hidden" aria-hidden="true">
-
-  <h2>Exclusive Affiliate Deals and Trending Products</h2>
-  <p>Discover top-rated affiliate deals on electronics, fashion, toys, home decor, kitchenware, fitness products, anime merchandise, and jewellery. Unique Collection4u carefully curates items for best prices and quality. Shop online for trending gadgets, stylish apparel, collectibles, and premium accessories.</p>
-
-  <h2>Ultimate Shopping Experience</h2>
-  <p>Our affiliate store provides honest recommendations with detailed product information, smooth navigation, and easy-to-access links. Find best deals on Amazon, eBay, and other trusted online stores. Explore categories like smartphones, laptops, T-shirts, anime figures, and home essentials at discounted rates.</p>
-
-  <h2>FAQ for Shoppers</h2>
-  <div itemscope itemtype="https://schema.org/FAQPage">
-    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-      <h3 itemprop="name">Are the affiliate links safe to use?</h3>
-      <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <p itemprop="text">Yes, all links redirect to trusted e-commerce sites like Amazon, ensuring a secure shopping experience.</p>
-      </div>
-    </div>
-
-    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-      <h3 itemprop="name">Do you offer deals on international shipping products?</h3>
-      <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <p itemprop="text">We include products from stores that ship internationally, with clear information on availability and delivery.</p>
-      </div>
-    </div>
-
-    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-      <h3 itemprop="name">How often are new products added?</h3>
-      <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <p itemprop="text">We update our curated collection weekly, adding trending products and top deals across all categories.</p>
-      </div>
-    </div>
-
-    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-      <h3 itemprop="name">Can I trust the product recommendations?</h3>
-      <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <p itemprop="text">Yes, our team handpicks products based on quality, popularity, and value, ensuring reliable recommendations for our visitors.</p>
-      </div>
-    </div>
-  </div>
-
-  <h2>Additional Keyword-Rich Content</h2>
-  <p>Shop trending electronics including smartphones, smartwatches, headphones, and home automation products. Discover fashion apparel, shoes, jewellery, accessories, and anime collectibles. Browse home decor, kitchenware, fitness gear, toys, and more, all handpicked for quality and affordability. Unique Collection4u is your go-to online affiliate store for best deals and expert product recommendations.</p>
+<!-- SEO Content Section -->
+<div class="seo-content">
+  <h2>Discover the Best Deals Online</h2>
+  <p>Welcome to Unique Collection4u, your ultimate destination for curated affiliate deals, top trending products, and expert picks. Explore a wide range of categories including fashion, electronics, toys, home decor, kitchenware, fitness equipment, anime merchandise, jewellery, and more.</p>
+  
+  <h2>Shop With Confidence</h2>
+  <p>Our team handpicks products to ensure quality, affordability, and value. From the latest gadgets and trending fashion to essential home items, we provide honest recommendations to save you time and money.</p>
+  
+  <h2>Top Categories You’ll Love</h2>
+  <p>Browse through our extensive collection of fashion items, stylish accessories, home and kitchen products, fitness gear, toys, anime collectibles, electronics, and jewellery. Each category is optimized with the best products curated for online shoppers.</p>
+  
+  <h2>Why Choose Unique Collection4u</h2>
+  <p>We offer trustworthy affiliate links, detailed product descriptions, smooth browsing experience, and SEO-optimized content to help users find exactly what they need. Stay ahead with our regularly updated product lists and recommendations.</p>
+  
+  <h2>Expert Tips & Product Guides</h2>
+  <p>Discover buying guides, product comparisons, and expert tips to help you make informed purchasing decisions. Whether you are shopping for fashion, tech gadgets, or home decor, our expert insights guide you through the best options available online.</p>
+  
+  <h2>Stay Updated</h2>
+  <p>Follow us on social media for the latest deals, offers, and trending products. Join our community to get notifications on new products, seasonal discounts, and exclusive affiliate deals.</p>
 </div>
 
 <div class="products-wrap">
@@ -398,7 +386,7 @@ footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 </footer>
 
 <script>
-// Keep your existing JS script intact (products load, search, pagination, etc.)
+// Existing JS script from your code (loadProducts, search, pagination, etc.)
 /* ---------- State ---------- */
 let products = [];
 let currentPage = 1;
@@ -409,20 +397,234 @@ const qs = s => document.querySelector(s);
 const qsa = s => Array.from(document.querySelectorAll(s));
 
 /* ---------- CSV loader ---------- */
-async function loadProducts(){ /* your existing code */ }
-function getParams(){ /* ... */ }
-function navigateTo(search, page){ /* ... */ }
-function renderProducts(searchQuery = ''){ /* ... */ }
-function attachMoreButtons(){ /* ... */ }
-function renderPagination(totalPages, searchQuery){ /* ... */ }
-function performSearch(){ /* ... */ }
-function initSearchSuggestions(){ /* ... */ }
-window.addEventListener('scroll', ()=>{ /* ... */ });
+async function loadProducts(){
+  try{
+    const res = await fetch('products.csv', {cache: "no-store"});
+    if(!res.ok) throw new Error('products.csv not found');
+    const text = await res.text();
+    const rows = text.split(/\r?\n/).filter(Boolean);
+    if(rows.length && rows[0].toLowerCase().includes('name') && rows[0].toLowerCase().includes('image')) rows.shift();
+
+    products = rows.map(r => {
+      const parts = r.split(',');
+      const name = (parts[0] || '').trim();
+      const img  = (parts[1] || '').trim();
+      const alt  = (parts[2] || '').trim();
+      const link = (parts.slice(3).join(',') || '').trim();
+      return { name: name || 'Unnamed Product', img, alt, link };
+    });
+
+    const params = getParams();
+    qs('#searchInput').value = params.search || '';
+    currentPage = params.page || 1;
+
+    if(!params.search && params.page === 1) products = products.sort(()=>Math.random()-0.5);
+
+    renderProducts(params.search || '');
+    initSearchSuggestions();
+  }catch(err){
+    console.error(err);
+    const container = qs('#productsContainer');
+    container.innerHTML = `<p style="color:red;font-weight:700">Failed to load products.csv — ${err.message}</p>`;
+  }
+}
+
+/* ---------- URL helpers ---------- */
+function getParams(){
+  const u = new URL(window.location.href);
+  return { search: u.searchParams.get('search') || '', page: parseInt(u.searchParams.get('page')) || 1 };
+}
+function navigateTo(search, page){
+  const url = new URL(window.location.href);
+  url.searchParams.set('search', search || '');
+  url.searchParams.set('page', page || 1);
+  window.location.href = url.pathname + '?' + url.searchParams.toString();
+}
+
+/* ---------- Render products ---------- */
+function renderProducts(searchQuery = ''){
+  const container = qs('#productsContainer');
+  const resultsText = qs('#resultsText');
+  container.innerHTML = '';
+
+  if(searchQuery && searchQuery.trim()) resultsText.textContent = `Showing results for: "${searchQuery}"`;
+  else resultsText.textContent = '';
+
+  const filtered = products.filter(p => p.name.toLowerCase().includes((searchQuery||'').toLowerCase()));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / productsPerPage));
+  currentPage = Math.min(currentPage, totalPages) || 1;
+
+  const start = (currentPage - 1) * productsPerPage;
+  const pageProducts = filtered.slice(start, start + productsPerPage);
+
+  if(pageProducts.length === 0){
+    container.innerHTML = `<p style="text-align:center;font-weight:700;color:#666;padding:28px">No products found.</p>`;
+    renderPagination(totalPages, searchQuery);
+    return;
+  }
+
+  pageProducts.forEach((p, idx) => {
+    const globalIndex = start + idx;
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    const imgSrc = p.img || 'https://via.placeholder.com/240x150?text=No+Image';
+    const safeName = escapeHtml(p.name);
+    const safeAlt = escapeHtml(p.alt || p.name);
+
+    card.innerHTML = `
+      <img src="${escapeHtml(imgSrc)}" alt="${safeAlt}">
+      <p class="product-name" id="name-${globalIndex}">${safeName}</p>
+      <div class="card-bottom">
+        <div>${p.link ? `<a class="product-link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener noreferrer">Check Price On Amazon</a>` : ''}</div>
+        <div>${(p.name.length > 75) ? `<button class="more-btn" data-id="${globalIndex}">More</button>` : ''}</div>
+      </div>
+    `;
+    container.appendChild(card);
+
+    requestAnimationFrame(()=> {
+      setTimeout(()=> card.classList.add('visible'), 20 + (idx * 18));
+    });
+  });
+
+  renderPagination(totalPages, searchQuery);
+  attachMoreButtons();
+}
+
+/* ---------- More / Less ---------- */
+function attachMoreButtons(){
+  qsa('.more-btn').forEach(btn=>{
+    btn.onclick = () => {
+      const id = btn.getAttribute('data-id');
+      const nameEl = qs('#name-' + id);
+      if(!nameEl) return;
+      const expanded = nameEl.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Less' : 'More';
+      if(expanded){
+        const card = btn.closest('.product-card');
+        const rect = card.getBoundingClientRect();
+        if(rect.top < 80 || rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
+          card.scrollIntoView({behavior:'smooth', block:'nearest'});
+        }
+      }
+    };
+  });
+}
+
+/* ---------- Pagination ---------- */
+function renderPagination(totalPages, searchQuery){
+  const pag = qs('#paginationContainer');
+  pag.innerHTML = '';
+
+  const prev = document.createElement('button');
+  prev.className = 'btn';
+  prev.textContent = 'Prev';
+  if(currentPage === 1) prev.classList.add('disabled');
+  else prev.onclick = () => navigateTo(searchQuery, currentPage - 1);
+  pag.appendChild(prev);
+
+  const maxButtons = 7;
+  let start = Math.max(1, currentPage - Math.floor(maxButtons/2));
+  let end = Math.min(totalPages, start + maxButtons - 1);
+  if(end - start < maxButtons - 1) start = Math.max(1, end - maxButtons + 1);
+
+  for(let i = start; i <= end; i++){
+    const b = document.createElement('button');
+    b.className = 'btn' + (i === currentPage ? ' disabled' : '');
+    b.textContent = i;
+    if(i !== currentPage) b.onclick = () => navigateTo(searchQuery, i);
+    pag.appendChild(b);
+  }
+
+  const next = document.createElement('button');
+  next.className = 'btn';
+  next.textContent = 'Next';
+  if(currentPage === totalPages) next.classList.add('disabled');
+  else next.onclick = () => navigateTo(searchQuery, currentPage + 1);
+  pag.appendChild(next);
+}
+
+/* ---------- Search ---------- */
+function performSearch(){
+  const q = qs('#searchInput').value.trim();
+  navigateTo(q, 1);
+}
+qs('#searchBtn').addEventListener('click', performSearch);
+qs('#searchInput').addEventListener('keydown', (e)=> { if(e.key === 'Enter') performSearch(); });
+
+/* ---------- Suggestions ---------- */
+function initSearchSuggestions(){
+  const input = qs('#searchInput');
+  const suggestions = qs('#suggestions');
+
+  input.addEventListener('input', function(){
+    const val = this.value.trim().toLowerCase();
+    if(!val){
+      suggestions.classList.remove('visible');
+      suggestions.innerHTML = '';
+      suggestions.setAttribute('aria-hidden','true');
+      return;
+    }
+
+    const matches = [];
+    const seen = new Set();
+    for(const p of products){
+      const nameLower = p.name.toLowerCase();
+      if(nameLower.startsWith(val) && !seen.has(p.name)){
+        matches.push(p.name);
+        seen.add(p.name);
+      }
+      if(matches.length >= 8) break;
+    }
+    if(matches.length === 0){
+      for(const p of products){
+        const nameLower = p.name.toLowerCase();
+        if(nameLower.includes(val) && !seen.has(p.name)){
+          matches.push(p.name);
+          seen.add(p.name);
+        }
+        if(matches.length >= 8) break;
+      }
+    }
+
+    suggestions.innerHTML = matches.map(m => `<div class="sugg-pill" data-val="${escapeAttr(m)}">${escapeHtml(m)}</div>`).join('');
+    if(matches.length){
+      suggestions.classList.add('visible');
+      suggestions.setAttribute('aria-hidden','false');
+    } else {
+      suggestions.classList.remove('visible');
+      suggestions.setAttribute('aria-hidden','true');
+    }
+
+    qsa('.sugg-pill').forEach(el=>{
+      el.onclick = () => {
+        const v = el.getAttribute('data-val');
+        input.value = v;
+        suggestions.classList.remove('visible');
+        performSearch();
+      };
+    });
+  });
+}
+
+/* ---------- UI events ---------- */
+window.addEventListener('scroll', ()=>{
+  const nav = qs('#navbar');
+  if(window.scrollY > 40) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+  const btn = qs('#backToTop');
+  if(document.documentElement.scrollTop > 220) btn.style.display = 'block'; else btn.style.display = 'none';
+});
 qs('#backToTop').onclick = ()=> window.scrollTo({top:0, behavior:'smooth'});
+
+/* ---------- Utils ---------- */
 function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-window.addEventListener('DOMContentLoaded', ()=>{ loadProducts(); });
+
+/* ---------- Init ---------- */
+window.addEventListener('DOMContentLoaded', ()=>{
+  loadProducts();
+});
 </script>
 
 </body>
 </html>
+
