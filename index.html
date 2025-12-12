@@ -14,9 +14,9 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
- <!-- Google AdSense Auto Ads -->
+<!-- Google AdSense Auto Ads -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9860497702017992"
- 
+     crossorigin="anonymous"></script>
 
 <style>
 :root{
@@ -34,8 +34,11 @@ body{
   font-family:Arial, sans-serif;
   background:var(--bg);
   color:#222;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
   scroll-behavior:smooth;
 }
+
 /* SOCIAL TOP BAR */
 .social-top-bar{
   position:sticky;
@@ -60,7 +63,7 @@ body{
   font-size:18px;
   color:var(--brand-dark);
   text-decoration:none;
-  transition: transform .5s, box-shadow .24s ease;
+  transition: transform .5s cubic-bezier(.2,.9,.3,1), box-shadow .24s ease;
   background:linear-gradient(180deg,#fff,#fbfdff);
   border:1px solid rgba(13,110,253,0.06);
 }
@@ -76,11 +79,13 @@ header{
   display:flex;
   justify-content:center;
   align-items:center;
+  height:var(--header_h); /* typo safety: use --header-h */
   height:var(--header-h);
   padding:8px 16px;
   box-shadow:0 6px 18px rgba(3,34,84,0.06);
 }
 header.shrink{ height:44px; padding:6px 12px; }
+
 nav{
   width:100%;
   max-width:1200px;
@@ -91,7 +96,7 @@ nav{
 }
 nav a{ color:white; text-decoration:none; font-weight:700; font-size:14px; }
 
-/* SEARCH */
+/* SEARCH (sticky under header) */
 .top-controls{
   position:sticky;
   top: calc(var(--social-h) + var(--header-h));
@@ -100,7 +105,11 @@ nav a{ color:white; text-decoration:none; font-weight:700; font-size:14px; }
   padding:12px;
   border-bottom:1px solid rgba(13,110,253,0.03);
 }
-.search-bar{ display:flex; justify-content:center; width:100%; }
+.search-bar{
+  display:flex;
+  justify-content:center;
+  width:100%;
+}
 .search-inner{
   display:flex;
   gap:8px;
@@ -126,6 +135,7 @@ nav a{ color:white; text-decoration:none; font-weight:700; font-size:14px; }
   font-weight:700;
   cursor:pointer;
 }
+
 /* suggestions */
 #suggestions{
   max-width:920px;
@@ -150,10 +160,20 @@ nav a{ color:white; text-decoration:none; font-weight:700; font-size:14px; }
 }
 
 /* results text */
-#resultsText{ text-align:center; font-weight:700; margin:14px 0 8px; font-size:16px; }
+#resultsText{
+  text-align:center;
+  font-weight:700;
+  margin:14px 0 8px;
+  font-size:16px;
+}
 
 /* products grid */
-.products-wrap{ padding:20px 12px 64px; max-width:1320px; margin:0 auto; }
+.products-wrap{
+  padding:20px 12px 64px;
+  max-width:1320px;
+  margin:0 auto;
+}
+/* always 5 columns, shrink cards on smaller screens */
 .products{
   display:grid;
   grid-template-columns:repeat(5,1fr);
@@ -174,12 +194,17 @@ nav a{ color:white; text-decoration:none; font-weight:700; font-size:14px; }
   min-height:260px;
   opacity:0;
   transform:translateY(8px);
-  transition: transform .22s, box-shadow .22s, opacity .28s;
+  transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease, opacity .28s ease;
 }
 .product-card.visible{ opacity:1; transform:translateY(0); }
 .product-card:hover{ transform:scale(1.03); box-shadow:0 20px 44px rgba(13,110,253,0.12); }
 
-.product-card img{ width:100%; height:150px; object-fit:contain; margin-bottom:8px; }
+.product-card img{
+  width:100%;
+  height:150px;
+  object-fit:contain;
+  margin-bottom:8px;
+}
 
 /* product name clamp */
 .product-name{
@@ -263,232 +288,340 @@ footer{
 }
 footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 
-/* SEO Content (hidden) */
-.seo-content{ display:none; }
+/* SEO Content Section - hidden but present */
+.seo-content{
+  max-width:1200px;
+  margin:24px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+  display:none; /* hide visually, keep in DOM for SEO */
+}
+.seo-content h2{
+  font-size:20px;
+  color:var(--brand-dark);
+  margin-bottom:12px;
+}
+.seo-content p{
+  font-size:14px;
+  line-height:1.7;
+  color:#333;
+  margin-bottom:12px;
+}
 
-/* responsive */
-@media (max-width:1100px){ .products{ grid-template-columns:repeat(4,1fr); } }
-@media (max-width:880px){ .products{ grid-template-columns:repeat(3,1fr); } .search-inner{ max-width:94%; } }
-@media (max-width:620px){ .products{ grid-template-columns:repeat(2,1fr); } .product-card{ min-height:220px; } .search-inner{ max-width:94%; } }
-@media (max-width:420px){ .products{ grid-template-columns:repeat(1,1fr); } .product-card{ min-height:200px; } }
+/* remove older breakpoints so 5 columns stay */
 </style>
 </head>
 <body>
 
-<div class="social-top-bar">
- <a href="https://facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
- <a href="https://instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
- <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
- <a href="https://whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2J" target="_blank"><i class="fab fa-whatsapp"></i></a>
- <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+<!-- SOCIAL TOP BAR -->
+<div class="social-top-bar" aria-hidden="false">
+  <a href="https://facebook.com/UniqueCollection0555" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+  <a href="https://instagram.com/uniquecollection0555" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://discord.gg/Aa9a6XHwZz" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+  <a href="https://whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2J" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.youtube.com/@uniquecollection01" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
 </div>
 
 <header id="navbar">
- <nav>
-   <a href="index.html"><i class="fas fa-house"></i> Home</a>
-   <a href="privacy.html"><i class="fas fa-shield-halved"></i> Privacy</a>
-   <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
-   <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
- </nav>
+  <nav>
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <a href="privacy.html"><i class="fas fa-shield-halved"></i> Privacy</a>
+    <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+  </nav>
 </header>
 
-<div class="top-controls">
- <div class="search-bar">
-   <div class="search-inner">
-     <input id="searchInput" type="text" placeholder="Search products... (try: T-Shirt, Phone, Toy)">
-     <button id="searchBtn" type="button">Search</button>
-   </div>
- </div>
- <div id="suggestions"></div>
+<div class="top-controls" role="search" aria-label="Site search">
+  <div class="search-bar">
+    <div class="search-inner">
+      <input id="searchInput" type="text" placeholder="Search products... (try: T-Shirt, Phone, Toy)">
+      <button id="searchBtn" type="button">Search</button>
+    </div>
+  </div>
+  <div id="suggestions" aria-hidden="true"></div>
 </div>
 
-<p id="resultsText"></p>
+<p id="resultsText" aria-live="polite"></p>
+
+<!-- SEO Content Section -->
+<div class="seo-content">
+  <h2>Discover the Best Deals Online</h2>
+  <p>Welcome to Unique Collection4u, your ultimate destination for curated affiliate deals, top trending products, and expert picks. Explore a wide range of categories including fashion, electronics, toys, home decor, kitchenware, fitness equipment, anime merchandise, jewellery, and more.</p>
+  
+  <h2>Shop With Confidence</h2>
+  <p>Our team handpicks products to ensure quality, affordability, and value. From the latest gadgets and trending fashion to essential home items, we provide honest recommendations to save you time and money.</p>
+  
+  <h2>Top Categories You’ll Love</h2>
+  <p>Browse through our extensive collection of fashion items, stylish accessories, home and kitchen products, fitness gear, toys, anime collectibles, electronics, and jewellery. Each category is optimized with the best products curated for online shoppers.</p>
+  
+  <h2>Why Choose Unique Collection4u</h2>
+  <p>We offer trustworthy affiliate links, detailed product descriptions, smooth browsing experience, and SEO-optimized content to help users find exactly what they need. Stay ahead with our regularly updated product lists and recommendations.</p>
+  
+  <h2>Expert Tips & Product Guides</h2>
+  <p>Discover buying guides, product comparisons, and expert tips to help you make informed purchasing decisions. Whether you are shopping for fashion, tech gadgets, or home decor, our expert insights guide you through the best options available online.</p>
+  
+  <h2>Stay Updated</h2>
+  <p>Follow us on social media for the latest deals, offers, and trending products. Join our community to get notifications on new products, seasonal discounts, and exclusive affiliate deals.</p>
+</div>
 
 <div class="products-wrap">
- <div class="products" id="productsContainer"></div>
- <div class="pagination" id="paginationContainer"></div>
+  <div class="products" id="productsContainer" aria-live="polite"></div>
+  <div class="pagination" id="paginationContainer" aria-label="Pagination"></div>
 </div>
 
-<i id="backToTop" class="fas fa-arrow-up" title="Back to top"></i>
+<i id="backToTop" class="fas fa-arrow-up" title="Back to top" role="button" aria-label="Back to top"></i>
 
 <footer>
- <div class="social-links">
-   <a href="https://facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
-   <a href="https://instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
-   <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
-   <a href="https://whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2J" target="_blank"><i class="fab fa-whatsapp"></i></a>
-   <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
- </div>
- <p>&copy; 2025 Unique Collection4u</p>
+  <div class="social-links" aria-hidden="true">
+    <a href="https://facebook.com/UniqueCollection0555" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/uniquecollection0555" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/Aa9a6XHwZz" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://whatsapp.com/channel/0029VbBdg1zGk1FoG5cHlR2J" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.youtube.com/@uniquecollection01" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p>&copy; 2025 Unique Collection4u</p>
 </footer>
 
 <script>
+/* ---------- State ---------- */
 let products = [];
 let currentPage = 1;
+/* 10 products per page now */
 const productsPerPage = 10;
 
-const qs = s=>document.querySelector(s);
-const qsa = s=>Array.from(document.querySelectorAll(s));
+/* ---------- Short helpers ---------- */
+const qs = s => document.querySelector(s);
+const qsa = s => Array.from(document.querySelectorAll(s));
 
+/* ---------- CSV loader ---------- */
 async function loadProducts(){
   try{
-    const res = await fetch('products.csv',{cache:"no-store"});
+    const res = await fetch('products.csv', {cache: "no-store"});
     if(!res.ok) throw new Error('products.csv not found');
     const text = await res.text();
     const rows = text.split(/\r?\n/).filter(Boolean);
     if(rows.length && rows[0].toLowerCase().includes('name') && rows[0].toLowerCase().includes('image')) rows.shift();
-    products = rows.map(r=>{
+
+    products = rows.map(r => {
       const parts = r.split(',');
-      const name = (parts[0]||'').trim();
-      const img = (parts[1]||'').trim();
-      const alt = (parts[2]||'').trim();
-      const link = (parts.slice(3).join(',')||'').trim();
-      return {name,img,alt,link};
+      const name = (parts[0] || '').trim();
+      const img  = (parts[1] || '').trim();
+      const alt  = (parts[2] || '').trim();
+      const link = (parts.slice(3).join(',') || '').trim();
+      return { name: name || 'Unnamed Product', img, alt, link };
     });
+
     const params = getParams();
-    qs('#searchInput').value = params.search||'';
-    currentPage = params.page||1;
-    if(!params.search && params.page===1) products = products.sort(()=>Math.random()-0.5);
-    renderProducts(params.search||'');
+    qs('#searchInput').value = params.search || '';
+    currentPage = params.page || 1;
+
+    if(!params.search && params.page === 1) products = products.sort(()=>Math.random()-0.5);
+
+    renderProducts(params.search || '');
     initSearchSuggestions();
   }catch(err){
     console.error(err);
-    qs('#productsContainer').innerHTML=`<p style="color:red;font-weight:700">Failed to load products.csv — ${err.message}</p>`;
+    const container = qs('#productsContainer');
+    container.innerHTML = `<p style="color:red;font-weight:700">Failed to load products.csv — ${err.message}</p>`;
   }
 }
 
+/* ---------- URL helpers ---------- */
 function getParams(){
   const u = new URL(window.location.href);
-  return {search:u.searchParams.get('search')||'', page:parseInt(u.searchParams.get('page'))||1};
+  return { search: u.searchParams.get('search') || '', page: parseInt(u.searchParams.get('page')) || 1 };
 }
-
-function navigateTo(search,page){
+function navigateTo(search, page){
   const url = new URL(window.location.href);
-  url.searchParams.set('search',search||'');
-  url.searchParams.set('page',page||1);
-  window.location.href = url.pathname+'?'+url.searchParams.toString();
+  url.searchParams.set('search', search || '');
+  url.searchParams.set('page', page || 1);
+  window.location.href = url.pathname + '?' + url.searchParams.toString();
 }
 
-function renderProducts(searchQuery=''){
-  const container=qs('#productsContainer');
-  const resultsText=qs('#resultsText');
-  container.innerHTML='';
-  resultsText.textContent = searchQuery?`Showing results for: "${searchQuery}"`:'';
-  const filtered = products.filter(p=>p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-  const totalPages = Math.max(1, Math.ceil(filtered.length/productsPerPage));
-  currentPage = Math.min(currentPage,totalPages)||1;
-  const start=(currentPage-1)*productsPerPage;
-  const pageProducts=filtered.slice(start,start+productsPerPage);
-  if(pageProducts.length===0){
-    container.innerHTML=`<p style="text-align:center;font-weight:700;color:#666;padding:28px">No products found.</p>`;
-    renderPagination(totalPages,searchQuery);
+/* ---------- Render products ---------- */
+function renderProducts(searchQuery = ''){
+  const container = qs('#productsContainer');
+  const resultsText = qs('#resultsText');
+  container.innerHTML = '';
+
+  if(searchQuery && searchQuery.trim()) resultsText.textContent = `Showing results for: "${searchQuery}"`;
+  else resultsText.textContent = '';
+
+  const filtered = products.filter(p => p.name.toLowerCase().includes((searchQuery||'').toLowerCase()));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / productsPerPage));
+  currentPage = Math.min(currentPage, totalPages) || 1;
+
+  const start = (currentPage - 1) * productsPerPage;
+  const pageProducts = filtered.slice(start, start + productsPerPage);
+
+  if(pageProducts.length === 0){
+    container.innerHTML = `<p style="text-align:center;font-weight:700;color:#666;padding:28px">No products found.</p>`;
+    renderPagination(totalPages, searchQuery);
     return;
   }
-  pageProducts.forEach((p,idx)=>{
-    const globalIndex=start+idx;
-    const card=document.createElement('div');
-    card.className='product-card';
-    const imgSrc=p.img||'https://via.placeholder.com/240x150?text=No+Image';
+
+  pageProducts.forEach((p, idx) => {
+    const globalIndex = start + idx;
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    const imgSrc = p.img || 'https://via.placeholder.com/240x150?text=No+Image';
     const safeName = escapeHtml(p.name);
-    const safeAlt = escapeHtml(p.alt||p.name);
-    card.innerHTML=`<img src="${escapeHtml(imgSrc)}" alt="${safeAlt}"><p class="product-name" id="name-${globalIndex}">${safeName}</p><div class="card-bottom"><div>${p.link?`<a class="product-link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener noreferrer">Check Price On Amazon</a>`:''}</div><div>${p.name.length>75?`<button class="more-btn" data-id="${globalIndex}">More</button>`:''}</div></div>`;
+    const safeAlt = escapeHtml(p.alt || p.name);
+
+    card.innerHTML = `
+      <img src="${escapeHtml(imgSrc)}" alt="${safeAlt}">
+      <p class="product-name" id="name-${globalIndex}">${safeName}</p>
+      <div class="card-bottom">
+        <div>${p.link ? `<a class="product-link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener noreferrer">Check Price On Amazon</a>` : ''}</div>
+        <div>${(p.name.length > 75) ? `<button class="more-btn" data-id="${globalIndex}">More</button>` : ''}</div>
+      </div>
+    `;
     container.appendChild(card);
-    requestAnimationFrame(()=>setTimeout(()=>card.classList.add('visible'),20+(idx*18)));
+
+    requestAnimationFrame(()=> {
+      setTimeout(()=> card.classList.add('visible'), 20 + (idx * 18));
+    });
   });
-  renderPagination(totalPages,searchQuery);
+
+  renderPagination(totalPages, searchQuery);
   attachMoreButtons();
 }
 
+/* ---------- More / Less ---------- */
 function attachMoreButtons(){
   qsa('.more-btn').forEach(btn=>{
-    btn.onclick=()=>{
-      const id=btn.getAttribute('data-id');
-      const nameEl=qs('#name-'+id);
-      if(!nameEl)return;
-      const expanded=nameEl.classList.toggle('expanded');
-      btn.textContent=expanded?'Less':'More';
+    btn.onclick = () => {
+      const id = btn.getAttribute('data-id');
+      const nameEl = qs('#name-' + id);
+      if(!nameEl) return;
+      const expanded = nameEl.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Less' : 'More';
       if(expanded){
-        const card=btn.closest('.product-card');
-        const rect=card.getBoundingClientRect();
-        if(rect.top<80 || rect.bottom>(window.innerHeight||document.documentElement.clientHeight)){
-          card.scrollIntoView({behavior:'smooth',block:'nearest'});
+        const card = btn.closest('.product-card');
+        const rect = card.getBoundingClientRect();
+        if(rect.top < 80 || rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
+          card.scrollIntoView({behavior:'smooth', block:'nearest'});
         }
       }
-    }
+    };
   });
 }
 
-function renderPagination(totalPages,searchQuery){
-  const pag=qs('#paginationContainer');
-  pag.innerHTML='';
-  const prev=document.createElement('button');
-  prev.className='btn';
-  prev.textContent='Prev';
-  if(currentPage===1) prev.classList.add('disabled'); else prev.onclick=()=>navigateTo(searchQuery,currentPage-1);
+/* ---------- Pagination ---------- */
+function renderPagination(totalPages, searchQuery){
+  const pag = qs('#paginationContainer');
+  pag.innerHTML = '';
+
+  const prev = document.createElement('button');
+  prev.className = 'btn';
+  prev.textContent = 'Prev';
+  if(currentPage === 1) prev.classList.add('disabled');
+  else prev.onclick = () => navigateTo(searchQuery, currentPage - 1);
   pag.appendChild(prev);
-  const maxButtons=7;
-  let start=Math.max(1,currentPage-Math.floor(maxButtons/2));
-  let end=Math.min(totalPages,start+maxButtons-1);
-  if(end-start<maxButtons-1) start=Math.max(1,end-maxButtons+1);
-  for(let i=start;i<=end;i++){
-    const b=document.createElement('button');
-    b.className='btn'+(i===currentPage?' disabled':'');
-    b.textContent=i;
-    if(i!==currentPage)b.onclick=()=>navigateTo(searchQuery,i);
+
+  const maxButtons = 7;
+  let start = Math.max(1, currentPage - Math.floor(maxButtons/2));
+  let end = Math.min(totalPages, start + maxButtons - 1);
+  if(end - start < maxButtons - 1) start = Math.max(1, end - maxButtons + 1);
+
+  for(let i = start; i <= end; i++){
+    const b = document.createElement('button');
+    b.className = 'btn' + (i === currentPage ? ' disabled' : '');
+    b.textContent = i;
+    if(i !== currentPage) b.onclick = () => navigateTo(searchQuery, i);
     pag.appendChild(b);
   }
-  const next=document.createElement('button');
-  next.className='btn';
-  next.textContent='Next';
-  if(currentPage===totalPages) next.classList.add('disabled'); else next.onclick=()=>navigateTo(searchQuery,currentPage+1);
+
+  const next = document.createElement('button');
+  next.className = 'btn';
+  next.textContent = 'Next';
+  if(currentPage === totalPages) next.classList.add('disabled');
+  else next.onclick = () => navigateTo(searchQuery, currentPage + 1);
   pag.appendChild(next);
 }
 
+/* ---------- Search ---------- */
 function performSearch(){
-  const q=qs('#searchInput').value.trim();
-  navigateTo(q,1);
+  const q = qs('#searchInput').value.trim();
+  navigateTo(q, 1);
 }
-qs('#searchBtn').addEventListener('click',performSearch);
-qs('#searchInput').addEventListener('keydown',(e)=>{if(e.key==='Enter') performSearch();});
+qs('#searchBtn').addEventListener('click', performSearch);
+qs('#searchInput').addEventListener('keydown', (e)=> { if(e.key === 'Enter') performSearch(); });
 
+/* ---------- Suggestions ---------- */
 function initSearchSuggestions(){
-  const input=qs('#searchInput');
-  const suggestions=qs('#suggestions');
-  input.addEventListener('input',function(){
-    const val=this.value.trim().toLowerCase();
-    if(!val){ suggestions.classList.remove('visible'); suggestions.innerHTML=''; suggestions.setAttribute('aria-hidden','true'); return; }
-    const matches=[];
-    const seen=new Set();
-    for(const p of products){
-      const nameLower=p.name.toLowerCase();
-      if(nameLower.startsWith(val) && !seen.has(p.name)){ matches.push(p.name); seen.add(p.name); }
-      if(matches.length>=8) break;
+  const input = qs('#searchInput');
+  const suggestions = qs('#suggestions');
+
+  input.addEventListener('input', function(){
+    const val = this.value.trim().toLowerCase();
+    if(!val){
+      suggestions.classList.remove('visible');
+      suggestions.innerHTML = '';
+      suggestions.setAttribute('aria-hidden','true');
+      return;
     }
-    if(matches.length===0){
+
+    const matches = [];
+    const seen = new Set();
+    for(const p of products){
+      const nameLower = p.name.toLowerCase();
+      if(nameLower.startsWith(val) && !seen.has(p.name)){
+        matches.push(p.name);
+        seen.add(p.name);
+      }
+      if(matches.length >= 8) break;
+    }
+    if(matches.length === 0){
       for(const p of products){
-        const nameLower=p.name.toLowerCase();
-        if(nameLower.includes(val) && !seen.has(p.name)){ matches.push(p.name); seen.add(p.name); }
-        if(matches.length>=8) break;
+        const nameLower = p.name.toLowerCase();
+        if(nameLower.includes(val) && !seen.has(p.name)){
+          matches.push(p.name);
+          seen.add(p.name);
+        }
+        if(matches.length >= 8) break;
       }
     }
-    suggestions.innerHTML=matches.map(m=>`<div class="sugg-pill" data-val="${escapeAttr(m)}">${escapeHtml(m)}</div>`).join('');
-    if(matches.length){ suggestions.classList.add('visible'); suggestions.setAttribute('aria-hidden','false'); } else { suggestions.classList.remove('visible'); suggestions.setAttribute('aria-hidden','true'); }
-    qsa('.sugg-pill').forEach(el=>{ el.onclick=()=>{ input.value=el.getAttribute('data-val'); suggestions.classList.remove('visible'); performSearch(); }; });
+
+    suggestions.innerHTML = matches.map(m => `<div class="sugg-pill" data-val="${escapeAttr(m)}">${escapeHtml(m)}</div>`).join('');
+    if(matches.length){
+      suggestions.classList.add('visible');
+      suggestions.setAttribute('aria-hidden','false');
+    } else {
+      suggestions.classList.remove('visible');
+      suggestions.setAttribute('aria-hidden','true');
+    }
+
+    qsa('.sugg-pill').forEach(el=>{
+      el.onclick = () => {
+        const v = el.getAttribute('data-val');
+        input.value = v;
+        suggestions.classList.remove('visible');
+        performSearch();
+      };
+    });
   });
 }
 
-window.addEventListener('scroll',()=>{
-  const nav=qs('#navbar');
-  if(window.scrollY>40) nav.classList.add('shrink'); else nav.classList.remove('shrink');
-  const btn=qs('#backToTop');
-  if(document.documentElement.scrollTop>220) btn.style.display='block'; else btn.style.display='none';
+/* ---------- UI events ---------- */
+window.addEventListener('scroll', ()=>{
+  const nav = qs('#navbar');
+  if(window.scrollY > 40) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+  const btn = qs('#backToTop');
+  if(document.documentElement.scrollTop > 220) btn.style.display = 'block'; else btn.style.display = 'none';
 });
-qs('#backToTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+qs('#backToTop').onclick = ()=> window.scrollTo({top:0, behavior:'smooth'});
 
-function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+/* ---------- Utils ---------- */
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
-window.addEventListener('DOMContentLoaded',()=>{ loadProducts(); });
+/* ---------- Init ---------- */
+window.addEventListener('DOMContentLoaded', ()=>{
+  loadProducts();
+});
 </script>
 
 </body>
