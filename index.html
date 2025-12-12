@@ -6,6 +6,11 @@
 <meta name="google-adsense-account" content="ca-pub-9860497702017992">
 <title>Unique Collection4u — Curated Deals & Expert Picks</title>
 
+<!-- SEO Meta Tags -->
+<meta name="description" content="Unique Collection4u offers premium curated deals, trending products, and expert picks across fashion, electronics, toys, home decor, and more. Find the best prices and trusted recommendations.">
+<meta name="keywords" content="affiliate deals, online shopping, trending products, electronics, fashion, toys, home decor, kitchenware, fitness, anime merchandise, jewellery, best prices, curated products, expert picks">
+<meta name="author" content="Unique Collection4u">
+
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -34,7 +39,7 @@ body{
   scroll-behavior:smooth;
 }
 
-/* SOCIAL TOP BAR (above header) */
+/* SOCIAL TOP BAR */
 .social-top-bar{
   position:sticky;
   top:0;
@@ -64,7 +69,7 @@ body{
 }
 .social-top-bar a:hover{ transform: rotate(360deg) scale(1.08); box-shadow:0 8px 22px rgba(13,110,253,0.06); }
 
-/* HEADER / NAV (under social bar) */
+/* HEADER / NAV */
 header{
   position:sticky;
   top:var(--social-h);
@@ -281,6 +286,27 @@ footer{
 }
 footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 
+/* SEO Content Section */
+.seo-content{
+  max-width:1200px;
+  margin:24px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+}
+.seo-content h2{
+  font-size:20px;
+  color:var(--brand-dark);
+  margin-bottom:12px;
+}
+.seo-content p{
+  font-size:14px;
+  line-height:1.7;
+  color:#333;
+  margin-bottom:12px;
+}
+
 /* responsive */
 @media (max-width:1100px){ .products{ grid-template-columns:repeat(4,1fr); } }
 @media (max-width:880px){ .products{ grid-template-columns:repeat(3,1fr); } .search-inner{ max-width:94%; } }
@@ -320,6 +346,27 @@ footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 
 <p id="resultsText" aria-live="polite"></p>
 
+<!-- SEO Content Section -->
+<div class="seo-content">
+  <h2>Discover the Best Deals Online</h2>
+  <p>Welcome to Unique Collection4u, your ultimate destination for curated affiliate deals, top trending products, and expert picks. Explore a wide range of categories including fashion, electronics, toys, home decor, kitchenware, fitness equipment, anime merchandise, jewellery, and more.</p>
+  
+  <h2>Shop With Confidence</h2>
+  <p>Our team handpicks products to ensure quality, affordability, and value. From the latest gadgets and trending fashion to essential home items, we provide honest recommendations to save you time and money.</p>
+  
+  <h2>Top Categories You’ll Love</h2>
+  <p>Browse through our extensive collection of fashion items, stylish accessories, home and kitchen products, fitness gear, toys, anime collectibles, electronics, and jewellery. Each category is optimized with the best products curated for online shoppers.</p>
+  
+  <h2>Why Choose Unique Collection4u</h2>
+  <p>We offer trustworthy affiliate links, detailed product descriptions, smooth browsing experience, and SEO-optimized content to help users find exactly what they need. Stay ahead with our regularly updated product lists and recommendations.</p>
+  
+  <h2>Expert Tips & Product Guides</h2>
+  <p>Discover buying guides, product comparisons, and expert tips to help you make informed purchasing decisions. Whether you are shopping for fashion, tech gadgets, or home decor, our expert insights guide you through the best options available online.</p>
+  
+  <h2>Stay Updated</h2>
+  <p>Follow us on social media for the latest deals, offers, and trending products. Join our community to get notifications on new products, seasonal discounts, and exclusive affiliate deals.</p>
+</div>
+
 <div class="products-wrap">
   <div class="products" id="productsContainer" aria-live="polite"></div>
   <div class="pagination" id="paginationContainer" aria-label="Pagination"></div>
@@ -339,6 +386,7 @@ footer .social-links a{ color:white; margin:0 8px; font-size:18px; }
 </footer>
 
 <script>
+// Existing JS script from your code (loadProducts, search, pagination, etc.)
 /* ---------- State ---------- */
 let products = [];
 let currentPage = 1;
@@ -348,7 +396,7 @@ const productsPerPage = 20;
 const qs = s => document.querySelector(s);
 const qsa = s => Array.from(document.querySelectorAll(s));
 
-/* ---------- CSV loader (expects: name,image,alt,link) ---------- */
+/* ---------- CSV loader ---------- */
 async function loadProducts(){
   try{
     const res = await fetch('products.csv', {cache: "no-store"});
@@ -503,7 +551,7 @@ function performSearch(){
 qs('#searchBtn').addEventListener('click', performSearch);
 qs('#searchInput').addEventListener('keydown', (e)=> { if(e.key === 'Enter') performSearch(); });
 
-/* ---------- Suggestions (auto-complete pills) ---------- */
+/* ---------- Suggestions ---------- */
 function initSearchSuggestions(){
   const input = qs('#searchInput');
   const suggestions = qs('#suggestions');
@@ -558,7 +606,7 @@ function initSearchSuggestions(){
   });
 }
 
-/* ---------- UI events: header shrink + backToTop ---------- */
+/* ---------- UI events ---------- */
 window.addEventListener('scroll', ()=>{
   const nav = qs('#navbar');
   if(window.scrollY > 40) nav.classList.add('shrink'); else nav.classList.remove('shrink');
